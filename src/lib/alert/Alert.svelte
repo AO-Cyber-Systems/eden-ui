@@ -12,6 +12,7 @@
     icon,
     alertStatus = $bindable(true),
     closeIcon: CloseIcon,
+    size = "md",
     color = "primary",
     rounded = true,
     border,
@@ -27,6 +28,7 @@
 
   let divCls = $derived(
     alert({
+      size,
       color,
       rounded,
       border,
@@ -83,6 +85,7 @@
 @prop icon
 @prop alertStatus = $bindable(true)
 @prop closeIcon: CloseIcon
+@prop size = "md"
 @prop color = "primary"
 @prop rounded = true
 @prop border

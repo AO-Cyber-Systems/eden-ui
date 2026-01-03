@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Checkbox } from "flowbite-svelte";
+  import { Checkbox } from "$lib";
 </script>
 
 <Checkbox inline classes={{ div: "me-2" }}>Inline 1</Checkbox>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-@plugin "flowbite/plugin";
-@plugin "flowbite-typography";
+@plugin "./lib/tailwind-plugin/eden-plugin.cjs";
+@plugin "./lib/tailwind-plugin/eden-typography.cjs";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -10,8 +10,6 @@
 @source "../node_modules/@flowbite-svelte-plugins/chart/dist";
 @source "../node_modules/@flowbite-svelte-plugins/texteditor/dist";
 @source "../node_modules/flowbite-svelte-icons/dist";
-@source "../node_modules/flowbite-svelte-blocks/dist";
-@source "../node_modules/flowbite-svelte-admin-dashboard/dist";
 
 .datatable-pagination .datatable-active a,
 .datatable-pagination .datatable-active a:focus,

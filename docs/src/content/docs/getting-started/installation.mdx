@@ -1,0 +1,140 @@
+---
+title: Installation
+description: How to install and configure Eden UI in your SvelteKit project
+---
+
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+
+# Installation
+
+Eden UI is designed for SvelteKit projects using Svelte 5 and Tailwind CSS.
+
+## Prerequisites
+
+- Node.js 18+
+- SvelteKit 2.0+ with Svelte 5
+- Tailwind CSS 3.4+
+
+## Package Installation
+
+<Tabs>
+  <TabItem label="pnpm" icon="pnpm">
+    ```bash
+    pnpm add eden-ui
+    ```
+  </TabItem>
+  <TabItem label="npm" icon="seti:npm">
+    ```bash
+    npm install eden-ui
+    ```
+  </TabItem>
+  <TabItem label="yarn" icon="seti:yarn">
+    ```bash
+    yarn add eden-ui
+    ```
+  </TabItem>
+</Tabs>
+
+## Configuration
+
+<Steps>
+
+1. **Configure Tailwind CSS**
+
+   Add Eden UI to your `tailwind.config.js` content paths:
+
+   ```js title="tailwind.config.js"
+   /** @type {import('tailwindcss').Config} */
+   export default {
+     content: [
+       './src/**/*.{html,js,svelte,ts}',
+       './node_modules/eden-ui/**/*.{html,js,svelte,ts}'  // Add this line
+     ],
+     darkMode: 'class',
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   }
+   ```
+
+2. **Import Base Styles**
+
+   Import Eden UI's base styles in your root layout:
+
+   ```svelte title="src/routes/+layout.svelte"
+   <script>
+     import 'eden-ui/styles.css';
+     import '../app.css';
+   </script>
+
+   <slot />
+   ```
+
+3. **Start Using Components**
+
+   Import and use components in your Svelte files:
+
+   ```svelte title="src/routes/+page.svelte"
+   <script>
+     import { Button, Card, Badge } from 'eden-ui';
+   </script>
+
+   <Card>
+     <h2>Hello Eden UI!</h2>
+     <Badge color="green">Active</Badge>
+     <Button color="primary">Get Started</Button>
+   </Card>
+   ```
+
+</Steps>
+
+## TypeScript Support
+
+Eden UI is written in TypeScript and provides full type definitions. Component props are automatically inferred:
+
+```typescript
+import type { ButtonProps, CardProps } from 'eden-ui';
+
+// Full IntelliSense for all component props
+const buttonConfig: ButtonProps = {
+  color: 'primary',    // Autocomplete for 20 color options
+  size: 'lg',          // Type-safe size variants
+  outline: true,
+  disabled: false
+};
+```
+
+## Tree Shaking
+
+Eden UI supports tree shaking out of the box. Only the components you import will be included in your bundle:
+
+```svelte
+// Only Button and Card are bundled
+import { Button, Card } from 'eden-ui';
+```
+
+## Dark Mode
+
+Eden UI supports dark mode via Tailwind's `class` strategy. Toggle dark mode by adding/removing the `dark` class on your `<html>` element:
+
+```svelte
+<script>
+  let darkMode = $state(false);
+
+  function toggleDarkMode() {
+    darkMode = !darkMode;
+    document.documentElement.classList.toggle('dark', darkMode);
+  }
+</script>
+
+<Button onclick={toggleDarkMode}>
+  Toggle Dark Mode
+</Button>
+```
+
+## Next Steps
+
+- [Quick Start Guide](/getting-started/quick-start) - Build your first page
+- [Theming](/getting-started/theming) - Customize colors and styles
+- [Components](/components) - Browse all available components

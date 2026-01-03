@@ -1,23 +1,23 @@
 ---
 layout: componentLayout
-breadcrumb_title: Svelte UI Components - Flowbite Svelte
-title: Flowbite Svelte - UI Component Library
+breadcrumb_title: Svelte UI Components - Eden UI
+title: Eden UI - Component Library
 component_title: Introduction
 dir: Pages
-description: Learn more about the free and open-source Flowbite Svelte UI components and start building modern web applications using native Svelte components based on Tailwind CSS
+description: Learn more about the free and open-source Eden UI component library and start building modern web applications using native Svelte components based on Tailwind CSS
 ---
 
 <script lang="ts">
   import { LlmLink } from '../../utils'
 </script>
 
-[Flowbite Svelte](https://github.com/themesberg/flowbite-svelte) is a free and open-source UI component library based on the core Flowbite components and built with native Svelte components and interactivity handling.
+[Eden UI](https://github.com/ao-cyber-systems/eden-ui) is a free and open-source UI component library built with native Svelte components and Tailwind CSS. Developed by AO Cyber Systems, Eden UI provides a comprehensive set of interactive elements for building modern web applications.
 
 This library features hundreds of interactive elements such as navbars, dropdowns, modals, and sidebars all handled by Svelte and based on the utility classes from Tailwind CSS.
 
 ## Getting started
 
-Learn how to get started with Flowbite Svelte by following the quickstart guide and start leveraging the interactive Svelte components coupled with Flowbite and Tailwind CSS.
+Learn how to get started with Eden UI by following the quickstart guide and start leveraging the interactive Svelte components coupled with Tailwind CSS.
 
 ### Using SvelteKit
 
@@ -55,26 +55,17 @@ Run a local development server by running:
 pnpm dev
 ```
 
-### Install Flowbite Svelte
+### Install Eden UI
 
-Run the following command to install all Flowbite dependencies and libraries:
-
-```sh
-pnpm i -D flowbite-svelte flowbite
-```
-
-### Optional
-
-Install `flowbite-svelte-icons` for the examples to work properly:
+Run the following command to install Eden UI:
 
 ```sh
-pnpm i -D flowbite-svelte-icons
+pnpm i -D eden-ui
 ```
 
 ### Configuration
 
-
-Update your main CSS file to support Tailwind CSS and the Flowbite plugin. You can also customize the primary color by modifying the appropriate color values.
+Update your main CSS file to support Tailwind CSS and Eden UI. You can also customize the primary color by modifying the appropriate color values.
 
 #### SvelteKit Projects
 
@@ -85,7 +76,7 @@ The location of your main CSS file determines the correct path for `@source` dir
 ```css
 @import "tailwindcss";
 
-@plugin 'flowbite/plugin';
+@plugin "eden-ui/plugins/eden-plugin";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -113,8 +104,7 @@ The location of your main CSS file determines the correct path for `@source` dir
   --color-secondary-900: #0c4a6e;
 }
 
-@source "../node_modules/flowbite-svelte/dist";
-@source "../node_modules/flowbite-svelte-icons/dist";
+@source "../node_modules/eden-ui/dist";
 
 @layer base {
   /* disable chrome cancel button */
@@ -128,7 +118,7 @@ The location of your main CSS file determines the correct path for `@source` dir
 ```css
 @import "tailwindcss";
 
-@plugin 'flowbite/plugin';
+@plugin "eden-ui/plugins/eden-plugin";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -156,8 +146,7 @@ The location of your main CSS file determines the correct path for `@source` dir
   --color-secondary-900: #0c4a6e;
 }
 
-@source "../../node_modules/flowbite-svelte/dist";
-@source "../../node_modules/flowbite-svelte-icons/dist";
+@source "../../node_modules/eden-ui/dist";
 
 @layer base {
   /* disable chrome cancel button */
@@ -175,7 +164,7 @@ The location of your main CSS file determines the correct path for `@source` dir
 
 For non-SvelteKit projects (Vite, Svelte standalone, etc.), adjust the path based on your CSS file location relative to `node_modules`.
 
-Now you should be able to work with the Flowbite Svelte library and import components such as the navbar, dropdown, modal, and more.
+Now you should be able to work with Eden UI and import components such as the navbar, dropdown, modal, and more.
 
 ## Svelte
 
@@ -183,27 +172,21 @@ Svelte is a modern and growing front-end compiler. Developers build boilerplate-
 
 ## Tailwind CSS
 
-Flowbite Svelte leverages the utility classes from the popular [Tailwind CSS](https://tailwindcss.com) framework allowing greater customization capabilities directly from a component level in Svelte.
-
-## Flowbite Ecosystem
-
-[Flowbite](https://flowbite.com) is also available in other frameworks such as vanilla JS with HTML, React, Vue, Angular, and even integration possibilities with back-end frameworks such as Laravel, Django, Flask, and Phoenix.
-
-Check out the main [GitHub repository](https://github.com/themesberg/flowbite) to explore other libraries too as well as the [Figma design system](https://flowbite.com/figma/).
+Eden UI leverages the utility classes from the popular [Tailwind CSS](https://tailwindcss.com) framework allowing greater customization capabilities directly from a component level in Svelte.
 
 ## UI Components
 
-Flowbite Svelte has a rich collection of commonly used components coded with Svelte that leverage the utility classes from Tailwind CSS and you can check out the full list of components by navigating through the components section in the sidebar on the left side of the page.
+Eden UI has a rich collection of commonly used components coded with Svelte that leverage the utility classes from Tailwind CSS and you can check out the full list of components by navigating through the components section in the sidebar on the left side of the page.
 
 ## Contributing
 
-Flowbite Svelte is a free and open-source UI component library built with Svelte native components and based on the Flowbite ecosystem and contributions are more than welcome.
+Eden UI is a free and open-source UI component library built with Svelte native components and contributions are more than welcome.
 
 Check out [contributing guide](/docs/pages/how-to-contribute) to learn how you can be a part of the open-source community.
 
 ## License
 
-Flowbite Svelte is a free and open-source UI component library licensed under the [MIT License](https://github.com/themesberg/flowbite-svelte/blob/main/LICENSE).
+Eden UI is a free and open-source UI component library licensed under the [MIT License](https://github.com/ao-cyber-systems/eden-ui/blob/main/LICENSE).
 
 ## LLM Link
 

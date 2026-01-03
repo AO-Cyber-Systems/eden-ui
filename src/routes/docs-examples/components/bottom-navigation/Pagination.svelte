@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BottomNav, BottomNavItem, Tooltip, Skeleton, ImagePlaceholder } from "flowbite-svelte";
+  import { BottomNav, BottomNavItem, Tooltip, Skeleton, ImagePlaceholder } from "$lib";
   import { FileCirclePlusOutline, BookmarkSolid, AngleLeftOutline, AngleRightOutline, AdjustmentsVerticalOutline, UserCircleSolid } from "flowbite-svelte-icons";
 </script>
 

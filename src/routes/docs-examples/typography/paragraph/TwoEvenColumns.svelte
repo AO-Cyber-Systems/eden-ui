@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { P, Layout } from "flowbite-svelte";
+  import { P, Layout } from "$lib";
 </script>
 
 <P class="mb-3" weight="light" color="text-gray-500 dark:text-gray-400">

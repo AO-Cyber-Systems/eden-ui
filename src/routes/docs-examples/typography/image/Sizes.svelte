@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Img, img, Radio, Label, type ImgProps } from "flowbite-svelte";
+  import { Img, img, Radio, Label, type ImgProps } from "$lib";
 
   const sizes = Object.keys(img.variants.size);
   let imgSize: ImgProps["size"] = $state("md");

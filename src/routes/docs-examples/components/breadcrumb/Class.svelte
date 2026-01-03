@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Breadcrumb, BreadcrumbItem, Button, type BreadcrumbProps } from "flowbite-svelte";
+  import { Breadcrumb, BreadcrumbItem, Button, type BreadcrumbProps } from "$lib";
   let navClass: BreadcrumbProps["class"] = $state("");
   const changeNavClass = () => {
     navClass = navClass === "" ? "border border-red-500 p-2" : "";

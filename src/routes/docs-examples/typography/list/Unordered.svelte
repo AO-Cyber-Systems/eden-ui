@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Li, List, Heading } from "flowbite-svelte";
+  import { Li, List, Heading } from "$lib";
 </script>
 
 <Heading tag="h2" class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Password requirements</Heading>

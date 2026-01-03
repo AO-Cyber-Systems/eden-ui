@@ -2,6 +2,8 @@
 export * from "./uiHelpers.svelte.js";
 // utils
 export * from "./utils";
+// icons - exported as namespace to avoid polluting main exports
+export * as Icons from "./icons";
 // theme
 // export { default as ThemeProvider } from "./theme/ThemeProvider.svelte";
 export * from "./theme";
@@ -18,6 +20,7 @@ export * from "./button-group";
 export * from "./buttons";
 export * from "./card";
 export * from "./carousel";
+export * from "./chat-bubble";
 export * from "./clipboard";
 export * from "./darkmode";
 export * from "./datepicker";
@@ -37,6 +40,7 @@ export * from "./pagination";
 export * from "./popover";
 export * from "./progress";
 export * from "./rating";
+export * from "./separator";
 export * from "./sidebar";
 export * from "./skeleton";
 export * from "./speed-dial";
@@ -71,6 +75,7 @@ export * from "./forms/tags";
 export * from "./forms/textarea";
 export * from "./forms/timepicker";
 export * from "./forms/toggle";
+export * from "./forms/otp-input";
 
 // typography
 export * from "./typography/a";

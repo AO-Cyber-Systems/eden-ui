@@ -17,9 +17,9 @@
     Button,
     GradientButton,
     Card
-  } from "flowbite-svelte";
+  } from "$lib";
   // theme types
-  import type { ThemeConfig } from "flowbite-svelte/types";
+  import type { ThemeConfig } from "$lib";
 
   import { HomeSolid, WalletSolid, AdjustmentsVerticalOutline, UserCircleSolid } from "flowbite-svelte-icons";
 

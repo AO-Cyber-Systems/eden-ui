@@ -5,7 +5,7 @@
   import clsx from "clsx";
   import { getTheme } from "$lib/theme/themeUtils";
 
-  let { steps = [], contentClass, class: className, classes, current = $bindable(0), clickable = true, showCheckmarkForCompleted = true, onStepClick, ...restProps }: DetailedStepperProps = $props();
+  let { steps = [], contentClass, class: className, classes, current = $bindable(0), clickable = true, showCheckmarkForCompleted = true, size = "md", onStepClick, ...restProps }: DetailedStepperProps = $props();
 
   // Ensure current is within valid bounds
   $effect(() => {
@@ -17,7 +17,7 @@
 
   // Override the theme to make current step also highlighted
   const stepperTheme = $derived(() => {
-    const baseTheme = detailedStepper();
+    const baseTheme = detailedStepper({ size });
     return {
       base: baseTheme.base,
       item: (props: { status: "completed" | "current" | "pending"; class?: string }) => {
@@ -29,11 +29,13 @@
         // Make current status use the same styling as completed
         const status = props.status === "current" ? "completed" : props.status;
         return baseTheme.indicator({ ...props, status });
-      }
+      },
+      title: baseTheme.title,
+      description: baseTheme.description
     };
   });
 
-  const { base, item, indicator } = $derived(stepperTheme());
+  const { base, item, indicator, title, description } = $derived(stepperTheme());
 
   // Handle step click
   function handleStepClick(stepIndex: number) {
@@ -91,9 +93,9 @@
             {/if}
           </span>
           <span class={clsx(contentClass)}>
-            <h3 class="leading-tight font-medium">{step.label}</h3>
+            <h3 class={title({ class: clsx(theme?.title, classes?.title, "leading-tight") })}>{step.label}</h3>
             {#if step.description}
-              <p class={clsx("text-sm", step.descriptionClass)}>{step.description}</p>
+              <p class={description({ class: clsx(theme?.description, classes?.description, step.descriptionClass) })}>{step.description}</p>
             {/if}
           </span>
         </button>
@@ -112,9 +114,9 @@
             {/if}
           </span>
           <span class={clsx(contentClass)}>
-            <h3 class="leading-tight font-medium">{step.label}</h3>
+            <h3 class={title({ class: clsx(theme?.title, classes?.title, "leading-tight") })}>{step.label}</h3>
             {#if step.description}
-              <p class={clsx("text-sm", step.descriptionClass)}>{step.description}</p>
+              <p class={description({ class: clsx(theme?.description, classes?.description, step.descriptionClass) })}>{step.description}</p>
             {/if}
           </span>
         </div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ButtonGroup, Button, GradientButton } from "flowbite-svelte";
+  import { ButtonGroup, Button, GradientButton } from "$lib";
 </script>
 
 <div class="text-gray-900 dark:text-gray-100">

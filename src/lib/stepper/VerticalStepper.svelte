@@ -6,7 +6,7 @@
   import clsx from "clsx";
   import { getTheme } from "$lib/theme/themeUtils";
 
-  let { steps = [], liClass, class: className, classes, current = $bindable(1), clickable = true, showCheckmarkForCompleted = true, onStepClick, ...restProps }: VerticalStepperProps = $props();
+  let { steps = [], liClass, class: className, classes, current = $bindable(1), clickable = true, showCheckmarkForCompleted = true, size = "md", onStepClick, ...restProps }: VerticalStepperProps = $props();
 
   // Ensure current is within valid bounds
   $effect(() => {
@@ -16,7 +16,7 @@
 
   const theme = $derived(getTheme("verticalStepper"));
 
-  const { base, card, content } = $derived(verticalStepper());
+  const { base, card, content, title } = $derived(verticalStepper({ size }));
 
   // Handle step click
   function handleStepClick(stepIndex: number) {
@@ -72,7 +72,7 @@
         >
           <div class={content({ class: clsx(theme?.content, classes?.content) })}>
             <span class="sr-only">{step.label}</span>
-            <h3 class="font-medium">{step.id}. {step.label}</h3>
+            <h3 class={title({ class: clsx(theme?.title, classes?.title) })}>{step.id}. {step.label}</h3>
             {@render stepIcon(status, step)}
           </div>
         </button>
@@ -80,7 +80,7 @@
         <div class={card({ status, class: clsx(theme?.card, classes?.card) })} aria-current={status === "current" ? "step" : undefined}>
           <div class={content({ class: clsx(theme?.content, classes?.content) })}>
             <span class="sr-only">{step.label}</span>
-            <h3 class="font-medium">{step.id}. {step.label}</h3>
+            <h3 class={title({ class: clsx(theme?.title, classes?.title) })}>{step.id}. {step.label}</h3>
             {@render stepIcon(status, step)}
           </div>
         </div>
@@ -117,6 +117,7 @@ The `current` prop is 1-based:
 @prop current = $bindable(1)
 @prop clickable = true
 @prop showCheckmarkForCompleted = true
+@prop size = "md"
 @prop onStepClick
 @prop ...restProps
 -->

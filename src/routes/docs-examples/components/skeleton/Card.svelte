@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CardPlaceholder } from "flowbite-svelte";
+  import { CardPlaceholder } from "$lib";
 </script>
 
 <CardPlaceholder />

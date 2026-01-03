@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { VideoPlaceholder } from "flowbite-svelte";
+  import { VideoPlaceholder } from "$lib";
 </script>
 
 <VideoPlaceholder />

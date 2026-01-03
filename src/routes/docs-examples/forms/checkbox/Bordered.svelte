@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Checkbox } from "flowbite-svelte";
+  import { Checkbox } from "$lib";
 </script>
 
 <div class="rounded-sm border border-gray-200 dark:border-gray-700">

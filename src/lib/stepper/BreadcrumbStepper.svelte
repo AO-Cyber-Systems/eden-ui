@@ -6,7 +6,7 @@
   import type { BreadcrumbStepperProps } from "$lib/types";
   import { getTheme } from "$lib/theme/themeUtils";
 
-  let { steps = [], class: className, classes, current = $bindable(1), clickable = true, showCheckmarkForCompleted = true, onStepClick, ...restProps }: BreadcrumbStepperProps = $props();
+  let { steps = [], class: className, classes, current = $bindable(1), clickable = true, showCheckmarkForCompleted = true, size = "md", onStepClick, ...restProps }: BreadcrumbStepperProps = $props();
 
   // Ensure current is within valid bounds
   $effect(() => {
@@ -16,7 +16,7 @@
 
   const theme = $derived(getTheme("breadcrumbStepper"));
 
-  const { base, item, indicator } = $derived(breadcrumbStepper());
+  const { base, item, indicator, chevron } = $derived(breadcrumbStepper({ size }));
 
   // Handle step click
   function handleStepClick(stepIndex: number) {
@@ -109,7 +109,7 @@
       {/if}
 
       {#if index < steps.length - 1}
-        <DoubleArrowIcon />
+        <DoubleArrowIcon class={chevron({ class: clsx(theme?.chevron, classes?.chevron) })} />
       {/if}
     </li>
   {/each}
@@ -142,6 +142,7 @@ The `current` prop is 1-based:
 @prop current = $bindable(1)
 @prop clickable = true
 @prop showCheckmarkForCompleted = true
+@prop size = "md"
 @prop onStepClick
 @prop ...restProps
 -->

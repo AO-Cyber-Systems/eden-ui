@@ -1,10 +1,10 @@
 ---
 layout: componentLayout
-breadcrumb_title: How to Contribute - Flowbite Svelte
-title: How to Contribute - Flowbite Svelte
+breadcrumb_title: How to Contribute - Eden UI
+title: How to Contribute - Eden UI
 component_title: Contributing
 dir: Pages
-description: Learn how you can start contributing to the open-source Flowbite Svelte UI component library
+description: Learn how you can start contributing to the open-source Eden UI component library
 ---
 
 <script lang="ts">
@@ -15,7 +15,7 @@ Here are some guidelines we'd like you to follow before submitting a PR.
 
 ## Create a fork
 
-- Create a fork from [flowbite-svelte](https://github.com/themesberg/flowbite-svelte) to your repository first.
+- Create a fork from [eden-ui](https://github.com/ao-cyber-systems/eden-ui) to your repository first.
 
 - Change `.env.example` file name to `.env`.
 - Run `pnpm build and pnpm check`.

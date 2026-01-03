@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { breadcrumb } from "./theme";
+  import { setContext } from "svelte";
+  import { breadcrumb, type BreadcrumbVariants } from "./theme";
   import clsx from "clsx";
   import type { BreadcrumbProps } from "$lib";
   import { getTheme, warnThemeDeprecation } from "$lib/theme/themeUtils";
   import { untrack } from "svelte";
 
-  let { children, solid = false, class: className, classes, olClass, ariaLabel = "Breadcrumb", ...restProps }: BreadcrumbProps = $props();
+  let { children, solid = false, size = "md", class: className, classes, olClass, ariaLabel = "Breadcrumb", ...restProps }: BreadcrumbProps = $props();
 
   warnThemeDeprecation(
     "Breadcrumb",
@@ -17,7 +18,11 @@
 
   const theme = $derived(getTheme("breadcrumb"));
 
-  const { base, list } = $derived(breadcrumb({ solid }));
+  // Pass size to child BreadcrumbItems via context
+  // svelte-ignore state_referenced_locally
+  setContext<BreadcrumbVariants["size"]>("breadcrumb-size", size);
+
+  const { base, list } = $derived(breadcrumb({ solid, size }));
   let classNav = $derived(base({ class: clsx(theme?.base, className) }));
   let classList = $derived(list({ class: clsx(theme?.list, styling.list) }));
 </script>
@@ -36,6 +41,7 @@
 ## Props
 @prop children
 @prop solid = false
+@prop size = "md"
 @prop class: className
 @prop classes
 @prop olClass

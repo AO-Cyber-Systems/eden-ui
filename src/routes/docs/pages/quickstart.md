@@ -1,10 +1,10 @@
 ---
 layout: componentLayout
-breadcrumb_title: Quickstart - Flowbite Svelte
-title: Quickstart - Flowbite Svelte
+breadcrumb_title: Quickstart - Eden UI
+title: Quickstart - Eden UI
 component_title: Quickstart
 dir: Pages
-description: Learn how to get started with the free and open-source Flowbite Svelte UI component library based on the utility classes from Tailwind CSS
+description: Learn how to get started with the free and open-source Eden UI component library based on the utility classes from Tailwind CSS
 ---
 
 <script lang="ts">
@@ -12,11 +12,11 @@ description: Learn how to get started with the free and open-source Flowbite Sve
   import { LlmLink } from '../../utils'
 </script>
 
-You can install Flowbite Svelte by using the <A href='/docs/extend/flowbite-svelte-starter'>flowbite-svelte-start</A> or from scratch.
+You can install Eden UI by using the <A href='/docs/extend/eden-ui-starter'>Eden UI starter</A> or from scratch.
 
 ## Getting started
 
-Learn how to get started with Flowbite Svelte by following the quickstart guide and start leveraging the interactive Svelte components coupled with Flowbite and Tailwind CSS.
+Learn how to get started with Eden UI by following the quickstart guide and start leveraging the interactive Svelte components coupled with Tailwind CSS.
 
 ### Using SvelteKit
 
@@ -54,25 +54,17 @@ Run a local development server by running:
 pnpm dev
 ```
 
-### Install Flowbite Svelte
+### Install Eden UI
 
-Run the following command to install all Flowbite dependencies and libraries:
-
-```sh
-pnpm i -D flowbite-svelte flowbite
-```
-
-### Optional
-
-Install `flowbite-svelte-icons` for the examples to work properly:
+Run the following command to install Eden UI:
 
 ```sh
-pnpm i -D flowbite-svelte-icons
+pnpm i -D eden-ui
 ```
 
 ### Configuration
 
-Update your main CSS file to support Tailwind CSS and the Flowbite plugin. You can also customize the primary color by modifying the appropriate color values. See more details in the [introduction page](/docs/pages/introduction#configuration).
+Update your main CSS file to support Tailwind CSS and Eden UI. You can also customize the primary color by modifying the appropriate color values. See more details in the [introduction page](/docs/pages/introduction#configuration).
 
 #### SvelteKit Projects
 
@@ -82,28 +74,26 @@ The location of your main CSS file determines the correct path for `@source` dir
 
 ```css
 @import "tailwindcss";
-@plugin 'flowbite/plugin';
+@plugin "eden-ui/plugins/eden-plugin";
 @custom-variant dark (&:where(.dark, .dark *));
 /* ... */
-@source "../node_modules/flowbite-svelte/dist";
-@source "../node_modules/flowbite-svelte-icons/dist";
+@source "../node_modules/eden-ui/dist";
 ```
 
 **If your CSS file is at `src/routes/+layout.css`:**
 ```css
 @import "tailwindcss";
-@plugin 'flowbite/plugin';
+@plugin "eden-ui/plugins/eden-plugin";
 @custom-variant dark (&:where(.dark, .dark *));
 /* ... */
-@source "../../node_modules/flowbite-svelte/dist";
-@source "../../node_modules/flowbite-svelte-icons/dist";
+@source "../../node_modules/eden-ui/dist";
 ```
 
 #### Other Project Types
 
 For non-SvelteKit projects (Vite, Svelte standalone, etc.), adjust the path based on your CSS file location relative to `node_modules`.
 
-Now you should be able to work with the Flowbite Svelte library and import components such as the navbar, dropdown, modal, and more.
+Now you should be able to work with Eden UI and import components such as the navbar, dropdown, modal, and more.
 
 <div class="h-8" ></div>
 
@@ -111,7 +101,7 @@ Now you are ready to go! Add the following to `src/routes/+page.svelte` and if y
 
 ```svelte example
 <script lang="ts">
-  import { Alert } from "flowbite-svelte";
+  import { Alert } from "eden-ui";
 </script>
 
 <div class="p-8">
@@ -127,8 +117,7 @@ Now you are ready to go! Add the following to `src/routes/+page.svelte` and if y
 You can use one of starter repo for a quick start.
 
 <List tag='ul' class='space-y-1 my-4'>
-<Li><A href='https://github.com/shinokada/flowbite-svelte-starter'>Flowbite-SvelteKit starter</A></Li>
-<Li><A href='https://github.com/ZekyTheWolf/LIST-Starter'>Laravel, Inertia, Svelte, Typescript with Flowbite starter</A></Li>
+<Li><A href='https://github.com/ao-cyber-systems/eden-ui-starter'>Eden UI SvelteKit Starter</A></Li>
 </List>
 
 ## LLM Link

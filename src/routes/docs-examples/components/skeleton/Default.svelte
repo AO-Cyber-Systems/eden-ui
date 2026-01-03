@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Skeleton } from "flowbite-svelte";
+  import { Skeleton } from "$lib";
 </script>
 
 <Skeleton size="sm" class="my-8" />

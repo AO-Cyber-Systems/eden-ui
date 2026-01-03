@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Alert } from "flowbite-svelte";
+  import { Alert } from "$lib";
   let alertStatus = $state(true);
   const closeAlert = () => {
     alert("Clicked closeAlert.");

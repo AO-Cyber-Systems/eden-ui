@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { List, Li } from "flowbite-svelte";
+  import { List, Li } from "$lib";
 </script>
 
 <List tag="ul" class="space-y-4 text-gray-500 dark:text-gray-400">

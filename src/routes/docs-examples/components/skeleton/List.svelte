@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ListPlaceholder } from "flowbite-svelte";
+  import { ListPlaceholder } from "$lib";
 </script>
 
 <ListPlaceholder />

@@ -10,6 +10,7 @@ export { buttonGroup } from "../button-group";
 export { button, gradientButton } from "../buttons";
 export { card } from "../card";
 export { carousel, carouselIndicators, controlButton, slide, thumbnail, thumbnails } from "../carousel";
+export { chatBubble } from "../chat-bubble";
 export { clipboard } from "../clipboard";
 export { darkmode } from "../darkmode";
 export { datepicker } from "../datepicker";
@@ -28,6 +29,7 @@ export { pagination, paginationButton, paginationItem, paginationNav } from "../
 export { popover } from "../popover";
 export { progressbar, progressradial } from "../progress";
 export { advancedRating, rating, review, scoreRating } from "../rating";
+export { separator } from "../separator";
 export { sidebar, sidebarBrand, sidebarButton, sidebarCta, sidebarDropdownWrapper } from "../sidebar";
 export { cardPlaceholder, imagePlaceholder, listPlaceholder, skeleton, testimonialPlaceholder, textPlaceholder, videoPlaceholder, widgetPlaceholder } from "../skeleton";
 export { speedDial, speedDialButton } from "../speed-dial";
@@ -58,6 +60,7 @@ export { select, multiSelect } from "../forms/select";
 export { textarea } from "../forms/textarea";
 export { timepicker } from "../forms/timepicker";
 export { toggle } from "../forms/toggle";
+export { otpInput } from "../forms/otp-input";
 
 // typography
 export { anchor } from "../typography/a";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Avatar, Tooltip } from "flowbite-svelte";
+  import { Avatar, Tooltip } from "$lib";
 </script>
 
 <Avatar data-name="Jese Leos" src="/images/profile-picture-1.webp" />

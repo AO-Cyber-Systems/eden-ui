@@ -11,33 +11,24 @@
   import Newsletter from "../../utils/Newsletter.svelte";
   import PageHeadSection from "../../utils/PageHeadSection.svelte";
   import Paging from "../../utils/Paging.svelte";
-  import SectionHeader from "../../blocks/utils/SectionHeader.svelte";
 
-  let { title, breadcrumb_title, component_title = "", dir, description, layout = "", category, children, pkg = "Flowbite Svelte" } = $props();
+  let { title, breadcrumb_title, component_title = "", dir, description, layout = "", category, children, pkg = "Eden UI" } = $props();
 
   // calm down `unused export property` warning - use them in $effect
   $effect(() => {
     /* eslint-disable @typescript-eslint/no-unused-expressions */
     layout;
     component_title;
+    category;
   });
 
-  const blockDirs = new Set(["application", "marketing", "publisher", "quickstart"]);
-  const pageWidth = $derived(blockDirs.has(dir) ? "max-w-8xl" : "max-w-4xl");
-
-  let divClass = $derived(category ? "" : "mx-auto max-w-8xl lg:px-20 px-8 md:px-auto py-8");
+  const pageWidth = "max-w-4xl";
 </script>
 
 <MetaTag {breadcrumb_title} {title} {dir} {description} {pkg} />
 
-{#if blockDirs.has(dir)}
-  <div class={divClass}>
-    <SectionHeader category={dir} {breadcrumb_title} {title} {description} />
-    <div id="mainContent">
-      {@render children()}
-      <Paging />
-    </div>
-  </div>
+{#if false}
+  <!-- Blocks section removed during eden-ui migration -->
 {:else}
   <div class="flex w-full">
     <div class="pb:12 mx-auto flex min-w-0 flex-col px-4 pt-6 lg:px-8 lg:pt-8 lg:pb-16 xl:pb-24 {pageWidth}">

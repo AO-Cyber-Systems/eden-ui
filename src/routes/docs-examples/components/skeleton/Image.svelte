@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ImagePlaceholder } from "flowbite-svelte";
+  import { ImagePlaceholder } from "$lib";
 </script>
 
 <ImagePlaceholder size="sm" />

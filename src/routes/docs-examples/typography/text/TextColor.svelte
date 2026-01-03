@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { P } from "flowbite-svelte";
+  import { P } from "$lib";
 </script>
 
 <P class="text-blue-700 dark:text-blue-500">This text is in the blue color.</P>

@@ -88,6 +88,7 @@ import type { MultiSelectVariants, SelectVariants } from "$lib/forms/select/them
 import type { TextareaVariants } from "$lib/forms/textarea/theme";
 import type { ToggleVariants } from "$lib/forms/toggle/theme";
 import type { PhoneInputVariants } from "$lib/forms/phoneinput/theme";
+import type { OtpInputVariants } from "$lib/forms/otp-input/theme";
 
 // typography component variants
 import type { AnchorVariants } from "$lib/typography/a/theme";
@@ -118,6 +119,8 @@ import type { KanbanBoardVariants, KanbanCardVariants } from "$lib/kanban/theme"
 import type { TourVariants } from "$lib/tour/theme";
 import type { CommandPaletteVariants } from "$lib/command-palette/theme";
 import type { ScrollSpyVariants } from "$lib/scroll-spy/theme";
+import type { ChatBubbleVariants } from "$lib/chat-bubble/theme";
+import type { SeparatorVariants } from "$lib/separator/theme";
 
 // utils
 import type { CloseButtonVariants } from "$lib/utils/theme";
@@ -1075,6 +1078,18 @@ export interface ToggleProps extends Omit<ToggleVariants, "off_state_label">, Om
   disabled?: boolean;
   spanClass?: ClassValue;
   inputClass?: ClassValue;
+}
+
+// otp input
+export interface OtpInputProps extends OtpInputVariants, Omit<HTMLAttributes<HTMLDivElement>, "size" | "color"> {
+  length?: number;
+  value?: string;
+  disabled?: boolean;
+  separator?: string | Snippet;
+  separatorPosition?: number;
+  inputType?: "text" | "numeric";
+  placeholder?: string;
+  onComplete?: (value: string) => void;
 }
 
 // end of forms
@@ -2397,4 +2412,22 @@ export interface ClipboardManagerProps extends ClipboardManagerVariants {
   badgeProps?: Omit<BadgeProps, "children">;
   modalProps?: ModalProps;
   detectSensitiveData?: (text: string) => boolean;
+}
+
+// chat-bubble
+export interface ChatBubbleProps extends ChatBubbleVariants, Omit<HTMLAttributes<HTMLDivElement>, "color"> {
+  children?: Snippet;
+  name?: string;
+  time?: string;
+  avatarSrc?: string;
+  avatarAlt?: string;
+  avatar?: Snippet;
+  status?: string;
+  statusIcon?: Snippet;
+  footer?: Snippet;
+}
+
+// separator
+export interface SeparatorProps extends SeparatorVariants, Omit<HTMLAttributes<HTMLDivElement>, "color" | "style"> {
+  children?: Snippet;
 }

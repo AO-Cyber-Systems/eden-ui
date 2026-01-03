@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Blockquote, P } from "flowbite-svelte";
+  import { Blockquote, P } from "$lib";
 </script>
 
 <P color="text-gray-500 dark:text-gray-400">

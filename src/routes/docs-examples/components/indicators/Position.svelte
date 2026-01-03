@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Indicator } from "flowbite-svelte";
+  import { Indicator } from "$lib";
 </script>
 
 <div class="borer relative h-56 w-56 rounded-lg border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-800">

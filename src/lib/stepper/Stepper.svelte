@@ -6,7 +6,7 @@
   import clsx from "clsx";
   import { getTheme } from "$lib/theme/themeUtils";
 
-  let { steps = [], class: className, classes, current = $bindable(1), clickable = true, showCheckmarkForCompleted = true, onStepClick, ...restProps }: StepperProps = $props();
+  let { steps = [], class: className, classes, current = $bindable(1), clickable = true, showCheckmarkForCompleted = true, size = "md", onStepClick, ...restProps }: StepperProps = $props();
 
   // Ensure current is within valid bounds
   $effect(() => {
@@ -16,7 +16,7 @@
 
   const theme = $derived(getTheme("stepper"));
 
-  const { base, item, content } = $derived(stepper());
+  const { base, item, content, icon } = $derived(stepper({ size }));
 
   // Handle step click
   function handleStepClick(stepIndex: number) {
@@ -52,11 +52,11 @@
 
 {#snippet stepContent(step: Step, status: StepStatus, index: number)}
   {#if status === "completed" && showCheckmarkForCompleted}
-    <CheckmarkIcon />
+    <CheckmarkIcon class={icon({ class: clsx(classes?.icon) })} />
   {:else if step.icon}
-    <step.icon class={clsx(step.iconClass) || "me-2.5 h-3.5 w-3.5 sm:h-4 sm:w-4"} />
+    <step.icon class={icon({ class: clsx(classes?.icon, step.iconClass) })} />
   {:else}
-    <span class="me-2">{step.id || index + 1}</span>
+    <span class={icon({ class: clsx(classes?.icon) })}>{step.id || index + 1}</span>
   {/if}
   {step.label}
   {#if step.description}
@@ -114,6 +114,7 @@
 @prop current = $bindable(1)
 @prop clickable = true
 @prop showCheckmarkForCompleted = true
+@prop size = "md"
 @prop onStepClick
 @prop ...restProps
 -->

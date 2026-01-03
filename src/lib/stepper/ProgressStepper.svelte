@@ -7,7 +7,7 @@
   import { Tween } from "svelte/motion";
   import { cubicOut } from "svelte/easing";
 
-  let { steps = [], class: className, classes, current = $bindable(0), clickable = true, showCheckmarkForCompleted = true, onStepClick, ...restProps }: ProgressStepperProps = $props();
+  let { steps = [], class: className, classes, current = $bindable(0), clickable = true, showCheckmarkForCompleted = true, size = "md", onStepClick, ...restProps }: ProgressStepperProps = $props();
 
   // Ensure current is within valid bounds
   $effect(() => {
@@ -33,7 +33,7 @@
 
   const theme = $derived(getTheme("progressStepper"));
 
-  const { base, item, circle, line, progressLine } = $derived(progressStepper());
+  const { base, item, circle, line, progressLine, icon, number } = $derived(progressStepper({ size }));
 
   // Handle step click
   function handleStepClick(stepIndex: number) {
@@ -100,26 +100,26 @@
         >
           {#if status === "completed" && showCheckmarkForCompleted}
             <!-- Checkmark for completed steps -->
-            <CheckmarkIcon variant="tick" />
+            <CheckmarkIcon variant="tick" class={icon({ class: clsx(classes?.icon) })} />
           {:else if step.icon}
             <!-- Show icon if provided -->
-            <step.icon class={clsx(step.iconClass) || "h-5 w-5 lg:h-6 lg:w-6"} />
+            <step.icon class={icon({ class: clsx(classes?.icon, step.iconClass) })} />
           {:else}
             <!-- Show number for steps without icon -->
-            <span class="text-sm font-semibold">{step.id}</span>
+            <span class={number({ class: clsx(classes?.number) })}>{step.id}</span>
           {/if}
         </button>
       {:else}
         <span class={circle({ status, class: clsx(theme?.circle, classes?.circle) })} aria-current={status === "current" ? "step" : undefined}>
           {#if status === "completed" && showCheckmarkForCompleted}
             <!-- Checkmark for completed steps -->
-            <CheckmarkIcon variant="tick" />
+            <CheckmarkIcon variant="tick" class={icon({ class: clsx(classes?.icon) })} />
           {:else if step.icon}
             <!-- Show icon if provided -->
-            <step.icon class={clsx(step.iconClass) || "h-5 w-5 lg:h-6 lg:w-6"} />
+            <step.icon class={icon({ class: clsx(classes?.icon, step.iconClass) })} />
           {:else}
             <!-- Show number for steps without icon -->
-            <span class="text-sm font-semibold">{step.id}</span>
+            <span class={number({ class: clsx(classes?.number) })}>{step.id}</span>
           {/if}
         </span>
       {/if}
@@ -157,6 +157,7 @@ The `current` prop is 1-based:
 @prop current = $bindable(0)
 @prop clickable = true
 @prop showCheckmarkForCompleted = true
+@prop size = "md"
 @prop onStepClick
 @prop ...restProps
 -->

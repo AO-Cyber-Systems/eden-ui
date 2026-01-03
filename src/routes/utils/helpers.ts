@@ -44,5 +44,10 @@ export function copyToClipboard(text: string): Promise<void> {
 }
 
 export function replaceLibImport(componentString: string): string {
-  return componentString.replace(/from ["']\$lib["']/g, "from 'flowbite-svelte'").replace(/from ["']\$lib\//g, "from 'flowbite-svelte/");
+  return componentString.replace(/from ["']\$lib["']/g, "from 'eden-ui'").replace(/from ["']\$lib\//g, "from 'eden-ui/");
+}
+
+export function capitalizeFirstLetter(str: string): string {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }

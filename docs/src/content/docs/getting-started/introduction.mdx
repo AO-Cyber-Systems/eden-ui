@@ -1,0 +1,76 @@
+---
+title: Introduction
+description: Eden UI is a comprehensive design system and component library built with Svelte 5
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+# Welcome to Eden UI
+
+Eden UI is a modern, accessible, and highly customizable component library built with **Svelte 5** and **Tailwind CSS**. It provides 100+ production-ready components designed for building beautiful web applications.
+
+## Key Features
+
+<CardGrid>
+  <Card title="Svelte 5 Native" icon="rocket">
+    Built from the ground up with Svelte 5 runes (`$props`, `$state`, `$derived`) for optimal performance and developer experience.
+  </Card>
+  <Card title="Tailwind Variants" icon="seti:css">
+    Powered by tailwind-variants for type-safe, composable styling with automatic TypeScript inference.
+  </Card>
+  <Card title="20 Color Themes" icon="sun">
+    Every component supports 20 color variants out of the box, with full dark mode support.
+  </Card>
+  <Card title="Accessible" icon="heart">
+    WCAG 2.1 AA compliant with proper ARIA attributes, keyboard navigation, and screen reader support.
+  </Card>
+</CardGrid>
+
+## Quick Example
+
+```svelte
+<script>
+  import { Button, Card, Alert } from 'eden-ui';
+</script>
+
+<Card color="primary" size="lg" shadow="lg">
+  <h2>Welcome Back!</h2>
+  <p>You have 3 new notifications.</p>
+
+  <Alert color="green" rounded>
+    Your account has been verified!
+  </Alert>
+
+  <div class="flex gap-2 mt-4">
+    <Button color="primary">View Dashboard</Button>
+    <Button color="gray" outline>Settings</Button>
+  </div>
+</Card>
+```
+
+## Component Categories
+
+### Core Components
+Foundational UI elements like buttons, badges, alerts, cards, and typography.
+
+### Form Components
+Complete form solution with inputs, selects, checkboxes, radio buttons, and validation states.
+
+### Navigation
+Navbars, sidebars, breadcrumbs, tabs, and pagination components.
+
+### Data Display
+Tables, lists, timelines, and progress indicators.
+
+### Feedback
+Modals, drawers, toasts, popovers, and tooltips.
+
+### Marketing UI
+Pre-built sections for landing pages, hero sections, CTAs, and testimonials.
+
+### Application UI
+Dashboard widgets, CRUD layouts, settings pages, and authentication forms.
+
+## Getting Started
+
+Ready to build? Check out our [Installation Guide](/getting-started/installation) to add Eden UI to your project.

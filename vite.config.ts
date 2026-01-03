@@ -7,7 +7,6 @@ import devtoolsJson from "vite-plugin-devtools-json";
 import tiptapPackage from "./node_modules/@tiptap/core/package.json";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vitest/config";
-import textEditorPackage from "./node_modules/@flowbite-svelte-plugins/texteditor/package.json" with { type: "json" };
 import { playwright } from "@vitest/browser-playwright";
 
 export default defineConfig({
@@ -20,10 +19,12 @@ export default defineConfig({
     strictPort: false
   },
   optimizeDeps: {
-    exclude: ["flowbite-svelte"]
+    exclude: ["eden-ui", "flowbite-svelte"]
   },
   resolve: {
     alias: {
+      "eden-ui": path.resolve(process.cwd(), "./src/lib/index.ts"),
+      "eden-icons": path.resolve(process.cwd(), "./src/lib/icons/index.ts"),
       "flowbite-svelte": path.resolve(process.cwd(), "./src/lib/index.ts")
     }
   },
@@ -62,7 +63,6 @@ export default defineConfig({
   define: {
     __NAME__: JSON.stringify(pkg.name),
     __VERSION__: JSON.stringify(pkg.version),
-    __TIPTAP__: JSON.stringify(tiptapPackage.version),
-    __TEXTEDITOR__: JSON.stringify(textEditorPackage.version)
+    __TIPTAP__: JSON.stringify(tiptapPackage.version)
   }
 });

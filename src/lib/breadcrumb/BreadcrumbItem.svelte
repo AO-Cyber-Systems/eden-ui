@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { getContext } from "svelte";
   import type { BreadcrumbItemProps } from "$lib";
   import { getTheme } from "$lib/theme/themeUtils";
   import clsx from "clsx";
-  import { breadcrumbItem } from "./theme";
+  import { breadcrumbItem, type BreadcrumbVariants } from "./theme";
 
   let { children, icon, home = false, href, linkClass, spanClass, homeClass, class: className, classes, ...restProps }: BreadcrumbItemProps = $props();
 
@@ -10,21 +11,25 @@
 
   const theme = $derived(getTheme("breadcrumbItem"));
 
+  // Get size from parent Breadcrumb context
+  const size = getContext<BreadcrumbVariants["size"]>("breadcrumb-size") ?? "md";
+
   const { base, separator } = $derived(
     breadcrumbItem({
       home,
-      hasHref: !!href
+      hasHref: !!href,
+      size
     })
   );
 </script>
 
 <li {...restProps} class={base({ class: clsx(theme?.base, className) })}>
   {#if home}
-    <a class={base({ home: true, class: clsx(theme?.base, homeClass) })} {href}>
+    <a class={base({ class: clsx(theme?.base, homeClass) })} {href}>
       {#if icon}
         {@render icon()}
       {:else}
-        <svg class="me-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg class={separator({ class: clsx(theme?.separator, styling.separator) })} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
           />
@@ -43,11 +48,11 @@
     {/if}
 
     {#if href}
-      <a class={base({ home: false, hasHref: true, class: clsx(theme?.base, linkClass) })} {href}>
+      <a class={base({ class: clsx(theme?.base, linkClass) })} {href}>
         {@render children()}
       </a>
     {:else}
-      <span class={base({ home: false, hasHref: false, class: clsx(theme?.base, spanClass) })}>
+      <span class={base({ class: clsx(theme?.base, spanClass) })}>
         {@render children()}
       </span>
     {/if}

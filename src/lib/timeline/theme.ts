@@ -50,43 +50,121 @@ const colorVariants = {
     dot: "bg-primary-200 dark:bg-primary-900",
     ring: "ring-white dark:ring-gray-900",
     icon: "text-primary-600 dark:text-primary-400",
-    connector: "border-primary-200 dark:border-primary-700"
+    connectorBg: "bg-primary-200 dark:bg-primary-700"
   },
-  green: {
-    dot: "bg-green-200 dark:bg-green-900",
+  secondary: {
+    dot: "bg-secondary-200 dark:bg-secondary-900",
     ring: "ring-white dark:ring-gray-900",
-    icon: "text-green-600 dark:text-green-400",
-    connector: "border-green-200 dark:border-green-700"
-  },
-  orange: {
-    dot: "bg-orange-200 dark:bg-orange-900",
-    ring: "ring-white dark:ring-gray-900",
-    icon: "text-orange-600 dark:text-orange-400",
-    connector: "border-orange-200 dark:border-orange-700"
-  },
-  red: {
-    dot: "bg-red-200 dark:bg-red-900",
-    ring: "ring-white dark:ring-gray-900",
-    icon: "text-red-600 dark:text-red-400",
-    connector: "border-red-200 dark:border-red-700"
-  },
-  blue: {
-    dot: "bg-blue-200 dark:bg-blue-900",
-    ring: "ring-white dark:ring-gray-900",
-    icon: "text-blue-600 dark:text-blue-400",
-    connector: "border-blue-200 dark:border-blue-700"
-  },
-  purple: {
-    dot: "bg-purple-200 dark:bg-purple-900",
-    ring: "ring-white dark:ring-gray-900",
-    icon: "text-purple-600 dark:text-purple-400",
-    connector: "border-purple-200 dark:border-purple-700"
+    icon: "text-secondary-600 dark:text-secondary-400",
+    connectorBg: "bg-secondary-200 dark:bg-secondary-700"
   },
   gray: {
     dot: "bg-gray-200 dark:bg-gray-700",
     ring: "ring-white dark:ring-gray-900",
     icon: "text-gray-600 dark:text-gray-400",
-    connector: "border-gray-200 dark:border-gray-700"
+    connectorBg: "bg-gray-200 dark:bg-gray-700"
+  },
+  red: {
+    dot: "bg-red-200 dark:bg-red-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-red-600 dark:text-red-400",
+    connectorBg: "bg-red-200 dark:bg-red-700"
+  },
+  orange: {
+    dot: "bg-orange-200 dark:bg-orange-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-orange-600 dark:text-orange-400",
+    connectorBg: "bg-orange-200 dark:bg-orange-700"
+  },
+  amber: {
+    dot: "bg-amber-200 dark:bg-amber-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-amber-600 dark:text-amber-400",
+    connectorBg: "bg-amber-200 dark:bg-amber-700"
+  },
+  yellow: {
+    dot: "bg-yellow-200 dark:bg-yellow-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-yellow-600 dark:text-yellow-400",
+    connectorBg: "bg-yellow-200 dark:bg-yellow-700"
+  },
+  lime: {
+    dot: "bg-lime-200 dark:bg-lime-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-lime-600 dark:text-lime-400",
+    connectorBg: "bg-lime-200 dark:bg-lime-700"
+  },
+  green: {
+    dot: "bg-green-200 dark:bg-green-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-green-600 dark:text-green-400",
+    connectorBg: "bg-green-200 dark:bg-green-700"
+  },
+  emerald: {
+    dot: "bg-emerald-200 dark:bg-emerald-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-emerald-600 dark:text-emerald-400",
+    connectorBg: "bg-emerald-200 dark:bg-emerald-700"
+  },
+  teal: {
+    dot: "bg-teal-200 dark:bg-teal-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-teal-600 dark:text-teal-400",
+    connectorBg: "bg-teal-200 dark:bg-teal-700"
+  },
+  cyan: {
+    dot: "bg-cyan-200 dark:bg-cyan-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-cyan-600 dark:text-cyan-400",
+    connectorBg: "bg-cyan-200 dark:bg-cyan-700"
+  },
+  sky: {
+    dot: "bg-sky-200 dark:bg-sky-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-sky-600 dark:text-sky-400",
+    connectorBg: "bg-sky-200 dark:bg-sky-700"
+  },
+  blue: {
+    dot: "bg-blue-200 dark:bg-blue-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-blue-600 dark:text-blue-400",
+    connectorBg: "bg-blue-200 dark:bg-blue-700"
+  },
+  indigo: {
+    dot: "bg-indigo-200 dark:bg-indigo-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-indigo-600 dark:text-indigo-400",
+    connectorBg: "bg-indigo-200 dark:bg-indigo-700"
+  },
+  violet: {
+    dot: "bg-violet-200 dark:bg-violet-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-violet-600 dark:text-violet-400",
+    connectorBg: "bg-violet-200 dark:bg-violet-700"
+  },
+  purple: {
+    dot: "bg-purple-200 dark:bg-purple-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-purple-600 dark:text-purple-400",
+    connectorBg: "bg-purple-200 dark:bg-purple-700"
+  },
+  fuchsia: {
+    dot: "bg-fuchsia-200 dark:bg-fuchsia-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-fuchsia-600 dark:text-fuchsia-400",
+    connectorBg: "bg-fuchsia-200 dark:bg-fuchsia-700"
+  },
+  pink: {
+    dot: "bg-pink-200 dark:bg-pink-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-pink-600 dark:text-pink-400",
+    connectorBg: "bg-pink-200 dark:bg-pink-700"
+  },
+  rose: {
+    dot: "bg-rose-200 dark:bg-rose-900",
+    ring: "ring-white dark:ring-gray-900",
+    icon: "text-rose-600 dark:text-rose-400",
+    connectorBg: "bg-rose-200 dark:bg-rose-700"
   }
 };
 
@@ -152,12 +230,25 @@ export const timelineItem = tv({
     },
     color: {
       primary: {},
-      green: {},
-      orange: {},
+      secondary: {},
+      gray: {},
       red: {},
+      orange: {},
+      amber: {},
+      yellow: {},
+      lime: {},
+      green: {},
+      emerald: {},
+      teal: {},
+      cyan: {},
+      sky: {},
       blue: {},
+      indigo: {},
+      violet: {},
       purple: {},
-      gray: {}
+      fuchsia: {},
+      pink: {},
+      rose: {}
     },
     isLast: {
       true: {},
@@ -165,127 +256,35 @@ export const timelineItem = tv({
     }
   },
   compoundVariants: [
-    // Vertical color variants
-    {
-      order: "vertical",
-      color: "primary",
+    // Vertical color variants - all 20 colors
+    ...Object.keys(colorVariants).map((color) => ({
+      order: "vertical" as const,
+      color: color as keyof typeof colorVariants,
       class: {
-        div: colorVariants.primary.dot + " " + colorVariants.primary.ring,
-        svg: colorVariants.primary.icon,
-        connector: "bg-primary-200 dark:bg-primary-700"
+        div: colorVariants[color as keyof typeof colorVariants].dot + " " + colorVariants[color as keyof typeof colorVariants].ring,
+        svg: colorVariants[color as keyof typeof colorVariants].icon,
+        connector: colorVariants[color as keyof typeof colorVariants].connectorBg
       }
-    },
-    {
-      order: "vertical",
-      color: "green",
+    })),
+    // Horizontal color variants - all 20 colors
+    ...Object.keys(colorVariants).map((color) => ({
+      order: "horizontal" as const,
+      color: color as keyof typeof colorVariants,
       class: {
-        div: colorVariants.green.dot + " " + colorVariants.green.ring,
-        svg: colorVariants.green.icon,
-        connector: "bg-green-200 dark:bg-green-700"
+        div: colorVariants[color as keyof typeof colorVariants].dot + " " + colorVariants[color as keyof typeof colorVariants].ring,
+        svg: colorVariants[color as keyof typeof colorVariants].icon
       }
-    },
-    {
-      order: "vertical",
-      color: "orange",
+    })),
+    // Activity color variants - all 20 colors
+    ...Object.keys(colorVariants).map((color) => ({
+      order: "activity" as const,
+      color: color as keyof typeof colorVariants,
       class: {
-        div: colorVariants.orange.dot + " " + colorVariants.orange.ring,
-        svg: colorVariants.orange.icon,
-        connector: "bg-orange-200 dark:bg-orange-700"
+        div: colorVariants[color as keyof typeof colorVariants].dot + " " + colorVariants[color as keyof typeof colorVariants].ring,
+        svg: colorVariants[color as keyof typeof colorVariants].icon,
+        connector: colorVariants[color as keyof typeof colorVariants].connectorBg
       }
-    },
-    {
-      order: "vertical",
-      color: "red",
-      class: {
-        div: colorVariants.red.dot + " " + colorVariants.red.ring,
-        svg: colorVariants.red.icon,
-        connector: "bg-red-200 dark:bg-red-700"
-      }
-    },
-    {
-      order: "vertical",
-      color: "blue",
-      class: {
-        div: colorVariants.blue.dot + " " + colorVariants.blue.ring,
-        svg: colorVariants.blue.icon,
-        connector: "bg-blue-200 dark:bg-blue-700"
-      }
-    },
-    {
-      order: "vertical",
-      color: "purple",
-      class: {
-        div: colorVariants.purple.dot + " " + colorVariants.purple.ring,
-        svg: colorVariants.purple.icon,
-        connector: "bg-purple-200 dark:bg-purple-700"
-      }
-    },
-    {
-      order: "vertical",
-      color: "gray",
-      class: {
-        div: colorVariants.gray.dot + " " + colorVariants.gray.ring,
-        svg: colorVariants.gray.icon,
-        connector: "bg-gray-200 dark:bg-gray-700"
-      }
-    },
-    // Horizontal color variants
-    {
-      order: "horizontal",
-      color: "primary",
-      class: {
-        div: colorVariants.primary.dot + " " + colorVariants.primary.ring,
-        svg: colorVariants.primary.icon
-      }
-    },
-    {
-      order: "horizontal",
-      color: "green",
-      class: {
-        div: colorVariants.green.dot + " " + colorVariants.green.ring,
-        svg: colorVariants.green.icon
-      }
-    },
-    {
-      order: "horizontal",
-      color: "orange",
-      class: {
-        div: colorVariants.orange.dot + " " + colorVariants.orange.ring,
-        svg: colorVariants.orange.icon
-      }
-    },
-    {
-      order: "horizontal",
-      color: "red",
-      class: {
-        div: colorVariants.red.dot + " " + colorVariants.red.ring,
-        svg: colorVariants.red.icon
-      }
-    },
-    {
-      order: "horizontal",
-      color: "blue",
-      class: {
-        div: colorVariants.blue.dot + " " + colorVariants.blue.ring,
-        svg: colorVariants.blue.icon
-      }
-    },
-    {
-      order: "horizontal",
-      color: "purple",
-      class: {
-        div: colorVariants.purple.dot + " " + colorVariants.purple.ring,
-        svg: colorVariants.purple.icon
-      }
-    },
-    {
-      order: "horizontal",
-      color: "gray",
-      class: {
-        div: colorVariants.gray.dot + " " + colorVariants.gray.ring,
-        svg: colorVariants.gray.icon
-      }
-    },
+    })),
     // Hide connector on last item
     {
       isLast: true,

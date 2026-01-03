@@ -6,7 +6,6 @@
   import type { Writable } from "svelte/store";
   import Toc from "../utils/Toc.svelte";
   import { extract } from "./component/Anchor.svelte";
-  import { capitalizeFirstLetter } from "../builder/utils/helpers";
 
   interface Props {
     data: any;
@@ -18,7 +17,8 @@
   /* eslint-disable  @typescript-eslint/no-explicit-any */
   const posts = $derived<Record<string, any[]>>(data.posts?.posts ?? {});
   const builders = $derived<Array<{ path: string }>>(data.posts?.builders ?? []);
-  const blocks = ["quickstart", "application", "marketing", "publisher"];
+  // Blocks removed during eden-ui migration - will be recreated later
+  const blocks: string[] = [];
   const drawerHidden: Writable<boolean> = getContext("drawer");
   let noToc = $derived(["blocks", "builder"].includes(submenu ?? ""));
 
@@ -124,22 +124,7 @@
           {/each}
         </SidebarDropdownWrapper>
       {/if}
-      <SidebarDropdownWrapper
-        label="Blocks"
-        classes={{ btn: btnClass, ul: "space-y-0 p-0" }}
-        class={dropdownStates["blocks"] ? "text-primary-700 dark:text-primary-700" : "text-gray-700 dark:text-gray-200"}
-        bind:isOpen={dropdownStates["blocks"]}
-      >
-        {#each blocks as block}
-          <SidebarItem label={capitalizeFirstLetter(block)} href="/blocks/{block}" {spanClass} />
-        {/each}
-      </SidebarDropdownWrapper>
-      <SidebarItem
-        label="Admin Dashboard"
-        href="/admin-dashboard"
-        spanClass="ms-3 w-full text-sm font-semibold tracking-wide uppercase hover:text-primary-700 dark:hover:text-primary-600 text-gray-700 dark:text-gray-200"
-        {activeClass}
-      ></SidebarItem>
+      <!-- Blocks and Admin Dashboard removed during eden-ui migration -->
     </SidebarGroup>
     <!-- /SidebarWrapper -->
   </Sidebar>

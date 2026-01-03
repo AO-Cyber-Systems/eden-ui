@@ -14,7 +14,7 @@ const allFiles = [
   .map((x) => x.split("/").slice(-2));
 
 // list of directories that do not require redirection check
-const dirsToSkip = ["/docs/", "/blocks/", "/api/"];
+const dirsToSkip = ["/docs/", "/api/"];
 
 /** @type {import('@sveltejs/kit').Handle} */
 export const handle = async ({ event, resolve }) => {

@@ -1,20 +1,24 @@
 {
-  "name": "flowbite-svelte",
-  "version": "1.31.0",
-  "description": "Flowbite components for Svelte",
+  "name": "eden-ui",
+  "version": "0.1.0",
+  "description": "Eden UI - A modern Svelte 5 component library with Tailwind CSS",
   "main": "dist/index.js",
   "author": {
-    "name": "Shinichi Okada",
-    "email": "connect@codewithshin.com",
-    "url": "https://blog.codewithshin.com"
+    "name": "AO Cyber Systems",
+    "url": "https://github.com/ao-cyber-systems"
   },
-  "bugs": "https://github.com/themesberg/flowbite-svelte/issues",
-  "homepage": "https://flowbite-svelte.com/",
+  "bugs": "https://github.com/ao-cyber-systems/eden-ui/issues",
+  "homepage": "https://github.com/ao-cyber-systems/eden-ui",
   "license": "MIT",
   "scripts": {
     "dev": "vite dev",
+    "dev:all": "pnpm --parallel dev docs:dev",
     "build": "vite build && npm run package",
+    "build:all": "pnpm build && pnpm docs:build",
     "preview": "vite preview",
+    "docs:dev": "pnpm --filter @eden/docs dev",
+    "docs:build": "pnpm --filter @eden/docs build",
+    "docs:preview": "pnpm --filter @eden/docs preview",
     "package": "svelte-kit sync && svelte-package && publint",
     "prepublishOnly": "npm run package",
     "test": "npm run test:e2e && npm run test:unit",
@@ -26,14 +30,18 @@
     "test:e2e": "playwright test",
     "test:unit": "vitest",
     "gen:exports": "svelte-lib-helpers exports",
-    "gen:docspropvalue": "svelte-lib-helpers docspropvalue themesberg/flowbite-svelte",
-    "gen:component-data-prop-value": "svelte-lib-helpers component-data-prop-value themesberg/flowbite-svelte",
+    "gen:docspropvalue": "svelte-lib-helpers docspropvalue ao-cyber-systems/eden-ui",
+    "gen:component-data-prop-value": "svelte-lib-helpers component-data-prop-value ao-cyber-systems/eden-ui",
     "copy:packagejson": "svelte-lib-helpers package",
     "lib-helpers": "pnpm gen:component-data-prop-value && pnpm gen:docspropvalue && pnpm format && pnpm package && pnpm gen:exports && pnpm copy:packagejson && pnpm llm",
     "llm": "svelte-doc-llm && ./scripts/update-llms.sh",
     "ch": "npx changeset",
     "cv": "npx changeset version",
-    "cp": "npx changeset publish"
+    "cp": "npx changeset publish",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test:storybook": "playwright test --config=playwright.storybook.config.ts",
+    "test:docs": "playwright test --config=playwright.docs.config.ts"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
@@ -63,11 +71,7 @@
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-svelte": "^3.13.1",
-    "flowbite-svelte-admin-dashboard": "^2.1.1",
-    "flowbite-svelte-blocks": "^2.1.0",
-    "flowbite-svelte-icons": "^3.0.1",
-    "flowbite-svelte-illustrations": "^1.0.6",
-    "flowbite-typography": "^1.0.5",
+    "flowbite-svelte-icons": "3.0.1",
     "globals": "^16.5.0",
     "highlight.js": "^11.11.1",
     "jsdom": "^27.3.0",
@@ -99,9 +103,19 @@
     "vite": "^7.3.0",
     "vite-plugin-devtools-json": "^1.0.0",
     "vitest": "^4.0.16",
-    "vitest-browser-svelte": "^2.0.1"
+    "vitest-browser-svelte": "^2.0.1",
+    "storybook": "^10.1.11",
+    "@storybook/sveltekit": "^10.1.11",
+    "@storybook/addon-svelte-csf": "^5.0.10",
+    "@chromatic-com/storybook": "^4.1.3",
+    "@storybook/addon-vitest": "^10.1.11",
+    "@storybook/addon-a11y": "^10.1.11",
+    "@storybook/addon-docs": "^10.1.11",
+    "eslint-plugin-storybook": "^10.1.11",
+    "@vitest/coverage-v8": "^4.0.16"
   },
   "peerDependencies": {
+    "@sveltejs/kit": "^2.0.0",
     "svelte": "^5.40.0",
     "tailwindcss": "^4.1.4"
   },
@@ -110,7 +124,7 @@
     "svelte",
     "sveltekit",
     "tailwindcss",
-    "flowbite",
+    "eden",
     "ui",
     "accordion",
     "alert",
@@ -146,7 +160,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/themesberg/flowbite-svelte.git"
+    "url": "git+https://github.com/ao-cyber-systems/eden-ui.git"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
@@ -155,7 +169,10 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "esm-env": "^1.2.2",
-    "flowbite": "^3.1.2",
+    "lodash.castarray": "^4.4.0",
+    "lodash.isplainobject": "^4.0.6",
+    "lodash.merge": "^4.6.2",
+    "mini-svg-data-uri": "^1.4.4",
     "tailwind-merge": "^3.4.0",
     "tailwind-variants": "^3.2.2"
   },
@@ -180,6 +197,19 @@
       "types": "./dist/types.d.ts",
       "import": "./dist/types.js",
       "default": "./dist/types.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js",
+      "default": "./dist/icons/index.js"
+    },
+    "./plugins/eden-plugin": {
+      "require": "./dist/tailwind-plugin/eden-plugin.cjs",
+      "default": "./dist/tailwind-plugin/eden-plugin.cjs"
+    },
+    "./plugins/eden-typography": {
+      "require": "./dist/tailwind-plugin/eden-typography.cjs",
+      "default": "./dist/tailwind-plugin/eden-typography.cjs"
     },
     "./Accordion.svelte": {
       "types": "./dist/accordion/Accordion.svelte.d.ts",

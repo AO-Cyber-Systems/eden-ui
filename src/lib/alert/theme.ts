@@ -4,8 +4,15 @@ import { tv, type VariantProps } from "tailwind-variants";
 export type AlertVariants = VariantProps<typeof alert>;
 
 export const alert = tv({
-  base: "p-4 gap-3 text-sm",
+  base: "gap-3",
   variants: {
+    size: {
+      xs: "p-2 text-xs",
+      sm: "p-3 text-sm",
+      md: "p-4 text-sm",
+      lg: "p-5 text-base",
+      xl: "p-6 text-lg"
+    },
     color: {
       // primary, secondary, gray, red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose
       primary: "bg-primary-50 dark:bg-gray-800 text-primary-800 dark:text-primary-400",
@@ -147,6 +154,7 @@ export const alert = tv({
     }
   ],
   defaultVariants: {
+    size: "md",
     color: "primary",
     rounded: true
   }

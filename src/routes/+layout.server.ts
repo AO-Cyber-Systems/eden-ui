@@ -1,6 +1,6 @@
-import { FATHOM_ID } from "$env/static/private";
+import { env } from "$env/dynamic/private";
 import type { LayoutServerLoad } from "./$types";
 
 export const load: LayoutServerLoad = async () => {
-  return { FATHOM_ID };
+  return { FATHOM_ID: env.FATHOM_ID ?? "" };
 };

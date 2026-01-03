@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Tabs, TabItem } from "flowbite-svelte";
+  import { Tabs, TabItem } from "$lib";
 </script>
 
 <Tabs tabStyle="full" class="flex divide-x divide-gray-200 rounded-lg shadow-sm rtl:divide-x-reverse dark:divide-gray-700">
