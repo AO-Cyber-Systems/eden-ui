@@ -1,0 +1,63 @@
+<%= styleguide_block_example(
+  title: "Table Footer with Pagination",
+  description: "Table footer with row count summary and page navigation",
+  source: '# Showing 1-10 of 100 results
+eden_pagination(current_page: 1, total_pages: 10)'
+) do %>
+  <div class="bg-white dark:bg-zinc-800 shadow-md sm:rounded-lg">
+    <%# Placeholder table %>
+    <div class="p-8 text-center text-zinc-400 dark:text-zinc-500 text-sm border-b border-zinc-200 dark:border-zinc-700">
+      Table content above...
+    </div>
+    <%# Footer %>
+    <div class="flex flex-col md:flex-row items-center justify-between p-4">
+      <span class="text-sm text-zinc-500 dark:text-zinc-400">
+        Showing <span class="font-semibold text-zinc-900 dark:text-white">1-10</span> of <span class="font-semibold text-zinc-900 dark:text-white">100</span> results
+      </span>
+      <div class="mt-3 md:mt-0">
+        <%= eden_pagination(current_page: 1, total_pages: 10) %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Table Footer with Per-page Select",
+  description: "Footer with rows-per-page selector and pagination controls",
+  source: 'eden_select(options: ["10", "25", "50", "100"], placeholder: "Rows per page")
+eden_pagination(current_page: 2, total_pages: 8)'
+) do %>
+  <div class="bg-white dark:bg-zinc-800 shadow-md sm:rounded-lg">
+    <%# Placeholder table %>
+    <div class="p-8 text-center text-zinc-400 dark:text-zinc-500 text-sm border-b border-zinc-200 dark:border-zinc-700">
+      Table content above...
+    </div>
+    <%# Footer with per-page select %>
+    <div class="flex flex-col sm:flex-row items-center justify-between p-4 gap-3">
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-zinc-500 dark:text-zinc-400">Rows per page:</span>
+        <%= eden_select(options: ["10", "25", "50", "100"], size: :sm) %>
+        <span class="text-sm text-zinc-500 dark:text-zinc-400 ml-2">
+          11-20 of 200 items
+        </span>
+      </div>
+      <div class="flex items-center gap-1">
+        <%= eden_button(variant: :ghost, size: :xs, disabled: true) do %>
+          <%= eden_icon("chevron-left", size: :sm) %>
+        <% end %>
+        <% [1, 2, 3, "...", 8].each do |page| %>
+          <% if page == 2 %>
+            <button class="px-3 py-1.5 text-sm font-medium rounded-lg bg-gold-500 text-white"><%= page %></button>
+          <% elsif page == "..." %>
+            <span class="px-2 py-1.5 text-sm text-zinc-400"><%= page %></span>
+          <% else %>
+            <button class="px-3 py-1.5 text-sm font-medium rounded-lg text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700"><%= page %></button>
+          <% end %>
+        <% end %>
+        <%= eden_button(variant: :ghost, size: :xs) do %>
+          <%= eden_icon("chevron-right", size: :sm) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

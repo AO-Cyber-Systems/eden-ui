@@ -1,0 +1,40 @@
+<%# Task List component preview %>
+
+<%= styleguide_example(title: "Default Task List", description: "Task list with title and grouped tasks.",
+  source: 'eden_task_list(title: "Sprint Tasks", tasks: [
+  {title: "Deploy to staging", completed: true, priority: :high, assignee: "Alice"},
+  {title: "Write integration tests", completed: false, priority: :high, due_date: "Feb 18"},
+  {title: "Update user docs", completed: false, priority: :medium, assignee: "Bob"},
+  {title: "Refactor auth module", completed: false, priority: :low}
+])') do %>
+  <div class="max-w-2xl">
+    <%= eden_task_list(title: "Sprint Tasks", tasks: [
+      {title: "Deploy to staging", completed: true, priority: :high, assignee: "Alice"},
+      {title: "Write integration tests", completed: false, priority: :high, due_date: "Feb 18"},
+      {title: "Update user docs", completed: false, priority: :medium, assignee: "Bob"},
+      {title: "Refactor auth module", completed: false, priority: :low}
+    ]) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Single Priority", description: "Tasks with the same priority are not grouped.",
+  source: 'eden_task_list(title: "Today", tasks: [
+  {title: "Morning standup", completed: true, priority: :medium},
+  {title: "Review pull requests", completed: false, priority: :medium},
+  {title: "Update sprint board", completed: false, priority: :medium, due_date: "Feb 13"}
+])') do %>
+  <div class="max-w-2xl">
+    <%= eden_task_list(title: "Today", tasks: [
+      {title: "Morning standup", completed: true, priority: :medium},
+      {title: "Review pull requests", completed: false, priority: :medium, assignee: "Team"},
+      {title: "Update sprint board", completed: false, priority: :medium, due_date: "Feb 13"}
+    ]) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Empty State", description: "Task list shows an empty state when no tasks are provided.",
+  source: 'eden_task_list(title: "My Tasks")') do %>
+  <div class="max-w-2xl">
+    <%= eden_task_list(title: "My Tasks") %>
+  </div>
+<% end %>

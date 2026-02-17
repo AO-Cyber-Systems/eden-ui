@@ -1,0 +1,74 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_banner.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Banner",
+  description: "Top announcement banner with text and dismiss button",
+  source: 'eden_banner(variant: :default, position: :top, dismissible: true) do
+  <p>New features are available! Check out what is new.</p>
+end'
+) do %>
+  <div class="relative bg-gold-50 dark:bg-gold-900/20 border-b border-gold-200 dark:border-gold-800">
+    <div class="px-4 py-3 mx-auto max-w-screen-xl flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <%= eden_icon("information-circle", size: :md) %>
+        <p class="text-sm font-medium text-gold-800 dark:text-gold-200">
+          New features are available!
+          <a href="#" class="inline font-semibold underline hover:no-underline">Check out what&rsquo;s new</a>.
+        </p>
+      </div>
+      <button class="p-1 text-gold-600 dark:text-gold-400 hover:text-gold-800 dark:hover:text-gold-200">
+        <%= eden_icon("x-mark", size: :sm) %>
+      </button>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "CTA Banner",
+  description: "Banner with call-to-action button and promotional text",
+  source: '<div class="bg-zinc-900 border-b border-zinc-800">
+  <div class="px-4 py-3 mx-auto max-w-screen-xl flex items-center justify-between">
+    <p class="text-white">...</p>
+    eden_button(variant: :primary, size: :sm) { "Get started" }
+  </div>
+</div>'
+) do %>
+  <div class="bg-zinc-900 dark:bg-zinc-800 border-b border-zinc-800 dark:border-zinc-700">
+    <div class="px-4 py-3 mx-auto max-w-screen-xl flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-sm font-medium text-white">
+        Get 20% off Eden Pro for a limited time. Use code <span class="font-bold">EDEN20</span> at checkout.
+      </p>
+      <div class="flex items-center gap-3 flex-shrink-0">
+        <%= eden_button(variant: :primary, size: :sm, href: "#") { "Get the deal" } %>
+        <button class="p-1 text-zinc-400 hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Sticky Bottom Banner",
+  description: "Fixed bottom banner with action buttons",
+  source: '<div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-zinc-800 border-t">
+  <div class="px-4 py-3 mx-auto max-w-screen-xl flex items-center justify-between">
+    <p>...</p>
+    eden_button(variant: :primary, size: :sm) { "Sign up" }
+    eden_button(variant: :ghost, size: :sm) { "Dismiss" }
+  </div>
+</div>'
+) do %>
+  <div class="bg-white dark:bg-zinc-800 border-t border-zinc-200 dark:border-zinc-700 shadow-lg">
+    <div class="px-4 py-3 mx-auto max-w-screen-xl flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <%= eden_icon("bell", size: :md) %>
+        <p class="text-sm font-medium text-zinc-900 dark:text-white">Sign up for our newsletter to stay in the loop about new features.</p>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <%= eden_button(variant: :primary, size: :sm, href: "#") { "Sign up" } %>
+        <%= eden_button(variant: :ghost, size: :sm) { "Not now" } %>
+      </div>
+    </div>
+  </div>
+<% end %>

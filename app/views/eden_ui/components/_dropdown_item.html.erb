@@ -1,0 +1,23 @@
+<%
+  href ||= "#"
+  icon ||= nil
+  disabled ||= false
+  method ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  classes = if disabled
+    "block px-4 py-2 text-gray-400 cursor-not-allowed dark:text-gray-500"
+  else
+    "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+  end
+  classes = [classes, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<li>
+  <% if disabled %>
+    <span class="<%= classes %>"><%= content %></span>
+  <% else %>
+    <a href="<%= href %>" class="<%= classes %>" <% if method %>data-turbo-method="<%= method %>"<% end %> <%= tag.attributes(html_options) %>><%= content %></a>
+  <% end %>
+</li>

@@ -1,0 +1,81 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_cookie_consent_banners.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Cookie Banner",
+  description: "Bottom cookie consent banner with accept and decline buttons",
+  source: '<div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-zinc-800 border-t shadow-lg">
+  <div class="px-4 py-4 mx-auto max-w-screen-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p>We use cookies to improve your experience...</p>
+    eden_button(variant: :primary, size: :sm) { "Accept all" }
+    eden_button(variant: :ghost, size: :sm) { "Decline" }
+  </div>
+</div>'
+) do %>
+  <div class="bg-white dark:bg-zinc-800 border-t border-zinc-200 dark:border-zinc-700 shadow-lg">
+    <div class="px-4 py-4 mx-auto max-w-screen-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-start gap-3">
+        <%= eden_icon("shield", size: :lg) %>
+        <div>
+          <p class="text-sm font-medium text-zinc-900 dark:text-white">We use cookies</p>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">We use cookies and similar technologies to help personalize content, tailor and measure ads, and provide a better experience. By clicking accept, you agree to this as outlined in our <a href="#" class="text-gold-600 dark:text-gold-500 hover:underline">Cookie Policy</a>.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <%= eden_button(variant: :primary, size: :sm) { "Accept all" } %>
+        <%= eden_button(variant: :ghost, size: :sm) { "Decline" } %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Cookie Banner with Preferences",
+  description: "Detailed cookie consent with toggle controls for different cookie types",
+  source: '<div class="bg-white dark:bg-zinc-800 border-t shadow-lg">
+  <div class="px-4 py-6 mx-auto max-w-screen-xl">
+    <h3>Cookie Preferences</h3>
+    <div class="space-y-4">
+      eden_toggle(label: "Essential cookies", checked: true)
+      eden_toggle(label: "Analytics cookies")
+      eden_toggle(label: "Marketing cookies")
+    </div>
+    eden_button(variant: :primary) { "Save preferences" }
+  </div>
+</div>'
+) do %>
+  <div class="bg-white dark:bg-zinc-800 border-t border-zinc-200 dark:border-zinc-700 shadow-lg">
+    <div class="px-4 py-6 mx-auto max-w-screen-xl">
+      <div class="max-w-screen-md">
+        <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Cookie Preferences</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Manage your cookie settings. You can enable or disable different types of cookies below.</p>
+        <div class="space-y-4 mb-6">
+          <div class="flex items-center justify-between p-3 bg-zinc-50 dark:bg-zinc-900 rounded-lg">
+            <div>
+              <p class="font-medium text-zinc-900 dark:text-white text-sm">Essential cookies</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">Required for the website to function properly</p>
+            </div>
+            <%= eden_toggle(label: nil, checked: true, disabled: true, id: "cookie-essential") %>
+          </div>
+          <div class="flex items-center justify-between p-3 bg-zinc-50 dark:bg-zinc-900 rounded-lg">
+            <div>
+              <p class="font-medium text-zinc-900 dark:text-white text-sm">Analytics cookies</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">Help us understand how visitors interact with the website</p>
+            </div>
+            <%= eden_toggle(label: nil, id: "cookie-analytics") %>
+          </div>
+          <div class="flex items-center justify-between p-3 bg-zinc-50 dark:bg-zinc-900 rounded-lg">
+            <div>
+              <p class="font-medium text-zinc-900 dark:text-white text-sm">Marketing cookies</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">Used to track visitors across websites for advertising</p>
+            </div>
+            <%= eden_toggle(label: nil, id: "cookie-marketing") %>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <%= eden_button(variant: :primary, size: :sm) { "Save preferences" } %>
+          <%= eden_button(variant: :ghost, size: :sm) { "Accept all" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

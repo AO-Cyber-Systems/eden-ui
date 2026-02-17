@@ -1,0 +1,23 @@
+<%# Radio component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_radio(label: "Option A", name: "demo-radio", value: "a", checked: true)
+eden_radio(label: "Option B", name: "demo-radio", value: "b")
+eden_radio(label: "Option C", name: "demo-radio", value: "c")') do %>
+  <%= eden_radio(label: "Option A", name: "demo-radio", value: "a", checked: true) %>
+  <%= eden_radio(label: "Option B", name: "demo-radio", value: "b") %>
+  <%= eden_radio(label: "Option C", name: "demo-radio", value: "c") %>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", source: 'eden_radio(label: "Disabled unchecked", name: "demo-radio-disabled", value: "a", disabled: true)
+eden_radio(label: "Disabled checked", name: "demo-radio-disabled", value: "b", checked: true, disabled: true)') do %>
+  <%= eden_radio(label: "Disabled unchecked", name: "demo-radio-disabled", value: "a", disabled: true) %>
+  <%= eden_radio(label: "Disabled checked", name: "demo-radio-disabled", value: "b", checked: true, disabled: true) %>
+<% end %>
+
+<%= styleguide_example(title: "Radio Group", description: "A group of radios for selecting a plan", source: 'eden_radio(label: "Free", name: "plan", value: "free", checked: true)
+eden_radio(label: "Pro", name: "plan", value: "pro")
+eden_radio(label: "Enterprise", name: "plan", value: "enterprise")') do %>
+  <%= eden_radio(label: "Free", name: "plan", value: "free", checked: true) %>
+  <%= eden_radio(label: "Pro", name: "plan", value: "pro") %>
+  <%= eden_radio(label: "Enterprise", name: "plan", value: "enterprise") %>
+<% end %>

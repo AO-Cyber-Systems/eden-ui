@@ -1,0 +1,29 @@
+<%= styleguide_example(
+  title: "Default Button Group",
+  source: 'eden_button_group do
+  eden_button(variant: :secondary) { "Profile" }
+  eden_button(variant: :secondary) { "Settings" }
+  eden_button(variant: :secondary) { "Messages" }
+end'
+) do %>
+  <%= eden_button_group do %>
+    <%= eden_button(variant: :secondary) { "Profile" } %>
+    <%= eden_button(variant: :secondary) { "Settings" } %>
+    <%= eden_button(variant: :secondary) { "Messages" } %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Button Group with Primary Actions",
+  source: 'eden_button_group do
+  eden_button(variant: :primary) { "Save" }
+  eden_button(variant: :secondary) { "Cancel" }
+  eden_button(variant: :danger) { "Delete" }
+end'
+) do %>
+  <%= eden_button_group do %>
+    <%= eden_button(variant: :primary) { "Save" } %>
+    <%= eden_button(variant: :secondary) { "Cancel" } %>
+    <%= eden_button(variant: :danger) { "Delete" } %>
+  <% end %>
+<% end %>

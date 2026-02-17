@@ -1,0 +1,26 @@
+<%# Toolbar component preview %>
+
+<%= styleguide_example(title: "Default", description: "Basic toolbar with search input.",
+  source: 'eden_toolbar(search_placeholder: "Search products...")') do %>
+  <%= eden_toolbar(search_placeholder: "Search products...") %>
+<% end %>
+
+<%= styleguide_example(title: "With Action Buttons", description: "Toolbar with search and action buttons on the right.",
+  source: 'eden_toolbar(search_placeholder: "Search users...") do
+  eden_button(variant: :secondary) { "Filter" }
+  eden_button(variant: :primary) { "Add New" }
+end') do %>
+  <%= eden_toolbar(search_placeholder: "Search users...") do %>
+    <%= eden_button(variant: :secondary) { "Filter" } %>
+    <%= eden_button(variant: :primary) { "Add New" } %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "With Pre-filled Value", description: "Toolbar with an existing search value.",
+  source: 'eden_toolbar(search_placeholder: "Search...", search_name: "q", search_value: "MacBook") do
+  eden_button(variant: :secondary) { "Export" }
+end') do %>
+  <%= eden_toolbar(search_placeholder: "Search...", search_name: "q", search_value: "MacBook") do %>
+    <%= eden_button(variant: :secondary) { "Export" } %>
+  <% end %>
+<% end %>

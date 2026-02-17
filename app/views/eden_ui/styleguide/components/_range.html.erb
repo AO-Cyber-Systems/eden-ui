@@ -1,0 +1,21 @@
+<%# Range component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_range') do %>
+  <%= eden_range %>
+<% end %>
+
+<%= styleguide_example(title: "Sizes", source: 'eden_range(size: :sm, value: 25)
+eden_range(size: :md, value: 50)
+eden_range(size: :lg, value: 75)') do %>
+  <%= eden_range(size: :sm, value: 25) %>
+  <%= eden_range(size: :md, value: 50) %>
+  <%= eden_range(size: :lg, value: 75) %>
+<% end %>
+
+<%= styleguide_example(title: "With Min, Max, and Step", source: 'eden_range(min: 0, max: 10, step: 2, value: 4)') do %>
+  <%= eden_range(min: 0, max: 10, step: 2, value: 4) %>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", source: 'eden_range(disabled: true, value: 50)') do %>
+  <%= eden_range(disabled: true, value: 50) %>
+<% end %>

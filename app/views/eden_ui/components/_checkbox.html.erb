@@ -1,0 +1,34 @@
+<%
+  name ||= nil
+  id ||= name
+  label ||= nil
+  checked ||= false
+  disabled ||= false
+  description ||= nil
+  error ||= nil
+  value ||= "1"
+  html_options ||= {}
+  content ||= nil
+
+  input_classes = if error
+    "w-4 h-4 text-red-600 bg-red-50 border-red-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-red-600"
+  else
+    "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+  end
+%>
+
+<div class="flex items-start">
+  <div class="flex items-center h-5">
+    <input type="checkbox" <% if name %>name="<%= name %>"<% end %> <% if id %>id="<%= id %>"<% end %> value="<%= value %>" class="<%= [input_classes, html_options.delete(:class)].compact_blank.join(" ") %>" <%= "checked" if checked %> <%= "disabled" if disabled %> <%= tag.attributes(html_options) %>>
+  </div>
+  <% if label || description %>
+    <div class="ms-2 text-sm">
+      <% if label %>
+        <label for="<%= id %>" class="font-medium text-gray-900 dark:text-gray-300"><%= label %></label>
+      <% end %>
+      <% if description %>
+        <p class="text-xs font-normal text-gray-500 dark:text-gray-300"><%= description %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

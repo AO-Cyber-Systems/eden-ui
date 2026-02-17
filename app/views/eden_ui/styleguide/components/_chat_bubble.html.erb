@@ -1,0 +1,63 @@
+<%# Chat bubble component preview — renders partial directly to pass correct locals %>
+
+<%= styleguide_example(
+  title: "Received Message",
+  description: "Chat bubble aligned to the left representing a received message.",
+  source: 'eden_chat_bubble(
+  sender: "Alice",
+  time: "11:45 AM",
+  position: :left
+) { "Hey, how are you doing today?" }'
+) do %>
+  <div class="max-w-lg">
+    <%= render partial: "eden_ui/components/chat_bubble", locals: {
+      sender: "Alice", time: "11:45 AM", variant: :received, status: "Delivered",
+      avatar: nil, html_options: {}, content: "Hey, how are you doing today?"
+    } %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Sent Message",
+  description: "Chat bubble aligned to the right representing a sent message.",
+  source: 'eden_chat_bubble(
+  sender: "You",
+  time: "11:46 AM",
+  position: :right
+) { "I\'m doing great, thanks for asking!" }'
+) do %>
+  <div class="max-w-lg">
+    <%= render partial: "eden_ui/components/chat_bubble", locals: {
+      sender: "You", time: "11:46 AM", variant: :sent, status: "Read",
+      avatar: nil, html_options: {}, content: "I'm doing great, thanks for asking!"
+    } %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Chat Conversation",
+  description: "Multiple chat bubbles forming a conversation thread.",
+  source: 'eden_chat_bubble(sender: "Alice", time: "11:45 AM", position: :left) { "Hey there!" }
+eden_chat_bubble(sender: "You", time: "11:46 AM", position: :right) { "Hi Alice!" }
+eden_chat_bubble(sender: "Alice", time: "11:47 AM", position: :left) { "Are we still on for lunch?" }
+eden_chat_bubble(sender: "You", time: "11:48 AM", position: :right, delivered: true) { "Yes, noon works!" }'
+) do %>
+  <div class="max-w-lg flex flex-col gap-4 w-full">
+    <%= render partial: "eden_ui/components/chat_bubble", locals: {
+      sender: "Alice", time: "11:45 AM", variant: :received, status: nil,
+      avatar: nil, html_options: {}, content: "Hey there!"
+    } %>
+    <%= render partial: "eden_ui/components/chat_bubble", locals: {
+      sender: "You", time: "11:46 AM", variant: :sent, status: nil,
+      avatar: nil, html_options: {}, content: "Hi Alice!"
+    } %>
+    <%= render partial: "eden_ui/components/chat_bubble", locals: {
+      sender: "Alice", time: "11:47 AM", variant: :received, status: nil,
+      avatar: nil, html_options: {}, content: "Are we still on for lunch?"
+    } %>
+    <%= render partial: "eden_ui/components/chat_bubble", locals: {
+      sender: "You", time: "11:48 AM", variant: :sent, status: "Delivered",
+      avatar: nil, html_options: {}, content: "Yes, noon works!"
+    } %>
+  </div>
+<% end %>

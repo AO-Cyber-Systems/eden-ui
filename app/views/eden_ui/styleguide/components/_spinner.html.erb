@@ -1,0 +1,47 @@
+<%# Spinner component preview %>
+
+<%= styleguide_example(
+  title: "Sizes",
+  source: 'eden_spinner(size: :xs)
+eden_spinner(size: :sm)
+eden_spinner(size: :md)
+eden_spinner(size: :lg)
+eden_spinner(size: :xl)'
+) do %>
+  <div class="flex items-center gap-4">
+    <%= eden_spinner(size: :xs) %>
+    <%= eden_spinner(size: :sm) %>
+    <%= eden_spinner(size: :md) %>
+    <%= eden_spinner(size: :lg) %>
+    <%= eden_spinner(size: :xl) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Color Variants",
+  source: 'eden_spinner(variant: :primary)
+eden_spinner(variant: :success)
+eden_spinner(variant: :warning)
+eden_spinner(variant: :danger)
+eden_spinner(variant: :neutral)'
+) do %>
+  <div class="flex items-center gap-4">
+    <%= eden_spinner(variant: :primary) %>
+    <%= eden_spinner(variant: :success) %>
+    <%= eden_spinner(variant: :warning) %>
+    <%= eden_spinner(variant: :danger) %>
+    <%= eden_spinner(variant: :neutral) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Spinner on Dark Background",
+  description: "White spinner variant for use on dark backgrounds.",
+  source: 'eden_spinner(variant: :white)'
+) do %>
+  <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg">
+    <%= eden_spinner(variant: :white, size: :sm) %>
+    <%= eden_spinner(variant: :white, size: :md) %>
+    <%= eden_spinner(variant: :white, size: :lg) %>
+  </div>
+<% end %>

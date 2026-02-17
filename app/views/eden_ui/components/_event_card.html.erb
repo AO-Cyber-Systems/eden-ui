@@ -1,0 +1,53 @@
+<%
+  title ||= ""
+  start_time ||= nil
+  end_time ||= nil
+  location ||= nil
+  color ||= :primary
+  description ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  border_color = case color.to_sym
+  when :success then "border-l-green-500"
+  when :warning then "border-l-yellow-500"
+  when :danger then "border-l-red-500"
+  when :purple then "border-l-purple-500"
+  else "border-l-blue-500"
+  end
+
+  classes = [
+    "border-l-4 bg-white dark:bg-gray-800 p-4 rounded-r-lg shadow-sm",
+    border_color,
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%# Time range %>
+  <% if start_time || end_time %>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+      <svg class="inline w-3.5 h-3.5 me-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <%= start_time %><% if end_time %> - <%= end_time %><% end %>
+    </p>
+  <% end %>
+
+  <%# Title %>
+  <h4 class="text-base font-medium text-gray-900 dark:text-white mb-1"><%= title %></h4>
+
+  <%# Location %>
+  <% if location %>
+    <p class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-1">
+      <svg class="w-3.5 h-3.5 me-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <%= location %>
+    </p>
+  <% end %>
+
+  <%# Description %>
+  <% if description %>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2"><%= description %></p>
+  <% end %>
+
+  <%# Custom content %>
+  <%= content %>
+</div>

@@ -1,0 +1,54 @@
+<%
+  id ||= nil
+  description ||= nil
+  amount ||= nil
+  type ||= :credit
+  status ||= :completed
+  date ||= nil
+  party ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  amount_classes = case type.to_sym
+  when :debit
+    "text-red-600 dark:text-red-400"
+  else
+    "text-green-600 dark:text-green-400"
+  end
+
+  amount_prefix = type.to_sym == :debit ? "-" : "+"
+
+  status_variant = case status.to_sym
+  when :completed then :success
+  when :pending   then :warning
+  when :failed    then :danger
+  when :refunded  then :neutral
+  else :neutral
+  end
+
+  classes = [
+    "flex items-center justify-between border-b border-gray-200 dark:border-gray-700 py-3",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="min-w-0 flex-1">
+    <p class="text-sm font-medium text-gray-900 dark:text-white truncate"><%= description %></p>
+    <% if party %>
+      <p class="text-sm text-gray-500 dark:text-gray-400 truncate"><%= party %></p>
+    <% end %>
+  </div>
+  <div class="flex flex-col items-end gap-1 ms-4">
+    <% if amount %>
+      <span class="text-sm font-semibold <%= amount_classes %>"><%= amount_prefix %><%= amount %></span>
+    <% end %>
+    <div class="flex items-center gap-2">
+      <%= eden_badge(variant: status_variant, size: :xs) { status.to_s.titleize } %>
+      <% if date %>
+        <span class="text-xs text-gray-500 dark:text-gray-400"><%= date %></span>
+      <% end %>
+    </div>
+  </div>
+  <%= content %>
+</div>

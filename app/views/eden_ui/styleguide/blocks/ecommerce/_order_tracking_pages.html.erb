@@ -1,0 +1,115 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_order_tracking_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Order Tracking with Timeline",
+  description: "Order tracking page with stepper timeline showing shipment progress",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    <h2>Track Your Order</h2>
+    <!-- tracking stepper timeline -->
+    <!-- order details -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">Track Your Order</h2>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Order #ORD-20260213-7842</p>
+        </div>
+        <%= eden_badge(text: "In Transit", variant: :primary, size: :sm) %>
+      </div>
+
+      <!-- Tracking Timeline -->
+      <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-6 mb-6">
+        <ol class="relative border-l border-zinc-200 dark:border-zinc-700 ml-3">
+          <% [
+            { title: "Order Placed", desc: "Your order has been confirmed", date: "Feb 13, 2026 - 10:30 AM", done: true },
+            { title: "Processing", desc: "Your order is being prepared", date: "Feb 13, 2026 - 2:15 PM", done: true },
+            { title: "Shipped", desc: "Package picked up by carrier", date: "Feb 14, 2026 - 9:00 AM", done: true },
+            { title: "In Transit", desc: "Package is on its way to you", date: "Feb 15, 2026 - 11:45 AM", done: true, current: true },
+            { title: "Out for Delivery", desc: "Package will be delivered today", date: "", done: false },
+            { title: "Delivered", desc: "Package has been delivered", date: "", done: false }
+          ].each do |step| %>
+            <li class="mb-8 ml-6 last:mb-0">
+              <span class="absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white dark:ring-zinc-800 <%= step[:done] ? 'bg-green-100 dark:bg-green-900/50' : 'bg-zinc-100 dark:bg-zinc-700' %>">
+                <% if step[:done] %>
+                  <span class="text-green-600 dark:text-green-400"><%= eden_icon("check", size: :xs) %></span>
+                <% else %>
+                  <span class="w-2.5 h-2.5 bg-zinc-400 dark:bg-zinc-500 rounded-full"></span>
+                <% end %>
+              </span>
+              <h3 class="text-sm font-semibold text-zinc-900 dark:text-white flex items-center gap-2">
+                <%= step[:title] %>
+                <% if step[:current] %>
+                  <%= eden_badge(text: "Current", variant: :primary, size: :xs) %>
+                <% end %>
+              </h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5"><%= step[:desc] %></p>
+              <% if step[:date].present? %>
+                <time class="text-xs text-zinc-400 dark:text-zinc-500"><%= step[:date] %></time>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+
+      <!-- Shipment Details -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4">
+          <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase mb-1">Tracking Number</p>
+          <p class="text-sm font-semibold text-zinc-900 dark:text-white">1Z999AA10123456784</p>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">UPS Ground</p>
+        </div>
+        <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4">
+          <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase mb-1">Estimated Delivery</p>
+          <p class="text-sm font-semibold text-zinc-900 dark:text-white">Feb 17, 2026</p>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">By end of day</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Compact Tracking Card",
+  description: "Compact order tracking card with progress bar and key details",
+  source: '<div class="max-w-lg bg-white rounded-lg border dark:bg-zinc-800">
+  eden_badge(text: "In Transit", variant: :primary)
+  eden_progress(value: 65, size: :sm, variant: :primary)
+  <!-- tracking details -->
+</div>'
+) do %>
+  <div class="max-w-lg mx-auto">
+    <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-sm font-semibold text-zinc-900 dark:text-white">Order #ORD-20260213-7842</h3>
+        <%= eden_badge(text: "In Transit", variant: :primary, size: :sm) %>
+      </div>
+
+      <%= eden_progress(value: 65, size: :sm, variant: :primary) %>
+
+      <div class="flex justify-between text-xs text-zinc-500 dark:text-zinc-400 mt-2 mb-4">
+        <span>Shipped</span>
+        <span>In Transit</span>
+        <span>Delivered</span>
+      </div>
+
+      <div class="space-y-3 pt-4 border-t border-zinc-200 dark:border-zinc-700">
+        <div class="flex justify-between text-sm">
+          <span class="text-zinc-500 dark:text-zinc-400">Carrier</span>
+          <span class="text-zinc-900 dark:text-white">UPS Ground</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-zinc-500 dark:text-zinc-400">Tracking</span>
+          <span class="text-gold-600 dark:text-gold-400 font-medium">1Z999AA1012345</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-zinc-500 dark:text-zinc-400">Est. Delivery</span>
+          <span class="font-medium text-zinc-900 dark:text-white">Feb 17, 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

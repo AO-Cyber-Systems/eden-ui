@@ -1,0 +1,59 @@
+<%
+  events ||= []
+  grouped ||= true
+  html_options ||= {}
+  content ||= nil
+
+  classes = [
+    "space-y-4",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <% if events.any? %>
+    <% if grouped %>
+      <%
+        events_by_date = events.group_by { |e| e[:date].to_s }.sort_by { |date, _| date }
+      %>
+      <% events_by_date.each do |date_str, day_events| %>
+        <%
+          parsed_date = begin
+            Date.parse(date_str)
+          rescue
+            nil
+          end
+          display_date = parsed_date ? parsed_date.strftime("%A, %B %-d, %Y") : date_str
+        %>
+        <div>
+          <h3 class="sticky top-0 z-10 py-2 text-sm font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 mb-3"><%= display_date %></h3>
+          <div class="space-y-3">
+            <% day_events.each do |event| %>
+              <%= eden_event_card(
+                title: event[:title],
+                start_time: event[:start_time],
+                end_time: event[:end_time],
+                location: event[:location],
+                color: event[:color] || :primary,
+                description: event[:description]
+              ) %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <% events.each do |event| %>
+        <%= eden_event_card(
+          title: event[:title],
+          start_time: event[:start_time],
+          end_time: event[:end_time],
+          location: event[:location],
+          color: event[:color] || :primary,
+          description: event[:description]
+        ) %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= eden_empty_state(title: "No events", description: "There are no events scheduled.", icon: "calendar") %>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<%# locals: (app_name: EdenUi.configuration.app_name, logo_path: EdenUi.configuration.logo_path, conversations: [], current_conversation: nil, user: nil, content: nil) %>
+
+<div class="flex h-screen bg-white dark:bg-gray-900">
+  <%= render partial: "eden_ui/layouts/chat_sidebar", locals: { conversations: conversations, current_conversation: current_conversation, app_name: app_name, logo_path: logo_path } %>
+
+  <div class="flex flex-1 flex-col">
+    <%= render partial: "eden_ui/layouts/chat_messages", locals: { current_conversation: current_conversation, content: content } %>
+    <%= render partial: "eden_ui/layouts/chat_input" %>
+  </div>
+</div>

@@ -1,0 +1,299 @@
+<%# app/views/eden_ui/styleguide/blocks/publisher/_blog_template_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Blog Post",
+  description: "Full blog post template with author info, rich typography content, and social share links",
+  source: '<main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-zinc-900">
+  <div class="flex justify-between px-4 mx-auto max-w-screen-xl">
+    <article class="mx-auto w-full max-w-2xl">
+      <header class="mb-4 lg:mb-6">
+        eden_avatar(src: "...", size: :sm, rounded: true)
+        <h1>Best practices for successful prototypes</h1>
+      </header>
+      <p class="lead">Article content with rich typography...</p>
+    </article>
+  </div>
+</main>'
+) do %>
+  <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-zinc-900 antialiased">
+    <div class="flex justify-between px-4 mx-auto max-w-screen-xl">
+      <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+        <header class="mb-4 lg:mb-6 not-format">
+          <address class="flex items-center mb-6 not-italic">
+            <div class="inline-flex items-center mr-3 text-sm text-zinc-900 dark:text-white">
+              <%= eden_avatar(initials: "JL", size: :sm, rounded: true) %>
+              <div class="ml-3">
+                <a href="#" rel="author" class="text-xl font-bold text-zinc-900 dark:text-white">Jese Leos</a>
+                <p class="text-base text-zinc-500 dark:text-zinc-400">Graphic Designer, educator & CEO Flowbite</p>
+                <p class="text-base text-zinc-500 dark:text-zinc-400">
+                  <time datetime="2022-02-08" title="February 8th, 2022">Feb. 8, 2022</time>
+                </p>
+              </div>
+            </div>
+          </address>
+          <h1 class="mb-4 text-3xl font-extrabold leading-tight text-zinc-900 lg:mb-6 lg:text-4xl dark:text-white">Best practices for successful prototypes</h1>
+        </header>
+        <p class="lead text-lg text-zinc-500 dark:text-zinc-400 mb-4">Flowbite is an open-source library of over 400+ web components and interactive elements built with the utility classes from Tailwind CSS. It includes all of the commonly used components that a website requires.</p>
+        <p class="text-zinc-500 dark:text-zinc-400 mb-4">Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way, you can think things through before committing to an actual design project.</p>
+        <p class="text-zinc-500 dark:text-zinc-400 mb-4">But then I found a <a href="#" class="text-gold-600 dark:text-gold-500 hover:underline">component library based on Tailwind CSS</a>. It comes with the most commonly used UI components, such as buttons, navigation bars, cards, form elements, and more.</p>
+
+        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mt-8 mb-4">Getting started with Flowbite</h2>
+        <p class="text-zinc-500 dark:text-zinc-400 mb-4">First of all you need to understand how Flowbite works. This library is not another framework. Rather, it is a set of components based on Tailwind CSS that you can just copy-paste from the documentation.</p>
+
+        <figure class="my-8">
+          <div class="w-full h-64 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center">
+            <%= eden_icon("photo", size: :xl) %>
+          </div>
+          <figcaption class="mt-2 text-sm text-center text-zinc-500 dark:text-zinc-400">Digital art by Anonymous</figcaption>
+        </figure>
+
+        <h3 class="text-xl font-bold text-zinc-900 dark:text-white mt-6 mb-3">When does design come in handy?</h3>
+        <p class="text-zinc-500 dark:text-zinc-400 mb-4">While it might seem like extra work at a first glance, here are some key moments in which prototyping will come in handy:</p>
+        <ol class="list-decimal list-inside space-y-2 text-zinc-500 dark:text-zinc-400 mb-4">
+          <li><strong class="text-zinc-900 dark:text-white">Usability testing.</strong> Does your user know how to exit out of screens?</li>
+          <li><strong class="text-zinc-900 dark:text-white">Stakeholder reviews.</strong> Show early designs to key stakeholders for feedback.</li>
+          <li><strong class="text-zinc-900 dark:text-white">Presentations.</strong> Show your work to the team and gather buy-in.</li>
+        </ol>
+
+        <blockquote class="border-l-4 border-zinc-300 dark:border-zinc-600 pl-4 my-6 italic">
+          <p class="text-xl text-zinc-900 dark:text-white">"Flowbite is just awesome. It contains tons of prebuilt components and pages starting from login screen to complex dashboard. Perfect choice for your next SaaS application."</p>
+        </blockquote>
+
+        <h3 class="text-xl font-bold text-zinc-900 dark:text-white mt-6 mb-3">Layout and typography</h3>
+        <p class="text-zinc-500 dark:text-zinc-400 mb-4">A well-designed blog template should handle a variety of content types gracefully. Here is an example of a code block:</p>
+        <pre class="bg-zinc-100 dark:bg-zinc-800 rounded-lg p-4 my-4 overflow-x-auto"><code class="text-sm text-zinc-800 dark:text-zinc-200">&lt;article class="format lg:format-lg"&gt;
+  &lt;h1&gt;Garlic bread with cheese&lt;/h1&gt;
+  &lt;p&gt;For years parents have espoused...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+
+        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mt-8 mb-4">Conclusion</h2>
+        <p class="text-zinc-500 dark:text-zinc-400">By leveraging the utility-first approach of Tailwind CSS with a comprehensive component library, you can build beautiful, responsive blog templates in record time. Start with the basics and expand as your needs grow.</p>
+      </article>
+    </div>
+  </main>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Blog Post with Sidebar",
+  description: "Blog article layout with a sticky sidebar featuring latest posts and newsletter signup",
+  source: '<main class="bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl mx-auto px-4 grid lg:grid-cols-12 gap-8">
+    <article class="lg:col-span-8">
+      <h1>...</h1>
+      <p>Article content...</p>
+    </article>
+    <aside class="lg:col-span-4">
+      <!-- Latest posts, newsletter form -->
+      eden_input(type: :email, placeholder: "Enter your email")
+      eden_button(variant: :primary) { "Subscribe" }
+    </aside>
+  </div>
+</main>'
+) do %>
+  <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-zinc-900 antialiased">
+    <div class="px-4 mx-auto max-w-screen-xl">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        <%# Main article %>
+        <article class="lg:col-span-8">
+          <header class="mb-6">
+            <div class="flex items-center gap-2 mb-4">
+              <%= eden_badge(text: "Tutorial", variant: :primary, size: :sm) %>
+              <span class="text-sm text-zinc-500 dark:text-zinc-400">14 min read</span>
+            </div>
+            <h1 class="mb-4 text-3xl font-extrabold leading-tight text-zinc-900 lg:text-4xl dark:text-white">Prototyping from A to Z: best practices for designers</h1>
+            <div class="flex items-center gap-3">
+              <%= eden_avatar(initials: "JL", size: :sm, rounded: true) %>
+              <div>
+                <a href="#" class="text-sm font-bold text-zinc-900 dark:text-white">Jese Leos</a>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">Posted on Jan 31, 2024</p>
+              </div>
+            </div>
+          </header>
+
+          <div class="w-full h-64 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center mb-8">
+            <%= eden_icon("photo", size: :xl) %>
+          </div>
+
+          <div class="space-y-4 text-zinc-500 dark:text-zinc-400">
+            <p>Flowbite is an open-source library of UI components based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p>
+            <p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, and more, all coded in Tailwind CSS with accessible, semantic markup.</p>
+
+            <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mt-8">Table of contents</h2>
+            <ul class="list-disc list-inside space-y-2">
+              <li>Understanding the basics</li>
+              <li>Setting up your environment</li>
+              <li>Building your first prototype</li>
+              <li>Testing and iteration</li>
+              <li>Final thoughts</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mt-8">Understanding the basics</h2>
+            <p>Before diving into prototyping, it is essential to understand the foundational concepts. A prototype is an early sample, model, or release of a product built to test a concept or process.</p>
+            <p>The key benefit of prototyping is that it allows designers and developers to explore ideas and show the intention behind a feature or the overall design concept before investing in full development.</p>
+
+            <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mt-8">Building your first prototype</h2>
+            <p>Start with low-fidelity wireframes. These are quick sketches that focus on layout and functionality rather than visual design. Use tools like pen and paper, Balsamiq, or Figma to create these initial concepts.</p>
+
+            <figure class="my-6">
+              <div class="w-full h-48 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center">
+                <%= eden_icon("photo", size: :lg) %>
+              </div>
+              <figcaption class="mt-2 text-sm text-center text-zinc-500 dark:text-zinc-400">Example wireframe layout</figcaption>
+            </figure>
+
+            <p>Once you have validated the basic layout, move to high-fidelity prototypes. These include actual colors, typography, and imagery that closely resemble the final product.</p>
+          </div>
+        </article>
+
+        <%# Sidebar %>
+        <aside class="lg:col-span-4">
+          <div class="lg:sticky lg:top-8 space-y-8">
+            <%# Latest articles %>
+            <div class="p-6 bg-zinc-50 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700">
+              <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-4">Latest articles</h3>
+              <div class="space-y-4">
+                <% [
+                  { title: "How to quickly deploy a static website", date: "Jan 25, 2024" },
+                  { title: "Understanding color theory for designers", date: "Jan 22, 2024" },
+                  { title: "Five tips for better CSS architecture", date: "Jan 18, 2024" },
+                  { title: "Responsive design patterns in 2024", date: "Jan 14, 2024" }
+                ].each do |post| %>
+                  <a href="#" class="block group">
+                    <h4 class="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-500"><%= post[:title] %></h4>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1"><%= post[:date] %></p>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+
+            <%# Newsletter signup %>
+            <div class="p-6 bg-gold-50 dark:bg-zinc-800 rounded-lg border border-gold-200 dark:border-zinc-700">
+              <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">Subscribe to newsletter</h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-4">Get the latest articles and resources delivered straight to your inbox.</p>
+              <div class="space-y-3">
+                <%= eden_input(type: :email, placeholder: "Enter your email", size: :sm) %>
+                <%= eden_button(variant: :primary, size: :sm) { "Subscribe" } %>
+              </div>
+            </div>
+
+            <%# Topics %>
+            <div class="p-6 bg-zinc-50 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700">
+              <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-4">Topics</h3>
+              <div class="flex flex-wrap gap-2">
+                <% %w[Design Tailwind CSS Flowbite React Vue JavaScript].each do |topic| %>
+                  <%= eden_badge(text: topic, variant: :secondary, size: :sm, pill: true) %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Blog Post with Cover Image",
+  description: "Immersive blog template with full-width cover image, overlay title, and body content below",
+  source: '<main class="bg-white dark:bg-zinc-900">
+  <div class="relative w-full h-[460px] bg-zinc-700">
+    <!-- Cover image with overlay -->
+    <div class="absolute bottom-0 left-0 right-0 p-8">
+      eden_badge(text: "Technology", variant: :primary)
+      <h1>Article title with overlay</h1>
+    </div>
+  </div>
+  <article class="max-w-3xl mx-auto px-4 py-8">
+    <p>Article content...</p>
+  </article>
+</main>'
+) do %>
+  <main class="bg-white dark:bg-zinc-900 antialiased">
+    <%# Cover image hero %>
+    <div class="relative w-full h-[460px] bg-zinc-700 dark:bg-zinc-800 flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent"></div>
+      <div class="text-zinc-400">
+        <%= eden_icon("photo", size: :xl) %>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-12">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="flex items-center gap-3 mb-4">
+            <%= eden_badge(text: "Technology", variant: :primary, size: :sm) %>
+            <span class="text-sm text-zinc-300">12 min read</span>
+          </div>
+          <h1 class="text-3xl lg:text-5xl font-extrabold text-white mb-4 max-w-3xl">The future of design systems in modern web development</h1>
+          <div class="flex items-center gap-3">
+            <%= eden_avatar(initials: "BG", size: :sm, rounded: true) %>
+            <div>
+              <span class="text-sm font-bold text-white">Bonnie Green</span>
+              <p class="text-sm text-zinc-300">Published on Feb 1, 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# Article body %>
+    <div class="px-4 mx-auto max-w-3xl py-8 lg:py-12">
+      <div class="space-y-4 text-zinc-500 dark:text-zinc-400 text-lg leading-relaxed">
+        <p class="text-xl text-zinc-600 dark:text-zinc-300">Design systems are revolutionizing the way teams build digital products. From large enterprises to scrappy startups, the benefits of a unified design language are becoming increasingly clear.</p>
+
+        <p>In this article, we will explore the evolution of design systems, examine current best practices, and look ahead to what the future holds for teams building at scale.</p>
+
+        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mt-10 mb-4">The evolution of design systems</h2>
+        <p>Design systems have come a long way from simple style guides and pattern libraries. Modern design systems encompass tokens, components, documentation, and governance processes that ensure consistency across an entire product ecosystem.</p>
+
+        <div class="bg-zinc-50 dark:bg-zinc-800 border-l-4 border-gold-500 p-6 my-8 rounded-r-lg">
+          <p class="text-zinc-700 dark:text-zinc-300 italic">"A design system is not a project. It is a product, serving products."</p>
+          <cite class="block mt-2 text-sm text-zinc-500 dark:text-zinc-400 not-italic">-- Nathan Curtis, Design Systems Expert</cite>
+        </div>
+
+        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mt-10 mb-4">Core principles</h2>
+        <p>Successful design systems share several fundamental principles that guide their development and adoption:</p>
+
+        <div class="grid sm:grid-cols-2 gap-4 my-6">
+          <% [
+            { icon: "bolt", title: "Consistency", desc: "Unified visual language across all products" },
+            { icon: "clock", title: "Efficiency", desc: "Reusable components speed up development" },
+            { icon: "shield", title: "Quality", desc: "Pre-tested patterns reduce bugs" },
+            { icon: "chart-bar", title: "Scalability", desc: "Grows with your team and products" }
+          ].each do |principle| %>
+            <div class="p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 bg-gold-100 dark:bg-gold-900/30 rounded-lg flex items-center justify-center text-gold-600 dark:text-gold-400">
+                  <%= eden_icon(principle[:icon], size: :sm) %>
+                </div>
+                <h3 class="font-bold text-zinc-900 dark:text-white"><%= principle[:title] %></h3>
+              </div>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400"><%= principle[:desc] %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mt-10 mb-4">Looking ahead</h2>
+        <p>The future of design systems lies in automation, AI-assisted design, and tighter integration between design and development tools. Teams that invest in their design systems today will be well-positioned to deliver better products faster tomorrow.</p>
+      </div>
+
+      <%# Author card at bottom %>
+      <div class="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-700">
+        <div class="flex items-start gap-4">
+          <%= eden_avatar(initials: "BG", size: :md, rounded: true) %>
+          <div>
+            <h4 class="text-lg font-bold text-zinc-900 dark:text-white">Bonnie Green</h4>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Bonnie Green is a senior product designer with 10+ years of experience building design systems. She writes about design, technology, and the intersection of the two.</p>
+            <div class="flex items-center gap-3 mt-3">
+              <%= eden_button(variant: :ghost, size: :xs) do %>
+                <%= eden_icon("globe", size: :sm) %>
+                <span class="ml-1">Website</span>
+              <% end %>
+              <%= eden_button(variant: :ghost, size: :xs) do %>
+                <%= eden_icon("envelope", size: :sm) %>
+                <span class="ml-1">Email</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+<% end %>

@@ -1,0 +1,126 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_checkout_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Multi-Step Checkout",
+  description: "Checkout page with step indicator, shipping form, and order summary sidebar",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    eden_stepper { ... }
+    <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+      <div class="lg:col-span-8"><!-- shipping form --></div>
+      <div class="lg:col-span-4"><!-- order summary --></div>
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <h2 class="text-xl font-semibold text-zinc-900 dark:text-white mb-6">Checkout</h2>
+
+      <!-- Step Indicator -->
+      <ol class="flex items-center w-full max-w-2xl mb-8 text-sm font-medium text-center text-zinc-500 dark:text-zinc-400 sm:text-base">
+        <li class="flex md:w-full items-center text-gold-600 dark:text-gold-500 sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-gold-200 after:hidden sm:after:inline-block after:mx-4 dark:after:border-gold-700">
+          <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-zinc-200 dark:after:text-zinc-500">
+            <span class="flex items-center justify-center w-6 h-6 me-2 text-xs border border-gold-600 rounded-full shrink-0 dark:border-gold-500">1</span>
+            Cart
+          </span>
+        </li>
+        <li class="flex md:w-full items-center text-gold-600 dark:text-gold-500 sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-zinc-200 after:hidden sm:after:inline-block after:mx-4 dark:after:border-zinc-700">
+          <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-zinc-200 dark:after:text-zinc-500">
+            <span class="flex items-center justify-center w-6 h-6 me-2 text-xs border border-gold-600 rounded-full shrink-0 dark:border-gold-500">2</span>
+            Shipping
+          </span>
+        </li>
+        <li class="flex items-center">
+          <span class="flex items-center justify-center w-6 h-6 me-2 text-xs border border-zinc-500 rounded-full shrink-0 dark:border-zinc-400">3</span>
+          Payment
+        </li>
+      </ol>
+
+      <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+        <div class="lg:col-span-8">
+          <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-6">
+            <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-4">Shipping Address</h3>
+            <form class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">First Name</label>
+                <%= eden_input(type: :text, placeholder: "John") %>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">Last Name</label>
+                <%= eden_input(type: :text, placeholder: "Doe") %>
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">Street Address</label>
+                <%= eden_input(type: :text, placeholder: "123 Main Street") %>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">City</label>
+                <%= eden_input(type: :text, placeholder: "San Francisco") %>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">State</label>
+                <%= eden_select(options: ["California", "New York", "Texas"], placeholder: "Select state") %>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">ZIP Code</label>
+                <%= eden_input(type: :text, placeholder: "94102") %>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">Phone</label>
+                <%= eden_input(type: :text, placeholder: "+1 (555) 000-0000") %>
+              </div>
+              <div class="sm:col-span-2 flex items-center gap-4 mt-2">
+                <%= eden_button(variant: :primary, size: :lg) { "Continue to Payment" } %>
+                <%= eden_button(variant: :ghost, size: :lg, href: "#") { "Back to Cart" } %>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 mt-6 lg:mt-0">
+          <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-4">Order Summary</h3>
+            <div class="space-y-3">
+              <% [
+                { name: "Apple iMac 24\"", qty: 1, price: "$1,199.00" },
+                { name: "AirPods Pro", qty: 2, price: "$498.00" }
+              ].each do |item| %>
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-zinc-200 dark:bg-zinc-700 rounded flex items-center justify-center flex-shrink-0">
+                    <%= eden_icon("photo", size: :xs) %>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm text-zinc-900 dark:text-white truncate"><%= item[:name] %></p>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400">Qty: <%= item[:qty] %></p>
+                  </div>
+                  <span class="text-sm font-medium text-zinc-900 dark:text-white"><%= item[:price] %></span>
+                </div>
+              <% end %>
+            </div>
+            <hr class="my-4 border-zinc-200 dark:border-zinc-700" />
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm">
+                <span class="text-zinc-500 dark:text-zinc-400">Subtotal</span>
+                <span class="text-zinc-900 dark:text-white">$1,697.00</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-zinc-500 dark:text-zinc-400">Shipping</span>
+                <span class="text-green-600 dark:text-green-400">Free</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-zinc-500 dark:text-zinc-400">Tax</span>
+                <span class="text-zinc-900 dark:text-white">$139.97</span>
+              </div>
+              <hr class="border-zinc-200 dark:border-zinc-700" />
+              <div class="flex justify-between font-semibold">
+                <span class="text-zinc-900 dark:text-white">Total</span>
+                <span class="text-zinc-900 dark:text-white">$1,836.97</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

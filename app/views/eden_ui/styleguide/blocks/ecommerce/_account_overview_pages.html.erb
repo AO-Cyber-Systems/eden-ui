@@ -1,0 +1,106 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_account_overview_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Account Dashboard",
+  description: "User account overview with profile info, recent orders, and quick action cards",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    <!-- profile card -->
+    <!-- stat cards -->
+    <!-- recent orders -->
+    <!-- quick links -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <h2 class="text-xl font-semibold text-zinc-900 dark:text-white mb-6">My Account</h2>
+
+      <!-- Profile Card -->
+      <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-6 mb-6">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <%= eden_avatar(initials: "JD", size: :lg, rounded: true) %>
+          <div class="flex-1">
+            <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">John Doe</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">john.doe@example.com</p>
+            <p class="text-xs text-zinc-400 dark:text-zinc-500 mt-1">Member since January 2024</p>
+          </div>
+          <%= eden_button(variant: :ghost, size: :sm, href: "#") do %>
+            <%= eden_icon("pencil", size: :xs) %>
+            Edit Profile
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <% [
+          { label: "Total Orders", value: "24", icon: "shopping-cart" },
+          { label: "Wishlist Items", value: "8", icon: "heart" },
+          { label: "Reviews Given", value: "12", icon: "star" },
+          { label: "Reward Points", value: "1,250", icon: "bolt" }
+        ].each do |stat| %>
+          <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-gold-50 dark:bg-gold-900/30 flex items-center justify-center text-gold-600 dark:text-gold-400">
+                <%= eden_icon(stat[:icon], size: :sm) %>
+              </div>
+              <div>
+                <p class="text-xl font-bold text-zinc-900 dark:text-white"><%= stat[:value] %></p>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400"><%= stat[:label] %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <% [
+          { icon: "shopping-cart", title: "My Orders", desc: "View and track your orders", href: "#" },
+          { icon: "heart", title: "Wishlist", desc: "Items you've saved for later", href: "#" },
+          { icon: "map-pin", title: "Addresses", desc: "Manage delivery addresses", href: "#" },
+          { icon: "lock", title: "Payment Methods", desc: "Manage cards and payments", href: "#" },
+          { icon: "bell", title: "Notifications", desc: "Manage email preferences", href: "#" },
+          { icon: "shield", title: "Security", desc: "Password and security settings", href: "#" }
+        ].each do |link| %>
+          <a href="<%= link[:href] %>" class="flex items-center gap-4 p-4 bg-white border border-zinc-200 rounded-lg hover:bg-zinc-50 dark:bg-zinc-800 dark:border-zinc-700 dark:hover:bg-zinc-700 transition-colors">
+            <div class="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-zinc-600 dark:text-zinc-400">
+              <%= eden_icon(link[:icon], size: :sm) %>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-zinc-900 dark:text-white"><%= link[:title] %></h4>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400"><%= link[:desc] %></p>
+            </div>
+          </a>
+        <% end %>
+      </div>
+
+      <!-- Recent Orders -->
+      <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700">
+        <div class="flex items-center justify-between p-4 border-b border-zinc-200 dark:border-zinc-700">
+          <h3 class="text-sm font-semibold text-zinc-900 dark:text-white">Recent Orders</h3>
+          <a href="#" class="text-sm text-gold-600 dark:text-gold-400 hover:underline">View all</a>
+        </div>
+        <div class="divide-y divide-zinc-200 dark:divide-zinc-700">
+          <% [
+            { id: "#ORD-7842", date: "Feb 13, 2026", total: "$1,836.97", status: "Processing", variant: :warning },
+            { id: "#ORD-7695", date: "Feb 5, 2026", total: "$599.00", status: "Shipped", variant: :primary },
+            { id: "#ORD-7431", date: "Jan 22, 2026", total: "$348.00", status: "Delivered", variant: :success }
+          ].each do |order| %>
+            <div class="flex items-center justify-between p-4">
+              <div>
+                <p class="text-sm font-medium text-zinc-900 dark:text-white"><%= order[:id] %></p>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400"><%= order[:date] %></p>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-sm font-medium text-zinc-900 dark:text-white"><%= order[:total] %></span>
+                <%= eden_badge(text: order[:status], variant: order[:variant], size: :xs) %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

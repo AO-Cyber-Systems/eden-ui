@@ -1,0 +1,83 @@
+<%= styleguide_block_example(
+  title: "Table Header with Search and Actions",
+  description: "Table header bar with search input, filter buttons, and primary action",
+  source: 'eden_search_input(placeholder: "Search...")
+eden_dropdown(label: "Filter") { ... }
+eden_button(variant: :primary, size: :sm) { "Add item" }'
+) do %>
+  <div class="bg-white dark:bg-zinc-800 shadow-md sm:rounded-lg">
+    <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4 border-b border-zinc-200 dark:border-zinc-700">
+      <div class="w-full md:w-1/3">
+        <%= eden_search_input(placeholder: "Search products...") %>
+      </div>
+      <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center md:space-x-3 flex-shrink-0">
+        <%= eden_dropdown(label: "Categories") do %>
+          <li class="px-4 py-2"><%= eden_checkbox(label: "Electronics") %></li>
+          <li class="px-4 py-2"><%= eden_checkbox(label: "Clothing") %></li>
+          <li class="px-4 py-2"><%= eden_checkbox(label: "Home & Garden") %></li>
+          <li class="px-4 py-2"><%= eden_checkbox(label: "Sports") %></li>
+        <% end %>
+        <%= eden_dropdown(label: "Status") do %>
+          <li class="px-4 py-2"><%= eden_radio(label: "All") %></li>
+          <li class="px-4 py-2"><%= eden_radio(label: "Active") %></li>
+          <li class="px-4 py-2"><%= eden_radio(label: "Draft") %></li>
+          <li class="px-4 py-2"><%= eden_radio(label: "Archived") %></li>
+        <% end %>
+        <%= eden_button(variant: :primary, size: :sm) do %>
+          <%= eden_icon("plus", size: :sm) %>
+          <span class="ml-1">Add product</span>
+        <% end %>
+      </div>
+    </div>
+    <%# Placeholder for table body %>
+    <div class="p-8 text-center text-zinc-400 dark:text-zinc-500 text-sm">
+      Table content goes here...
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Table Header with Tabs",
+  description: "Tabbed table header for filtering between different data views",
+  source: '# Tabbed navigation: All | Active | Draft
+eden_search_input(placeholder: "Search...")'
+) do %>
+  <div class="bg-white dark:bg-zinc-800 shadow-md sm:rounded-lg">
+    <%# Tab navigation %>
+    <div class="border-b border-zinc-200 dark:border-zinc-700">
+      <nav class="flex gap-0 px-4" aria-label="Table tabs">
+        <% [
+          ["All", "248", true],
+          ["Active", "186", false],
+          ["Draft", "42", false],
+          ["Archived", "20", false],
+        ].each do |label, count, active| %>
+          <button class="flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 <%= active ? 'border-gold-500 text-gold-600 dark:text-gold-400' : 'border-transparent text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200' %>">
+            <%= label %>
+            <span class="text-xs rounded-full px-2 py-0.5 <%= active ? 'bg-gold-100 text-gold-800 dark:bg-gold-900/30 dark:text-gold-400' : 'bg-zinc-100 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-400' %>"><%= count %></span>
+          </button>
+        <% end %>
+      </nav>
+    </div>
+    <%# Search and action row %>
+    <div class="flex items-center justify-between p-4">
+      <div class="w-80">
+        <%= eden_search_input(placeholder: "Search...", size: :sm) %>
+      </div>
+      <div class="flex items-center gap-2">
+        <%= eden_button(variant: :ghost, size: :sm) do %>
+          <%= eden_icon("download", size: :sm) %>
+          <span class="ml-1">Export</span>
+        <% end %>
+        <%= eden_button(variant: :primary, size: :sm) do %>
+          <%= eden_icon("plus", size: :sm) %>
+          <span class="ml-1">Add new</span>
+        <% end %>
+      </div>
+    </div>
+    <%# Placeholder for table body %>
+    <div class="p-8 text-center text-zinc-400 dark:text-zinc-500 text-sm">
+      Table content goes here...
+    </div>
+  </div>
+<% end %>

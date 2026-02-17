@@ -1,0 +1,90 @@
+<%# Invoice component preview %>
+
+<%= styleguide_example(title: "Full Invoice", description: "Complete invoice with from/to addresses, line items, and summary.",
+  source: 'eden_invoice(
+  invoice_number: "INV-2024-001",
+  date: "Feb 10, 2026",
+  due_date: "Mar 10, 2026",
+  status: :paid,
+  from: { name: "Acme Corp", address: "123 Business Ave", city: "San Francisco, CA 94102", email: "billing@acme.com" },
+  to: { name: "Jane Cooper", address: "456 Client St", city: "New York, NY 10001", email: "jane@example.com" },
+  items: [
+    { description: "Web Development", quantity: 40, unit_price: "$150.00", total: "$6,000.00" },
+    { description: "UI Design", quantity: 20, unit_price: "$120.00", total: "$2,400.00" },
+    { description: "Hosting (Annual)", quantity: 1, unit_price: "$299.00", total: "$299.00" }
+  ],
+  subtotal: "$8,699.00",
+  tax: "$695.92",
+  shipping: "$0.00",
+  total: "$9,394.92",
+  notes: "Payment due within 30 days. Thank you for your business!"
+)') do %>
+  <%= eden_invoice(
+    invoice_number: "INV-2024-001",
+    date: "Feb 10, 2026",
+    due_date: "Mar 10, 2026",
+    status: :paid,
+    from: { name: "Acme Corp", address: "123 Business Ave", city: "San Francisco, CA 94102", email: "billing@acme.com" },
+    to: { name: "Jane Cooper", address: "456 Client St", city: "New York, NY 10001", email: "jane@example.com" },
+    items: [
+      { description: "Web Development", quantity: 40, unit_price: "$150.00", total: "$6,000.00" },
+      { description: "UI Design", quantity: 20, unit_price: "$120.00", total: "$2,400.00" },
+      { description: "Hosting (Annual)", quantity: 1, unit_price: "$299.00", total: "$299.00" }
+    ],
+    subtotal: "$8,699.00",
+    tax: "$695.92",
+    shipping: "$0.00",
+    total: "$9,394.92",
+    notes: "Payment due within 30 days. Thank you for your business!"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Pending Invoice", description: "Invoice with pending status and discount applied.",
+  source: 'eden_invoice(
+  invoice_number: "INV-2024-002",
+  date: "Feb 5, 2026",
+  status: :pending,
+  items: [
+    { description: "Consulting Services", quantity: 10, unit_price: "$200.00", total: "$2,000.00" }
+  ],
+  subtotal: "$2,000.00",
+  discount: "$200.00",
+  total: "$1,800.00"
+)') do %>
+  <%= eden_invoice(
+    invoice_number: "INV-2024-002",
+    date: "Feb 5, 2026",
+    status: :pending,
+    items: [
+      { description: "Consulting Services", quantity: 10, unit_price: "$200.00", total: "$2,000.00" }
+    ],
+    subtotal: "$2,000.00",
+    discount: "$200.00",
+    total: "$1,800.00"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Overdue Invoice", description: "Invoice with overdue status.",
+  source: 'eden_invoice(
+  invoice_number: "INV-2023-099",
+  date: "Dec 1, 2025",
+  due_date: "Jan 1, 2026",
+  status: :overdue,
+  items: [
+    { description: "Annual License", quantity: 1, unit_price: "$999.00", total: "$999.00" }
+  ],
+  subtotal: "$999.00",
+  total: "$999.00"
+)') do %>
+  <%= eden_invoice(
+    invoice_number: "INV-2023-099",
+    date: "Dec 1, 2025",
+    due_date: "Jan 1, 2026",
+    status: :overdue,
+    items: [
+      { description: "Annual License", quantity: 1, unit_price: "$999.00", total: "$999.00" }
+    ],
+    subtotal: "$999.00",
+    total: "$999.00"
+  ) %>
+<% end %>

@@ -1,0 +1,52 @@
+<%# Stepper component preview %>
+
+<%= styleguide_example(
+  title: "Default Stepper",
+  description: "A step indicator with completed, active, and upcoming states.",
+  source: 'eden_stepper do
+  eden_stepper_item(label: "Account", status: :complete)
+  eden_stepper_item(label: "Profile", status: :current)
+  eden_stepper_item(label: "Confirm", status: :upcoming)
+end'
+) do %>
+  <%= eden_stepper do %>
+    <%= eden_stepper_item(label: "Account", status: :complete) %>
+    <%= eden_stepper_item(label: "Profile", status: :current) %>
+    <%= eden_stepper_item(label: "Confirm", status: :upcoming) %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Stepper with More Steps",
+  description: "Longer stepper with multiple completed steps.",
+  source: 'eden_stepper do
+  eden_stepper_item(label: "Cart", status: :complete)
+  eden_stepper_item(label: "Shipping", status: :complete)
+  eden_stepper_item(label: "Payment", status: :current)
+  eden_stepper_item(label: "Review", status: :upcoming)
+  eden_stepper_item(label: "Complete", status: :upcoming)
+end'
+) do %>
+  <%= eden_stepper do %>
+    <%= eden_stepper_item(label: "Cart", status: :complete) %>
+    <%= eden_stepper_item(label: "Shipping", status: :complete) %>
+    <%= eden_stepper_item(label: "Payment", status: :current) %>
+    <%= eden_stepper_item(label: "Review", status: :upcoming) %>
+    <%= eden_stepper_item(label: "Complete", status: :upcoming) %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "All Steps Complete",
+  source: 'eden_stepper do
+  eden_stepper_item(label: "Sign up", status: :complete)
+  eden_stepper_item(label: "Verify", status: :complete)
+  eden_stepper_item(label: "Done", status: :complete)
+end'
+) do %>
+  <%= eden_stepper do %>
+    <%= eden_stepper_item(label: "Sign up", status: :complete) %>
+    <%= eden_stepper_item(label: "Verify", status: :complete) %>
+    <%= eden_stepper_item(label: "Done", status: :complete) %>
+  <% end %>
+<% end %>

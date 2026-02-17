@@ -1,0 +1,59 @@
+<%= styleguide_example(
+  title: "Default Speed Dial",
+  description: "Hover over the button to reveal actions",
+  source: 'eden_speed_dial(position: :bottom_right) do
+  # Speed dial renders floating action items
+end'
+) do %>
+  <div class="relative w-full" style="min-height: 200px;">
+    <div class="absolute bottom-6 end-6 group" data-controller="eden-speed-dial">
+      <div data-eden-speed-dial-target="menu" class="flex flex-col items-center mb-4 space-y-2 hidden">
+        <div class="flex items-center">
+          <span class="me-2 px-3 py-1 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm dark:bg-gray-700 whitespace-nowrap">Share</span>
+          <button type="button" class="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 shadow-sm dark:text-gray-400 dark:hover:text-white dark:bg-gray-700 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
+            <%= eden_icon("share", size: :md) %>
+          </button>
+        </div>
+        <div class="flex items-center">
+          <span class="me-2 px-3 py-1 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm dark:bg-gray-700 whitespace-nowrap">Print</span>
+          <button type="button" class="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 shadow-sm dark:text-gray-400 dark:hover:text-white dark:bg-gray-700 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
+            <%= eden_icon("document", size: :md) %>
+          </button>
+        </div>
+        <div class="flex items-center">
+          <span class="me-2 px-3 py-1 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm dark:bg-gray-700 whitespace-nowrap">Download</span>
+          <button type="button" class="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 shadow-sm dark:text-gray-400 dark:hover:text-white dark:bg-gray-700 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
+            <%= eden_icon("download", size: :md) %>
+          </button>
+        </div>
+      </div>
+      <button type="button" data-action="eden-speed-dial#toggle" class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <%= eden_icon("plus", size: :md) %>
+      </button>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Top-Left Position",
+  description: "Speed dial positioned at top-left of container",
+  source: 'eden_speed_dial(position: :top_left) do
+  # Positioned at top-left
+end'
+) do %>
+  <div class="relative w-full" style="min-height: 200px;">
+    <div class="absolute top-6 start-6 group" data-controller="eden-speed-dial">
+      <button type="button" data-action="eden-speed-dial#toggle" class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <%= eden_icon("plus", size: :md) %>
+      </button>
+      <div data-eden-speed-dial-target="menu" class="flex flex-col items-center mt-4 space-y-2 hidden">
+        <button type="button" class="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 shadow-sm dark:text-gray-400 dark:hover:text-white dark:bg-gray-700 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
+          <%= eden_icon("share", size: :md) %>
+        </button>
+        <button type="button" class="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 shadow-sm dark:text-gray-400 dark:hover:text-white dark:bg-gray-700 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
+          <%= eden_icon("pencil", size: :md) %>
+        </button>
+      </div>
+    </div>
+  </div>
+<% end %>

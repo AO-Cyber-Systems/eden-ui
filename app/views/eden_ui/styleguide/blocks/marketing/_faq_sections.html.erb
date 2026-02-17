@@ -1,0 +1,85 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_faq_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default FAQ",
+  description: "FAQ section using accordion component for expandable answers",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+    <h2>...</h2>
+    eden_accordion(flush: true) do
+      eden_accordion_item(title: "Question?") { "Answer..." }
+    end
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <h2 class="mb-8 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">Frequently asked questions</h2>
+      <div class="grid pt-8 text-left border-t border-zinc-200 dark:border-zinc-700 md:gap-16 md:grid-cols-2">
+        <div>
+          <%= eden_accordion(flush: true) do %>
+            <%= eden_accordion_item(title: "What do you mean by 'Figma assets'?", open: true) do %>
+              <p class="text-zinc-500 dark:text-zinc-400">You will have access to download the full Figma project. All of the assets used in Eden are included in our Figma file and are available for you to use in your own projects.</p>
+            <% end %>
+            <%= eden_accordion_item(title: "What does 'lifetime access' exactly mean?") do %>
+              <p class="text-zinc-500 dark:text-zinc-400">Once you have purchased a plan, you will have lifetime access to the resources included in that plan. You will also receive all future updates for free.</p>
+            <% end %>
+            <%= eden_accordion_item(title: "How does support work?") do %>
+              <p class="text-zinc-500 dark:text-zinc-400">We provide support through our community Discord server, email support, and a comprehensive documentation site with guides and tutorials.</p>
+            <% end %>
+          <% end %>
+        </div>
+        <div>
+          <%= eden_accordion(flush: true) do %>
+            <%= eden_accordion_item(title: "What does 'free updates' include?") do %>
+              <p class="text-zinc-500 dark:text-zinc-400">All future updates and new components are included for free. We continuously add new features and improvements to the platform.</p>
+            <% end %>
+            <%= eden_accordion_item(title: "What is your refund policy?") do %>
+              <p class="text-zinc-500 dark:text-zinc-400">If you are not satisfied within the first 30 days, you can request a full refund. No questions asked.</p>
+            <% end %>
+            <%= eden_accordion_item(title: "Can I use Eden in open-source projects?") do %>
+              <p class="text-zinc-500 dark:text-zinc-400">Generally, it is accepted to use Eden in open-source projects, as long as it is not a competing product. Please check the license terms for more details.</p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Centered FAQ",
+  description: "Centered FAQ section with single-column accordion",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+    <div class="mx-auto max-w-screen-md">
+      <h2 class="text-center">...</h2>
+      eden_accordion do
+        eden_accordion_item(title: "...") { "..." }
+      end
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-md">
+        <h2 class="mb-8 text-4xl tracking-tight font-extrabold text-center text-zinc-900 dark:text-white">Frequently asked questions</h2>
+        <%= eden_accordion do %>
+          <%= eden_accordion_item(title: "Can I use Eden in production?", open: true) do %>
+            <p class="text-zinc-500 dark:text-zinc-400">Yes! Eden is production-ready and used by thousands of companies worldwide. All components are thoroughly tested and optimized for performance.</p>
+          <% end %>
+          <%= eden_accordion_item(title: "Is there a free trial available?") do %>
+            <p class="text-zinc-500 dark:text-zinc-400">Yes, you can try Eden for 30 days completely free. No credit card required. After the trial, you can choose the plan that best fits your needs.</p>
+          <% end %>
+          <%= eden_accordion_item(title: "How do I get started?") do %>
+            <p class="text-zinc-500 dark:text-zinc-400">Simply sign up for an account, choose your plan, and start building. Our comprehensive documentation and tutorials will guide you through every step.</p>
+          <% end %>
+          <%= eden_accordion_item(title: "Do you offer team discounts?") do %>
+            <p class="text-zinc-500 dark:text-zinc-400">Yes, we offer volume discounts for teams of 5 or more. Contact our sales team for a custom quote tailored to your organization.</p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

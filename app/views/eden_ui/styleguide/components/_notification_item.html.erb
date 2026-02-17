@@ -1,0 +1,65 @@
+<%# Notification Item component preview %>
+
+<%= styleguide_example(title: "Default", description: "Notification items with read and unread states.",
+  source: 'eden_notification_item(
+  title: "New message from Jese Leos",
+  body: "Hey, what is up? All set for the showcase.",
+  time: "a few moments ago",
+  variant: :info
+)') do %>
+  <div class="max-w-lg border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden divide-y divide-gray-200 dark:divide-gray-700">
+    <%= eden_notification_item(
+      title: "New message from Jese Leos",
+      body: "Hey, what is up? All set for the showcase.",
+      time: "a few moments ago",
+      variant: :info
+    ) %>
+    <%= eden_notification_item(
+      title: "Joseph McFall started following you",
+      body: "And 5 others started following you.",
+      time: "32 minutes ago",
+      read: true
+    ) %>
+    <%= eden_notification_item(
+      title: "Bonnie Green commented on your post",
+      body: "Great work on the new design!",
+      time: "1 hour ago",
+      variant: :success,
+      read: true
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Variants", description: "Notification items in different color variants.",
+  source: 'eden_notification_item(title: "Info notification", variant: :info, time: "Now")
+eden_notification_item(title: "Success notification", variant: :success, time: "1m ago")
+eden_notification_item(title: "Warning notification", variant: :warning, time: "5m ago")
+eden_notification_item(title: "Danger notification", variant: :danger, time: "10m ago")') do %>
+  <div class="max-w-lg border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden divide-y divide-gray-200 dark:divide-gray-700">
+    <%= eden_notification_item(title: "New feature available", body: "Check out the latest updates to your dashboard.", variant: :info, time: "Now") %>
+    <%= eden_notification_item(title: "Deployment successful", body: "Version 2.4.1 has been deployed to production.", variant: :success, time: "1m ago", read: true) %>
+    <%= eden_notification_item(title: "Storage usage at 85%", body: "Consider upgrading your plan or removing unused files.", variant: :warning, time: "5m ago") %>
+    <%= eden_notification_item(title: "Payment failed", body: "Your last payment attempt was declined.", variant: :danger, time: "10m ago") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Linked Notification", description: "Notification item as a clickable link.",
+  source: 'eden_notification_item(
+  title: "Pull request merged",
+  body: "PR #487 was merged into main.",
+  time: "2 hours ago",
+  variant: :success,
+  href: "#",
+  read: true
+)') do %>
+  <div class="max-w-lg border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+    <%= eden_notification_item(
+      title: "Pull request merged",
+      body: "PR #487: Add user profile component was merged into main by alex-r.",
+      time: "2 hours ago",
+      variant: :success,
+      href: "#",
+      read: true
+    ) %>
+  </div>
+<% end %>

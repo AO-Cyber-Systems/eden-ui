@@ -1,0 +1,128 @@
+<%= styleguide_block_example(
+  title: "Create Product Drawer",
+  description: "Slide-out drawer with form for creating a new product",
+  source: 'eden_drawer(id: "create-drawer", position: :right) do
+  # Add New Product
+  eden_form_group(label: "Name") do
+    eden_input(placeholder: "Product name")
+  end
+  eden_button(variant: :primary) { "Add product" }
+end'
+) do %>
+  <div class="relative bg-zinc-100 dark:bg-zinc-900 min-h-[500px] flex">
+    <%# Left area placeholder %>
+    <div class="flex-1 p-8 flex items-center justify-center">
+      <span class="text-zinc-400 dark:text-zinc-500 text-sm">Page content behind drawer</span>
+    </div>
+
+    <%# Drawer panel (shown inline as static example) %>
+    <div class="w-80 bg-white dark:bg-zinc-800 border-l border-zinc-200 dark:border-zinc-700 p-5 overflow-y-auto">
+      <%# Drawer header %>
+      <div class="flex items-center justify-between mb-6">
+        <h5 class="text-lg font-semibold text-zinc-900 dark:text-white">Add New Product</h5>
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+      <%# Form %>
+      <form action="#" class="space-y-4">
+        <%= eden_form_group(label: "Name", required: true) do %>
+          <%= eden_input(placeholder: "Type product name") %>
+        <% end %>
+        <%= eden_form_group(label: "Brand") do %>
+          <%= eden_input(placeholder: "Product brand") %>
+        <% end %>
+        <%= eden_form_group(label: "Price") do %>
+          <%= eden_input(type: :number, placeholder: "$2999") %>
+        <% end %>
+        <%= eden_form_group(label: "Category") do %>
+          <%= eden_select(options: ["Electronics", "TV/Monitors", "PC", "Phones"], placeholder: "Select category") %>
+        <% end %>
+        <%= eden_form_group(label: "Description") do %>
+          <%= eden_textarea(rows: 4, placeholder: "Write product description") %>
+        <% end %>
+
+        <%# Upload area %>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-zinc-900 dark:text-white">Product Image</label>
+          <div class="flex items-center justify-center w-full">
+            <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-zinc-300 border-dashed rounded-lg cursor-pointer bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-700 dark:border-zinc-600 dark:hover:bg-zinc-600">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <%= eden_icon("upload", size: :md) %>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1"><span class="font-semibold">Click to upload</span></p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 pt-2">
+          <%= eden_button(variant: :primary) do %>
+            <%= eden_icon("plus", size: :sm) %>
+            <span class="ml-1">Add product</span>
+          <% end %>
+          <%= eden_button(variant: :ghost) { "Cancel" } %>
+        </div>
+      </form>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Create Event Drawer",
+  description: "Bottom-style drawer for quick event creation with date/time fields",
+  source: 'eden_drawer(id: "event-drawer") do
+  # New Event
+  eden_form_group(label: "Event Name") do
+    eden_input(placeholder: "Event name")
+  end
+  eden_button(variant: :primary) { "Create event" }
+end'
+) do %>
+  <div class="relative bg-zinc-100 dark:bg-zinc-900">
+    <div class="p-4 flex items-center justify-center min-h-[100px]">
+      <span class="text-zinc-400 dark:text-zinc-500 text-sm">Page content above</span>
+    </div>
+    <%# Bottom drawer panel %>
+    <div class="bg-white dark:bg-zinc-800 border-t border-zinc-200 dark:border-zinc-700 p-5">
+      <div class="max-w-2xl mx-auto">
+        <div class="flex items-center justify-between mb-4">
+          <h5 class="text-lg font-semibold text-zinc-900 dark:text-white">Create New Event</h5>
+          <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+            <%= eden_icon("x-mark", size: :sm) %>
+          </button>
+        </div>
+        <form action="#" class="grid gap-4 sm:grid-cols-3">
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Event Name", required: true) do %>
+              <%= eden_input(placeholder: "Enter event name") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Category") do %>
+              <%= eden_select(options: ["Meeting", "Workshop", "Webinar", "Conference"], placeholder: "Select type") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Date") do %>
+              <%= eden_input(type: :date) %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Start Time") do %>
+              <%= eden_input(type: :time) %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "End Time") do %>
+              <%= eden_input(type: :time) %>
+            <% end %>
+          </div>
+          <div class="sm:col-span-3 flex items-center gap-3">
+            <%= eden_button(variant: :primary) { "Create event" } %>
+            <%= eden_button(variant: :ghost) { "Cancel" } %>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,71 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_newsletter_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Newsletter",
+  description: "Centered newsletter signup with email input and subscribe button",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="mx-auto max-w-screen-md sm:text-center">
+      <h2>...</h2>
+      <p>...</p>
+      <form class="flex items-center gap-3">
+        eden_input(type: :email, placeholder: "Enter your email")
+        eden_button(variant: :primary) { "Subscribe" }
+      </form>
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-md sm:text-center">
+        <h2 class="mb-4 text-3xl tracking-tight font-extrabold text-zinc-900 sm:text-4xl dark:text-white">Sign up for our newsletter</h2>
+        <p class="mx-auto mb-8 max-w-2xl font-light text-zinc-500 md:mb-12 sm:text-xl dark:text-zinc-400">Stay up to date with the roadmap progress, announcements and exclusive discounts feel free to sign up with your email.</p>
+        <form action="#" class="mx-auto max-w-screen-sm">
+          <div class="flex items-center gap-3">
+            <div class="flex-1">
+              <%= eden_input(type: :email, placeholder: "Enter your email", id: "newsletter-email", name: "email") %>
+            </div>
+            <%= eden_button(variant: :primary, type: :submit) { "Subscribe" } %>
+          </div>
+          <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-300">We care about the protection of your data. <a href="#" class="font-medium text-gold-600 dark:text-gold-500 hover:underline">Read our Privacy Policy</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Newsletter with Background",
+  description: "Full-width newsletter banner with dark background",
+  source: '<section class="bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="mx-auto max-w-screen-md sm:text-center">
+      <h2 class="text-white">...</h2>
+      <p class="text-zinc-400">...</p>
+      <form class="flex items-center gap-3">
+        eden_input(type: :email, placeholder: "...")
+        eden_button(variant: :primary) { "Subscribe" }
+      </form>
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-zinc-800 dark:bg-zinc-800">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-md sm:text-center">
+        <h2 class="mb-4 text-3xl tracking-tight font-extrabold text-white sm:text-4xl">Sign up for our newsletter</h2>
+        <p class="mx-auto mb-8 max-w-2xl font-light text-zinc-400 md:mb-12 sm:text-xl">Stay up to date with the roadmap progress, announcements and exclusive discounts.</p>
+        <form action="#" class="mx-auto max-w-screen-sm">
+          <div class="flex items-center gap-3">
+            <div class="flex-1">
+              <%= eden_input(type: :email, placeholder: "Enter your email", id: "newsletter2-email", name: "email") %>
+            </div>
+            <%= eden_button(variant: :primary, type: :submit) { "Subscribe" } %>
+          </div>
+          <p class="mt-3 text-sm text-zinc-400">We care about the protection of your data. <a href="#" class="font-medium text-gold-500 hover:underline">Read our Privacy Policy</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+<% end %>

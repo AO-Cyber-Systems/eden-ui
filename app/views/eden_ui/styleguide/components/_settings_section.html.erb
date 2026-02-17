@@ -1,0 +1,64 @@
+<%# Settings Section component preview %>
+
+<%= styleguide_example(title: "Default", description: "Settings section with title, description, and form content.",
+  source: 'eden_settings_section(title: "General", description: "Update your general account settings.") do
+  eden_form_group(label: "Full name", required: true) do
+    eden_input(placeholder: "Bonnie Green", value: "Bonnie Green")
+  end
+end') do %>
+  <div class="max-w-2xl">
+    <%= eden_settings_section(title: "General", description: "Update your general account settings.") do %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <%= eden_form_group(label: "Full name", required: true) do %>
+          <%= eden_input(placeholder: "Bonnie Green", value: "Bonnie Green") %>
+        <% end %>
+        <%= eden_form_group(label: "Email", required: true) do %>
+          <%= eden_input(type: :email, placeholder: "bonnie@company.com", value: "bonnie@company.com") %>
+        <% end %>
+      </div>
+      <div class="mt-4">
+        <%= eden_button(variant: :primary, size: :sm) { "Save changes" } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Multiple Sections", description: "Several settings sections stacked together.",
+  source: 'eden_settings_section(title: "Notifications", description: "Choose what notifications you receive.") do
+  eden_toggle(label: "Email notifications", checked: true)
+  eden_toggle(label: "Push notifications")
+end') do %>
+  <div class="max-w-2xl space-y-4">
+    <%= eden_settings_section(title: "Notifications", description: "Choose what notifications you receive.") do %>
+      <div class="space-y-4">
+        <%= eden_toggle(label: "Email notifications", checked: true) %>
+        <%= eden_toggle(label: "Push notifications") %>
+        <%= eden_toggle(label: "SMS notifications") %>
+      </div>
+    <% end %>
+    <%= eden_settings_section(title: "Privacy", description: "Manage your privacy preferences.") do %>
+      <div class="space-y-4">
+        <%= eden_toggle(label: "Public profile", checked: true) %>
+        <%= eden_toggle(label: "Show email on profile") %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Collapsible", description: "Collapsible settings section that can be expanded.",
+  source: 'eden_settings_section(title: "Advanced Settings", description: "These settings are for advanced users.", collapsible: true) do
+  eden_form_group(label: "API Key") { eden_input(placeholder: "sk-...") }
+end') do %>
+  <div class="max-w-2xl">
+    <%= eden_settings_section(title: "Advanced Settings", description: "These settings are for advanced users.", collapsible: true) do %>
+      <div class="space-y-4">
+        <%= eden_form_group(label: "API Key") do %>
+          <%= eden_input(placeholder: "sk-...") %>
+        <% end %>
+        <%= eden_form_group(label: "Webhook URL") do %>
+          <%= eden_input(type: :url, placeholder: "https://example.com/webhook") %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

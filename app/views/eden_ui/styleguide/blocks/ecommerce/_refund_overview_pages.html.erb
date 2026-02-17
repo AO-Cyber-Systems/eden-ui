@@ -1,0 +1,86 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_refund_overview_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Refund History",
+  description: "Refund overview page showing a list of all return/refund requests with status",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    <h2>Returns & Refunds</h2>
+    <!-- refund list -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">Returns & Refunds</h2>
+        <%= eden_button(variant: :primary, size: :sm, href: "#") do %>
+          <%= eden_icon("plus", size: :xs) %>
+          New Return Request
+        <% end %>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex gap-2 mb-6 overflow-x-auto">
+        <% ["All", "Pending", "Processing", "Completed", "Rejected"].each_with_index do |tab, i| %>
+          <button class="px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap <%= i == 0 ? 'bg-gold-100 text-gold-700 dark:bg-gold-900/30 dark:text-gold-400' : 'text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700' %>">
+            <%= tab %>
+          </button>
+        <% end %>
+      </div>
+
+      <!-- Returns List -->
+      <div class="space-y-4">
+        <% [
+          { id: "#RET-3421", order: "#ORD-7842", item: "Apple iMac 24\"", date: "Feb 15, 2026", amount: "$1,199.00", status: "Processing", variant: :warning, reason: "Damaged or defective" },
+          { id: "#RET-3102", order: "#ORD-7102", item: "Nike Air Max 90", date: "Jan 18, 2026", amount: "$105.00", status: "Completed", variant: :success, reason: "Wrong size" },
+          { id: "#RET-2890", order: "#ORD-6890", item: "Wireless Mouse", date: "Jan 5, 2026", amount: "$49.99", status: "Completed", variant: :success, reason: "Changed my mind" },
+          { id: "#RET-2654", order: "#ORD-6201", item: "USB-C Hub", date: "Dec 15, 2025", amount: "$35.00", status: "Rejected", variant: :danger, reason: "Outside return window" }
+        ].each do |refund| %>
+          <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <%= eden_icon("photo", size: :sm) %>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-zinc-900 dark:text-white"><%= refund[:item] %></p>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400">Return <%= refund[:id] %> &middot; Order <%= refund[:order] %></p>
+                  <p class="text-xs text-zinc-400 dark:text-zinc-500 mt-0.5"><%= refund[:reason] %> &middot; <%= refund[:date] %></p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="text-sm font-bold text-zinc-900 dark:text-white"><%= refund[:amount] %></span>
+                <%= eden_badge(text: refund[:status], variant: refund[:variant], size: :sm) %>
+                <%= eden_button(variant: :ghost, size: :xs, href: "#") { "View Details" } %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Summary Card -->
+      <div class="mt-6 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-6">
+        <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-3">Refund Summary</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div>
+            <p class="text-2xl font-bold text-zinc-900 dark:text-white">4</p>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400">Total Returns</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-green-600 dark:text-green-400">$1,353.99</p>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400">Refunded</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-gold-600 dark:text-gold-400">1</p>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400">In Progress</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-red-600 dark:text-red-400">1</p>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400">Rejected</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

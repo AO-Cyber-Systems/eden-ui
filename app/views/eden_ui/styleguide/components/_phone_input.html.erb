@@ -1,0 +1,19 @@
+<%# Phone Input component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_phone_input(placeholder: "123-456-7890")') do %>
+  <%= eden_phone_input(placeholder: "123-456-7890") %>
+<% end %>
+
+<%= styleguide_example(title: "Different Country Codes", source: 'eden_phone_input(country_code: "+1", placeholder: "US number")
+eden_phone_input(country_code: "+44", placeholder: "UK number")
+eden_phone_input(country_code: "+91", placeholder: "India number")
+eden_phone_input(country_code: "+81", placeholder: "Japan number")') do %>
+  <%= eden_phone_input(country_code: "+1", placeholder: "US number") %>
+  <%= eden_phone_input(country_code: "+44", placeholder: "UK number") %>
+  <%= eden_phone_input(country_code: "+91", placeholder: "India number") %>
+  <%= eden_phone_input(country_code: "+81", placeholder: "Japan number") %>
+<% end %>
+
+<%= styleguide_example(title: "With Value", source: 'eden_phone_input(country_code: "+1", value: "555-123-4567")') do %>
+  <%= eden_phone_input(country_code: "+1", value: "555-123-4567") %>
+<% end %>

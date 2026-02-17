@@ -1,0 +1,29 @@
+<%# Input component preview %>
+
+<%= styleguide_example(title: "Input Types", source: 'eden_input(type: :text, placeholder: "Enter your name")
+eden_input(type: :email, placeholder: "you@example.com")
+eden_input(type: :password, placeholder: "Password")') do %>
+  <%= eden_input(type: :text, placeholder: "Enter your name") %>
+  <%= eden_input(type: :email, placeholder: "you@example.com") %>
+  <%= eden_input(type: :password, placeholder: "Password") %>
+<% end %>
+
+<%= styleguide_example(title: "Sizes", source: 'eden_input(size: :sm, placeholder: "Small input")
+eden_input(size: :md, placeholder: "Medium input")
+eden_input(size: :lg, placeholder: "Large input")') do %>
+  <%= eden_input(size: :sm, placeholder: "Small input") %>
+  <%= eden_input(size: :md, placeholder: "Medium input") %>
+  <%= eden_input(size: :lg, placeholder: "Large input") %>
+<% end %>
+
+<%= styleguide_example(title: "With Value", source: 'eden_input(value: "John Doe")
+eden_input(type: :email, value: "john@example.com")') do %>
+  <%= eden_input(value: "John Doe") %>
+  <%= eden_input(type: :email, value: "john@example.com") %>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", source: 'eden_input(disabled: true, placeholder: "Disabled input")
+eden_input(disabled: true, value: "Disabled with value")') do %>
+  <%= eden_input(disabled: true, placeholder: "Disabled input") %>
+  <%= eden_input(disabled: true, value: "Disabled with value") %>
+<% end %>

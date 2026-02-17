@@ -1,0 +1,21 @@
+<%
+  href ||= "#"
+  label ||= nil
+  icon ||= nil
+  active ||= false
+  html_options ||= {}
+  content ||= nil
+
+  display_text = label || content
+  active_class = active ? "text-blue-600 dark:text-blue-500" : "text-gray-500 dark:text-gray-400"
+  classes = ["inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group #{active_class}", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<a href="<%= href %>" class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <% if icon %>
+    <svg class="w-5 h-5 mb-1 <%= active_class %> group-hover:text-blue-600 dark:group-hover:text-blue-500" fill="currentColor" viewBox="0 0 20 20"><%= icon.html_safe if icon.is_a?(String) && icon.include?("<") %></svg>
+  <% end %>
+  <% if display_text %>
+    <span class="text-sm <%= active_class %> group-hover:text-blue-600 dark:group-hover:text-blue-500"><%= display_text %></span>
+  <% end %>
+</a>

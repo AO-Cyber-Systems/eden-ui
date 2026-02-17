@@ -1,0 +1,56 @@
+<%# Event Card component preview %>
+
+<%= styleguide_example(title: "Default Event Card", description: "Event card with time, title, and location.",
+  source: 'eden_event_card(
+  title: "Team Sprint Planning",
+  start_time: "10:00 AM",
+  end_time: "11:30 AM",
+  location: "Conference Room A",
+  color: :primary
+)') do %>
+  <div class="max-w-md">
+    <%= eden_event_card(
+      title: "Team Sprint Planning",
+      start_time: "10:00 AM",
+      end_time: "11:30 AM",
+      location: "Conference Room A",
+      color: :primary
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Color Variants", description: "Event cards with different color accents for categorization.",
+  source: 'eden_event_card(title: "Design Review", color: :primary, start_time: "9:00 AM")
+eden_event_card(title: "Release v2.0", color: :success, start_time: "2:00 PM")
+eden_event_card(title: "Budget Meeting", color: :warning, start_time: "3:30 PM")
+eden_event_card(title: "Incident Postmortem", color: :danger, start_time: "4:00 PM")
+eden_event_card(title: "Team Social", color: :purple, start_time: "5:00 PM")') do %>
+  <div class="max-w-md space-y-3">
+    <%= eden_event_card(title: "Design Review", color: :primary, start_time: "9:00 AM", end_time: "10:00 AM", location: "Zoom") %>
+    <%= eden_event_card(title: "Release v2.0", color: :success, start_time: "2:00 PM", description: "Deploy to production and monitor rollout.") %>
+    <%= eden_event_card(title: "Budget Meeting", color: :warning, start_time: "3:30 PM", end_time: "4:00 PM", location: "Finance Office") %>
+    <%= eden_event_card(title: "Incident Postmortem", color: :danger, start_time: "4:00 PM", end_time: "5:00 PM") %>
+    <%= eden_event_card(title: "Team Social", color: :purple, start_time: "5:00 PM", location: "Rooftop Lounge", description: "End of sprint celebration.") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Description", description: "Event card with a longer description.",
+  source: 'eden_event_card(
+  title: "Engineering All-Hands",
+  start_time: "1:00 PM",
+  end_time: "2:00 PM",
+  location: "Main Auditorium",
+  color: :primary,
+  description: "Quarterly update on engineering roadmap, team achievements, and upcoming initiatives."
+)') do %>
+  <div class="max-w-md">
+    <%= eden_event_card(
+      title: "Engineering All-Hands",
+      start_time: "1:00 PM",
+      end_time: "2:00 PM",
+      location: "Main Auditorium",
+      color: :primary,
+      description: "Quarterly update on engineering roadmap, team achievements, and upcoming initiatives. All engineers are expected to attend."
+    ) %>
+  </div>
+<% end %>

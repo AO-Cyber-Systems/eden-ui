@@ -1,0 +1,26 @@
+<%# Inbox Toolbar component preview %>
+
+<%= styleguide_example(title: "Default", description: "Inbox toolbar with action buttons and no selection.",
+  source: 'eden_inbox_toolbar') do %>
+  <%= eden_inbox_toolbar %>
+<% end %>
+
+<%= styleguide_example(title: "With Selection Count", description: "Toolbar showing how many items are selected.",
+  source: 'eden_inbox_toolbar(selected_count: 3)') do %>
+  <%= eden_inbox_toolbar(selected_count: 3) %>
+<% end %>
+
+<%= styleguide_example(title: "With Pagination", description: "Toolbar with pagination controls in block content.",
+  source: 'eden_inbox_toolbar(selected_count: 0) do
+  content_tag(:span, "1-25 of 2,290", class: "text-sm text-gray-500")
+end') do %>
+  <%= eden_inbox_toolbar(selected_count: 0) do %>
+    <span class="text-sm text-gray-500 dark:text-gray-400 mr-2">1-25 of 2,290</span>
+    <button type="button" class="inline-flex justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/></svg>
+    </button>
+    <button type="button" class="inline-flex justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
+    </button>
+  <% end %>
+<% end %>

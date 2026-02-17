@@ -1,0 +1,71 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_500_server_error_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default 500 Error",
+  description: "Centered 500 internal server error page with retry button",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="mx-auto max-w-screen-sm text-center">
+      <h1 class="text-7xl font-extrabold text-gold-600">500</h1>
+      <p class="text-3xl font-bold">Internal Server Error</p>
+      <p>We are already working to solve the problem.</p>
+      eden_button(variant: :primary) { "Back to Homepage" }
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-sm text-center">
+        <h1 class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-gold-600 dark:text-gold-500">500</h1>
+        <p class="mb-4 text-3xl tracking-tight font-bold text-zinc-900 md:text-4xl dark:text-white">Internal Server Error</p>
+        <p class="mb-4 text-lg font-light text-zinc-500 dark:text-zinc-400">We are already working to solve the problem. Please try again later.</p>
+        <div class="flex justify-center gap-3">
+          <%= eden_button(variant: :primary, size: :lg, href: "#") { "Back to Homepage" } %>
+          <%= eden_button(variant: :ghost, size: :lg, href: "#") { "Try again" } %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "500 Error with Details",
+  description: "Server error page with status information and support contact",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="mx-auto max-w-screen-md text-center">
+      eden_icon("exclamation-circle", size: :xl)
+      <h1>Something went wrong</h1>
+      <p>Our servers encountered an unexpected error.</p>
+      <div class="bg-zinc-50 rounded-lg p-4">
+        <p>Error ID: ERR-12345</p>
+      </div>
+      eden_button(variant: :primary) { "Go home" }
+      eden_button(variant: :ghost) { "Contact support" }
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-md text-center">
+        <div class="mx-auto mb-6 text-zinc-400 dark:text-zinc-500">
+          <svg class="mx-auto w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"></path>
+          </svg>
+        </div>
+        <h1 class="mb-4 text-3xl tracking-tight font-bold text-zinc-900 md:text-4xl dark:text-white">Something went wrong</h1>
+        <p class="mb-6 text-lg font-light text-zinc-500 dark:text-zinc-400">Our servers encountered an unexpected error. Our team has been notified and is working on a fix.</p>
+        <div class="mb-8 p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg inline-block">
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">Error ID: <code class="font-mono text-zinc-700 dark:text-zinc-300">ERR-2026-02-AB3F</code></p>
+          <p class="text-xs text-zinc-400 dark:text-zinc-500 mt-1">Please include this ID when contacting support</p>
+        </div>
+        <div class="flex justify-center gap-3">
+          <%= eden_button(variant: :primary, href: "#") { "Go to homepage" } %>
+          <%= eden_button(variant: :ghost, href: "#") { "Contact support" } %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

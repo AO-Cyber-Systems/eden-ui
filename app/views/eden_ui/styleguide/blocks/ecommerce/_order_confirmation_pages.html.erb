@@ -1,0 +1,129 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_order_confirmation_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Order Confirmation",
+  description: "Order confirmation page with success message, order details, and next steps",
+  source: '<section class="py-16 bg-white dark:bg-zinc-900 text-center">
+  eden_icon("check", size: :xl)
+  <h1>Order Confirmed!</h1>
+  <p>Order #12345</p>
+  <!-- order details -->
+  eden_button(variant: :primary) { "Track Order" }
+  eden_button(variant: :ghost) { "Continue Shopping" }
+</section>'
+) do %>
+  <section class="py-16 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-2xl mx-auto px-4 text-center">
+      <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400">
+        <%= eden_icon("check", size: :lg) %>
+      </div>
+      <h1 class="text-2xl font-bold text-zinc-900 dark:text-white mb-2">Order Confirmed!</h1>
+      <p class="text-zinc-500 dark:text-zinc-400 mb-1">Thank you for your purchase.</p>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400">Order <span class="font-semibold text-zinc-900 dark:text-white">#ORD-20260213-7842</span></p>
+
+      <div class="mt-8 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-6 text-left">
+        <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-4">Order Details</h3>
+        <div class="space-y-3">
+          <% [
+            { name: "Apple iMac 24\"", qty: 1, price: "$1,199.00" },
+            { name: "AirPods Pro (2nd gen)", qty: 2, price: "$498.00" }
+          ].each do |item| %>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-zinc-200 dark:bg-zinc-700 rounded flex items-center justify-center">
+                  <%= eden_icon("photo", size: :xs) %>
+                </div>
+                <div>
+                  <p class="text-sm text-zinc-900 dark:text-white"><%= item[:name] %></p>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400">Qty: <%= item[:qty] %></p>
+                </div>
+              </div>
+              <span class="text-sm font-medium text-zinc-900 dark:text-white"><%= item[:price] %></span>
+            </div>
+          <% end %>
+        </div>
+        <hr class="my-4 border-zinc-200 dark:border-zinc-700" />
+        <div class="space-y-1">
+          <div class="flex justify-between text-sm">
+            <span class="text-zinc-500 dark:text-zinc-400">Subtotal</span>
+            <span class="text-zinc-900 dark:text-white">$1,697.00</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-zinc-500 dark:text-zinc-400">Shipping</span>
+            <span class="text-green-600 dark:text-green-400">Free</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-zinc-500 dark:text-zinc-400">Tax</span>
+            <span class="text-zinc-900 dark:text-white">$139.97</span>
+          </div>
+          <div class="flex justify-between text-sm font-semibold pt-2">
+            <span class="text-zinc-900 dark:text-white">Total</span>
+            <span class="text-zinc-900 dark:text-white">$1,836.97</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+        <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4">
+          <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase mb-1">Shipping To</p>
+          <p class="text-sm text-zinc-900 dark:text-white">John Doe</p>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">123 Main Street<br/>San Francisco, CA 94102</p>
+        </div>
+        <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4">
+          <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase mb-1">Estimated Delivery</p>
+          <p class="text-sm text-zinc-900 dark:text-white">Feb 17 - Feb 20, 2026</p>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">Standard Shipping</p>
+        </div>
+      </div>
+
+      <p class="mt-6 text-sm text-zinc-500 dark:text-zinc-400">A confirmation email has been sent to john@example.com</p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+        <%= eden_button(variant: :primary, href: "#") { "Track Order" } %>
+        <%= eden_button(variant: :ghost, href: "#") { "Continue Shopping" } %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Minimal Order Confirmation",
+  description: "Compact order confirmation with order number and key details",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  eden_alert(variant: :success) { "Order placed successfully!" }
+  <!-- order number + estimated delivery -->
+  eden_button(variant: :primary) { "View Order" }
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-lg mx-auto px-4">
+      <%= eden_alert(variant: :success, icon: true) do %>
+        <span class="font-medium">Order placed successfully!</span> Your order #ORD-20260213-7842 has been confirmed.
+      <% end %>
+
+      <div class="mt-6 space-y-4">
+        <div class="flex items-center justify-between py-3 border-b border-zinc-200 dark:border-zinc-700">
+          <span class="text-sm text-zinc-500 dark:text-zinc-400">Order Number</span>
+          <span class="text-sm font-semibold text-zinc-900 dark:text-white">#ORD-20260213-7842</span>
+        </div>
+        <div class="flex items-center justify-between py-3 border-b border-zinc-200 dark:border-zinc-700">
+          <span class="text-sm text-zinc-500 dark:text-zinc-400">Payment</span>
+          <span class="text-sm text-zinc-900 dark:text-white">Visa ending in 4242</span>
+        </div>
+        <div class="flex items-center justify-between py-3 border-b border-zinc-200 dark:border-zinc-700">
+          <span class="text-sm text-zinc-500 dark:text-zinc-400">Total</span>
+          <span class="text-sm font-bold text-zinc-900 dark:text-white">$1,836.97</span>
+        </div>
+        <div class="flex items-center justify-between py-3">
+          <span class="text-sm text-zinc-500 dark:text-zinc-400">Estimated Delivery</span>
+          <span class="text-sm text-zinc-900 dark:text-white">Feb 17 - 20, 2026</span>
+        </div>
+      </div>
+
+      <div class="flex gap-3 mt-6">
+        <%= eden_button(variant: :primary, href: "#") { "View Order" } %>
+        <%= eden_button(variant: :ghost, href: "#") { "Continue Shopping" } %>
+      </div>
+    </div>
+  </section>
+<% end %>

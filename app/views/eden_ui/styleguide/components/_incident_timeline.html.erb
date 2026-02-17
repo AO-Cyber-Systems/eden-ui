@@ -1,0 +1,31 @@
+<%# Incident Timeline component preview %>
+
+<%= styleguide_example(title: "Grouped Incidents", description: "Incidents grouped by date with severity and status indicators.",
+  source: 'eden_incident_timeline(incidents: [
+  { date: "February 13, 2026", title: "API latency spike", description: "Increased response times on /api/v2 endpoints.", severity: :warning, status: :resolved },
+  { date: "February 13, 2026", title: "CDN cache purge", description: "Scheduled cache invalidation across all regions.", severity: :info, status: :resolved },
+  { date: "February 12, 2026", title: "Database failover", description: "Primary database went offline. Failover to secondary completed.", severity: :critical, status: :resolved },
+  { date: "February 11, 2026", title: "SSL certificate renewal", description: "Certificates renewed for all subdomains.", severity: :info, status: :resolved }
+])') do %>
+  <div class="max-w-2xl">
+    <%= eden_incident_timeline(incidents: [
+      { date: "February 13, 2026", title: "API latency spike", description: "Increased response times on /api/v2 endpoints.", severity: :warning, status: :resolved },
+      { date: "February 13, 2026", title: "CDN cache purge", description: "Scheduled cache invalidation across all regions.", severity: :info, status: :resolved },
+      { date: "February 12, 2026", title: "Database failover", description: "Primary database went offline. Failover to secondary completed.", severity: :critical, status: :resolved },
+      { date: "February 11, 2026", title: "SSL certificate renewal", description: "Certificates renewed for all subdomains.", severity: :info, status: :resolved }
+    ]) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Active Incident", description: "Timeline with an ongoing incident being investigated.",
+  source: 'eden_incident_timeline(incidents: [
+  { date: "February 13, 2026", title: "Payment processing errors", description: "Some users experiencing failed transactions.", severity: :critical, status: :investigating },
+  { date: "February 13, 2026", title: "Login delays", description: "Authentication service responding slowly.", severity: :warning, status: :monitoring }
+])') do %>
+  <div class="max-w-2xl">
+    <%= eden_incident_timeline(incidents: [
+      { date: "February 13, 2026", title: "Payment processing errors", description: "Some users experiencing failed transactions.", severity: :critical, status: :investigating },
+      { date: "February 13, 2026", title: "Login delays", description: "Authentication service responding slowly.", severity: :warning, status: :monitoring }
+    ]) %>
+  </div>
+<% end %>

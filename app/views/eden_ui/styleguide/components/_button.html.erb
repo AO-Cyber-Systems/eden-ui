@@ -1,0 +1,85 @@
+<%= styleguide_example(
+  title: "Variants",
+  source: 'eden_button(variant: :primary) { "Primary" }
+eden_button(variant: :secondary) { "Secondary" }
+eden_button(variant: :danger) { "Danger" }
+eden_button(variant: :success) { "Success" }
+eden_button(variant: :warning) { "Warning" }
+eden_button(variant: :dark) { "Dark" }
+eden_button(variant: :ghost) { "Ghost" }'
+) do %>
+  <%= eden_button(variant: :primary) { "Primary" } %>
+  <%= eden_button(variant: :secondary) { "Secondary" } %>
+  <%= eden_button(variant: :danger) { "Danger" } %>
+  <%= eden_button(variant: :success) { "Success" } %>
+  <%= eden_button(variant: :warning) { "Warning" } %>
+  <%= eden_button(variant: :dark) { "Dark" } %>
+  <%= eden_button(variant: :ghost) { "Ghost" } %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Sizes",
+  source: 'eden_button(size: :xs) { "Extra Small" }
+eden_button(size: :sm) { "Small" }
+eden_button(size: :md) { "Medium" }
+eden_button(size: :lg) { "Large" }
+eden_button(size: :xl) { "Extra Large" }'
+) do %>
+  <%= eden_button(size: :xs) { "Extra Small" } %>
+  <%= eden_button(size: :sm) { "Small" } %>
+  <%= eden_button(size: :md) { "Medium" } %>
+  <%= eden_button(size: :lg) { "Large" } %>
+  <%= eden_button(size: :xl) { "Extra Large" } %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Outline Variants",
+  source: 'eden_button(variant: :primary, outline: true) { "Primary" }
+eden_button(variant: :secondary, outline: true) { "Secondary" }
+eden_button(variant: :danger, outline: true) { "Danger" }
+eden_button(variant: :success, outline: true) { "Success" }
+eden_button(variant: :warning, outline: true) { "Warning" }
+eden_button(variant: :dark, outline: true) { "Dark" }'
+) do %>
+  <%= eden_button(variant: :primary, outline: true) { "Primary" } %>
+  <%= eden_button(variant: :secondary, outline: true) { "Secondary" } %>
+  <%= eden_button(variant: :danger, outline: true) { "Danger" } %>
+  <%= eden_button(variant: :success, outline: true) { "Success" } %>
+  <%= eden_button(variant: :warning, outline: true) { "Warning" } %>
+  <%= eden_button(variant: :dark, outline: true) { "Dark" } %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Pill Variants",
+  source: 'eden_button(pill: true) { "Primary Pill" }
+eden_button(variant: :secondary, pill: true) { "Secondary Pill" }
+eden_button(variant: :danger, pill: true) { "Danger Pill" }
+eden_button(variant: :success, pill: true) { "Success Pill" }'
+) do %>
+  <%= eden_button(pill: true) { "Primary Pill" } %>
+  <%= eden_button(variant: :secondary, pill: true) { "Secondary Pill" } %>
+  <%= eden_button(variant: :danger, pill: true) { "Danger Pill" } %>
+  <%= eden_button(variant: :success, pill: true) { "Success Pill" } %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Disabled State",
+  source: 'eden_button(disabled: true) { "Disabled Primary" }
+eden_button(variant: :secondary, disabled: true) { "Disabled Secondary" }
+eden_button(variant: :danger, disabled: true) { "Disabled Danger" }'
+) do %>
+  <%= eden_button(disabled: true) { "Disabled Primary" } %>
+  <%= eden_button(variant: :secondary, disabled: true) { "Disabled Secondary" } %>
+  <%= eden_button(variant: :danger, disabled: true) { "Disabled Danger" } %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Link Button (href)",
+  source: 'eden_button(href: "#") { "Link as Button" }
+eden_button(variant: :secondary, href: "#") { "Secondary Link" }
+eden_button(variant: :ghost, href: "#") { "Ghost Link" }'
+) do %>
+  <%= eden_button(href: "#") { "Link as Button" } %>
+  <%= eden_button(variant: :secondary, href: "#") { "Secondary Link" } %>
+  <%= eden_button(variant: :ghost, href: "#") { "Ghost Link" } %>
+<% end %>

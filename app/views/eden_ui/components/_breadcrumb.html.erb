@@ -1,0 +1,12 @@
+<%
+  html_options ||= {}
+  content ||= nil
+
+  classes = ["flex", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<nav class="<%= classes %>" aria-label="Breadcrumb" <%= tag.attributes(html_options) %>>
+  <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+    <%= content %>
+  </ol>
+</nav>

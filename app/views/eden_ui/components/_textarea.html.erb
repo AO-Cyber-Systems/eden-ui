@@ -1,0 +1,22 @@
+<%
+  name ||= nil
+  id ||= name
+  value ||= nil
+  placeholder ||= nil
+  rows ||= 4
+  disabled ||= false
+  required ||= false
+  error ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  state_classes = if error
+    "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500"
+  else
+    "bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+  end
+
+  classes = ["block p-2.5 w-full text-sm rounded-lg border", state_classes, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<textarea <% if name %>name="<%= name %>"<% end %> <% if id %>id="<%= id %>"<% end %> rows="<%= rows %>" <% if placeholder %>placeholder="<%= placeholder %>"<% end %> class="<%= classes %>" <%= "disabled" if disabled %> <%= "required" if required %> <%= tag.attributes(html_options) %>><%= value || content %></textarea>

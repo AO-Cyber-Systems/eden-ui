@@ -1,0 +1,115 @@
+<%= styleguide_block_example(
+  title: "Create Product Form",
+  description: "Full-page create form with sections for product details, pricing, and images",
+  source: 'eden_form_group(label: "Product Name", required: true) do
+  eden_input(placeholder: "Type product name")
+end
+eden_form_group(label: "Description") do
+  eden_textarea(rows: 4, placeholder: "Write description here")
+end
+eden_button(variant: :primary) { "Add product" }'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+      <h2 class="mb-4 text-xl font-bold text-zinc-900 dark:text-white">Add a new product</h2>
+      <form action="#">
+        <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Product Name", required: true) do %>
+              <%= eden_input(placeholder: "Type product name", name: "name", id: "create-name") %>
+            <% end %>
+          </div>
+          <div class="w-full">
+            <%= eden_form_group(label: "Brand") do %>
+              <%= eden_input(placeholder: "Product brand", name: "brand", id: "create-brand") %>
+            <% end %>
+          </div>
+          <div class="w-full">
+            <%= eden_form_group(label: "Price") do %>
+              <%= eden_input(type: :number, placeholder: "$2999", name: "price", id: "create-price") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Category") do %>
+              <%= eden_select(options: ["Electronics", "TV/Monitors", "PC", "Gaming/Console", "Phones"], placeholder: "Select category") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Item Weight (kg)") do %>
+              <%= eden_input(type: :number, placeholder: "12", name: "weight", id: "create-weight") %>
+            <% end %>
+          </div>
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Description") do %>
+              <%= eden_textarea(rows: 8, placeholder: "Your description here") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="mt-6">
+          <%= eden_button(variant: :primary) do %>
+            <%= eden_icon("plus", size: :sm) %>
+            <span class="ml-1">Add product</span>
+          <% end %>
+        </div>
+      </form>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Create Form with File Upload",
+  description: "Form with image upload area and product details",
+  source: 'eden_icon("upload", size: :lg)
+# Click to upload area
+eden_form_group(label: "Name") do
+  eden_input(placeholder: "Product name")
+end'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+      <h2 class="mb-4 text-xl font-bold text-zinc-900 dark:text-white">Upload product</h2>
+      <form action="#">
+        <%# Image upload area %>
+        <div class="mb-6">
+          <label class="block mb-2 text-sm font-medium text-zinc-900 dark:text-white">Product Images</label>
+          <div class="flex items-center justify-center w-full">
+            <label class="flex flex-col items-center justify-center w-full h-48 border-2 border-zinc-300 border-dashed rounded-lg cursor-pointer bg-zinc-50 dark:hover:bg-zinc-800 dark:bg-zinc-700 hover:bg-zinc-100 dark:border-zinc-600 dark:hover:border-zinc-500">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <%= eden_icon("upload", size: :lg) %>
+                <p class="mb-2 text-sm text-zinc-500 dark:text-zinc-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+              </div>
+              <input type="file" class="hidden">
+            </label>
+          </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Product Name", required: true) do %>
+              <%= eden_input(placeholder: "Type product name") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Category") do %>
+              <%= eden_select(options: ["Electronics", "Clothing", "Home & Garden", "Sports"], placeholder: "Select category") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Price") do %>
+              <%= eden_input(type: :number, placeholder: "$0.00") %>
+            <% end %>
+          </div>
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Description") do %>
+              <%= eden_textarea(rows: 4, placeholder: "Write a product description...") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="mt-6 flex items-center gap-3">
+          <%= eden_button(variant: :primary) { "Create product" } %>
+          <%= eden_button(variant: :ghost) { "Save as draft" } %>
+        </div>
+      </form>
+    </div>
+  </section>
+<% end %>

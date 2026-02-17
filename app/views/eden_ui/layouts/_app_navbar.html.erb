@@ -1,0 +1,97 @@
+<%# locals: (app_name: EdenUi.configuration.app_name, logo_path: EdenUi.configuration.logo_path, user: nil) %>
+
+<nav class="fixed top-0 z-50 w-full border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+  <div class="px-3 py-3 lg:px-5 lg:pl-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center justify-start rtl:justify-end">
+        <button data-action="click->eden-sidebar#toggle" type="button" class="hidden p-2 me-3 text-gray-600 rounded cursor-pointer lg:inline hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
+          <span class="sr-only">Toggle sidebar</span>
+          <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h14M1 6h14M1 11h7"/>
+          </svg>
+        </button>
+        <button data-action="click->eden-sidebar#toggle" type="button" class="inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 lg:hidden">
+          <span class="sr-only">Open sidebar</span>
+          <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+          </svg>
+        </button>
+
+        <a href="/" class="ms-2 flex md:me-24">
+          <% if logo_path.present? %>
+            <%= image_tag logo_path, alt: app_name, class: "me-3 h-8" %>
+          <% end %>
+          <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white sm:text-2xl"><%= app_name %></span>
+        </a>
+      </div>
+
+      <div class="flex items-center">
+        <div class="me-3 hidden md:block">
+          <label for="navbar-search" class="sr-only">Search</label>
+          <div class="relative">
+            <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+              <svg class="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+              </svg>
+            </div>
+            <input type="text" id="navbar-search" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500" placeholder="Search...">
+          </div>
+        </div>
+
+        <button type="button" class="me-1 rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-600">
+          <span class="sr-only">View notifications</span>
+          <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+            <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z"/>
+          </svg>
+        </button>
+
+        <button type="button" data-action="click->eden-dark-mode#toggle" class="me-3 rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-600">
+          <span class="sr-only">Toggle dark mode</span>
+          <svg class="h-5 w-5" data-eden-dark-mode-target="darkIcon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+            <path d="M17.8 13.75a1 1 0 0 0-.859-.5A7.488 7.488 0 0 1 10.52 2a1 1 0 0 0 0-.969A1.035 1.035 0 0 0 9.687.5h-.113a9.5 9.5 0 1 0 8.222 14.247 1 1 0 0 0 .004-.997Z"/>
+          </svg>
+          <svg class="hidden h-5 w-5" data-eden-dark-mode-target="lightIcon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-11a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1Zm0 12a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1ZM4.343 5.757a1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414L3.636 4.05a1 1 0 0 0 .707 1.707ZM3.05 11.636l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 1 0-1.414-1.414ZM19 9h-2a1 1 0 1 0 0 2h2a1 1 0 0 0 0-2ZM3 9H1a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2Zm12.657-3.243a1 1 0 0 0 .707.293 1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 0 1.414Zm.707 5.879a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414Z"/>
+          </svg>
+        </button>
+
+        <% if user.present? %>
+          <div class="relative" data-controller="eden-dropdown">
+            <button type="button" data-action="click->eden-dropdown#toggle" class="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false">
+              <span class="sr-only">Open user menu</span>
+              <% if user.respond_to?(:avatar_url) && user.avatar_url.present? %>
+                <img class="h-8 w-8 rounded-full" src="<%= user.avatar_url %>" alt="<%= user.respond_to?(:name) ? user.name : 'User' %>">
+              <% else %>
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-sm font-medium text-white">
+                  <%= (user.respond_to?(:name) && user.name.present?) ? user.name[0].upcase : (user.respond_to?(:email) ? user.email[0].upcase : "U") %>
+                </div>
+              <% end %>
+            </button>
+
+            <div data-eden-dropdown-target="menu" class="z-50 my-4 hidden list-none divide-y divide-gray-100 rounded bg-white text-base shadow dark:divide-gray-600 dark:bg-gray-700" style="position: absolute; right: 0; top: 100%;">
+              <div class="px-4 py-3" role="none">
+                <% if user.respond_to?(:name) && user.name.present? %>
+                  <p class="text-sm text-gray-900 dark:text-white" role="none"><%= user.name %></p>
+                <% end %>
+                <% if user.respond_to?(:email) %>
+                  <p class="truncate text-sm font-medium text-gray-900 dark:text-gray-300" role="none"><%= user.email %></p>
+                <% end %>
+              </div>
+              <ul class="py-1" role="none">
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Profile</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" data-turbo-method="delete">Sign out</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>

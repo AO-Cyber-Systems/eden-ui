@@ -1,0 +1,19 @@
+<%# Checkbox component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_checkbox
+eden_checkbox(checked: true)') do %>
+  <%= eden_checkbox %>
+  <%= eden_checkbox(checked: true) %>
+<% end %>
+
+<%= styleguide_example(title: "With Label", source: 'eden_checkbox(label: "Remember me")
+eden_checkbox(label: "I agree to the terms", checked: true)') do %>
+  <%= eden_checkbox(label: "Remember me") %>
+  <%= eden_checkbox(label: "I agree to the terms", checked: true) %>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", source: 'eden_checkbox(label: "Disabled unchecked", disabled: true)
+eden_checkbox(label: "Disabled checked", checked: true, disabled: true)') do %>
+  <%= eden_checkbox(label: "Disabled unchecked", disabled: true) %>
+  <%= eden_checkbox(label: "Disabled checked", checked: true, disabled: true) %>
+<% end %>

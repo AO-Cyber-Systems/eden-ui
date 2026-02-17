@@ -1,0 +1,29 @@
+<%# Datepicker component preview %>
+
+<%= styleguide_example(title: "Default", description: "Basic datepicker with calendar dropdown.",
+  source: 'eden_datepicker(name: "start_date", placeholder: "Select date")') do %>
+  <div class="max-w-xs">
+    <%= eden_datepicker(name: "start_date", placeholder: "Select date") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Initial Value", description: "Datepicker pre-populated with a date.",
+  source: 'eden_datepicker(name: "birthday", value: "2025-06-15")') do %>
+  <div class="max-w-xs">
+    <%= eden_datepicker(name: "birthday", value: "2025-06-15") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Min/Max", description: "Datepicker with date range constraints.",
+  source: 'eden_datepicker(name: "event_date", min: "2025-01-01", max: "2025-12-31", placeholder: "Pick a 2025 date")') do %>
+  <div class="max-w-xs">
+    <%= eden_datepicker(name: "event_date", min: "2025-01-01", max: "2025-12-31", placeholder: "Pick a 2025 date") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", description: "Datepicker in disabled state.",
+  source: 'eden_datepicker(name: "locked_date", value: "2025-03-10", disabled: true)') do %>
+  <div class="max-w-xs">
+    <%= eden_datepicker(name: "locked_date", value: "2025-03-10", disabled: true) %>
+  </div>
+<% end %>

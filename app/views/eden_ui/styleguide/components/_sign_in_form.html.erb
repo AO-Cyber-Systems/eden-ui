@@ -1,0 +1,53 @@
+<%# ── Sign In Form component previews ── %>
+
+<%= styleguide_example(title: "Default Sign In", source: 'eden_sign_in_form(
+  url: "#",
+  forgot_password_url: "#",
+  sign_up_url: "#"
+)') do %>
+  <%= eden_sign_in_form(
+    url: "#",
+    forgot_password_url: "#",
+    sign_up_url: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Without Remember Me", source: 'eden_sign_in_form(
+  url: "#",
+  remember_me: false,
+  forgot_password_url: "#"
+)') do %>
+  <%= eden_sign_in_form(
+    url: "#",
+    remember_me: false,
+    forgot_password_url: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Minimal (No Links)", source: 'eden_sign_in_form(url: "#")') do %>
+  <%= eden_sign_in_form(url: "#") %>
+<% end %>
+
+<%= styleguide_example(title: "With Block Content (Error Messages)", source: 'eden_sign_in_form(url: "#", sign_up_url: "#") do
+  eden_alert(variant: :danger) { "Invalid email or password." }
+end') do %>
+  <%= eden_sign_in_form(url: "#", sign_up_url: "#") do %>
+    <%= eden_alert(variant: :danger) { "Invalid email or password." } %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Custom Heading & Button Text", source: 'eden_sign_in_form(
+  url: "#",
+  heading: "Welcome back!",
+  submit_text: "Log in",
+  sign_up_url: "#",
+  sign_up_text: "New here?"
+)') do %>
+  <%= eden_sign_in_form(
+    url: "#",
+    heading: "Welcome back!",
+    submit_text: "Log in",
+    sign_up_url: "#",
+    sign_up_text: "New here?"
+  ) %>
+<% end %>

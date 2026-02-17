@@ -1,0 +1,49 @@
+<%# Page Header component preview %>
+
+<%= styleguide_example(title: "Default", description: "Page header with title and description.",
+  source: 'eden_page_header(title: "All Users", description: "Manage your team members and their account permissions.")') do %>
+  <%= eden_page_header(title: "All Users", description: "Manage your team members and their account permissions.") %>
+<% end %>
+
+<%= styleguide_example(title: "With Breadcrumbs", description: "Page header with breadcrumb navigation above the title.",
+  source: 'eden_page_header(
+  title: "Products",
+  description: "Manage your product catalog.",
+  breadcrumbs: [
+    { label: "Home", href: "#" },
+    { label: "E-commerce", href: "#" },
+    { label: "Products" }
+  ]
+)') do %>
+  <%= eden_page_header(
+    title: "Products",
+    description: "Manage your product catalog.",
+    breadcrumbs: [
+      { label: "Home", href: "#" },
+      { label: "E-commerce", href: "#" },
+      { label: "Products" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "With Action Buttons", description: "Page header with action buttons on the right side.",
+  source: 'eden_page_header(
+  title: "All Users",
+  breadcrumbs: [
+    { label: "Home", href: "#" },
+    { label: "Users" }
+  ]
+) do
+  eden_button(variant: :primary) { "Add User" }
+end') do %>
+  <%= eden_page_header(
+    title: "All Users",
+    breadcrumbs: [
+      { label: "Home", href: "#" },
+      { label: "Users" }
+    ]
+  ) do %>
+    <%= eden_button(variant: :secondary) { "Export" } %>
+    <%= eden_button(variant: :primary) { "Add User" } %>
+  <% end %>
+<% end %>

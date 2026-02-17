@@ -1,0 +1,22 @@
+<%# Avatar Upload component preview %>
+
+<%= styleguide_example(title: "Default", description: "Avatar upload with placeholder and upload button.",
+  source: 'eden_avatar_upload') do %>
+  <div class="max-w-md">
+    <%= eden_avatar_upload %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Initials", description: "Avatar upload showing initials as a fallback.",
+  source: 'eden_avatar_upload(initials: "BG", name: "user[avatar]", id: "user-avatar")') do %>
+  <div class="max-w-md">
+    <%= eden_avatar_upload(initials: "BG", name: "user[avatar]", id: "user-avatar") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Custom Accept", description: "Avatar upload restricting to PNG and JPG only.",
+  source: 'eden_avatar_upload(initials: "JM", accept: ".png,.jpg,.jpeg", name: "profile[photo]")') do %>
+  <div class="max-w-md">
+    <%= eden_avatar_upload(initials: "JM", accept: ".png,.jpg,.jpeg", name: "profile[photo]") %>
+  </div>
+<% end %>

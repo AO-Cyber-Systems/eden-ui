@@ -1,0 +1,32 @@
+<%
+  sender ||= nil
+  time ||= nil
+  avatar ||= nil
+  variant ||= :received
+  status ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  sent = variant.to_sym == :sent
+  alignment = sent ? "flex-row-reverse" : ""
+%>
+
+<div class="flex items-start gap-2.5 <%= alignment %>" <%= tag.attributes(html_options) %>>
+  <% if avatar %>
+    <img class="w-8 h-8 rounded-full" src="<%= avatar %>" alt="<%= sender %>">
+  <% end %>
+  <div class="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 <%= sent ? "bg-blue-100 dark:bg-blue-900 rounded-s-xl rounded-ee-xl" : "bg-gray-100 dark:bg-gray-700 rounded-e-xl rounded-es-xl" %>">
+    <div class="flex items-center space-x-2 rtl:space-x-reverse">
+      <% if sender %>
+        <span class="text-sm font-semibold text-gray-900 dark:text-white"><%= sender %></span>
+      <% end %>
+      <% if time %>
+        <span class="text-sm font-normal text-gray-500 dark:text-gray-400"><%= time %></span>
+      <% end %>
+    </div>
+    <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white"><%= content %></p>
+    <% if status %>
+      <span class="text-sm font-normal text-gray-500 dark:text-gray-400"><%= status %></span>
+    <% end %>
+  </div>
+</div>

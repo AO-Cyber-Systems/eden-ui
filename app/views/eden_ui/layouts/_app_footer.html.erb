@@ -1,0 +1,18 @@
+<%# locals: (app_name: EdenUi.configuration.app_name, footer_links: []) %>
+
+<footer class="shrink-0">
+  <div class="border-t border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800 sm:flex sm:items-center sm:justify-between">
+    <p class="mb-4 text-sm text-gray-500 dark:text-gray-400 sm:mb-0">
+      &copy; <%= Date.current.year %> <%= app_name %>. All rights reserved.
+    </p>
+    <% if footer_links.present? %>
+      <ul class="flex flex-wrap items-center justify-center">
+        <% footer_links.each do |link| %>
+          <li>
+            <a href="<%= link[:path] || '#' %>" class="me-4 text-sm text-gray-500 hover:underline dark:text-gray-400 md:me-6"><%= link[:label] %></a>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</footer>

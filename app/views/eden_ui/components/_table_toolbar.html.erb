@@ -1,0 +1,34 @@
+<%
+  title ||= nil
+  count ||= nil
+  search_placeholder ||= "Search..."
+  search_name ||= "q"
+  html_options ||= {}
+  content ||= nil
+
+  classes = [
+    "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="flex items-center gap-2">
+    <% if title %>
+      <h5 class="text-lg font-semibold text-gray-900 dark:text-white"><%= title %></h5>
+    <% end %>
+    <% if count %>
+      <%= eden_badge(text: count.to_s, variant: :default, size: :sm) %>
+    <% end %>
+  </div>
+  <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+    <div class="w-full sm:w-64">
+      <%= eden_search_input(placeholder: search_placeholder, name: search_name, size: :md) %>
+    </div>
+    <% if content %>
+      <div class="flex items-center gap-3 shrink-0">
+        <%= content %>
+      </div>
+    <% end %>
+  </div>
+</div>

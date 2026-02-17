@@ -1,0 +1,53 @@
+<%# Popover component preview — interactive via eden-popover Stimulus controller %>
+
+<%= styleguide_example(
+  title: "Default Popover",
+  description: "Hover over the button to see the popover.",
+  source: 'eden_popover(title: "Popover title", placement: :top) do
+  eden_button(variant: :secondary) { "Hover me" }
+end'
+) do %>
+  <div class="py-8 flex justify-center">
+    <%= eden_popover(title: "Popover title", placement: :top) do %>
+      <%= eden_button(variant: :secondary) { "Hover me" } %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Popover Placements",
+  description: "Hover over each button to see popovers at different positions.",
+  source: 'eden_popover(title: "Top", placement: :top) do
+  eden_button(variant: :secondary) { "Top" }
+end
+
+eden_popover(title: "Bottom", placement: :bottom) do
+  eden_button(variant: :secondary) { "Bottom" }
+end
+
+eden_popover(title: "Left", placement: :left) do
+  eden_button(variant: :secondary) { "Left" }
+end
+
+eden_popover(title: "Right", placement: :right) do
+  eden_button(variant: :secondary) { "Right" }
+end'
+) do %>
+  <div class="py-8 flex flex-wrap gap-6 justify-center items-center">
+    <%= eden_popover(title: "Top popover", placement: :top) do %>
+      <%= eden_button(variant: :secondary) { "Top" } %>
+    <% end %>
+
+    <%= eden_popover(title: "Bottom popover", placement: :bottom) do %>
+      <%= eden_button(variant: :secondary) { "Bottom" } %>
+    <% end %>
+
+    <%= eden_popover(title: "Left popover", placement: :left) do %>
+      <%= eden_button(variant: :secondary) { "Left" } %>
+    <% end %>
+
+    <%= eden_popover(title: "Right popover", placement: :right) do %>
+      <%= eden_button(variant: :secondary) { "Right" } %>
+    <% end %>
+  </div>
+<% end %>

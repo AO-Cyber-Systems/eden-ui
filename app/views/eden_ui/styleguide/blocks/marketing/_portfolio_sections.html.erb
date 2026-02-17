@@ -1,0 +1,74 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_portfolio_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Portfolio Grid",
+  description: "Card-based portfolio grid with image placeholders and project details",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      eden_card do
+        <!-- image placeholder -->
+        <h3>Project Title</h3>
+        <p>Description</p>
+        eden_badge(text: "Category")
+      end
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">Our Work</h2>
+        <p class="font-light text-zinc-500 sm:text-xl dark:text-zinc-400">Explore our recent projects and see what we can build for you.</p>
+      </div>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <%= eden_card do %>
+          <div class="w-full h-48 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center mb-4">
+            <%= eden_icon("photo", size: :xl) %>
+          </div>
+          <div class="flex items-center gap-2 mb-3">
+            <%= eden_badge(text: "Web App", variant: :primary, size: :sm) %>
+            <%= eden_badge(text: "Rails", variant: :default, size: :sm) %>
+          </div>
+          <h3 class="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-white">E-Commerce Platform</h3>
+          <p class="mb-4 font-light text-zinc-500 dark:text-zinc-400">A full-featured online store with inventory management, payments, and analytics.</p>
+          <a href="#" class="inline-flex items-center font-medium text-gold-600 hover:underline dark:text-gold-500">
+            View project
+            <%= eden_icon("arrow-right", size: :sm) %>
+          </a>
+        <% end %>
+        <%= eden_card do %>
+          <div class="w-full h-48 bg-zinc-300 dark:bg-zinc-600 rounded-lg flex items-center justify-center mb-4">
+            <%= eden_icon("photo", size: :xl) %>
+          </div>
+          <div class="flex items-center gap-2 mb-3">
+            <%= eden_badge(text: "SaaS", variant: :primary, size: :sm) %>
+            <%= eden_badge(text: "React", variant: :default, size: :sm) %>
+          </div>
+          <h3 class="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-white">Analytics Dashboard</h3>
+          <p class="mb-4 font-light text-zinc-500 dark:text-zinc-400">Real-time analytics dashboard with customizable widgets and reporting tools.</p>
+          <a href="#" class="inline-flex items-center font-medium text-gold-600 hover:underline dark:text-gold-500">
+            View project
+            <%= eden_icon("arrow-right", size: :sm) %>
+          </a>
+        <% end %>
+        <%= eden_card do %>
+          <div class="w-full h-48 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center mb-4">
+            <%= eden_icon("photo", size: :xl) %>
+          </div>
+          <div class="flex items-center gap-2 mb-3">
+            <%= eden_badge(text: "Mobile", variant: :primary, size: :sm) %>
+            <%= eden_badge(text: "iOS", variant: :default, size: :sm) %>
+          </div>
+          <h3 class="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-white">Fitness Tracker</h3>
+          <p class="mb-4 font-light text-zinc-500 dark:text-zinc-400">A mobile app that helps users track workouts, nutrition, and health metrics.</p>
+          <a href="#" class="inline-flex items-center font-medium text-gold-600 hover:underline dark:text-gold-500">
+            View project
+            <%= eden_icon("arrow-right", size: :sm) %>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

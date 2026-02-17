@@ -1,0 +1,68 @@
+<%# Customer Logos component previews %>
+
+<%= styleguide_block_example(title: "Text-Only Logos", description: "When logo images are unavailable, company names are rendered as styled text.",
+  source: 'eden_customer_logos(
+  title: "Trusted by leading companies",
+  logos: [
+    { name: "Spotify" },
+    { name: "Airbnb" },
+    { name: "Stripe" },
+    { name: "Shopify" },
+    { name: "Notion" }
+  ]
+)') do %>
+  <%= eden_customer_logos(
+    title: "Trusted by leading companies",
+    logos: [
+      { name: "Spotify" },
+      { name: "Airbnb" },
+      { name: "Stripe" },
+      { name: "Shopify" },
+      { name: "Notion" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Logos with Links", description: "Clickable company logos that link to partner websites.",
+  source: 'eden_customer_logos(
+  title: "Our partners",
+  logos: [
+    { name: "GitHub", href: "#" },
+    { name: "Vercel", href: "#" },
+    { name: "Netlify", href: "#" },
+    { name: "AWS", href: "#" },
+    { name: "Google Cloud", href: "#" },
+    { name: "Azure", href: "#" }
+  ]
+)') do %>
+  <%= eden_customer_logos(
+    title: "Our partners",
+    logos: [
+      { name: "GitHub", href: "#" },
+      { name: "Vercel", href: "#" },
+      { name: "Netlify", href: "#" },
+      { name: "AWS", href: "#" },
+      { name: "Google Cloud", href: "#" },
+      { name: "Azure", href: "#" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "With Image Logos", description: "Grayscale logos that reveal color on hover.",
+  source: 'eden_customer_logos(
+  title: "Used by teams worldwide",
+  logos: [
+    { name: "Flowbite", src: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/customers/flowbite-logo.svg" },
+    { name: "Google", src: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/customers/google-logo.svg" },
+    { name: "Microsoft", src: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/customers/microsoft-logo.svg" }
+  ]
+)') do %>
+  <%= eden_customer_logos(
+    title: "Used by teams worldwide",
+    logos: [
+      { name: "Flowbite", src: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/customers/flowbite-logo.svg" },
+      { name: "Google", src: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/customers/google-logo.svg" },
+      { name: "Microsoft", src: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/customers/microsoft-logo.svg" }
+    ]
+  ) %>
+<% end %>

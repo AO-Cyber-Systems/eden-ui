@@ -1,0 +1,101 @@
+<%# Data Table component preview %>
+
+<%= styleguide_example(title: "Default", description: "Data-driven table with columns and rows.",
+  source: 'eden_data_table(
+  columns: [
+    { label: "Product", key: :name },
+    { label: "Category", key: :category },
+    { label: "Price", key: :price }
+  ],
+  rows: [
+    { name: "MacBook Pro", category: "Laptops", price: "$2,999" },
+    { name: "Surface Pro", category: "Tablets", price: "$1,999" },
+    { name: "Magic Mouse", category: "Accessories", price: "$99" }
+  ]
+)') do %>
+  <%= eden_data_table(
+    columns: [
+      { label: "Product", key: :name },
+      { label: "Category", key: :category },
+      { label: "Price", key: :price }
+    ],
+    rows: [
+      { name: "MacBook Pro", category: "Laptops", price: "$2,999" },
+      { name: "Surface Pro", category: "Tablets", price: "$1,999" },
+      { name: "Magic Mouse", category: "Accessories", price: "$99" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Striped with Sortable Columns", description: "Striped rows and sortable column headers.",
+  source: 'eden_data_table(
+  striped: true,
+  columns: [
+    { label: "Name", key: :name, sortable: true },
+    { label: "Email", key: :email },
+    { label: "Role", key: :role, sortable: true }
+  ],
+  rows: [
+    { name: "Bonnie Green", email: "bonnie@example.com", role: "Admin" },
+    { name: "Thomas Lean", email: "thomas@example.com", role: "Editor" },
+    { name: "Jese Leos", email: "jese@example.com", role: "Viewer" }
+  ]
+)') do %>
+  <%= eden_data_table(
+    striped: true,
+    columns: [
+      { label: "Name", key: :name, sortable: true },
+      { label: "Email", key: :email },
+      { label: "Role", key: :role, sortable: true }
+    ],
+    rows: [
+      { name: "Bonnie Green", email: "bonnie@example.com", role: "Admin" },
+      { name: "Thomas Lean", email: "thomas@example.com", role: "Editor" },
+      { name: "Jese Leos", email: "jese@example.com", role: "Viewer" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "With Checkboxes", description: "Selectable rows with checkbox column.",
+  source: 'eden_data_table(
+  selectable: true,
+  columns: [
+    { label: "Product", key: :name },
+    { label: "Stock", key: :stock },
+    { label: "Price", key: :price }
+  ],
+  rows: [
+    { name: "iPhone 15", stock: "In Stock", price: "$999" },
+    { name: "iPad Air", stock: "Low Stock", price: "$799" }
+  ]
+)') do %>
+  <%= eden_data_table(
+    selectable: true,
+    columns: [
+      { label: "Product", key: :name },
+      { label: "Stock", key: :stock },
+      { label: "Price", key: :price }
+    ],
+    rows: [
+      { name: "iPhone 15", stock: "In Stock", price: "$999" },
+      { name: "iPad Air", stock: "Low Stock", price: "$799" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Empty State", description: "Automatically shows an empty state when no rows are provided.",
+  source: 'eden_data_table(
+  columns: [
+    { label: "Name", key: :name },
+    { label: "Email", key: :email }
+  ],
+  rows: []
+)') do %>
+  <%= eden_data_table(
+    columns: [
+      { label: "Name", key: :name },
+      { label: "Email", key: :email }
+    ],
+    rows: []
+  ) %>
+<% end %>

@@ -1,0 +1,56 @@
+<%
+  name ||= nil
+  email ||= nil
+  role ||= nil
+  status ||= nil
+  avatar_src ||= nil
+  avatar_initials ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  status_variant = case status&.to_sym
+  when :active  then :success
+  when :pending then :warning
+  when :inactive then :neutral
+  else nil
+  end
+
+  status_label = case status&.to_sym
+  when :active  then "Active"
+  when :pending then "Pending"
+  when :inactive then "Inactive"
+  else nil
+  end
+
+  classes = [
+    "bg-white dark:bg-gray-800 rounded-lg shadow p-6",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="flex flex-col items-center text-center">
+    <div class="mb-3">
+      <%= eden_avatar(src: avatar_src, initials: avatar_initials, size: :lg, rounded: true, alt: name || "User avatar") %>
+    </div>
+    <% if name %>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white"><%= name %></h3>
+    <% end %>
+    <% if email %>
+      <p class="text-sm text-gray-500 dark:text-gray-400"><%= email %></p>
+    <% end %>
+    <% if role %>
+      <p class="mt-1 text-sm text-gray-500 dark:text-gray-400"><%= role %></p>
+    <% end %>
+    <% if status_variant && status_label %>
+      <div class="mt-2">
+        <%= eden_badge(variant: status_variant, size: :sm, pill: true) { status_label } %>
+      </div>
+    <% end %>
+    <% if content %>
+      <div class="mt-4 flex flex-wrap gap-2 justify-center">
+        <%= content %>
+      </div>
+    <% end %>
+  </div>
+</div>

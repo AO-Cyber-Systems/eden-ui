@@ -1,0 +1,100 @@
+<%= styleguide_block_example(
+  title: "Update Product Modal",
+  description: "Modal dialog with pre-filled form for editing a product",
+  source: 'eden_modal(id: "update-product-modal", size: :lg) do
+  eden_form_group(label: "Name", required: true) do
+    eden_input(value: "Apple iMac 27\"")
+  end
+  eden_button(variant: :primary) { "Update" }
+end'
+) do %>
+  <div class="relative p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-zinc-800 sm:p-5 max-w-xl mx-auto">
+      <%# Modal header %>
+      <div class="flex justify-between items-center pb-4 mb-4 border-b border-zinc-200 dark:border-zinc-700">
+        <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">Edit Product</h3>
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+      <%# Form %>
+      <form action="#">
+        <div class="grid gap-4 mb-4 sm:grid-cols-2">
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Name", required: true) do %>
+              <%= eden_input(value: "Apple iMac 27\"") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Brand") do %>
+              <%= eden_input(value: "Apple") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Price") do %>
+              <%= eden_input(type: :number, value: "1499") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Category") do %>
+              <%= eden_select(options: ["Electronics", "TV/Monitors", "PC", "Phones"], placeholder: "Electronics") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Weight (kg)") do %>
+              <%= eden_input(type: :number, value: "9.88") %>
+            <% end %>
+          </div>
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Description") do %>
+              <%= eden_textarea(rows: 4, placeholder: "Standard glass, 5K Retina display with True Tone technology...") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <%= eden_button(variant: :primary) { "Update product" } %>
+            <%= eden_button(variant: :ghost) { "Cancel" } %>
+          </div>
+          <%= eden_button(variant: :danger, size: :sm) do %>
+            <%= eden_icon("trash", size: :sm) %>
+            <span class="ml-1">Delete</span>
+          <% end %>
+        </div>
+      </form>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Inline Edit Modal",
+  description: "Compact modal for quick inline field updates",
+  source: 'eden_modal(id: "inline-edit-modal", size: :sm) do
+  eden_form_group(label: "Product Name") do
+    eden_input(value: "Current value")
+  end
+  eden_button(variant: :primary, size: :sm) { "Save" }
+end'
+) do %>
+  <div class="relative p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-zinc-800 sm:p-5 max-w-sm mx-auto">
+      <div class="flex justify-between items-center pb-3 mb-3 border-b border-zinc-200 dark:border-zinc-700">
+        <h3 class="text-base font-semibold text-zinc-900 dark:text-white">Edit Product Name</h3>
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+      <form action="#">
+        <div class="mb-4">
+          <%= eden_form_group(label: "Product Name", hint: "This will be displayed on the product page") do %>
+            <%= eden_input(value: "Apple iMac 27\"") %>
+          <% end %>
+        </div>
+        <div class="flex items-center gap-2">
+          <%= eden_button(variant: :primary, size: :sm) { "Save" } %>
+          <%= eden_button(variant: :ghost, size: :sm) { "Cancel" } %>
+        </div>
+      </form>
+    </div>
+  </div>
+<% end %>

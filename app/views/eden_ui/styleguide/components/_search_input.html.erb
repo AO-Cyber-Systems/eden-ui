@@ -1,0 +1,23 @@
+<%# Search Input component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_search_input') do %>
+  <%= eden_search_input %>
+<% end %>
+
+<%= styleguide_example(title: "Sizes", source: 'eden_search_input(size: :sm, placeholder: "Small search...")
+eden_search_input(size: :md, placeholder: "Medium search...")
+eden_search_input(size: :lg, placeholder: "Large search...")') do %>
+  <%= eden_search_input(size: :sm, placeholder: "Small search...") %>
+  <%= eden_search_input(size: :md, placeholder: "Medium search...") %>
+  <%= eden_search_input(size: :lg, placeholder: "Large search...") %>
+<% end %>
+
+<%= styleguide_example(title: "With Custom Placeholder", source: 'eden_search_input(placeholder: "Search products...")
+eden_search_input(placeholder: "Find a user...")') do %>
+  <%= eden_search_input(placeholder: "Search products...") %>
+  <%= eden_search_input(placeholder: "Find a user...") %>
+<% end %>
+
+<%= styleguide_example(title: "With Value", source: 'eden_search_input(value: "Tailwind CSS")') do %>
+  <%= eden_search_input(value: "Tailwind CSS") %>
+<% end %>

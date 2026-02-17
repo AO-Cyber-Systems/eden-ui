@@ -1,0 +1,18 @@
+<%
+  prepend ||= nil
+  append ||= nil
+  html_options ||= {}
+  content ||= nil
+%>
+
+<div class="flex" <%= tag.attributes(html_options) %>>
+  <% if prepend %>
+    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"><%= prepend %></span>
+  <% end %>
+  <div class="<%= prepend && append ? '' : prepend ? 'rounded-e-lg' : append ? 'rounded-s-lg' : 'rounded-lg' %> flex-1">
+    <%= content %>
+  </div>
+  <% if append %>
+    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-s-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"><%= append %></span>
+  <% end %>
+</div>

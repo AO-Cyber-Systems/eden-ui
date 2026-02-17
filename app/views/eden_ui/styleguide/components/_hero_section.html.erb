@@ -1,0 +1,62 @@
+<%# Hero Section component previews %>
+
+<%= styleguide_block_example(title: "Centered Hero", description: "Default centered layout with badge, title, subtitle, and dual CTAs.",
+  source: 'eden_hero_section(
+  title: "Build your next project faster",
+  subtitle: "Eden UI provides beautiful, accessible components for Rails applications. Ship faster with production-ready building blocks.",
+  badge_text: "New in v2.0",
+  primary_cta_text: "Get started",
+  primary_cta_href: "#",
+  secondary_cta_text: "Learn more",
+  secondary_cta_href: "#"
+)') do %>
+  <%= eden_hero_section(
+    title: "Build your next project faster",
+    subtitle: "Eden UI provides beautiful, accessible components for Rails applications. Ship faster with production-ready building blocks.",
+    badge_text: "New in v2.0",
+    primary_cta_text: "Get started",
+    primary_cta_href: "#",
+    secondary_cta_text: "Learn more",
+    secondary_cta_href: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Split Hero", description: "Two-column layout with text on the left and image on the right.",
+  source: 'eden_hero_section(
+  title: "Welcome to the platform",
+  subtitle: "Everything you need to build modern web applications, all in one toolkit.",
+  primary_cta_text: "Start free trial",
+  secondary_cta_text: "View demo",
+  variant: :split,
+  image: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png",
+  image_alt: "Dashboard mockup"
+)') do %>
+  <%= eden_hero_section(
+    title: "Welcome to the platform",
+    subtitle: "Everything you need to build modern web applications, all in one toolkit.",
+    primary_cta_text: "Start free trial",
+    secondary_cta_text: "View demo",
+    variant: :split,
+    image: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png",
+    image_alt: "Dashboard mockup"
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Gradient Hero", description: "Dark gradient background variant for dramatic impact.",
+  source: 'eden_hero_section(
+  title: "Accelerate your growth",
+  subtitle: "Join thousands of developers shipping faster with our component library.",
+  primary_cta_text: "Get started for free",
+  secondary_cta_text: "Contact sales",
+  variant: :gradient,
+  badge_text: "Trusted by 10,000+ developers"
+)') do %>
+  <%= eden_hero_section(
+    title: "Accelerate your growth",
+    subtitle: "Join thousands of developers shipping faster with our component library.",
+    primary_cta_text: "Get started for free",
+    secondary_cta_text: "Contact sales",
+    variant: :gradient,
+    badge_text: "Trusted by 10,000+ developers"
+  ) %>
+<% end %>

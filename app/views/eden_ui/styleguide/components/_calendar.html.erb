@@ -1,0 +1,45 @@
+<%# Calendar component preview %>
+
+<%= styleguide_example(title: "Current Month", description: "Calendar showing the current month with event dots.",
+  source: 'eden_calendar(events: [
+  {date: Date.current.to_s, title: "Team standup", color: :primary},
+  {date: (Date.current + 3).to_s, title: "Sprint review", color: :success},
+  {date: (Date.current + 7).to_s, title: "Deadline", color: :danger}
+])') do %>
+  <div class="max-w-sm">
+    <%= eden_calendar(events: [
+      {date: Date.current.to_s, title: "Team standup", color: :primary},
+      {date: Date.current.to_s, title: "Design review", color: :success},
+      {date: (Date.current + 3).to_s, title: "Sprint review", color: :success},
+      {date: (Date.current + 5).to_s, title: "Client call", color: :warning},
+      {date: (Date.current + 7).to_s, title: "Deadline", color: :danger},
+      {date: (Date.current + 7).to_s, title: "Launch party", color: :purple},
+      {date: (Date.current + 14).to_s, title: "Retrospective", color: :primary}
+    ]) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Monday Start", description: "Calendar starting the week on Monday.",
+  source: 'eden_calendar(start_day: :monday)') do %>
+  <div class="max-w-sm">
+    <%= eden_calendar(start_day: :monday, events: [
+      {date: Date.current.to_s, title: "Today's meeting", color: :primary},
+      {date: (Date.current + 2).to_s, title: "Workshop", color: :success}
+    ]) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Specific Month", description: "Calendar for a specific month and year.",
+  source: 'eden_calendar(month: 3, year: 2026, events: [
+  {date: "2026-03-01", title: "Q1 Review", color: :primary},
+  {date: "2026-03-15", title: "Midpoint check", color: :warning},
+  {date: "2026-03-31", title: "Quarter end", color: :danger}
+])') do %>
+  <div class="max-w-sm">
+    <%= eden_calendar(month: 3, year: 2026, events: [
+      {date: "2026-03-01", title: "Q1 Review", color: :primary},
+      {date: "2026-03-15", title: "Midpoint check", color: :warning},
+      {date: "2026-03-31", title: "Quarter end", color: :danger}
+    ]) %>
+  </div>
+<% end %>

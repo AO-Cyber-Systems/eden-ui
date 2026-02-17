@@ -1,0 +1,94 @@
+<%= styleguide_example(
+  title: "Default Mega Menu",
+  description: "Full-width mega menu with multi-column content",
+  source: 'eden_mega_menu(label: "Company") do
+  content_tag(:div, class: "space-y-4") do
+    safe_join([
+      content_tag(:h3, "Our Products", class: "text-lg font-semibold"),
+      content_tag(:ul, class: "space-y-2") do
+        safe_join([
+          content_tag(:li, link_to("Analytics", "#")),
+          content_tag(:li, link_to("Automation", "#")),
+          content_tag(:li, link_to("Integrations", "#"))
+        ])
+      end
+    ])
+  end
+end'
+) do %>
+  <div class="w-full border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden">
+    <%= eden_mega_menu(label: "Company") do %>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Our Products</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">Analytics</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">Automation</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">Integrations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Resources</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">Documentation</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">Blog</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">Tutorials</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Support</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">Help Center</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">Contact Us</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500">Community</a></li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Mega Menu with Description",
+  description: "Mega menu items with brief descriptions",
+  source: 'eden_mega_menu(label: "Features") do
+  # Multi-column content with descriptions
+end'
+) do %>
+  <div class="w-full border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden">
+    <%= eden_mega_menu(label: "Features") do %>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Platform</h3>
+        <ul class="space-y-3">
+          <li>
+            <a href="#" class="block">
+              <span class="font-medium text-gray-900 dark:text-white">Dashboard</span>
+              <p class="text-sm text-gray-500 dark:text-gray-400">Overview of your account and activity</p>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="block">
+              <span class="font-medium text-gray-900 dark:text-white">Reports</span>
+              <p class="text-sm text-gray-500 dark:text-gray-400">Detailed analytics and insights</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Tools</h3>
+        <ul class="space-y-3">
+          <li>
+            <a href="#" class="block">
+              <span class="font-medium text-gray-900 dark:text-white">Editor</span>
+              <p class="text-sm text-gray-500 dark:text-gray-400">Build and customize your content</p>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="block">
+              <span class="font-medium text-gray-900 dark:text-white">Templates</span>
+              <p class="text-sm text-gray-500 dark:text-gray-400">Pre-built layouts to get started quickly</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+<% end %>

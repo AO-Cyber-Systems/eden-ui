@@ -1,0 +1,75 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_social_proof_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Social Proof with Stats",
+  description: "Statistics counters showcasing company achievements",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
+    <dl class="grid max-w-screen-md gap-8 mx-auto sm:grid-cols-3">
+      <div><dt>73M+</dt><dd>developers</dd></div>
+    </dl>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-sm mb-8 lg:mb-16">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">Trusted by thousands</h2>
+        <p class="font-light text-zinc-500 sm:text-xl dark:text-zinc-400">Our numbers speak for themselves</p>
+      </div>
+      <dl class="grid max-w-screen-md gap-8 mx-auto text-zinc-900 sm:grid-cols-3 dark:text-white">
+        <div class="flex flex-col items-center justify-center">
+          <dt class="mb-2 text-3xl md:text-4xl font-extrabold">73M+</dt>
+          <dd class="font-light text-zinc-500 dark:text-zinc-400">Developers</dd>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <dt class="mb-2 text-3xl md:text-4xl font-extrabold">100+</dt>
+          <dd class="font-light text-zinc-500 dark:text-zinc-400">Countries</dd>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <dt class="mb-2 text-3xl md:text-4xl font-extrabold">4M+</dt>
+          <dd class="font-light text-zinc-500 dark:text-zinc-400">Organizations</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Social Proof with Avatars",
+  description: "Stacked avatar group with rating and customer count",
+  source: '<div class="flex items-center">
+  <div class="flex -space-x-4">
+    eden_avatar(initials: "A", size: :sm)
+    eden_avatar(initials: "B", size: :sm)
+    eden_avatar(initials: "C", size: :sm)
+  </div>
+  eden_rating(value: 5, size: :sm, readonly: true)
+  <span>Loved by 1,000+ customers</span>
+</div>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-md text-center">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">Join thousands of happy customers</h2>
+        <p class="mb-8 font-light text-zinc-500 sm:text-xl dark:text-zinc-400">Start building with Eden today and see why developers love our platform.</p>
+        <div class="flex flex-col items-center gap-4">
+          <div class="flex -space-x-3">
+            <%= eden_avatar(initials: "AB", size: :sm, bordered: true) %>
+            <%= eden_avatar(initials: "CD", size: :sm, bordered: true) %>
+            <%= eden_avatar(initials: "EF", size: :sm, bordered: true) %>
+            <%= eden_avatar(initials: "GH", size: :sm, bordered: true) %>
+            <div class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-zinc-700 rounded-full ring-2 ring-white dark:ring-zinc-900">+99</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <%= eden_rating(value: 5, size: :sm, readonly: true) %>
+            <span class="text-sm text-zinc-500 dark:text-zinc-400">Rated 4.9/5 from over 1,000 reviews</span>
+          </div>
+          <div class="mt-4">
+            <%= eden_button(variant: :primary, size: :lg, href: "#") { "Get started for free" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

@@ -1,0 +1,44 @@
+<%
+  title ||= nil
+  description ||= nil
+  breadcrumbs ||= []
+  html_options ||= {}
+  content ||= nil
+
+  classes = [
+    "mb-4",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <% if breadcrumbs.any? %>
+    <div class="mb-4">
+      <%= eden_breadcrumb do %>
+        <% breadcrumbs.each_with_index do |crumb, index| %>
+          <% if index == breadcrumbs.length - 1 %>
+            <%= eden_breadcrumb_item(label: crumb[:label], current: true) %>
+          <% else %>
+            <%= eden_breadcrumb_item(label: crumb[:label], href: crumb[:href] || "#") %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div>
+      <% if title %>
+        <h1 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl"><%= title %></h1>
+      <% end %>
+      <% if description %>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400"><%= description %></p>
+      <% end %>
+    </div>
+    <% if content %>
+      <div class="flex items-center gap-3 shrink-0">
+        <%= content %>
+      </div>
+    <% end %>
+  </div>
+</div>

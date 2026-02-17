@@ -1,0 +1,83 @@
+<%# ── Accordion component previews ── %>
+
+<%= styleguide_example(title: "Default Accordion", source: 'eden_accordion do
+  eden_accordion_item(title: "What is Eden UI?") { "A comprehensive component library for Rails." }
+  eden_accordion_item(title: "How do I install it?") { "Add the gem and mount the engine." }
+  eden_accordion_item(title: "Is it customizable?") { "Yes, fully configurable via design tokens." }
+end') do %>
+  <div class="w-full">
+    <%= eden_accordion do %>
+      <%= eden_accordion_item(title: "What is Eden UI?", open: true) { "A comprehensive component library for Rails applications. It provides ready-to-use UI components built with Tailwind CSS." } %>
+      <%= eden_accordion_item(title: "How do I install it?") { "Add the gem to your Gemfile, run bundle install, and mount the engine in your routes. Then include the stylesheets and you're ready to go." } %>
+      <%= eden_accordion_item(title: "Is it customizable?") { "Yes, fully configurable via design tokens. You can override colors, spacing, typography, and more to match your brand." } %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Flush (no borders)", source: 'eden_accordion(flush: true) do
+  eden_accordion_item(title: "First item") { "Content for the first item." }
+  eden_accordion_item(title: "Second item") { "Content for the second item." }
+  eden_accordion_item(title: "Third item") { "Content for the third item." }
+end') do %>
+  <div class="w-full">
+    <%= eden_accordion(flush: true) do %>
+      <%= eden_accordion_item(title: "First item") { "Content for the first item. The flush variant removes the outer border and rounded corners for a cleaner look when embedded in other containers." } %>
+      <%= eden_accordion_item(title: "Second item") { "Content for the second item. Use this variant when you want the accordion to blend seamlessly into a parent card or section." } %>
+      <%= eden_accordion_item(title: "Third item") { "Content for the third item. It still retains the divider borders between items." } %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Always Open (multiple items can be expanded)", source: 'eden_accordion(always_open: true) do
+  eden_accordion_item(title: "Section A", open: true) { "This section starts open." }
+  eden_accordion_item(title: "Section B", open: true) { "This section also starts open." }
+  eden_accordion_item(title: "Section C") { "This section starts closed." }
+end') do %>
+  <div class="w-full">
+    <%= eden_accordion(always_open: true) do %>
+      <%= eden_accordion_item(title: "Section A", open: true) { "This section starts open. With always_open mode, multiple sections can be expanded simultaneously." } %>
+      <%= eden_accordion_item(title: "Section B", open: true) { "This section also starts open. Opening one section does not collapse the others." } %>
+      <%= eden_accordion_item(title: "Section C") { "This section starts closed but can be opened without affecting the others." } %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Rich Content", source: 'eden_accordion do
+  eden_accordion_item(title: "Pricing Plans") do
+    # Rich HTML content inside accordion
+    content_tag(:div, class: "space-y-2") do
+      content_tag(:p, "Choose the plan that works best for you.") +
+      content_tag(:ul, class: "list-disc list-inside") do
+        content_tag(:li, "Free: Up to 3 projects") +
+        content_tag(:li, "Pro: Unlimited projects") +
+        content_tag(:li, "Enterprise: Custom solutions")
+      end
+    end
+  end
+end') do %>
+  <div class="w-full">
+    <%= eden_accordion do %>
+      <%= eden_accordion_item(title: "Pricing Plans") do %>
+        <div class="space-y-2">
+          <p>Choose the plan that works best for you:</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li><strong>Free:</strong> Up to 3 projects</li>
+            <li><strong>Pro:</strong> Unlimited projects, priority support</li>
+            <li><strong>Enterprise:</strong> Custom solutions, dedicated account manager</li>
+          </ul>
+        </div>
+      <% end %>
+      <%= eden_accordion_item(title: "Payment Methods") do %>
+        <div class="space-y-2">
+          <p>We accept the following payment methods:</p>
+          <div class="flex gap-2">
+            <%= eden_badge(text: "Visa", variant: :primary) %>
+            <%= eden_badge(text: "Mastercard", variant: :primary) %>
+            <%= eden_badge(text: "PayPal", variant: :info) %>
+          </div>
+        </div>
+      <% end %>
+      <%= eden_accordion_item(title: "Refund Policy") { "We offer a full refund within 30 days of purchase. No questions asked." } %>
+    <% end %>
+  </div>
+<% end %>

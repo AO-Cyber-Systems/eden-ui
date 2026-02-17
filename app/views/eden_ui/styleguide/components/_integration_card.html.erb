@@ -1,0 +1,46 @@
+<%# Integration Card component preview %>
+
+<%= styleguide_example(title: "Default", description: "Integration card with connected status and toggle.",
+  source: 'eden_integration_card(
+  name: "Slack",
+  description: "Send notifications and updates to your Slack channels.",
+  connected: true,
+  category: "Communication"
+)') do %>
+  <div class="max-w-xl">
+    <%= eden_integration_card(
+      name: "Slack",
+      description: "Send notifications and updates to your Slack channels.",
+      connected: true,
+      category: "Communication"
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Not Connected", description: "Integration card showing disconnected state.",
+  source: 'eden_integration_card(
+  name: "GitHub",
+  description: "Sync repositories and track pull requests automatically.",
+  connected: false,
+  category: "Development"
+)') do %>
+  <div class="max-w-xl">
+    <%= eden_integration_card(
+      name: "GitHub",
+      description: "Sync repositories and track pull requests automatically.",
+      connected: false,
+      category: "Development"
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Multiple Integrations", description: "A list of integration cards in various states.",
+  source: 'eden_integration_card(name: "Stripe", description: "Process payments and manage subscriptions.", connected: true, category: "Payments")
+eden_integration_card(name: "Mailchimp", description: "Email marketing and audience management.", connected: false, category: "Marketing")
+eden_integration_card(name: "Google Drive", description: "Cloud file storage and document collaboration.", connected: true)') do %>
+  <div class="max-w-xl space-y-3">
+    <%= eden_integration_card(name: "Stripe", description: "Process payments and manage subscriptions.", connected: true, category: "Payments") %>
+    <%= eden_integration_card(name: "Mailchimp", description: "Email marketing and audience management.", connected: false, category: "Marketing") %>
+    <%= eden_integration_card(name: "Google Drive", description: "Cloud file storage and document collaboration.", connected: true) %>
+  </div>
+<% end %>

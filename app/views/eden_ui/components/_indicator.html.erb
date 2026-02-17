@@ -1,0 +1,43 @@
+<%
+  variant ||= :primary
+  size ||= :md
+  pill ||= false
+  placement ||= nil
+  outline ||= false
+  count ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  size_classes = case size.to_sym
+  when :xs then "w-2 h-2"
+  when :sm then "w-2.5 h-2.5"
+  when :lg then "w-4 h-4"
+  when :xl then "w-5 h-5"
+  else "w-3 h-3"
+  end
+
+  color = case variant.to_sym
+  when :success then "bg-green-500"
+  when :warning then "bg-yellow-300"
+  when :danger then "bg-red-500"
+  when :neutral then "bg-gray-500"
+  else "bg-blue-600"
+  end
+
+  outline_class = outline ? "ring-2 ring-white dark:ring-gray-800" : ""
+
+  placement_class = case placement&.to_sym
+  when :"top-right" then "absolute -top-1 -end-1"
+  when :"top-left" then "absolute -top-1 -start-1"
+  when :"bottom-right" then "absolute -bottom-1 -end-1"
+  when :"bottom-left" then "absolute -bottom-1 -start-1"
+  when :center then "absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2"
+  else ""
+  end
+
+  rounded_class = pill && count ? "rounded-full px-1.5 text-xs font-bold text-white" : "rounded-full"
+
+  classes = [size_classes, color, rounded_class, outline_class, placement_class, "inline-block", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<span class="<%= classes %>" <%= tag.attributes(html_options) %>><%= count %></span>

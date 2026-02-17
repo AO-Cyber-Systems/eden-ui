@@ -1,0 +1,68 @@
+<%# Feature Section component previews %>
+
+<%= styleguide_block_example(title: "Grid Layout", description: "Default 3-column grid with icon badges, titles, and descriptions.",
+  source: 'eden_feature_section(
+  title: "Designed for business teams",
+  subtitle: "Here at Eden we focus on technology that unlocks long-term value.",
+  features: [
+    { title: "Marketing", description: "Plan it, create it, launch it.", icon: "globe-alt", color: :primary },
+    { title: "Legal", description: "Protect your organization and data.", icon: "document", color: :green },
+    { title: "Finance", description: "Audit-proof software built for critical work.", icon: "star", color: :purple }
+  ]
+)') do %>
+  <%= eden_feature_section(
+    title: "Designed for business teams",
+    subtitle: "Here at Eden we focus on technology that unlocks long-term value and drives economic growth.",
+    features: [
+      { title: "Marketing", description: "Plan it, create it, launch it. Collaborate seamlessly with all the organization and hit your marketing goals every month.", icon: "globe-alt", color: :primary },
+      { title: "Legal", description: "Protect your organization, devices and stay compliant with our structured workflows and custom permissions.", icon: "document", color: :green },
+      { title: "Finance", description: "Audit-proof software built for critical financial operations. Track every transaction and report with confidence.", icon: "star", color: :purple }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Icons Only (Compact)", description: "Compact centered layout with just icons and text.",
+  source: 'eden_feature_section(
+  title: "Core Features",
+  features: [
+    { title: "Fast", description: "Optimized for speed.", icon: "arrow-right", color: :orange },
+    { title: "Secure", description: "Enterprise-grade security.", icon: "check-circle", color: :green },
+    { title: "Scalable", description: "Grows with your team.", icon: "user", color: :teal },
+    { title: "Reliable", description: "99.9% uptime SLA.", icon: "clock", color: :primary }
+  ],
+  columns: 4,
+  variant: :icons_only
+)') do %>
+  <%= eden_feature_section(
+    title: "Core Features",
+    features: [
+      { title: "Fast", description: "Optimized for speed and performance.", icon: "arrow-right", color: :orange },
+      { title: "Secure", description: "Enterprise-grade security built in.", icon: "check-circle", color: :green },
+      { title: "Scalable", description: "Grows effortlessly with your team.", icon: "user", color: :teal },
+      { title: "Reliable", description: "99.9% uptime SLA guaranteed.", icon: "clock", color: :primary }
+    ],
+    columns: 4,
+    variant: :icons_only
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Two-Column Grid", description: "Wider cards in a 2-column layout with colored icon badges.",
+  source: 'eden_feature_section(
+  title: "Why choose us?",
+  subtitle: "We provide tools that make your workflow seamless.",
+  features: [
+    { title: "Intuitive Design", description: "Clean and simple interfaces.", icon: "eye", color: :primary },
+    { title: "Built for Teams", description: "Real-time collaboration.", icon: "user", color: :red }
+  ],
+  columns: 2
+)') do %>
+  <%= eden_feature_section(
+    title: "Why choose us?",
+    subtitle: "We provide tools that make your workflow seamless and productive.",
+    features: [
+      { title: "Intuitive Design", description: "Clean and simple interfaces that your entire team can use without training. Focus on what matters most.", icon: "eye", color: :primary },
+      { title: "Built for Teams", description: "Real-time collaboration features that keep everyone aligned and productive, no matter where they are.", icon: "user", color: :red }
+    ],
+    columns: 2
+  ) %>
+<% end %>

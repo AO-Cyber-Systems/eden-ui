@@ -1,0 +1,30 @@
+<%# Chart Card component preview %>
+
+<%= styleguide_example(title: "Default", description: "Basic chart card with title and chart placeholder.",
+  source: 'eden_chart_card(title: "Total Sales", subtitle: "Last 7 days", chart_id: "sales-chart")') do %>
+  <div class="max-w-lg">
+    <%= eden_chart_card(title: "Total Sales", subtitle: "Last 7 days", chart_id: "sales-chart") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Value", description: "Chart card showing a large value alongside the title.",
+  source: 'eden_chart_card(title: "Revenue", subtitle: "This month vs last month", value: "$47,867", chart_id: "revenue-chart")') do %>
+  <div class="max-w-lg">
+    <%= eden_chart_card(title: "Revenue", subtitle: "This month vs last month", value: "$47,867", chart_id: "revenue-chart") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Footer Content", description: "Chart card with footer links and actions.",
+  source: 'eden_chart_card(title: "New Products", subtitle: "This week", value: "7,564", chart_id: "products-chart") do
+  tag.span("Last 7 days", class: "text-sm text-gray-500")
+end') do %>
+  <div class="max-w-lg">
+    <%= eden_chart_card(title: "New Products", subtitle: "This week", value: "7,564", chart_id: "products-chart") do %>
+      <span class="inline-flex items-center text-sm text-gray-500 dark:text-gray-400">Last 7 days</span>
+      <a href="#" class="inline-flex items-center text-xs font-semibold uppercase text-blue-600 hover:text-blue-700 dark:text-blue-500">
+        Full Report
+        <svg class="w-4 h-4 ms-1" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+      </a>
+    <% end %>
+  </div>
+<% end %>

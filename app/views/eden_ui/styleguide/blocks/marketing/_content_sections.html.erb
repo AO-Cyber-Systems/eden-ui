@@ -1,0 +1,97 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_content_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Content",
+  description: "Long-form content section with heading, paragraphs, and visual hierarchy",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="max-w-screen-lg text-zinc-500 sm:text-lg dark:text-zinc-400">
+      <h2>...</h2>
+      <p>...</p>
+      <p>...</p>
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="max-w-screen-lg text-zinc-500 sm:text-lg dark:text-zinc-400">
+        <h2 class="mb-4 text-4xl tracking-tight font-bold text-zinc-900 dark:text-white">Powering innovation at <span class="font-extrabold">200,000+</span> companies worldwide</h2>
+        <p class="mb-4 font-light">Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p>
+        <p class="mb-4 font-medium">Deliver great service experiences fast - without the complexity of traditional ITSM solutions. Accelerate critical development work and deploy it with ease.</p>
+        <a href="#" class="inline-flex items-center font-medium text-gold-600 hover:text-gold-800 dark:text-gold-500 dark:hover:text-gold-700">
+          Learn more
+          <%= eden_icon("arrow-right", size: :sm) %>
+        </a>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Content with Image",
+  description: "Two-column content section with text and image placeholder",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+    <div class="text-zinc-500 sm:text-lg dark:text-zinc-400">
+      <h2>...</h2>
+      <p>...</p>
+      <p>...</p>
+    </div>
+    <!-- image placeholder -->
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+      <div class="text-zinc-500 sm:text-lg dark:text-zinc-400">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">We didn&rsquo;t reinvent the wheel</h2>
+        <p class="mb-4">We are strategists, designers, and developers. Innovators and problem solvers. Small enough to be simple and quick, but big enough to deliver the scope you want at the pace you need.</p>
+        <p>We are strategists, designers, and developers. Innovators and problem solvers. Small enough to be simple and quick.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-4 mt-8">
+        <div class="w-full h-48 rounded-lg bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center">
+          <%= eden_icon("photo", size: :xl) %>
+        </div>
+        <div class="mt-4 w-full h-48 rounded-lg bg-zinc-300 dark:bg-zinc-600 flex items-center justify-center lg:mt-10">
+          <%= eden_icon("photo", size: :xl) %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Stats Content",
+  description: "Content section with statistics counters",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
+    <div class="max-w-screen-lg">
+      <h2>...</h2>
+      <p>...</p>
+    </div>
+    <div class="grid grid-cols-2 gap-8 lg:grid-cols-4">
+      <div><span>73M+</span><p>developers</p></div>
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
+      <dl class="grid max-w-screen-md gap-8 mx-auto text-zinc-900 sm:grid-cols-3 dark:text-white">
+        <div class="flex flex-col items-center justify-center">
+          <dt class="mb-2 text-3xl md:text-4xl font-extrabold">73M+</dt>
+          <dd class="font-light text-zinc-500 dark:text-zinc-400">developers</dd>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <dt class="mb-2 text-3xl md:text-4xl font-extrabold">1B+</dt>
+          <dd class="font-light text-zinc-500 dark:text-zinc-400">contributors</dd>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <dt class="mb-2 text-3xl md:text-4xl font-extrabold">4M+</dt>
+          <dd class="font-light text-zinc-500 dark:text-zinc-400">organizations</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+<% end %>

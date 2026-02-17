@@ -1,0 +1,57 @@
+<%# Ticket Detail component preview %>
+
+<%= styleguide_example(title: "Full Ticket View", description: "Two-column layout with message thread and sidebar metadata.",
+  source: 'eden_ticket_detail(
+  id: "4521",
+  subject: "Cannot login to my account",
+  status: :in_progress,
+  priority: :high,
+  created_at: "Feb 13, 2026 at 10:30 AM",
+  requester: { name: "Jane Cooper", email: "jane@example.com" },
+  assignee: { name: "Alice Smith", email: "alice@company.com" },
+  messages: [
+    { sender: "Jane Cooper", body: "I have been unable to login since this morning. I keep getting an \"Invalid credentials\" error even though my password is correct.", time: "10:30 AM", is_agent: false },
+    { sender: "Alice Smith", body: "Hi Jane, I can see your account is active. Could you try clearing your browser cookies and attempting again?", time: "11:15 AM", is_agent: true },
+    { sender: "Jane Cooper", body: "That worked! Thank you for the quick response.", time: "11:45 AM", is_agent: false }
+  ]
+)') do %>
+  <%= eden_ticket_detail(
+    id: "4521",
+    subject: "Cannot login to my account",
+    status: :in_progress,
+    priority: :high,
+    created_at: "Feb 13, 2026 at 10:30 AM",
+    requester: { name: "Jane Cooper", email: "jane@example.com" },
+    assignee: { name: "Alice Smith", email: "alice@company.com" },
+    messages: [
+      { sender: "Jane Cooper", body: "I have been unable to login since this morning. I keep getting an \"Invalid credentials\" error even though my password is correct.", time: "10:30 AM", is_agent: false },
+      { sender: "Alice Smith", body: "Hi Jane, I can see your account is active. Could you try clearing your browser cookies and attempting again?", time: "11:15 AM", is_agent: true },
+      { sender: "Jane Cooper", body: "That worked! Thank you for the quick response.", time: "11:45 AM", is_agent: false }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "New Ticket", description: "A freshly opened ticket with no messages yet.",
+  source: 'eden_ticket_detail(
+  id: "4522",
+  subject: "How do I export my data?",
+  status: :open,
+  priority: :low,
+  created_at: "Feb 13, 2026 at 2:00 PM",
+  requester: { name: "Bob Wilson", email: "bob@example.com" },
+  messages: [
+    { sender: "Bob Wilson", body: "I would like to export all of my project data as a CSV file. Is this possible? I could not find the option in the settings.", time: "2:00 PM", is_agent: false }
+  ]
+)') do %>
+  <%= eden_ticket_detail(
+    id: "4522",
+    subject: "How do I export my data?",
+    status: :open,
+    priority: :low,
+    created_at: "Feb 13, 2026 at 2:00 PM",
+    requester: { name: "Bob Wilson", email: "bob@example.com" },
+    messages: [
+      { sender: "Bob Wilson", body: "I would like to export all of my project data as a CSV file. Is this possible? I could not find the option in the settings.", time: "2:00 PM", is_agent: false }
+    ]
+  ) %>
+<% end %>

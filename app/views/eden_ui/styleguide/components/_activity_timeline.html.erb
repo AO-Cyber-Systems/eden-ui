@@ -1,0 +1,42 @@
+<%# Activity Timeline component preview %>
+
+<%= styleguide_example(title: "Default", description: "Activity timeline with user events.",
+  source: 'eden_activity_timeline(items: [
+  { name: "Bonnie Green", action: "moved", target: "Jese Leos", time: "Just now", color: "blue" },
+  { name: "Thomas Lean", action: "posted a comment on", target: "Project Alpha", time: "2 hours ago", color: "green" },
+  { name: "Jese Leos", action: "created a new", target: "Invoice #1234", time: "5 hours ago", color: "purple" }
+])') do %>
+  <div class="max-w-lg p-4">
+    <%= eden_activity_timeline(items: [
+      { name: "Bonnie Green", action: "moved", target: "Jese Leos", time: "Just now", color: "blue" },
+      { name: "Thomas Lean", action: "posted a comment on", target: "Project Alpha", time: "2 hours ago", color: "green" },
+      { name: "Jese Leos", action: "created a new", target: "Invoice #1234", time: "5 hours ago", color: "purple" }
+    ]) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Different Colors", description: "Timeline items with colored status dots.",
+  source: 'eden_activity_timeline(items: [
+  { name: "System", action: "deployed version", target: "v2.3.1", time: "10 min ago", color: "green" },
+  { name: "Alert", action: "detected high CPU on", target: "web-server-01", time: "25 min ago", color: "red" },
+  { name: "Cron", action: "completed backup for", target: "database-prod", time: "1 hour ago", color: "yellow" }
+])') do %>
+  <div class="max-w-lg p-4">
+    <%= eden_activity_timeline(items: [
+      { name: "System", action: "deployed version", target: "v2.3.1", time: "10 min ago", color: "green" },
+      { name: "Alert", action: "detected high CPU on", target: "web-server-01", time: "25 min ago", color: "red" },
+      { name: "Cron", action: "completed backup for", target: "database-prod", time: "1 hour ago", color: "yellow" }
+    ]) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Empty State Fallback", description: "When no items are provided, block content renders instead.",
+  source: 'eden_activity_timeline do
+  eden_empty_state(title: "No activity yet", description: "Activity will appear here once your team starts working.", icon: "clock")
+end') do %>
+  <div class="max-w-lg">
+    <%= eden_activity_timeline do %>
+      <%= eden_empty_state(title: "No activity yet", description: "Activity will appear here once your team starts working.", icon: "clock") %>
+    <% end %>
+  </div>
+<% end %>

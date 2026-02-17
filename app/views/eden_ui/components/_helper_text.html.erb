@@ -1,0 +1,8 @@
+<%
+  html_options ||= {}
+  content ||= nil
+
+  classes = ["mt-2 text-sm text-gray-500 dark:text-gray-400", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<p class="<%= classes %>" <%= tag.attributes(html_options) %>><%= content %></p>

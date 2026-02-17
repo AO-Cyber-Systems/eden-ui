@@ -1,0 +1,41 @@
+<%# Blog Section component previews %>
+
+<%= styleguide_block_example(title: "Three-Column Grid", description: "Default blog grid with article cards containing category badges, titles, excerpts, and author info.",
+  source: 'eden_blog_section(
+  title: "Latest Articles",
+  subtitle: "Read our latest insights and updates.",
+  posts: [
+    { title: "Getting Started with Eden UI", excerpt: "A complete guide to integrating Eden UI into your Rails app.", date: "Feb 10, 2026", author: "Jane Doe", category: "Tutorial", href: "#" },
+    { title: "Design Tokens Explained", excerpt: "How to use design tokens to build consistent interfaces.", date: "Feb 8, 2026", author: "John Smith", category: "Architecture", href: "#" },
+    { title: "Building Accessible Forms", excerpt: "Best practices for creating forms everyone can use.", date: "Feb 5, 2026", author: "Sarah Lee", category: "Accessibility", href: "#" }
+  ]
+)') do %>
+  <%= eden_blog_section(
+    title: "Latest Articles",
+    subtitle: "Read our latest insights, tutorials, and product updates.",
+    posts: [
+      { title: "Getting Started with Eden UI", excerpt: "A complete guide to integrating Eden UI into your Rails application. Learn about installation, configuration, and building your first components.", date: "Feb 10, 2026", author: "Jane Doe", category: "Tutorial", href: "#" },
+      { title: "Design Tokens Explained", excerpt: "How to use design tokens to build consistent, themeable interfaces across your entire application. A deep dive into our token system.", date: "Feb 8, 2026", author: "John Smith", category: "Architecture", href: "#" },
+      { title: "Building Accessible Forms", excerpt: "Best practices for creating forms that everyone can use, including screen reader users and keyboard navigation.", date: "Feb 5, 2026", author: "Sarah Lee", category: "Accessibility", href: "#" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Two-Column with Images", description: "Blog cards with cover images in a two-column layout.",
+  source: 'eden_blog_section(
+  title: "From the Blog",
+  columns: 2,
+  posts: [
+    { title: "Launching v2.0", excerpt: "Major release with 30 new components.", date: "Feb 12, 2026", author: "Team Eden", category: "Release", image: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png", href: "#" },
+    { title: "Performance Tips", excerpt: "Optimize your Rails frontend for speed.", date: "Feb 9, 2026", author: "Alex Chen", category: "Performance", image: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png", href: "#" }
+  ]
+)') do %>
+  <%= eden_blog_section(
+    title: "From the Blog",
+    columns: 2,
+    posts: [
+      { title: "Launching v2.0: 30 New Components", excerpt: "We are excited to announce the release of Eden UI v2.0 with 30 brand new components, improved theming, and better documentation.", date: "Feb 12, 2026", author: "Team Eden", category: "Release", image: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png", href: "#" },
+      { title: "Frontend Performance Tips for Rails", excerpt: "Practical strategies to optimize your Rails frontend for speed, including lazy loading, caching, and efficient asset delivery.", date: "Feb 9, 2026", author: "Alex Chen", category: "Performance", image: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png", href: "#" }
+    ]
+  ) %>
+<% end %>

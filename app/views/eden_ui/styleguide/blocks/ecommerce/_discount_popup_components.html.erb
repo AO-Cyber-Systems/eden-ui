@@ -1,0 +1,90 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_discount_popup_components.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Discount Popup Modal",
+  description: "Email signup popup offering a discount code for first-time buyers",
+  source: '<div class="fixed inset-0 bg-zinc-900/50 flex items-center justify-center">
+  <div class="bg-white rounded-lg p-8 max-w-md">
+    <h2>Get 15% Off</h2>
+    <p>Sign up for our newsletter</p>
+    eden_input(type: :email, placeholder: "Enter your email")
+    eden_button(variant: :primary) { "Get My Discount" }
+  </div>
+</div>'
+) do %>
+  <div class="relative bg-zinc-100 dark:bg-zinc-900 rounded-lg p-8 flex items-center justify-center min-h-[400px]">
+    <!-- Simulated backdrop -->
+    <div class="absolute inset-0 bg-zinc-900/30 dark:bg-zinc-900/60 rounded-lg"></div>
+
+    <!-- Modal -->
+    <div class="relative bg-white dark:bg-zinc-800 rounded-xl shadow-2xl max-w-md w-full overflow-hidden">
+      <button class="absolute top-3 right-3 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 z-10">
+        <%= eden_icon("x-mark", size: :sm) %>
+      </button>
+      <div class="bg-gradient-to-br from-gold-500 to-gold-700 p-8 text-center text-white">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-1">Exclusive Offer</p>
+        <h2 class="text-4xl font-extrabold mb-1">15% OFF</h2>
+        <p class="text-gold-100 text-sm">Your first order</p>
+      </div>
+      <div class="p-6">
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 text-center mb-4">Sign up for our newsletter and get 15% off your first purchase. No spam, just great deals.</p>
+        <form class="space-y-3">
+          <%= eden_input(type: :email, placeholder: "Enter your email address") %>
+          <%= eden_button(variant: :primary, size: :lg) { "Get My Discount" } %>
+        </form>
+        <p class="text-xs text-zinc-400 dark:text-zinc-500 text-center mt-3">By signing up, you agree to our Terms of Service</p>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Exit-Intent Popup",
+  description: "Exit-intent popup with product image and limited time discount offer",
+  source: '<div class="bg-white rounded-lg max-w-lg overflow-hidden">
+  <div class="grid grid-cols-2">
+    <!-- image placeholder -->
+    <div class="p-6">
+      <h2>Wait! Don\'t leave yet</h2>
+      eden_input(type: :email, placeholder: "Your email")
+      eden_button(variant: :primary) { "Claim Offer" }
+    </div>
+  </div>
+</div>'
+) do %>
+  <div class="relative bg-zinc-100 dark:bg-zinc-900 rounded-lg p-8 flex items-center justify-center min-h-[350px]">
+    <div class="absolute inset-0 bg-zinc-900/30 dark:bg-zinc-900/60 rounded-lg"></div>
+
+    <div class="relative bg-white dark:bg-zinc-800 rounded-xl shadow-2xl max-w-lg w-full overflow-hidden">
+      <button class="absolute top-3 right-3 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 z-10">
+        <%= eden_icon("x-mark", size: :sm) %>
+      </button>
+      <div class="grid grid-cols-1 sm:grid-cols-2">
+        <div class="h-48 sm:h-auto bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center">
+          <%= eden_icon("photo", size: :xl) %>
+        </div>
+        <div class="p-6">
+          <h2 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">Wait! Don't leave yet</h2>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-3">Get <span class="font-bold text-red-600 dark:text-red-400">20% OFF</span> your entire cart. This offer expires in 10 minutes!</p>
+
+          <div class="flex gap-2 mb-4">
+            <% ["05", "23"].each_with_index do |val, i| %>
+              <div class="w-10 h-10 bg-zinc-100 dark:bg-zinc-700 rounded flex items-center justify-center">
+                <span class="text-lg font-bold text-zinc-900 dark:text-white"><%= val %></span>
+              </div>
+              <% if i == 0 %>
+                <span class="text-lg font-bold text-zinc-400 self-center">:</span>
+              <% end %>
+            <% end %>
+          </div>
+
+          <form class="space-y-3">
+            <%= eden_input(type: :email, placeholder: "Your email", size: :sm) %>
+            <%= eden_button(variant: :primary, size: :sm) { "Claim 20% Off" } %>
+          </form>
+          <button class="text-xs text-zinc-400 dark:text-zinc-500 mt-3 hover:underline">No thanks, I'll pay full price</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

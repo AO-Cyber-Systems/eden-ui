@@ -1,0 +1,22 @@
+<%= styleguide_example(
+  title: "Default Pagination",
+  source: 'eden_pagination(current_page: 3, total_pages: 10)'
+) do %>
+  <%= eden_pagination(current_page: 3, total_pages: 10) %>
+<% end %>
+
+<%= styleguide_example(
+  title: "First Page",
+  description: "Previous button is disabled when on the first page",
+  source: 'eden_pagination(current_page: 1, total_pages: 5)'
+) do %>
+  <%= eden_pagination(current_page: 1, total_pages: 5) %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Last Page",
+  description: "Next button is disabled when on the last page",
+  source: 'eden_pagination(current_page: 5, total_pages: 5)'
+) do %>
+  <%= eden_pagination(current_page: 5, total_pages: 5) %>
+<% end %>

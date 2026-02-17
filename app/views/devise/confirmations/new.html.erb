@@ -1,0 +1,15 @@
+<% content = capture do %>
+  <% fields_for(resource_name, resource) do |f| %>
+    <%= eden_forgot_password_form(
+      url: confirmation_path(resource_name),
+      form: f,
+      heading: "Resend confirmation instructions",
+      description: "Enter your email and we'll resend confirmation instructions.",
+      submit_text: "Resend confirmation instructions",
+      sign_in_url: new_session_path(resource_name)
+    ) do %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    <% end %>
+  <% end %>
+<% end %>
+<%= render partial: "eden_ui/layouts/auth", locals: { app_name: EdenUi.configuration.app_name, logo_path: EdenUi.configuration.logo_path, content: content } %>

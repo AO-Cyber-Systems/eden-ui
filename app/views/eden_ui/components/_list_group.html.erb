@@ -1,0 +1,12 @@
+<%
+  bordered ||= true
+  html_options ||= {}
+  content ||= nil
+
+  border_class = bordered ? "border border-gray-200 dark:border-gray-600" : ""
+  classes = ["w-full text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:text-white #{border_class}", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<ul class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%= content %>
+</ul>

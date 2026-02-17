@@ -1,0 +1,89 @@
+<%# ── Card component previews ── %>
+
+<%= styleguide_example(title: "Default Card", source: 'eden_card do
+  content_tag(:div, class: "p-5") do
+    content_tag(:h5, "Noteworthy technology acquisitions",
+      class: "mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white") +
+    content_tag(:p, "Here are the biggest enterprise technology acquisitions of 2021, in reverse chronological order.",
+      class: "font-normal text-gray-700 dark:text-gray-400")
+  end
+end') do %>
+  <%= eden_card do %>
+    <div class="p-5">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021, in reverse chronological order.</p>
+    </div>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Card with Rich Content", source: 'eden_card do
+  content_tag(:div, class: "p-5") do
+    content_tag(:h5, "Team Dashboard", class: "...") +
+    content_tag(:p, "Monitor your team performance and activity.", class: "...") +
+    eden_button(variant: :primary, size: :sm) { "View Details" }
+  end
+end') do %>
+  <%= eden_card do %>
+    <div class="p-5">
+      <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Team Dashboard</h5>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Monitor your team performance and activity across all projects.</p>
+      <%= eden_button(variant: :primary, size: :sm) { "View Details" } %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Horizontal Layout", source: 'eden_card(horizontal: true) do
+  content_tag(:div, class: "p-5") do
+    content_tag(:h5, "Horizontal card", class: "...") +
+    content_tag(:p, "A card displayed in horizontal layout.", class: "...")
+  end
+end') do %>
+  <%= eden_card(horizontal: true) do %>
+    <div class="flex flex-col justify-center p-5">
+      <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Horizontal card</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">Cards can be laid out horizontally for a different visual approach.</p>
+    </div>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Link Card", source: 'eden_card(href: "#") do
+  content_tag(:div, class: "p-5") do
+    content_tag(:h5, "Clickable card", class: "...") +
+    content_tag(:p, "This entire card is a link.", class: "...")
+  end
+end') do %>
+  <%= eden_card(href: "#") do %>
+    <div class="p-5">
+      <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Clickable card</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">This entire card is wrapped in an anchor tag and acts as a link.</p>
+    </div>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Multiple Cards Grid", source: '# Wrap cards in a grid layout
+content_tag(:div, class: "grid grid-cols-1 md:grid-cols-3 gap-4") do
+  eden_card { ... } +
+  eden_card { ... } +
+  eden_card { ... }
+end') do %>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+    <%= eden_card do %>
+      <div class="p-5">
+        <h5 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">Analytics</h5>
+        <p class="text-sm text-gray-700 dark:text-gray-400">Track page views, sessions, and conversion rates.</p>
+      </div>
+    <% end %>
+    <%= eden_card do %>
+      <div class="p-5">
+        <h5 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">Reports</h5>
+        <p class="text-sm text-gray-700 dark:text-gray-400">Generate custom reports for your team.</p>
+      </div>
+    <% end %>
+    <%= eden_card do %>
+      <div class="p-5">
+        <h5 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">Settings</h5>
+        <p class="text-sm text-gray-700 dark:text-gray-400">Configure your workspace preferences.</p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,57 @@
+<%# Kanban Board component preview %>
+
+<%= styleguide_example(title: "Default Board", description: "Kanban board with columns and task cards.",
+  source: 'eden_kanban_board do
+  eden_kanban_column(title: "To Do", count: 3, color: :default) do
+    eden_kanban_card(title: "Research competitors", priority: :high, tags: [{label: "Research", color: :blue}]) +
+    eden_kanban_card(title: "Write user stories", priority: :medium) +
+    eden_kanban_card(title: "Review PRD", priority: :low, due_date: "Feb 20")
+  end +
+  eden_kanban_column(title: "In Progress", count: 2, color: :primary) do
+    eden_kanban_card(title: "Design landing page", priority: :high, description: "Create wireframes and mockups") +
+    eden_kanban_card(title: "API integration", priority: :medium, due_date: "Feb 18")
+  end +
+  eden_kanban_column(title: "Done", count: 1, color: :success) do
+    eden_kanban_card(title: "Setup CI/CD pipeline", priority: :low)
+  end
+end') do %>
+  <%= eden_kanban_board do %>
+    <%= eden_kanban_column(title: "To Do", count: 3, color: :default) do %>
+      <%= eden_kanban_card(title: "Research competitors", priority: :high, tags: [{label: "Research", color: :blue}]) %>
+      <%= eden_kanban_card(title: "Write user stories", priority: :medium) %>
+      <%= eden_kanban_card(title: "Review PRD", priority: :low, due_date: "Feb 20") %>
+    <% end %>
+    <%= eden_kanban_column(title: "In Progress", count: 2, color: :primary) do %>
+      <%= eden_kanban_card(title: "Design landing page", priority: :high, description: "Create wireframes and mockups for the new homepage") %>
+      <%= eden_kanban_card(title: "API integration", priority: :medium, due_date: "Feb 18") %>
+    <% end %>
+    <%= eden_kanban_column(title: "Done", count: 1, color: :success) do %>
+      <%= eden_kanban_card(title: "Setup CI/CD pipeline", priority: :low) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Color Variants", description: "Columns with different color schemes for workflow stages.",
+  source: 'eden_kanban_board do
+  eden_kanban_column(title: "Backlog", count: 2, color: :default) { ... } +
+  eden_kanban_column(title: "In Review", count: 1, color: :warning) { ... } +
+  eden_kanban_column(title: "Blocked", count: 1, color: :danger) { ... } +
+  eden_kanban_column(title: "Shipped", count: 2, color: :success) { ... }
+end') do %>
+  <%= eden_kanban_board do %>
+    <%= eden_kanban_column(title: "Backlog", count: 2, color: :default) do %>
+      <%= eden_kanban_card(title: "Database optimization", description: "Improve query performance", priority: :medium) %>
+      <%= eden_kanban_card(title: "Add dark mode", priority: :low, tags: [{label: "UI", color: :purple}]) %>
+    <% end %>
+    <%= eden_kanban_column(title: "In Review", count: 1, color: :warning) do %>
+      <%= eden_kanban_card(title: "Authentication flow", priority: :high, assignees: [{name: "Alice", initials: "AC"}, {name: "Bob", initials: "BK"}], due_date: "Feb 15") %>
+    <% end %>
+    <%= eden_kanban_column(title: "Blocked", count: 1, color: :danger) do %>
+      <%= eden_kanban_card(title: "Payment gateway", priority: :high, description: "Waiting for API keys from provider", tags: [{label: "Blocked", color: :red}]) %>
+    <% end %>
+    <%= eden_kanban_column(title: "Shipped", count: 2, color: :success) do %>
+      <%= eden_kanban_card(title: "Email notifications", priority: :medium) %>
+      <%= eden_kanban_card(title: "User onboarding", priority: :high, tags: [{label: "Feature", color: :green}]) %>
+    <% end %>
+  <% end %>
+<% end %>

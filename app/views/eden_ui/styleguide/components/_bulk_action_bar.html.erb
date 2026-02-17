@@ -1,0 +1,66 @@
+<%# Bulk Action Bar component preview %>
+
+<%= styleguide_example(title: "Visible", description: "Bulk action bar shown when items are selected. Displayed inline for preview purposes.",
+  source: 'eden_bulk_action_bar(count: 3, visible: true) do
+  eden_button(variant: :secondary, size: :sm) { "Export" }
+  eden_button(variant: :danger, size: :sm) { "Delete" }
+end') do %>
+  <div class="relative border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden" style="min-height: 60px;">
+    <%# Render inline (non-fixed) for preview %>
+    <div class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
+      <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-sm font-medium text-gray-900 dark:text-white">3 items selected</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <%= eden_button(variant: :secondary, size: :sm) { "Export" } %>
+          <%= eden_button(variant: :danger, size: :sm) { "Delete" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Single Item", description: "Bulk action bar for a single selected item.",
+  source: 'eden_bulk_action_bar(count: 1, visible: true) do
+  eden_button(variant: :secondary, size: :sm) { "Move" }
+  eden_button(variant: :secondary, size: :sm) { "Archive" }
+  eden_button(variant: :danger, size: :sm) { "Delete" }
+end') do %>
+  <div class="relative border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden" style="min-height: 60px;">
+    <div class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
+      <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-sm font-medium text-gray-900 dark:text-white">1 item selected</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <%= eden_button(variant: :secondary, size: :sm) { "Move" } %>
+          <%= eden_button(variant: :secondary, size: :sm) { "Archive" } %>
+          <%= eden_button(variant: :danger, size: :sm) { "Delete" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Many Items", description: "Bulk action bar for many selected items with batch operations.",
+  source: 'eden_bulk_action_bar(count: 47, visible: true) do
+  eden_button(variant: :primary, size: :sm) { "Bulk Edit" }
+  eden_button(variant: :secondary, size: :sm) { "Export CSV" }
+  eden_button(variant: :danger, size: :sm) { "Delete All" }
+end') do %>
+  <div class="relative border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden" style="min-height: 60px;">
+    <div class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
+      <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-sm font-medium text-gray-900 dark:text-white">47 items selected</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <%= eden_button(variant: :primary, size: :sm) { "Bulk Edit" } %>
+          <%= eden_button(variant: :secondary, size: :sm) { "Export CSV" } %>
+          <%= eden_button(variant: :danger, size: :sm) { "Delete All" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

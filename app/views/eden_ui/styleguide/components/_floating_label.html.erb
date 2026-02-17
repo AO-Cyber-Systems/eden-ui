@@ -1,0 +1,25 @@
+<%# Floating Label component preview %>
+
+<%= styleguide_example(title: "Variants", source: 'eden_floating_label(label: "Default variant", variant: :default)
+eden_floating_label(label: "Filled variant", variant: :filled)
+eden_floating_label(label: "Outlined variant", variant: :outlined)') do %>
+  <%= eden_floating_label(label: "Default variant", variant: :default) %>
+  <%= eden_floating_label(label: "Filled variant", variant: :filled) %>
+  <%= eden_floating_label(label: "Outlined variant", variant: :outlined) %>
+<% end %>
+
+<%= styleguide_example(title: "Sizes", source: 'eden_floating_label(label: "Small", size: :sm)
+eden_floating_label(label: "Medium", size: :md)') do %>
+  <%= eden_floating_label(label: "Small", size: :sm) %>
+  <%= eden_floating_label(label: "Medium", size: :md) %>
+<% end %>
+
+<%= styleguide_example(title: "Input Types", source: 'eden_floating_label(label: "Email address", type: :email)
+eden_floating_label(label: "Password", type: :password)') do %>
+  <%= eden_floating_label(label: "Email address", type: :email) %>
+  <%= eden_floating_label(label: "Password", type: :password) %>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", source: 'eden_floating_label(label: "Disabled input", disabled: true)') do %>
+  <%= eden_floating_label(label: "Disabled input", disabled: true) %>
+<% end %>

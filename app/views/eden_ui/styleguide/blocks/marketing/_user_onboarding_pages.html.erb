@@ -1,0 +1,114 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_user_onboarding_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Stepper Onboarding",
+  description: "Multi-step onboarding flow with progress stepper and form fields",
+  source: '<section class="bg-zinc-50 dark:bg-zinc-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+    eden_stepper do
+      eden_stepper_item(label: "Account", status: :complete)
+      eden_stepper_item(label: "Profile", status: :current)
+      eden_stepper_item(label: "Preferences", status: :upcoming)
+    end
+    eden_card do
+      <h2>Set up your profile</h2>
+      <form>
+        eden_form_group(label: "Display name") { eden_input(...) }
+        eden_form_group(label: "Bio") { eden_textarea(...) }
+        eden_button(variant: :primary) { "Continue" }
+      </form>
+    end
+  </div>
+</section>'
+) do %>
+  <section class="bg-zinc-50 dark:bg-zinc-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-16">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-zinc-900 dark:text-white">Eden</a>
+      <div class="w-full sm:max-w-xl">
+        <div class="mb-8">
+          <%= eden_stepper do %>
+            <%= eden_stepper_item(label: "Account", status: :complete, icon: "check") %>
+            <%= eden_stepper_item(label: "Profile", status: :current, icon: "user") %>
+            <%= eden_stepper_item(label: "Preferences", status: :upcoming, icon: "cog") %>
+          <% end %>
+        </div>
+        <div class="bg-white rounded-lg shadow dark:border dark:bg-zinc-800 dark:border-zinc-700">
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h2 class="text-xl font-bold text-zinc-900 dark:text-white">Set up your profile</h2>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">Tell us a bit about yourself so we can personalize your experience.</p>
+            <form class="space-y-4" action="#">
+              <div class="flex items-center gap-4 mb-4">
+                <%= eden_avatar(initials: "JD", size: :xl) %>
+                <%= eden_button(variant: :ghost, size: :sm) { "Upload photo" } %>
+              </div>
+              <%= eden_form_group(label: "Display name", required: true) do %>
+                <%= eden_input(placeholder: "John Doe", id: "onboard-name", name: "display_name") %>
+              <% end %>
+              <%= eden_form_group(label: "Bio") do %>
+                <%= eden_textarea(rows: 3, placeholder: "Tell us about yourself...", id: "onboard-bio", name: "bio") %>
+              <% end %>
+              <%= eden_form_group(label: "Role") do %>
+                <%= eden_select(options: ["Developer", "Designer", "Product Manager", "Other"], placeholder: "Select your role", id: "onboard-role", name: "role") %>
+              <% end %>
+              <div class="flex justify-between pt-4">
+                <%= eden_button(variant: :ghost, href: "#") { "Back" } %>
+                <%= eden_button(variant: :primary, type: :submit) { "Continue" } %>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Welcome Onboarding",
+  description: "Welcome screen with quick-start action cards",
+  source: '<section class="bg-zinc-50 dark:bg-zinc-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+    <h1>Welcome to Eden!</h1>
+    <p>Get started by choosing what you want to do first.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      eden_card { "action 1" }
+      eden_card { "action 2" }
+      eden_card { "action 3" }
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-zinc-50 dark:bg-zinc-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-16">
+      <div class="w-full max-w-screen-md text-center mb-8">
+        <h1 class="text-3xl font-bold text-zinc-900 dark:text-white mb-2">Welcome to Eden!</h1>
+        <p class="text-zinc-500 dark:text-zinc-400">Get started by choosing what you&rsquo;d like to do first.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-screen-md">
+        <a href="#" class="block p-6 bg-white border border-zinc-200 rounded-lg shadow hover:bg-zinc-50 dark:bg-zinc-800 dark:border-zinc-700 dark:hover:bg-zinc-700 text-center transition-colors">
+          <div class="mx-auto mb-4 w-12 h-12 rounded-full bg-gold-100 dark:bg-gold-900/30 flex items-center justify-center text-gold-600 dark:text-gold-400">
+            <%= eden_icon("document", size: :lg) %>
+          </div>
+          <h3 class="mb-2 text-lg font-semibold text-zinc-900 dark:text-white">Create a project</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">Start a new project from scratch or use a template.</p>
+        </a>
+        <a href="#" class="block p-6 bg-white border border-zinc-200 rounded-lg shadow hover:bg-zinc-50 dark:bg-zinc-800 dark:border-zinc-700 dark:hover:bg-zinc-700 text-center transition-colors">
+          <div class="mx-auto mb-4 w-12 h-12 rounded-full bg-gold-100 dark:bg-gold-900/30 flex items-center justify-center text-gold-600 dark:text-gold-400">
+            <%= eden_icon("user", size: :lg) %>
+          </div>
+          <h3 class="mb-2 text-lg font-semibold text-zinc-900 dark:text-white">Invite your team</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">Collaborate with your team members in real time.</p>
+        </a>
+        <a href="#" class="block p-6 bg-white border border-zinc-200 rounded-lg shadow hover:bg-zinc-50 dark:bg-zinc-800 dark:border-zinc-700 dark:hover:bg-zinc-700 text-center transition-colors">
+          <div class="mx-auto mb-4 w-12 h-12 rounded-full bg-gold-100 dark:bg-gold-900/30 flex items-center justify-center text-gold-600 dark:text-gold-400">
+            <%= eden_icon("cog", size: :lg) %>
+          </div>
+          <h3 class="mb-2 text-lg font-semibold text-zinc-900 dark:text-white">Customize settings</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">Configure your workspace to match your workflow.</p>
+        </a>
+      </div>
+      <div class="mt-8">
+        <%= eden_button(variant: :ghost, href: "#") { "Skip for now" } %>
+      </div>
+    </div>
+  </section>
+<% end %>

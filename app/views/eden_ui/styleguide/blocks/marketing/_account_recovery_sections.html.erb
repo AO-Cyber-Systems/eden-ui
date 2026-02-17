@@ -1,0 +1,90 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_account_recovery_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Email Verification",
+  description: "Account recovery page prompting the user to verify their email",
+  source: '<section class="bg-zinc-50 dark:bg-zinc-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+    eden_card do
+      eden_icon("envelope", size: :xl)
+      <h1>Check your email</h1>
+      <p>We sent a verification link...</p>
+      eden_button(variant: :primary) { "Open email app" }
+      eden_button(variant: :ghost) { "Resend email" }
+    end
+  </div>
+</section>'
+) do %>
+  <section class="bg-zinc-50 dark:bg-zinc-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-16">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-zinc-900 dark:text-white">Eden</a>
+      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-zinc-800 dark:border-zinc-700">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8 text-center">
+          <div class="mx-auto w-16 h-16 rounded-full bg-gold-100 dark:bg-gold-900/30 flex items-center justify-center text-gold-600 dark:text-gold-400">
+            <%= eden_icon("envelope", size: :xl) %>
+          </div>
+          <h1 class="text-xl font-bold leading-tight tracking-tight text-zinc-900 md:text-2xl dark:text-white">Check your email</h1>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">We sent a verification link to <span class="font-medium text-zinc-900 dark:text-white">john@eden.com</span>. Click the link in the email to verify your account.</p>
+          <div class="space-y-3">
+            <%= eden_button(variant: :primary, href: "#") { "Open email app" } %>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">
+              Didn&rsquo;t receive the email?
+              <a href="#" class="font-medium text-gold-600 hover:underline dark:text-gold-500">Click to resend</a>
+            </p>
+          </div>
+          <p class="text-xs text-zinc-400 dark:text-zinc-500">
+            <a href="#" class="hover:underline">Back to sign in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Two-Factor Authentication",
+  description: "OTP code entry for account recovery verification",
+  source: '<section class="bg-zinc-50 dark:bg-zinc-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+    eden_card do
+      eden_icon("shield", size: :xl)
+      <h1>Two-factor authentication</h1>
+      <p>Enter the 6-digit code from your authenticator app.</p>
+      <div class="flex gap-2 justify-center">
+        eden_input(placeholder: "0") <!-- repeated 6x -->
+      </div>
+      eden_button(variant: :primary) { "Verify" }
+    end
+  </div>
+</section>'
+) do %>
+  <section class="bg-zinc-50 dark:bg-zinc-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-16">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-zinc-900 dark:text-white">Eden</a>
+      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-zinc-800 dark:border-zinc-700">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8 text-center">
+          <div class="mx-auto w-16 h-16 rounded-full bg-gold-100 dark:bg-gold-900/30 flex items-center justify-center text-gold-600 dark:text-gold-400">
+            <%= eden_icon("shield", size: :xl) %>
+          </div>
+          <h1 class="text-xl font-bold leading-tight tracking-tight text-zinc-900 md:text-2xl dark:text-white">Two-factor authentication</h1>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">Enter the 6-digit code from your authenticator app to continue.</p>
+          <form action="#" class="space-y-4">
+            <div class="flex gap-2 justify-center">
+              <input type="text" maxlength="1" class="w-12 h-12 text-center text-xl font-bold rounded-lg border border-zinc-300 bg-zinc-50 text-zinc-900 focus:ring-gold-500 focus:border-gold-500 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white" />
+              <input type="text" maxlength="1" class="w-12 h-12 text-center text-xl font-bold rounded-lg border border-zinc-300 bg-zinc-50 text-zinc-900 focus:ring-gold-500 focus:border-gold-500 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white" />
+              <input type="text" maxlength="1" class="w-12 h-12 text-center text-xl font-bold rounded-lg border border-zinc-300 bg-zinc-50 text-zinc-900 focus:ring-gold-500 focus:border-gold-500 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white" />
+              <input type="text" maxlength="1" class="w-12 h-12 text-center text-xl font-bold rounded-lg border border-zinc-300 bg-zinc-50 text-zinc-900 focus:ring-gold-500 focus:border-gold-500 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white" />
+              <input type="text" maxlength="1" class="w-12 h-12 text-center text-xl font-bold rounded-lg border border-zinc-300 bg-zinc-50 text-zinc-900 focus:ring-gold-500 focus:border-gold-500 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white" />
+              <input type="text" maxlength="1" class="w-12 h-12 text-center text-xl font-bold rounded-lg border border-zinc-300 bg-zinc-50 text-zinc-900 focus:ring-gold-500 focus:border-gold-500 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white" />
+            </div>
+            <%= eden_button(variant: :primary, type: :submit) { "Verify" } %>
+          </form>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">
+            Didn&rsquo;t receive a code?
+            <a href="#" class="font-medium text-gold-600 hover:underline dark:text-gold-500">Resend code</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

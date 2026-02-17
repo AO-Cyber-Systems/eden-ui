@@ -1,0 +1,44 @@
+<div class="max-w-5xl mx-auto">
+  <%# Breadcrumb %>
+  <div class="flex items-center gap-2 text-sm text-zinc-400 dark:text-zinc-500 mb-6">
+    <a href="<%= eden_ui.root_path %>" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">Styleguide</a>
+    <%= eden_icon("chevron-right", size: :xs) %>
+    <span class="text-zinc-700 dark:text-zinc-200"><%= @category[:label] %></span>
+  </div>
+
+  <%# Header %>
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-2">
+      <div class="p-2 rounded-lg bg-gold-500/10 text-gold-600 dark:text-gold-400">
+        <%= eden_icon(@category[:icon], size: :lg) rescue eden_icon("document", size: :lg) %>
+      </div>
+      <h1 class="text-2xl font-display font-bold text-zinc-900 dark:text-white"><%= @category[:label] %></h1>
+    </div>
+    <p class="text-zinc-500 dark:text-zinc-400"><%= @category[:description] %></p>
+  </div>
+
+  <%# Component list %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <% @category[:components].each do |component| %>
+      <a href="<%= eden_ui.styleguide_component_path(category: @category_slug, component: component.slug) %>"
+         class="group block p-5 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 hover:border-gold-500/50 dark:hover:border-gold-500/30 hover:shadow-lg transition-all duration-200">
+        <div class="flex items-center justify-between mb-2">
+          <h2 class="text-base font-semibold text-zinc-900 dark:text-white"><%= component.name %></h2>
+          <span class="text-xs text-gold-600 dark:text-gold-400 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+            View <%= eden_icon("arrow-right", size: :xs) %>
+          </span>
+        </div>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-3"><%= component.description %></p>
+        <div class="flex items-center gap-3 text-xs text-zinc-400 dark:text-zinc-500">
+          <code class="font-mono px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 rounded"><%= component.helper_method %></code>
+          <% if component.has_block %>
+            <span class="px-1.5 py-0.5 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded">block</span>
+          <% end %>
+          <% if component.params.any? %>
+            <span><%= component.params.size %> params</span>
+          <% end %>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>

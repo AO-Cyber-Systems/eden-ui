@@ -1,0 +1,41 @@
+<%# Event List component preview %>
+
+<%= styleguide_example(title: "Grouped by Date", description: "Events grouped by date with sticky headers.",
+  source: 'eden_event_list(events: [
+  {date: "2026-02-13", title: "Standup", start_time: "9:00 AM", color: :primary},
+  {date: "2026-02-13", title: "Design Review", start_time: "2:00 PM", color: :purple, location: "Room B"},
+  {date: "2026-02-14", title: "Sprint Planning", start_time: "10:00 AM", end_time: "12:00 PM", color: :success},
+  {date: "2026-02-15", title: "Client Demo", start_time: "3:00 PM", color: :warning, location: "Zoom"}
+])') do %>
+  <div class="max-w-lg">
+    <%= eden_event_list(events: [
+      {date: "2026-02-13", title: "Daily Standup", start_time: "9:00 AM", end_time: "9:15 AM", color: :primary},
+      {date: "2026-02-13", title: "Design Review", start_time: "2:00 PM", end_time: "3:00 PM", color: :purple, location: "Conference Room B"},
+      {date: "2026-02-14", title: "Sprint Planning", start_time: "10:00 AM", end_time: "12:00 PM", color: :success, location: "Main Office"},
+      {date: "2026-02-14", title: "Lunch & Learn", start_time: "12:30 PM", end_time: "1:30 PM", color: :warning, description: "Topic: Scaling Rails applications"},
+      {date: "2026-02-15", title: "Client Demo", start_time: "3:00 PM", end_time: "4:00 PM", color: :danger, location: "Zoom"}
+    ]) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Flat List (Ungrouped)", description: "Events displayed in a flat list without date grouping.",
+  source: 'eden_event_list(grouped: false, events: [
+  {date: "2026-02-13", title: "Morning Sync", start_time: "9:00 AM", color: :primary},
+  {date: "2026-02-13", title: "Code Review", start_time: "11:00 AM", color: :success},
+  {date: "2026-02-14", title: "Deploy", start_time: "4:00 PM", color: :danger}
+])') do %>
+  <div class="max-w-lg">
+    <%= eden_event_list(grouped: false, events: [
+      {date: "2026-02-13", title: "Morning Sync", start_time: "9:00 AM", end_time: "9:30 AM", color: :primary, location: "Slack Huddle"},
+      {date: "2026-02-13", title: "Code Review Session", start_time: "11:00 AM", end_time: "12:00 PM", color: :success},
+      {date: "2026-02-14", title: "Production Deploy", start_time: "4:00 PM", color: :danger, description: "Release v2.1.0 to production"}
+    ]) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Empty State", description: "Event list with no events shows an empty state message.",
+  source: 'eden_event_list(events: [])') do %>
+  <div class="max-w-lg">
+    <%= eden_event_list(events: []) %>
+  </div>
+<% end %>

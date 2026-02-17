@@ -1,0 +1,126 @@
+<div class="p-4" data-controller="styleguide-search">
+  <%# Search %>
+  <div class="mb-4">
+    <div class="relative">
+      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <%= eden_icon("search", size: :sm, class: "text-zinc-400") %>
+      </div>
+      <input
+        type="text"
+        data-styleguide-search-target="input"
+        data-action="input->styleguide-search#filter"
+        placeholder="Search components..."
+        class="w-full pl-9 pr-3 py-2 text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500"
+      >
+    </div>
+  </div>
+
+  <%# Navigation %>
+  <nav class="space-y-1" data-styleguide-search-target="nav">
+    <%# Home link %>
+    <a href="<%= eden_ui.root_path %>"
+       class="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg transition-colors
+              <%= 'bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white' if controller.action_name == 'index' %>
+              <%= 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white' unless controller.action_name == 'index' %>">
+      <%= eden_icon("home", size: :sm) %>
+      Overview
+    </a>
+
+    <div class="pt-2 pb-1 px-3">
+      <p class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Components</p>
+    </div>
+
+    <% EdenUi::Styleguide::Registry.categories.each do |slug, category| %>
+      <div data-styleguide-search-target="group" data-category="<%= slug %>" data-component-names="<%= category[:components].map { |c| c.name.downcase }.join(',') %>">
+        <a href="<%= eden_ui.styleguide_category_path(category: slug) %>"
+           class="flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors
+                  <%= 'bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white' if defined?(@category_slug) && @category_slug == slug && controller.action_name == 'category' %>
+                  <%= 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white' unless defined?(@category_slug) && @category_slug == slug && controller.action_name == 'category' %>">
+          <span class="flex items-center gap-2">
+            <%= eden_icon(category[:icon], size: :sm) rescue "" %>
+            <%= category[:label] %>
+          </span>
+          <span class="text-xs text-zinc-400 dark:text-zinc-500"><%= category[:components].size %></span>
+        </a>
+
+        <% if defined?(@category_slug) && @category_slug == slug %>
+          <div class="ml-6 mt-1 space-y-0.5 border-l border-zinc-200 dark:border-zinc-700 pl-3">
+            <% category[:components].each do |component| %>
+              <a href="<%= eden_ui.styleguide_component_path(category: slug, component: component.slug) %>"
+                 data-styleguide-search-target="item"
+                 data-component-name="<%= component.name.downcase %>"
+                 class="block px-2 py-1 text-sm rounded transition-colors
+                        <%= 'text-gold-600 dark:text-gold-400 font-medium' if defined?(@component_slug) && @component_slug == component.slug %>
+                        <%= 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white' unless defined?(@component_slug) && @component_slug == component.slug %>">
+                <%= component.name %>
+              </a>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%# Blocks section %>
+    <div class="pt-4 pb-1 px-3">
+      <p class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Page Blocks</p>
+    </div>
+
+    <a href="<%= eden_ui.styleguide_blocks_path %>"
+       class="flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors
+              <%= 'bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white' if controller.action_name == 'blocks_index' %>
+              <%= 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white' unless controller.action_name == 'blocks_index' %>">
+      <span class="flex items-center gap-2">
+        <%= eden_icon("document", size: :sm) %>
+        All Blocks
+      </span>
+      <span class="text-xs text-zinc-400 dark:text-zinc-500"><%= EdenUi::Styleguide::BlockRegistry.block_count %></span>
+    </a>
+
+    <% EdenUi::Styleguide::BlockRegistry.categories.each do |slug, category| %>
+      <div data-styleguide-search-target="group" data-category="blocks_<%= slug %>" data-component-names="<%= category[:blocks].map { |b| b.name.downcase }.join(',') %>">
+        <a href="<%= eden_ui.styleguide_block_category_path(block_category: slug) %>"
+           class="flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors
+                  <%= 'bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white' if defined?(@block_category_slug) && @block_category_slug == slug && controller.action_name == 'blocks_category' %>
+                  <%= 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white' unless defined?(@block_category_slug) && @block_category_slug == slug && controller.action_name == 'blocks_category' %>">
+          <span class="flex items-center gap-2">
+            <%= eden_icon(category[:icon], size: :sm) rescue "" %>
+            <%= category[:label] %>
+          </span>
+          <span class="text-xs text-zinc-400 dark:text-zinc-500"><%= category[:blocks].size %></span>
+        </a>
+
+        <% if defined?(@block_category_slug) && @block_category_slug == slug %>
+          <div class="ml-6 mt-1 space-y-0.5 border-l border-zinc-200 dark:border-zinc-700 pl-3">
+            <% category[:blocks].each do |block| %>
+              <a href="<%= eden_ui.styleguide_block_path(block_category: slug, block: block.slug) %>"
+                 data-styleguide-search-target="item"
+                 data-component-name="<%= block.name.downcase %>"
+                 class="block px-2 py-1 text-sm rounded transition-colors
+                        <%= 'text-gold-600 dark:text-gold-400 font-medium' if defined?(@block_slug) && @block_slug == block.slug %>
+                        <%= 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white' unless defined?(@block_slug) && @block_slug == block.slug %>">
+                <%= block.name %>
+              </a>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%# Layouts section %>
+    <div class="pt-4 pb-1 px-3">
+      <p class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Layouts</p>
+    </div>
+
+    <% EdenUi::Styleguide::Registry.layouts.each do |slug, layout_info| %>
+      <a href="<%= eden_ui.styleguide_layout_path(layout: slug) %>"
+         data-styleguide-search-target="item"
+         data-component-name="<%= layout_info[:label].downcase %>"
+         class="flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-colors text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
+         target="_blank">
+        <%= eden_icon("document", size: :sm) %>
+        <%= layout_info[:label] %>
+        <svg class="w-3 h-3 ml-auto opacity-50" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+      </a>
+    <% end %>
+  </nav>
+</div>

@@ -1,0 +1,73 @@
+<%
+  name ||= nil
+  description ||= nil
+  icon_src ||= nil
+  icon_svg ||= nil
+  connected = local_assigns.fetch(:connected, false)
+  enabled = local_assigns.fetch(:enabled, true)
+  href ||= nil
+  category ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  classes = [
+    "flex flex-col sm:flex-row sm:items-center gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+
+  status_classes = connected ?
+    "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300" :
+    "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300"
+  status_text = connected ? "Connected" : "Not connected"
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%# Icon %>
+  <div class="flex-shrink-0">
+    <% if icon_src %>
+      <img src="<%= icon_src %>" alt="<%= name %>" class="h-12 w-12 rounded-lg">
+    <% elsif icon_svg %>
+      <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-600">
+        <%= icon_svg.html_safe %>
+      </div>
+    <% else %>
+      <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-600">
+        <svg class="h-6 w-6 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.03v13m0-13c-2.819-.831-4.715-1.076-8.029-1.023A.99.99 0 0 0 3 6v11c0 .563.466 1.014 1.03 1.007 3.122-.043 5.018.212 7.97 1.023m0-13c2.819-.831 4.715-1.076 8.029-1.023A.99.99 0 0 1 21 6v11c0 .563-.466 1.014-1.03 1.007-3.122-.043-5.018.212-7.97 1.023"/>
+        </svg>
+      </div>
+    <% end %>
+  </div>
+
+  <%# Details %>
+  <div class="flex-1 min-w-0">
+    <div class="flex items-center gap-2">
+      <% if href %>
+        <a href="<%= href %>" class="text-base font-semibold text-gray-900 hover:underline dark:text-white"><%= name %></a>
+      <% else %>
+        <h3 class="text-base font-semibold text-gray-900 dark:text-white"><%= name %></h3>
+      <% end %>
+      <% if category %>
+        <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 dark:bg-blue-900/50 dark:text-blue-300 dark:ring-blue-500/30"><%= category %></span>
+      <% end %>
+    </div>
+    <% if description %>
+      <p class="mt-1 text-sm text-gray-500 dark:text-gray-400 truncate"><%= description %></p>
+    <% end %>
+  </div>
+
+  <%# Status & Actions %>
+  <div class="flex flex-shrink-0 items-center gap-3">
+    <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium <%= status_classes %>">
+      <% if connected %>
+        <svg class="mr-1 h-2 w-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3"/></svg>
+      <% end %>
+      <%= status_text %>
+    </span>
+    <% if content %>
+      <%= content %>
+    <% elsif enabled %>
+      <%= eden_toggle(checked: connected, name: "integration[#{name&.parameterize}]") %>
+    <% end %>
+  </div>
+</div>

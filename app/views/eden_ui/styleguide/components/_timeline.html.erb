@@ -1,0 +1,97 @@
+<%# Timeline component preview %>
+
+<%= styleguide_example(title: "Vertical timeline", source: 'eden_timeline do
+  eden_timeline_item(
+    title: "Application created",
+    datetime: "February 2025",
+    body: "Initial project setup and repository configuration completed."
+  )
+  eden_timeline_item(
+    title: "Design phase",
+    datetime: "March 2025",
+    body: "UI components designed and prototyped in Figma."
+  )
+  eden_timeline_item(
+    title: "Development started",
+    datetime: "April 2025",
+    body: "Core component library built with Tailwind CSS and tested."
+  )
+  eden_timeline_item(
+    title: "Version 1.0 released",
+    datetime: "May 2025",
+    body: "First stable release published to production."
+  )
+end') do %>
+  <div class="w-full">
+    <%= eden_timeline do %>
+      <%= eden_timeline_item(
+        title: "Application created",
+        datetime: "February 2025",
+        body: "Initial project setup and repository configuration completed."
+      ) %>
+      <%= eden_timeline_item(
+        title: "Design phase",
+        datetime: "March 2025",
+        body: "UI components designed and prototyped in Figma."
+      ) %>
+      <%= eden_timeline_item(
+        title: "Development started",
+        datetime: "April 2025",
+        body: "Core component library built with Tailwind CSS and tested."
+      ) %>
+      <%= eden_timeline_item(
+        title: "Version 1.0 released",
+        datetime: "May 2025",
+        body: "First stable release published to production."
+      ) %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Horizontal timeline", description: "Timeline displayed in a horizontal layout", source: 'eden_timeline(horizontal: true) do
+  eden_timeline_item(
+    title: "Step 1: Plan",
+    datetime: "Jan 2025",
+    body: "Define project scope and requirements."
+  )
+  eden_timeline_item(
+    title: "Step 2: Build",
+    datetime: "Feb 2025",
+    body: "Develop core features and components."
+  )
+  eden_timeline_item(
+    title: "Step 3: Test",
+    datetime: "Mar 2025",
+    body: "Run QA and collect user feedback."
+  )
+  eden_timeline_item(
+    title: "Step 4: Launch",
+    datetime: "Apr 2025",
+    body: "Deploy to production and announce."
+  )
+end') do %>
+  <div class="w-full">
+    <%= eden_timeline(horizontal: true) do %>
+      <%= eden_timeline_item(
+        title: "Step 1: Plan",
+        datetime: "Jan 2025",
+        body: "Define project scope and requirements."
+      ) %>
+      <%= eden_timeline_item(
+        title: "Step 2: Build",
+        datetime: "Feb 2025",
+        body: "Develop core features and components."
+      ) %>
+      <%= eden_timeline_item(
+        title: "Step 3: Test",
+        datetime: "Mar 2025",
+        body: "Run QA and collect user feedback."
+      ) %>
+      <%= eden_timeline_item(
+        title: "Step 4: Launch",
+        datetime: "Apr 2025",
+        body: "Deploy to production and announce."
+      ) %>
+    <% end %>
+  </div>
+<% end %>

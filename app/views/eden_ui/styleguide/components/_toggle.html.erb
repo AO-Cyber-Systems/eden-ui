@@ -1,0 +1,29 @@
+<%# Toggle component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_toggle
+eden_toggle(checked: true)') do %>
+  <%= eden_toggle %>
+  <%= eden_toggle(checked: true) %>
+<% end %>
+
+<%= styleguide_example(title: "With Labels", source: 'eden_toggle(label: "Notifications")
+eden_toggle(label: "Dark mode", checked: true)
+eden_toggle(label: "Auto-save", checked: true)') do %>
+  <%= eden_toggle(label: "Notifications") %>
+  <%= eden_toggle(label: "Dark mode", checked: true) %>
+  <%= eden_toggle(label: "Auto-save", checked: true) %>
+<% end %>
+
+<%= styleguide_example(title: "Sizes", source: 'eden_toggle(label: "Small", size: :sm)
+eden_toggle(label: "Medium", size: :md)
+eden_toggle(label: "Large", size: :lg)') do %>
+  <%= eden_toggle(label: "Small", size: :sm) %>
+  <%= eden_toggle(label: "Medium", size: :md) %>
+  <%= eden_toggle(label: "Large", size: :lg) %>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", source: 'eden_toggle(label: "Disabled off", disabled: true)
+eden_toggle(label: "Disabled on", checked: true, disabled: true)') do %>
+  <%= eden_toggle(label: "Disabled off", disabled: true) %>
+  <%= eden_toggle(label: "Disabled on", checked: true, disabled: true) %>
+<% end %>

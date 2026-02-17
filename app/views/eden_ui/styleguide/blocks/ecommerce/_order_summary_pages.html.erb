@@ -1,0 +1,95 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_order_summary_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Detailed Order Summary",
+  description: "Full order summary with line items, pricing breakdown, shipping, and payment info",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    <h2>Order Summary</h2>
+    <!-- line items table -->
+    <!-- pricing breakdown -->
+    <!-- shipping + payment info -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">Order Summary</h2>
+        <span class="text-sm text-zinc-500 dark:text-zinc-400">Order #ORD-20260213-7842</span>
+      </div>
+
+      <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+        <div class="lg:col-span-8">
+          <!-- Line Items -->
+          <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700">
+            <div class="p-4 border-b border-zinc-200 dark:border-zinc-700">
+              <h3 class="text-sm font-semibold text-zinc-900 dark:text-white">Items (<%= 3 %>)</h3>
+            </div>
+            <div class="divide-y divide-zinc-200 dark:divide-zinc-700">
+              <% [
+                { name: "Apple iMac 24\"", variant: "Silver / M3 / 8GB", qty: 1, price: "$1,199.00" },
+                { name: "AirPods Pro (2nd gen)", variant: "White / USB-C", qty: 2, price: "$249.00" },
+                { name: "Magic Keyboard", variant: "Silver / Touch ID", qty: 1, price: "$199.00" }
+              ].each do |item| %>
+                <div class="flex items-center gap-4 p-4">
+                  <div class="w-16 h-16 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <%= eden_icon("photo", size: :sm) %>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm font-medium text-zinc-900 dark:text-white"><%= item[:name] %></h4>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5"><%= item[:variant] %></p>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400">Qty: <%= item[:qty] %></p>
+                  </div>
+                  <span class="text-sm font-medium text-zinc-900 dark:text-white"><%= item[:price] %></span>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 mt-6 lg:mt-0 space-y-4">
+          <!-- Pricing -->
+          <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-6">
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-4">Price Details</h3>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm">
+                <span class="text-zinc-500 dark:text-zinc-400">Subtotal (4 items)</span>
+                <span class="text-zinc-900 dark:text-white">$1,896.00</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-zinc-500 dark:text-zinc-400">Discount (-10%)</span>
+                <span class="text-green-600 dark:text-green-400">-$189.60</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-zinc-500 dark:text-zinc-400">Shipping</span>
+                <span class="text-green-600 dark:text-green-400">Free</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-zinc-500 dark:text-zinc-400">Tax</span>
+                <span class="text-zinc-900 dark:text-white">$140.53</span>
+              </div>
+              <hr class="border-zinc-200 dark:border-zinc-700" />
+              <div class="flex justify-between font-semibold">
+                <span class="text-zinc-900 dark:text-white">Total</span>
+                <span class="text-zinc-900 dark:text-white">$1,846.93</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping -->
+          <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-6">
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-2">Shipping Address</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">John Doe<br/>123 Main Street<br/>San Francisco, CA 94102</p>
+          </div>
+
+          <!-- Payment -->
+          <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-6">
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-2">Payment Method</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">Visa ending in 4242</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

@@ -1,0 +1,44 @@
+<%
+  name ||= nil
+  id ||= name
+  options ||= []
+  selected ||= nil
+  size ||= :md
+  disabled ||= false
+  required ||= false
+  prompt ||= nil
+  error ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  size_classes = case size.to_sym
+  when :sm then "p-2 text-xs"
+  when :lg then "p-4 text-base"
+  else "p-2.5 text-sm"
+  end
+
+  state_classes = if error
+    "bg-red-50 border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:border-red-500"
+  else
+    "bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+  end
+
+  classes = ["border rounded-lg block w-full", size_classes, state_classes, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<select <% if name %>name="<%= name %>"<% end %> <% if id %>id="<%= id %>"<% end %> class="<%= classes %>" <%= "disabled" if disabled %> <%= "required" if required %> <%= tag.attributes(html_options) %>>
+  <% if prompt %>
+    <option value=""><%= prompt %></option>
+  <% end %>
+  <% if options.any? %>
+    <% options.each do |opt| %>
+      <% if opt.is_a?(Array) %>
+        <option value="<%= opt.last %>" <%= "selected" if selected.to_s == opt.last.to_s %>><%= opt.first %></option>
+      <% else %>
+        <option value="<%= opt %>" <%= "selected" if selected.to_s == opt.to_s %>><%= opt %></option>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= content %>
+  <% end %>
+</select>

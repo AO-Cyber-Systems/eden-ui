@@ -1,0 +1,119 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_event_schedule_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Event Schedule",
+  description: "Timeline-style event schedule with time slots and speaker info",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="mx-auto max-w-screen-md text-center mb-8">
+      <h2>...</h2>
+      <p>...</p>
+    </div>
+    eden_timeline do
+      eden_timeline_item(title: "Talk Title", datetime: "9:00 AM") { "description" }
+    end
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-16">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">Conference Schedule</h2>
+        <p class="font-light text-zinc-500 sm:text-xl dark:text-zinc-400">Join us for a full day of talks, workshops, and networking.</p>
+      </div>
+      <div class="mx-auto max-w-screen-md">
+        <%= eden_timeline do %>
+          <%= eden_timeline_item(title: "Opening Keynote", datetime: "9:00 AM") do %>
+            <p class="text-zinc-500 dark:text-zinc-400">Welcome and opening remarks by the conference organizers. Overview of the day ahead.</p>
+            <div class="flex items-center mt-3 space-x-3">
+              <%= eden_avatar(initials: "JD", size: :sm) %>
+              <span class="text-sm font-medium dark:text-white">Jane Doe, CEO</span>
+            </div>
+          <% end %>
+          <%= eden_timeline_item(title: "Building Scalable Systems", datetime: "10:00 AM") do %>
+            <p class="text-zinc-500 dark:text-zinc-400">A deep dive into architecture patterns for building systems that scale to millions of users.</p>
+            <div class="flex items-center mt-3 space-x-3">
+              <%= eden_avatar(initials: "MS", size: :sm) %>
+              <span class="text-sm font-medium dark:text-white">Mike Smith, CTO</span>
+            </div>
+          <% end %>
+          <%= eden_timeline_item(title: "Lunch Break & Networking", datetime: "12:00 PM") do %>
+            <p class="text-zinc-500 dark:text-zinc-400">Enjoy lunch and connect with fellow attendees, speakers, and sponsors.</p>
+          <% end %>
+          <%= eden_timeline_item(title: "Workshop: Hands-on with Eden UI", datetime: "1:30 PM") do %>
+            <p class="text-zinc-500 dark:text-zinc-400">Interactive workshop where you will build a complete application using Eden UI components.</p>
+            <div class="flex items-center mt-3 space-x-3">
+              <%= eden_avatar(initials: "AL", size: :sm) %>
+              <span class="text-sm font-medium dark:text-white">Alice Lee, Lead Engineer</span>
+            </div>
+          <% end %>
+          <%= eden_timeline_item(title: "Closing Remarks", datetime: "4:00 PM") do %>
+            <p class="text-zinc-500 dark:text-zinc-400">Summary of the day and preview of upcoming events and releases.</p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Event Schedule Grid",
+  description: "Card-based event schedule in a multi-column grid",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      eden_card do
+        <span>Time</span>
+        <h3>Talk Title</h3>
+        <p>Description</p>
+      end
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-16">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">Today&rsquo;s Sessions</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <%= eden_card do %>
+          <span class="text-sm font-medium text-gold-600 dark:text-gold-400">9:00 AM - 10:00 AM</span>
+          <h3 class="mt-2 text-xl font-bold dark:text-white">Design Systems at Scale</h3>
+          <p class="mt-2 text-zinc-500 dark:text-zinc-400">How to build and maintain design systems for large organizations.</p>
+          <div class="flex items-center mt-4 space-x-3">
+            <%= eden_avatar(initials: "BG", size: :sm) %>
+            <span class="text-sm font-medium dark:text-white">Bonnie Green</span>
+          </div>
+          <div class="mt-3">
+            <%= eden_badge(text: "Main Stage", variant: :primary, size: :sm) %>
+          </div>
+        <% end %>
+        <%= eden_card do %>
+          <span class="text-sm font-medium text-gold-600 dark:text-gold-400">10:30 AM - 11:30 AM</span>
+          <h3 class="mt-2 text-xl font-bold dark:text-white">Ruby Performance</h3>
+          <p class="mt-2 text-zinc-500 dark:text-zinc-400">Tips and tricks for optimizing Ruby application performance.</p>
+          <div class="flex items-center mt-4 space-x-3">
+            <%= eden_avatar(initials: "JL", size: :sm) %>
+            <span class="text-sm font-medium dark:text-white">Jese Leos</span>
+          </div>
+          <div class="mt-3">
+            <%= eden_badge(text: "Workshop", variant: :default, size: :sm) %>
+          </div>
+        <% end %>
+        <%= eden_card do %>
+          <span class="text-sm font-medium text-gold-600 dark:text-gold-400">1:00 PM - 2:00 PM</span>
+          <h3 class="mt-2 text-xl font-bold dark:text-white">AI in Production</h3>
+          <p class="mt-2 text-zinc-500 dark:text-zinc-400">Practical strategies for deploying AI models in production environments.</p>
+          <div class="flex items-center mt-4 space-x-3">
+            <%= eden_avatar(initials: "RC", size: :sm) %>
+            <span class="text-sm font-medium dark:text-white">Roberta Casas</span>
+          </div>
+          <div class="mt-3">
+            <%= eden_badge(text: "Main Stage", variant: :primary, size: :sm) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

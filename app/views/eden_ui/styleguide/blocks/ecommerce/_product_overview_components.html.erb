@@ -1,0 +1,140 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_product_overview_components.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Product Overview",
+  description: "Product detail page with image gallery, title, price, rating, variant selectors, and add to cart",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto lg:grid lg:grid-cols-2 lg:gap-8">
+    <!-- image gallery -->
+    <div>
+      <h1>Product Name</h1>
+      eden_rating(value: 4, max: 5, size: :sm)
+      <p class="price">$1,199</p>
+      <!-- variant selectors -->
+      eden_button(variant: :primary, size: :lg) { "Add to cart" }
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
+        <div>
+          <div class="w-full h-80 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center">
+            <%= eden_icon("photo", size: :xl) %>
+          </div>
+          <div class="grid grid-cols-4 gap-2 mt-4">
+            <% 4.times do %>
+              <div class="w-full h-20 bg-zinc-200 dark:bg-zinc-700 rounded flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-gold-500">
+                <%= eden_icon("photo", size: :sm) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="mt-6 sm:mt-8 lg:mt-0">
+          <h1 class="text-xl font-semibold text-zinc-900 sm:text-2xl dark:text-white">Apple iMac 24" All-in-One Computer</h1>
+          <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
+            <p class="text-2xl font-extrabold text-zinc-900 sm:text-3xl dark:text-white">$1,199.00</p>
+            <div class="flex items-center gap-2 mt-2 sm:mt-0">
+              <%= eden_rating(value: 4, max: 5, size: :sm) %>
+              <span class="text-sm font-medium text-zinc-500 dark:text-zinc-400">(4.2) &middot; 455 Reviews</span>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <p class="text-sm font-medium text-zinc-900 dark:text-white mb-2">Color</p>
+            <div class="flex items-center gap-2">
+              <% %w[bg-zinc-900 bg-zinc-400 bg-gold-500 bg-blue-500].each do |color| %>
+                <button class="w-8 h-8 rounded-full <%= color %> border-2 border-zinc-300 dark:border-zinc-600 hover:ring-2 hover:ring-offset-2 hover:ring-gold-500"></button>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="mt-6 sm:gap-4 sm:items-center sm:flex">
+            <%= eden_button(variant: :primary, size: :lg) do %>
+              <%= eden_icon("shopping-cart", size: :sm) %>
+              Add to cart
+            <% end %>
+            <%= eden_button(variant: :ghost, size: :lg) do %>
+              <%= eden_icon("heart", size: :sm) %>
+              Add to wishlist
+            <% end %>
+          </div>
+
+          <hr class="my-6 border-zinc-200 dark:border-zinc-700" />
+
+          <p class="text-zinc-500 dark:text-zinc-400">The iMac features a stunning 24-inch 4.5K Retina display, Apple M3 chip, 8GB unified memory, and 256GB SSD storage. Perfect for creative professionals and everyday computing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Product Overview with Tabs",
+  description: "Product overview with tabbed sections for description, specifications, and reviews",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    <!-- product image + basic info -->
+    <!-- tabs: Description | Specs | Reviews -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
+        <div>
+          <div class="w-full h-72 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center">
+            <%= eden_icon("photo", size: :xl) %>
+          </div>
+        </div>
+        <div class="mt-6 lg:mt-0">
+          <h1 class="text-xl font-semibold text-zinc-900 sm:text-2xl dark:text-white">Sony WH-1000XM5 Headphones</h1>
+          <div class="flex items-center gap-4 mt-4">
+            <p class="text-2xl font-extrabold text-zinc-900 dark:text-white">$348.00</p>
+            <p class="text-lg text-zinc-500 line-through dark:text-zinc-400">$399.00</p>
+            <%= eden_badge(text: "Save 13%", variant: :success, size: :sm) %>
+          </div>
+          <div class="flex items-center gap-2 mt-2">
+            <%= eden_rating(value: 5, max: 5, size: :sm) %>
+            <span class="text-sm text-zinc-500 dark:text-zinc-400">(892 reviews)</span>
+          </div>
+          <div class="mt-4 flex gap-4">
+            <%= eden_button(variant: :primary, size: :lg) do %>
+              <%= eden_icon("shopping-cart", size: :sm) %>
+              Add to cart
+            <% end %>
+            <%= eden_button(variant: :ghost, size: :lg) do %>
+              <%= eden_icon("heart", size: :sm) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="mt-8 border-b border-zinc-200 dark:border-zinc-700">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
+          <li class="mr-2">
+            <a href="#" class="inline-block p-4 text-gold-600 border-b-2 border-gold-600 rounded-t-lg dark:text-gold-500 dark:border-gold-500">Description</a>
+          </li>
+          <li class="mr-2">
+            <a href="#" class="inline-block p-4 border-b-2 border-transparent text-zinc-500 hover:text-zinc-600 hover:border-zinc-300 dark:text-zinc-400 dark:hover:text-zinc-300">Specifications</a>
+          </li>
+          <li class="mr-2">
+            <a href="#" class="inline-block p-4 border-b-2 border-transparent text-zinc-500 hover:text-zinc-600 hover:border-zinc-300 dark:text-zinc-400 dark:hover:text-zinc-300">Reviews (892)</a>
+          </li>
+        </ul>
+      </div>
+      <div class="py-6">
+        <p class="text-zinc-500 dark:text-zinc-400 mb-4">Industry-leading noise cancellation with Auto NC Optimizer. Crystal clear hands-free calling with 4 beamforming microphones. Up to 30 hours of battery life with quick charging.</p>
+        <ul class="space-y-2 text-zinc-500 dark:text-zinc-400">
+          <li class="flex items-center gap-2"><%= eden_icon("check", size: :sm) %> <span>Industry-leading noise cancellation</span></li>
+          <li class="flex items-center gap-2"><%= eden_icon("check", size: :sm) %> <span>30-hour battery life</span></li>
+          <li class="flex items-center gap-2"><%= eden_icon("check", size: :sm) %> <span>Multipoint connection</span></li>
+          <li class="flex items-center gap-2"><%= eden_icon("check", size: :sm) %> <span>Touch sensor controls</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+<% end %>

@@ -1,0 +1,77 @@
+<%
+  id ||= nil
+  subject ||= nil
+  requester ||= nil
+  status ||= :open
+  priority ||= :medium
+  assignee ||= nil
+  created_at ||= nil
+  href ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  status_variant = case status.to_sym
+  when :open        then :info
+  when :in_progress then :warning
+  when :resolved    then :success
+  when :closed      then :neutral
+  else :neutral
+  end
+
+  priority_variant = case priority.to_sym
+  when :low    then :success
+  when :medium then :warning
+  when :high   then :danger
+  when :urgent then :danger
+  else :neutral
+  end
+
+  classes = [
+    "flex flex-wrap items-center gap-3 border-b border-gray-200 dark:border-gray-700 py-3 px-2 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%# ID %>
+  <% if id %>
+    <span class="text-xs font-mono text-gray-400 dark:text-gray-500 w-16 flex-shrink-0">#<%= id %></span>
+  <% end %>
+
+  <%# Subject + Requester %>
+  <div class="flex-1 min-w-0">
+    <% if href %>
+      <a href="<%= href %>" class="text-sm font-medium text-gray-900 dark:text-white hover:underline truncate block"><%= subject %></a>
+    <% else %>
+      <p class="text-sm font-medium text-gray-900 dark:text-white truncate"><%= subject %></p>
+    <% end %>
+    <% if requester %>
+      <p class="text-xs text-gray-500 dark:text-gray-400 truncate"><%= requester %></p>
+    <% end %>
+  </div>
+
+  <%# Status %>
+  <div class="flex-shrink-0">
+    <%= eden_badge(variant: status_variant, size: :xs) { status.to_s.titleize } %>
+  </div>
+
+  <%# Priority %>
+  <div class="flex-shrink-0">
+    <%= eden_badge(variant: priority_variant, size: :xs) { priority.to_s.titleize } %>
+  </div>
+
+  <%# Assignee %>
+  <% if assignee %>
+    <div class="flex items-center gap-1.5 flex-shrink-0">
+      <%= eden_avatar(initials: assignee[0..1].upcase, size: :xs) %>
+      <span class="text-xs text-gray-500 dark:text-gray-400"><%= assignee %></span>
+    </div>
+  <% end %>
+
+  <%# Date %>
+  <% if created_at %>
+    <span class="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0"><%= created_at %></span>
+  <% end %>
+
+  <%= content %>
+</div>

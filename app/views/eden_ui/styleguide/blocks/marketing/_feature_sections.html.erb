@@ -1,0 +1,104 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_feature_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Features",
+  description: "Three-column feature grid with icons and descriptions",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+    <div class="max-w-screen-md mb-8 lg:mb-16">
+      <h2>...</h2>
+      <p>...</p>
+    </div>
+    <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+      <!-- feature items with eden_icon -->
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <div class="max-w-screen-md mb-8 lg:mb-16">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">Designed for business teams like yours</h2>
+        <p class="text-zinc-500 sm:text-xl dark:text-zinc-400">Here at Eden we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+      </div>
+      <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+        <div>
+          <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-gold-100 lg:h-12 lg:w-12 dark:bg-gold-900">
+            <%= eden_icon("chart-bar", size: :lg) %>
+          </div>
+          <h3 class="mb-2 text-xl font-bold dark:text-white">Marketing</h3>
+          <p class="text-zinc-500 dark:text-zinc-400">Plan it, create it, launch it. Collaborate seamlessly with all the organization and hit your marketing goals every month with our marketing plan.</p>
+        </div>
+        <div>
+          <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-gold-100 lg:h-12 lg:w-12 dark:bg-gold-900">
+            <%= eden_icon("shield", size: :lg) %>
+          </div>
+          <h3 class="mb-2 text-xl font-bold dark:text-white">Legal</h3>
+          <p class="text-zinc-500 dark:text-zinc-400">Protect your organization, devices and stay compliant with our structured workflows and custom permissions made for you.</p>
+        </div>
+        <div>
+          <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-gold-100 lg:h-12 lg:w-12 dark:bg-gold-900">
+            <%= eden_icon("cog", size: :lg) %>
+          </div>
+          <h3 class="mb-2 text-xl font-bold dark:text-white">Operations</h3>
+          <p class="text-zinc-500 dark:text-zinc-400">Auto-assign tasks, send Slack DMs, and much more. Now power up with hundreds of new templates to help you get started.</p>
+        </div>
+        <div>
+          <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-gold-100 lg:h-12 lg:w-12 dark:bg-gold-900">
+            <%= eden_icon("globe-alt", size: :lg) %>
+          </div>
+          <h3 class="mb-2 text-xl font-bold dark:text-white">Business Automation</h3>
+          <p class="text-zinc-500 dark:text-zinc-400">Build and automate workflows that boost your team's productivity and eliminate bottlenecks.</p>
+        </div>
+        <div>
+          <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-gold-100 lg:h-12 lg:w-12 dark:bg-gold-900">
+            <%= eden_icon("bolt", size: :lg) %>
+          </div>
+          <h3 class="mb-2 text-xl font-bold dark:text-white">Finance</h3>
+          <p class="text-zinc-500 dark:text-zinc-400">Audit-proof software built for critical financial operations like month-end close and quarterly reporting.</p>
+        </div>
+        <div>
+          <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-gold-100 lg:h-12 lg:w-12 dark:bg-gold-900">
+            <%= eden_icon("building", size: :lg) %>
+          </div>
+          <h3 class="mb-2 text-xl font-bold dark:text-white">Enterprise Design</h3>
+          <p class="text-zinc-500 dark:text-zinc-400">Craft beautiful, delightful experiences for both marketing and product with real cross-company collaboration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Features with Image",
+  description: "Side-by-side feature list with image placeholder",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+    <div class="text-zinc-500 sm:text-lg dark:text-zinc-400">
+      <h2>...</h2>
+      <p>...</p>
+    </div>
+    <div class="grid grid-cols-2 gap-4 mt-8">
+      <!-- image placeholders -->
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+      <div class="text-zinc-500 sm:text-lg dark:text-zinc-400">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">We didn&rsquo;t reinvent the wheel</h2>
+        <p class="mb-4">We are strategists, designers, and developers. Innovators and problem solvers. Small enough to be simple and quick, but big enough to deliver the scope you want at the pace you need.</p>
+        <p>We are strategists, designers, and developers. Innovators and problem solvers. Small enough to be simple and quick.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-4 mt-8">
+        <div class="w-full h-48 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center">
+          <%= eden_icon("photo", size: :xl) %>
+        </div>
+        <div class="mt-4 w-full h-48 bg-zinc-300 dark:bg-zinc-600 rounded-lg flex items-center justify-center lg:mt-10">
+          <%= eden_icon("photo", size: :xl) %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

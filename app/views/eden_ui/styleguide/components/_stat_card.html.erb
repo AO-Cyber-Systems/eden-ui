@@ -1,0 +1,37 @@
+<%# Stats Card component preview %>
+
+<%= styleguide_example(title: "Default", description: "Basic stats card with label and value.",
+  source: 'eden_stat_card(label: "Total Users", value: "12,345")') do %>
+  <div class="max-w-xs">
+    <%= eden_stat_card(label: "Total Users", value: "12,345") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Trend", description: "Stats card showing a positive or negative trend.",
+  source: 'eden_stat_card(label: "Revenue", value: "$48,200", change: "12% from last month", trend: :up)
+eden_stat_card(label: "Bounce Rate", value: "24.5%", change: "3.2% from last week", trend: :down)') do %>
+  <div class="grid grid-cols-2 gap-4 max-w-lg">
+    <%= eden_stat_card(label: "Revenue", value: "$48,200", change: "12% from last month", trend: :up) %>
+    <%= eden_stat_card(label: "Bounce Rate", value: "24.5%", change: "3.2% from last week", trend: :down) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Variants", description: "Cards with colored left border accents.",
+  source: 'eden_stat_card(label: "Active Users", value: "2,340", variant: :primary, change: "+5%", trend: :up)
+eden_stat_card(label: "Uptime", value: "99.9%", variant: :success)
+eden_stat_card(label: "Warnings", value: "12", variant: :warning)
+eden_stat_card(label: "Errors", value: "3", variant: :danger)') do %>
+  <div class="grid grid-cols-2 gap-4">
+    <%= eden_stat_card(label: "Active Users", value: "2,340", variant: :primary, change: "+5%", trend: :up) %>
+    <%= eden_stat_card(label: "Uptime", value: "99.9%", variant: :success) %>
+    <%= eden_stat_card(label: "Warnings", value: "12", variant: :warning) %>
+    <%= eden_stat_card(label: "Errors", value: "3", variant: :danger) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Icon", description: "Stats card with an icon in a circle.",
+  source: 'eden_stat_card(label: "Total Orders", value: "1,234", icon: "shopping-cart", change: "+8.1%", trend: :up)') do %>
+  <div class="max-w-xs">
+    <%= eden_stat_card(label: "Total Orders", value: "1,234", icon: "shopping-cart", change: "+8.1%", trend: :up) %>
+  </div>
+<% end %>

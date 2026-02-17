@@ -1,0 +1,43 @@
+<%= styleguide_example(
+  title: "Default Bottom Navigation",
+  description: "Bottom nav shown in a contained preview area (normally fixed to viewport bottom)",
+  source: 'eden_bottom_nav do
+  eden_bottom_nav_item(label: "Home", href: "#", icon: eden_icon("home", size: :md), active: true)
+  eden_bottom_nav_item(label: "Search", href: "#", icon: eden_icon("search", size: :md))
+  eden_bottom_nav_item(label: "Messages", href: "#", icon: eden_icon("chat-bubble-left", size: :md))
+  eden_bottom_nav_item(label: "Profile", href: "#", icon: eden_icon("user", size: :md))
+end'
+) do %>
+  <div class="relative w-full" style="min-height: 80px;">
+    <div class="absolute bottom-0 left-0 z-10 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+      <div class="grid h-full max-w-lg grid-flow-col auto-cols-fr mx-auto font-medium">
+        <%= eden_bottom_nav_item(label: "Home", href: "#", active: true) %>
+        <%= eden_bottom_nav_item(label: "Search", href: "#") %>
+        <%= eden_bottom_nav_item(label: "Messages", href: "#") %>
+        <%= eden_bottom_nav_item(label: "Profile", href: "#") %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Bottom Nav with Icons",
+  description: "Navigation items using eden_icon for visual clarity",
+  source: 'eden_bottom_nav do
+  eden_bottom_nav_item(label: "Home", href: "#", active: true)
+  eden_bottom_nav_item(label: "Favorites", href: "#")
+  eden_bottom_nav_item(label: "Settings", href: "#")
+  eden_bottom_nav_item(label: "Account", href: "#")
+end'
+) do %>
+  <div class="relative w-full" style="min-height: 80px;">
+    <div class="absolute bottom-0 left-0 z-10 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+      <div class="grid h-full max-w-lg grid-flow-col auto-cols-fr mx-auto font-medium">
+        <%= eden_bottom_nav_item(label: "Home", href: "#", active: true) %>
+        <%= eden_bottom_nav_item(label: "Favorites", href: "#") %>
+        <%= eden_bottom_nav_item(label: "Settings", href: "#") %>
+        <%= eden_bottom_nav_item(label: "Account", href: "#") %>
+      </div>
+    </div>
+  </div>
+<% end %>

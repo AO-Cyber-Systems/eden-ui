@@ -1,0 +1,46 @@
+<%# Notification List component preview %>
+
+<%= styleguide_example(title: "Default", description: "Notification list with a mix of read and unread notifications.",
+  source: 'eden_notification_list(
+  title: "Notifications",
+  mark_all_url: "#",
+  view_all_url: "#",
+  notifications: [
+    { title: "New message from Jese Leos", body: "Hey, all set for the showcase?", time: "Just now", variant: :info },
+    { title: "Deployment successful", body: "v2.4.1 deployed to production.", time: "5m ago", variant: :success, read: true },
+    { title: "Storage at 85%", body: "Consider upgrading your plan.", time: "1h ago", variant: :warning }
+  ]
+)') do %>
+  <div class="max-w-lg">
+    <%= eden_notification_list(
+      title: "Notifications",
+      mark_all_url: "#",
+      view_all_url: "#",
+      notifications: [
+        { title: "New message from Jese Leos", body: "Hey, all set for the showcase?", time: "Just now", variant: :info },
+        { title: "Deployment successful", body: "Version 2.4.1 deployed to production.", time: "5m ago", variant: :success, read: true },
+        { title: "Storage usage at 85%", body: "Consider upgrading your plan or removing unused files.", time: "1h ago", variant: :warning }
+      ]
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Empty State", description: "Notification list with no notifications shows an empty state.",
+  source: 'eden_notification_list(title: "Notifications", notifications: [])') do %>
+  <div class="max-w-lg">
+    <%= eden_notification_list(title: "Notifications", notifications: []) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Block Content", description: "Notification list using block content for custom items.",
+  source: 'eden_notification_list(title: "Activity", mark_all_url: "#") do
+  eden_notification_item(title: "Custom notification", body: "Block content.", time: "Now")
+end') do %>
+  <div class="max-w-lg">
+    <%= eden_notification_list(title: "Activity", mark_all_url: "#", view_all_url: "#") do %>
+      <%= eden_notification_item(title: "Bonnie Green commented on your post", body: "Great work on the new dashboard design! The charts look really clean.", time: "2m ago", variant: :info) %>
+      <%= eden_notification_item(title: "Joseph McFall mentioned you", body: "Can you review the PR before end of day?", time: "15m ago", variant: :default) %>
+      <%= eden_notification_item(title: "Build #1247 passed", body: "All 142 tests passed in 3m 24s.", time: "1h ago", variant: :success, read: true) %>
+    <% end %>
+  </div>
+<% end %>

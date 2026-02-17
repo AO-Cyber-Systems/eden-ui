@@ -1,0 +1,88 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_refund_status_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Refund Status Tracking",
+  description: "Refund status page with timeline showing the progress of a return/refund",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-2xl mx-auto px-4">
+    <h2>Refund Status</h2>
+    eden_badge(text: "Processing", variant: :warning)
+    <!-- refund timeline -->
+    <!-- refund details -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-2xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">Refund Status</h2>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Return #RET-20260215-3421</p>
+        </div>
+        <%= eden_badge(text: "Processing", variant: :warning, size: :sm) %>
+      </div>
+
+      <!-- Refund Progress -->
+      <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-6 mb-6">
+        <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-4">Return Progress</h3>
+        <ol class="relative border-l border-zinc-200 dark:border-zinc-700 ml-3">
+          <% [
+            { title: "Return Requested", desc: "Return request submitted", date: "Feb 15, 2026 - 3:22 PM", done: true },
+            { title: "Return Approved", desc: "Your return has been approved. Ship the item back.", date: "Feb 15, 2026 - 5:10 PM", done: true },
+            { title: "Item Shipped Back", desc: "Waiting for the returned item to arrive", date: "", done: false, current: true },
+            { title: "Item Received", desc: "Warehouse inspection in progress", date: "", done: false },
+            { title: "Refund Issued", desc: "Refund processed to your payment method", date: "", done: false }
+          ].each do |step| %>
+            <li class="mb-8 ml-6 last:mb-0">
+              <span class="absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white dark:ring-zinc-800 <%= step[:done] ? 'bg-green-100 dark:bg-green-900/50' : 'bg-zinc-100 dark:bg-zinc-700' %>">
+                <% if step[:done] %>
+                  <span class="text-green-600 dark:text-green-400"><%= eden_icon("check", size: :xs) %></span>
+                <% else %>
+                  <span class="w-2.5 h-2.5 bg-zinc-400 dark:bg-zinc-500 rounded-full"></span>
+                <% end %>
+              </span>
+              <h3 class="text-sm font-semibold text-zinc-900 dark:text-white flex items-center gap-2">
+                <%= step[:title] %>
+                <% if step[:current] %>
+                  <%= eden_badge(text: "Current Step", variant: :warning, size: :xs) %>
+                <% end %>
+              </h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5"><%= step[:desc] %></p>
+              <% if step[:date].present? %>
+                <time class="text-xs text-zinc-400 dark:text-zinc-500"><%= step[:date] %></time>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+
+      <!-- Return Details -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4">
+          <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase mb-2">Item Being Returned</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-zinc-200 dark:bg-zinc-700 rounded flex items-center justify-center">
+              <%= eden_icon("photo", size: :xs) %>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-zinc-900 dark:text-white">Apple iMac 24"</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">$1,199.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4">
+          <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase mb-2">Refund Details</p>
+          <p class="text-sm text-zinc-900 dark:text-white font-medium">$1,199.00</p>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">To: Visa ending in 4242</p>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">Estimated: 5-7 business days after receipt</p>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <%= eden_alert(variant: :primary, icon: true) do %>
+          <span class="font-medium">Next step:</span> Ship the item back using the prepaid label sent to your email. Drop it off at any UPS location.
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

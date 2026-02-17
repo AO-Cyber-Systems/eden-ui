@@ -1,0 +1,49 @@
+<%
+  variant ||= :default
+  image ||= nil
+  image_alt ||= ""
+  horizontal ||= false
+  href ||= nil
+  padding ||= true
+  html_options ||= {}
+  content ||= nil
+
+  variant_classes = case variant.to_sym
+  when :glass
+    "bg-white/30 backdrop-blur-lg border border-white/20 dark:bg-gray-800/30 dark:border-gray-700/20"
+  when :gradient
+    "bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+  else
+    "bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+  end
+
+  shadow = variant.to_sym == :glass ? "" : "shadow-md"
+  padding_class = padding ? "p-5" : ""
+  layout = horizontal ? "flex flex-col md:flex-row md:max-w-xl" : ""
+
+  classes = ["rounded-lg #{shadow}", variant_classes, layout, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<% if href %>
+  <a href="<%= href %>" class="block <%= classes %>" <%= tag.attributes(html_options) %>>
+<% else %>
+  <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+<% end %>
+
+  <% if image && !horizontal %>
+    <img class="rounded-t-lg w-full" src="<%= image %>" alt="<%= image_alt %>">
+  <% end %>
+
+  <% if image && horizontal %>
+    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="<%= image %>" alt="<%= image_alt %>">
+  <% end %>
+
+  <div class="<%= padding_class %>">
+    <%= content %>
+  </div>
+
+<% if href %>
+  </a>
+<% else %>
+  </div>
+<% end %>

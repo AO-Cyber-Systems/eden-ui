@@ -1,0 +1,57 @@
+<%# ── Edit Profile Form component previews ── %>
+
+<%= styleguide_example(title: "Default Edit Profile", source: 'eden_edit_profile_form(
+  url: "#",
+  cancel_url: "#",
+  delete_url: "#"
+)') do %>
+  <%= eden_edit_profile_form(
+    url: "#",
+    cancel_url: "#",
+    delete_url: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "With Password Hint", source: 'eden_edit_profile_form(
+  url: "#",
+  password_hint: "8 characters minimum",
+  cancel_url: "#",
+  delete_url: "#"
+)') do %>
+  <%= eden_edit_profile_form(
+    url: "#",
+    password_hint: "8 characters minimum",
+    cancel_url: "#",
+    delete_url: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Without Delete Option", source: 'eden_edit_profile_form(
+  url: "#",
+  cancel_url: "#"
+)') do %>
+  <%= eden_edit_profile_form(
+    url: "#",
+    cancel_url: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Without Name Field", source: 'eden_edit_profile_form(
+  url: "#",
+  name_field: false,
+  cancel_url: "#"
+)') do %>
+  <%= eden_edit_profile_form(
+    url: "#",
+    name_field: false,
+    cancel_url: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "With Error Messages", source: 'eden_edit_profile_form(url: "#", cancel_url: "#") do
+  eden_alert(variant: :danger) { "Current password is incorrect." }
+end') do %>
+  <%= eden_edit_profile_form(url: "#", cancel_url: "#") do %>
+    <%= eden_alert(variant: :danger) { "Current password is incorrect." } %>
+  <% end %>
+<% end %>

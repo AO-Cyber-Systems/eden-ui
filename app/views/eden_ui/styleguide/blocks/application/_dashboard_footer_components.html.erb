@@ -1,0 +1,52 @@
+<%= styleguide_block_example(
+  title: "Simple Dashboard Footer",
+  description: "Minimal footer with copyright and links for admin panels",
+  source: '# Footer with copyright and links
+# &copy; 2024 Eden UI. All rights reserved.
+# Footer links'
+) do %>
+  <footer class="bg-white border-t border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700 p-4 md:p-6">
+    <div class="mx-auto max-w-screen-xl flex flex-col sm:flex-row items-center justify-between">
+      <p class="text-sm text-zinc-500 dark:text-zinc-400">
+        &copy; 2024 <a href="#" class="hover:underline text-zinc-900 dark:text-white font-medium">Eden UI</a>. All rights reserved.
+      </p>
+      <ul class="flex flex-wrap items-center mt-3 text-sm text-zinc-500 dark:text-zinc-400 sm:mt-0 gap-4 md:gap-6">
+        <li><a href="#" class="hover:underline">About</a></li>
+        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+        <li><a href="#" class="hover:underline">Licensing</a></li>
+        <li><a href="#" class="hover:underline">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Dashboard Footer with Status",
+  description: "Footer with version info, status indicator, and quick links",
+  source: 'eden_badge(text: "v2.1.0", variant: :primary, size: :sm)
+# Status indicator: All systems operational'
+) do %>
+  <footer class="bg-white border-t border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700 p-4">
+    <div class="mx-auto max-w-screen-xl flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="text-sm text-zinc-500 dark:text-zinc-400">&copy; 2024 Eden UI</span>
+        <%= eden_badge(text: "v2.1.0", variant: :primary, size: :sm) %>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1.5 text-sm text-zinc-500 dark:text-zinc-400">
+          <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+          All systems operational
+        </span>
+        <span class="text-zinc-300 dark:text-zinc-600">|</span>
+        <a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">
+          <%= eden_icon("document", size: :sm) %>
+          <span class="ml-1">Docs</span>
+        </a>
+        <a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">
+          <%= eden_icon("chat-bubble-left", size: :sm) %>
+          <span class="ml-1">Support</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+<% end %>

@@ -1,0 +1,45 @@
+<%# Modal component preview — interactive via eden-modal Stimulus controller %>
+
+<%= styleguide_example(
+  title: "Default Modal",
+  description: "Click the button to open the modal dialog. Press Escape or the X button to close.",
+  source: 'eden_modal(id: "demo-modal", size: :md, title: "Terms of Service") do
+  tag.p("Modal body content goes here.", class: "text-gray-500")
+end'
+) do %>
+  <div class="flex gap-3">
+    <button type="button" onclick="document.getElementById('demo-modal').classList.remove('hidden'); document.getElementById('demo-modal').classList.add('flex')" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      Open Modal
+    </button>
+  </div>
+
+  <%= eden_modal(id: "demo-modal", size: :md, title: "Terms of Service") do %>
+    <p class="text-gray-500 dark:text-gray-400">This is a modal dialog. You can place any content here including forms, text, images, and other components.</p>
+    <div class="flex items-center gap-2 mt-4">
+      <%= eden_button(variant: :primary) { "Accept" } %>
+      <button type="button" onclick="document.getElementById('demo-modal').classList.add('hidden'); document.getElementById('demo-modal').classList.remove('flex')" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+    </div>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Small Modal",
+  description: "Compact modal for confirmations and simple prompts.",
+  source: 'eden_modal(id: "confirm-modal", size: :sm, title: "Confirm Action") do
+  tag.p("Are you sure you want to proceed?")
+end'
+) do %>
+  <div class="flex gap-3">
+    <button type="button" onclick="document.getElementById('confirm-modal').classList.remove('hidden'); document.getElementById('confirm-modal').classList.add('flex')" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-800">
+      Delete Item
+    </button>
+  </div>
+
+  <%= eden_modal(id: "confirm-modal", size: :sm, title: "Confirm Action") do %>
+    <p class="text-gray-500 dark:text-gray-400">Are you sure you want to delete this item? This action cannot be undone.</p>
+    <div class="flex items-center gap-2 mt-4">
+      <%= eden_button(variant: :danger) { "Delete" } %>
+      <button type="button" onclick="document.getElementById('confirm-modal').classList.add('hidden'); document.getElementById('confirm-modal').classList.remove('flex')" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+    </div>
+  <% end %>
+<% end %>

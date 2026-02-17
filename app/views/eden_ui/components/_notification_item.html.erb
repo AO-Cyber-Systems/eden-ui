@@ -1,0 +1,67 @@
+<%
+  title ||= nil
+  body ||= nil
+  time ||= nil
+  icon ||= nil
+  read ||= false
+  href ||= nil
+  variant ||= :default
+  html_options ||= {}
+  content ||= nil
+
+  icon_bg = case variant.to_sym
+  when :info    then "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300"
+  when :success then "bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300"
+  when :warning then "bg-yellow-100 text-yellow-600 dark:bg-yellow-900 dark:text-yellow-300"
+  when :danger  then "bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300"
+  else "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300"
+  end
+
+  title_classes = read ? "font-medium text-gray-700 dark:text-gray-300" : "font-semibold text-gray-900 dark:text-white"
+
+  row_classes = [
+    "flex items-start gap-3 p-4 transition-colors",
+    read ? "" : "bg-blue-50/50 dark:bg-blue-900/5",
+    "hover:bg-gray-50 dark:hover:bg-gray-700/50",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+
+  tag_name = href ? "a" : "div"
+%>
+
+<<%= tag_name %><%= " href=\"#{href}\"" if href %> class="<%= row_classes %>" <%= tag.attributes(html_options) %>>
+  <%# Icon circle %>
+  <div class="shrink-0 mt-0.5">
+    <% if icon %>
+      <div class="flex items-center justify-center w-8 h-8 rounded-full <%= icon_bg %>">
+        <%= eden_icon(icon, size: :sm) %>
+      </div>
+    <% else %>
+      <div class="flex items-center justify-center w-8 h-8 rounded-full <%= icon_bg %>">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.1 12.6v-1.8A5.4 5.4 0 0 0 13 5.6V5a1 1 0 0 0-2 0v.6a5.4 5.4 0 0 0-4.1 5.2v1.8L5 14.6c-.3.3-.4.6-.4 1 0 .7.6 1.4 1.4 1.4h12c.8 0 1.4-.7 1.4-1.4 0-.4-.1-.7-.4-1l-1.9-2ZM12 21a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2Z"/></svg>
+      </div>
+    <% end %>
+  </div>
+
+  <%# Content %>
+  <div class="min-w-0 flex-1">
+    <div class="flex items-start justify-between gap-2">
+      <div class="min-w-0 flex-1">
+        <% if title %>
+          <p class="text-sm <%= title_classes %>"><%= title %></p>
+        <% end %>
+        <% if body %>
+          <p class="mt-0.5 text-sm text-gray-500 dark:text-gray-400"><%= body %></p>
+        <% end %>
+      </div>
+      <div class="shrink-0 flex items-center gap-2">
+        <% if time %>
+          <span class="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap"><%= time %></span>
+        <% end %>
+        <% unless read %>
+          <span class="inline-block w-2 h-2 rounded-full bg-blue-600 shrink-0"></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</<%= tag_name %>>

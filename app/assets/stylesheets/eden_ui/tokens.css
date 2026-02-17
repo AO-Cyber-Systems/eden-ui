@@ -1,0 +1,107 @@
+/* =============================================================
+   Eden UI — Design Tokens (CSS Custom Properties)
+   Migrated from eden_design. Light-first with dark: variant.
+   ============================================================= */
+
+:root {
+  /* === Gold Brand Colors === */
+  --eden-gold-50: #fdf8ef;
+  --eden-gold-100: #faecd5;
+  --eden-gold-200: #f4d5aa;
+  --eden-gold-300: #edb974;
+  --eden-gold-400: #e59a3c;
+  --eden-gold-500: #d4a853;
+  --eden-gold-600: #c49545;
+  --eden-gold-700: #a67a38;
+  --eden-gold-800: #856131;
+  --eden-gold-900: #6c5029;
+  --eden-gold-950: #3d2a14;
+
+  /* === Neutral Colors (Zinc) === */
+  --eden-neutral-50: #fafafa;
+  --eden-neutral-100: #f4f4f5;
+  --eden-neutral-200: #e4e4e7;
+  --eden-neutral-300: #d4d4d8;
+  --eden-neutral-400: #a1a1aa;
+  --eden-neutral-500: #71717a;
+  --eden-neutral-600: #52525b;
+  --eden-neutral-700: #3f3f46;
+  --eden-neutral-800: #27272a;
+  --eden-neutral-850: #1e1e22;
+  --eden-neutral-900: #18181b;
+  --eden-neutral-950: #0a0a0a;
+
+  /* === Aurora Gradient Accents === */
+  --eden-aurora-purple: #a855f7;
+  --eden-aurora-blue: #3b82f6;
+  --eden-aurora-cyan: #06b6d4;
+  --eden-aurora-emerald: #10b981;
+
+  /* === Status Colors === */
+  --eden-success: #10b981;
+  --eden-success-bg: rgba(16, 185, 129, 0.1);
+  --eden-warning: #f59e0b;
+  --eden-warning-bg: rgba(245, 158, 11, 0.1);
+  --eden-error: #ef4444;
+  --eden-error-bg: rgba(239, 68, 68, 0.1);
+  --eden-info: #3b82f6;
+  --eden-info-bg: rgba(59, 130, 246, 0.1);
+
+  /* === Typography === */
+  --eden-font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+  --eden-font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --eden-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* === Spacing === */
+  --eden-space-0: 0;
+  --eden-space-1: 0.25rem;
+  --eden-space-2: 0.5rem;
+  --eden-space-3: 0.75rem;
+  --eden-space-4: 1rem;
+  --eden-space-5: 1.25rem;
+  --eden-space-6: 1.5rem;
+  --eden-space-8: 2rem;
+  --eden-space-10: 2.5rem;
+  --eden-space-12: 3rem;
+  --eden-space-16: 4rem;
+  --eden-space-20: 5rem;
+
+  /* === Border Radius === */
+  --eden-radius-sm: 0.375rem;
+  --eden-radius-md: 0.5rem;
+  --eden-radius-lg: 0.75rem;
+  --eden-radius-xl: 1rem;
+  --eden-radius-2xl: 1.5rem;
+  --eden-radius-full: 9999px;
+
+  /* === Shadows (light mode defaults) === */
+  --eden-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --eden-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --eden-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --eden-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --eden-shadow-glow: 0 0 20px rgba(212, 168, 83, 0.1);
+  --eden-shadow-glow-strong: 0 0 30px rgba(212, 168, 83, 0.25);
+
+  /* === Transitions === */
+  --eden-ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --eden-duration-fast: 150ms;
+  --eden-duration-normal: 250ms;
+  --eden-duration-slow: 400ms;
+
+  /* === Z-Index Scale === */
+  --eden-z-dropdown: 100;
+  --eden-z-sticky: 200;
+  --eden-z-modal-backdrop: 300;
+  --eden-z-modal: 400;
+  --eden-z-toast: 500;
+  --eden-z-command-palette: 600;
+}
+
+/* Dark mode overrides */
+html.dark {
+  --eden-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --eden-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --eden-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --eden-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.3);
+  --eden-shadow-glow: 0 0 20px rgba(212, 168, 83, 0.15);
+}

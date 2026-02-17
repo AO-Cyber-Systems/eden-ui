@@ -1,0 +1,89 @@
+<%# Inbox Item component preview %>
+
+<%= styleguide_example(title: "Default", description: "A mix of read and unread inbox items.",
+  source: 'eden_inbox_item(
+  sender: "Bonnie Green",
+  subject: "Project kickoff meeting",
+  preview: "Hi team, I wanted to schedule a kickoff meeting for next Monday...",
+  time: "10:32 AM",
+  unread: true,
+  avatar_initials: "BG"
+)') do %>
+  <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+    <%= eden_inbox_item(
+      sender: "Bonnie Green",
+      subject: "Project kickoff meeting",
+      preview: "Hi team, I wanted to schedule a kickoff meeting for next Monday to discuss the new project requirements...",
+      time: "10:32 AM",
+      unread: true,
+      avatar_initials: "BG"
+    ) %>
+    <%= eden_inbox_item(
+      sender: "Joseph McFall",
+      subject: "Design review feedback",
+      preview: "Great work on the latest mockups! I have a few suggestions for the navigation...",
+      time: "9:15 AM",
+      unread: false,
+      starred: true,
+      avatar_initials: "JM"
+    ) %>
+    <%= eden_inbox_item(
+      sender: "Leslie Livingston",
+      subject: "Invoice #2847 attached",
+      preview: "Please find the attached invoice for the consulting work completed in January...",
+      time: "Yesterday",
+      unread: false,
+      avatar_initials: "LL"
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Unread Items", description: "Unread messages with blue background and bold sender.",
+  source: 'eden_inbox_item(
+  sender: "Support Team",
+  subject: "Your ticket has been updated",
+  preview: "We have an update on your recent support request...",
+  time: "Just now",
+  unread: true,
+  avatar_initials: "ST"
+)') do %>
+  <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+    <%= eden_inbox_item(
+      sender: "Support Team",
+      subject: "Your ticket has been updated",
+      preview: "We have an update on your recent support request regarding billing issues...",
+      time: "Just now",
+      unread: true,
+      avatar_initials: "ST"
+    ) %>
+    <%= eden_inbox_item(
+      sender: "GitHub",
+      subject: "New pull request review requested",
+      preview: "alex-r requested your review on PR #487: Add user profile component...",
+      time: "5 min ago",
+      unread: true,
+      starred: true,
+      avatar_initials: "GH"
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Selected Item", description: "Inbox item in selected state.",
+  source: 'eden_inbox_item(
+  sender: "Bonnie Green",
+  subject: "Weekly report",
+  time: "Feb 10",
+  selected: true,
+  avatar_initials: "BG"
+)') do %>
+  <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+    <%= eden_inbox_item(
+      sender: "Bonnie Green",
+      subject: "Weekly report",
+      preview: "Here is the weekly status report for the engineering team...",
+      time: "Feb 10",
+      selected: true,
+      avatar_initials: "BG"
+    ) %>
+  </div>
+<% end %>

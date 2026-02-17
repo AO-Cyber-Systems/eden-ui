@@ -1,0 +1,21 @@
+<%# Select component preview %>
+
+<%= styleguide_example(title: "Default with Placeholder", source: 'eden_select(options: [["United States", "us"], ["Canada", "ca"], ["Mexico", "mx"]], placeholder: "Choose a country")') do %>
+  <%= eden_select(options: [["United States", "us"], ["Canada", "ca"], ["Mexico", "mx"]], placeholder: "Choose a country") %>
+<% end %>
+
+<%= styleguide_example(title: "With Selected Value", source: 'eden_select(options: [["United States", "us"], ["Canada", "ca"], ["Mexico", "mx"]], selected: "ca")') do %>
+  <%= eden_select(options: [["United States", "us"], ["Canada", "ca"], ["Mexico", "mx"]], selected: "ca") %>
+<% end %>
+
+<%= styleguide_example(title: "Sizes", source: 'eden_select(options: [["Small", "sm"], ["Medium", "md"], ["Large", "lg"]], size: :sm, placeholder: "Small select")
+eden_select(options: [["Small", "sm"], ["Medium", "md"], ["Large", "lg"]], size: :md, placeholder: "Medium select")
+eden_select(options: [["Small", "sm"], ["Medium", "md"], ["Large", "lg"]], size: :lg, placeholder: "Large select")') do %>
+  <%= eden_select(options: [["Small", "sm"], ["Medium", "md"], ["Large", "lg"]], size: :sm, placeholder: "Small select") %>
+  <%= eden_select(options: [["Small", "sm"], ["Medium", "md"], ["Large", "lg"]], size: :md, placeholder: "Medium select") %>
+  <%= eden_select(options: [["Small", "sm"], ["Medium", "md"], ["Large", "lg"]], size: :lg, placeholder: "Large select") %>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", source: 'eden_select(options: [["United States", "us"], ["Canada", "ca"], ["Mexico", "mx"]], placeholder: "Disabled select", disabled: true)') do %>
+  <%= eden_select(options: [["United States", "us"], ["Canada", "ca"], ["Mexico", "mx"]], placeholder: "Disabled select", disabled: true) %>
+<% end %>

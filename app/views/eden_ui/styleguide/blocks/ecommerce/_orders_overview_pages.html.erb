@@ -1,0 +1,120 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_orders_overview_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Orders List",
+  description: "Order history page with filterable list of past orders and status badges",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    <h2>My Orders</h2>
+    <!-- filter tabs -->
+    <!-- orders list -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">My Orders</h2>
+        <%= eden_search_input(placeholder: "Search orders...", size: :sm) %>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex gap-2 mb-6 overflow-x-auto">
+        <% ["All Orders", "Processing", "Shipped", "Delivered", "Cancelled"].each_with_index do |tab, i| %>
+          <button class="px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap <%= i == 0 ? 'bg-gold-100 text-gold-700 dark:bg-gold-900/30 dark:text-gold-400' : 'text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700' %>">
+            <%= tab %>
+          </button>
+        <% end %>
+      </div>
+
+      <!-- Orders -->
+      <div class="space-y-4">
+        <% [
+          { id: "#ORD-7842", date: "Feb 13, 2026", items: 3, total: "$1,836.97", status: "Processing", status_variant: :warning },
+          { id: "#ORD-7695", date: "Feb 5, 2026", items: 1, total: "$599.00", status: "Shipped", status_variant: :primary },
+          { id: "#ORD-7431", date: "Jan 22, 2026", items: 2, total: "$348.00", status: "Delivered", status_variant: :success },
+          { id: "#ORD-7102", date: "Jan 10, 2026", items: 5, total: "$2,147.50", status: "Delivered", status_variant: :success },
+          { id: "#ORD-6890", date: "Dec 28, 2025", items: 1, total: "$79.99", status: "Cancelled", status_variant: :danger }
+        ].each do |order| %>
+          <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-center gap-4">
+                <div class="flex -space-x-2">
+                  <% [*1..([order[:items], 3].min)].each do %>
+                    <div class="w-10 h-10 bg-zinc-200 dark:bg-zinc-700 rounded border-2 border-white dark:border-zinc-800 flex items-center justify-center">
+                      <%= eden_icon("photo", size: :xs) %>
+                    </div>
+                  <% end %>
+                  <% if order[:items] > 3 %>
+                    <div class="w-10 h-10 bg-zinc-100 dark:bg-zinc-700 rounded border-2 border-white dark:border-zinc-800 flex items-center justify-center">
+                      <span class="text-xs font-medium text-zinc-500 dark:text-zinc-400">+<%= order[:items] - 3 %></span>
+                    </div>
+                  <% end %>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-zinc-900 dark:text-white"><%= order[:id] %></p>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400"><%= order[:date] %> &middot; <%= order[:items] %> item<%= order[:items] > 1 ? 's' : '' %></p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="text-sm font-bold text-zinc-900 dark:text-white"><%= order[:total] %></span>
+                <%= eden_badge(text: order[:status], variant: order[:status_variant], size: :sm) %>
+                <%= eden_button(variant: :ghost, size: :xs, href: "#") { "View Details" } %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Orders Table View",
+  description: "Tabular view of orders with sortable columns and action buttons",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    <h2>Order History</h2>
+    <!-- orders table -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <h2 class="text-xl font-semibold text-zinc-900 dark:text-white mb-6">Order History</h2>
+      <div class="overflow-x-auto bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700">
+        <table class="w-full text-sm text-left">
+          <thead class="text-xs text-zinc-500 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
+            <tr>
+              <th class="px-6 py-3">Order ID</th>
+              <th class="px-6 py-3">Date</th>
+              <th class="px-6 py-3">Items</th>
+              <th class="px-6 py-3">Total</th>
+              <th class="px-6 py-3">Status</th>
+              <th class="px-6 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
+            <% [
+              { id: "#ORD-7842", date: "Feb 13, 2026", items: 3, total: "$1,836.97", status: "Processing", variant: :warning },
+              { id: "#ORD-7695", date: "Feb 5, 2026", items: 1, total: "$599.00", status: "Shipped", variant: :primary },
+              { id: "#ORD-7431", date: "Jan 22, 2026", items: 2, total: "$348.00", status: "Delivered", variant: :success },
+              { id: "#ORD-7102", date: "Jan 10, 2026", items: 5, total: "$2,147.50", status: "Delivered", variant: :success }
+            ].each do |order| %>
+              <tr class="bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700">
+                <td class="px-6 py-4 font-medium text-zinc-900 dark:text-white"><%= order[:id] %></td>
+                <td class="px-6 py-4 text-zinc-500 dark:text-zinc-400"><%= order[:date] %></td>
+                <td class="px-6 py-4 text-zinc-500 dark:text-zinc-400"><%= order[:items] %></td>
+                <td class="px-6 py-4 font-medium text-zinc-900 dark:text-white"><%= order[:total] %></td>
+                <td class="px-6 py-4"><%= eden_badge(text: order[:status], variant: order[:variant], size: :xs) %></td>
+                <td class="px-6 py-4">
+                  <a href="#" class="text-gold-600 dark:text-gold-400 hover:underline text-sm font-medium">View</a>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+<% end %>

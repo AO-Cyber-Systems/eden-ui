@@ -1,0 +1,120 @@
+<%
+  nav_items = [
+    { label: "Features", href: "#features" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "About", href: "#about" },
+    { label: "Blog", href: "#blog" },
+  ]
+%>
+
+<%= eden_marketing_layout(app_name: "Eden", nav_items: nav_items, cta_text: "Get Started", cta_path: "#", login_text: "Log in", login_path: "#") do %>
+  <%# Hero section %>
+  <%= eden_jumbotron(
+    title: "Build Beautiful Interfaces Faster",
+    subtitle: "Eden UI provides a complete set of accessible, themeable components for building modern web applications with Rails and Tailwind CSS."
+  ) do %>
+    <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
+      <%= eden_button(variant: :primary, size: :lg, href: "#") { "Get Started Free" } %>
+      <%= eden_button(variant: :dark, size: :lg, outline: true, href: "#") do %>
+        <svg class="mr-2 -ml-1 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+        View on GitHub
+      <% end %>
+    </div>
+  <% end %>
+
+  <%# Trusted by section %>
+  <section class="bg-gray-50 py-8 dark:bg-gray-800">
+    <div class="mx-auto max-w-screen-xl px-4 text-center">
+      <p class="mb-6 text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Trusted by teams at</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 text-gray-400 dark:text-gray-500">
+        <% ["Acme Corp", "TechFlow", "DataVault", "CloudBase", "NexGen"].each do |name| %>
+          <span class="text-lg font-display font-semibold"><%= name %></span>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <%# Features section %>
+  <section id="features" class="py-16 lg:py-24">
+    <div class="mx-auto max-w-screen-xl px-4">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-3xl font-display font-bold text-gray-900 dark:text-white lg:text-4xl">Everything You Need</h2>
+        <p class="text-lg text-gray-500 dark:text-gray-400">A comprehensive toolkit for building production-ready web applications.</p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <%= eden_card do %>
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900/30">
+            <svg class="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.764m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-display font-bold text-gray-900 dark:text-white">Design Tokens</h3>
+          <p class="text-gray-500 dark:text-gray-400">Consistent spacing, colors, and typography powered by CSS custom properties and Tailwind integration.</p>
+        <% end %>
+
+        <%= eden_card do %>
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-green-100 dark:bg-green-900/30">
+            <svg class="h-5 w-5 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.491 48.491 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z" />
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-display font-bold text-gray-900 dark:text-white">50+ Components</h3>
+          <p class="text-gray-500 dark:text-gray-400">From buttons and badges to modals and data tables, every component you need is ready to use out of the box.</p>
+        <% end %>
+
+        <%= eden_card do %>
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-100 dark:bg-purple-900/30">
+            <svg class="h-5 w-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-display font-bold text-gray-900 dark:text-white">Layout Helpers</h3>
+          <p class="text-gray-500 dark:text-gray-400">Pre-built app, chat, marketing, and auth layouts so you can scaffold entire pages in minutes.</p>
+        <% end %>
+
+        <%= eden_card do %>
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-orange-100 dark:bg-orange-900/30">
+            <svg class="h-5 w-5 text-orange-600 dark:text-orange-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-display font-bold text-gray-900 dark:text-white">Dark Mode</h3>
+          <p class="text-gray-500 dark:text-gray-400">First-class dark mode support baked into every component with automatic system preference detection.</p>
+        <% end %>
+
+        <%= eden_card do %>
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-red-100 dark:bg-red-900/30">
+            <svg class="h-5 w-5 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-display font-bold text-gray-900 dark:text-white">Accessible</h3>
+          <p class="text-gray-500 dark:text-gray-400">ARIA attributes, keyboard navigation, and screen reader support are built into every component.</p>
+        <% end %>
+
+        <%= eden_card do %>
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-teal-100 dark:bg-teal-900/30">
+            <svg class="h-5 w-5 text-teal-600 dark:text-teal-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-display font-bold text-gray-900 dark:text-white">Rails Native</h3>
+          <p class="text-gray-500 dark:text-gray-400">Built specifically for Ruby on Rails with ERB helpers, Hotwire integration, and zero JavaScript bundling required.</p>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <%# CTA section %>
+  <section class="bg-gray-50 dark:bg-gray-800">
+    <div class="mx-auto max-w-screen-xl px-4 py-16 text-center lg:py-24">
+      <h2 class="mb-4 text-3xl font-display font-bold text-gray-900 dark:text-white">Ready to Get Started?</h2>
+      <p class="mb-8 text-lg text-gray-500 dark:text-gray-400 sm:px-16 lg:px-48">Add Eden UI to your Rails app and start building beautiful interfaces in minutes. No complex setup required.</p>
+      <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
+        <%= eden_button(variant: :primary, size: :lg, href: "#") { "Install Now" } %>
+        <%= eden_button(variant: :ghost, size: :lg, href: "#") { "Read the Docs" } %>
+      </div>
+    </div>
+  </section>
+<% end %>

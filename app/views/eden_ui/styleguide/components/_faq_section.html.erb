@@ -1,0 +1,48 @@
+<%# FAQ Section component previews %>
+
+<%= styleguide_block_example(title: "Single Column Accordion", description: "Default single-column FAQ using accordion items.",
+  source: 'eden_faq_section(
+  title: "Frequently Asked Questions",
+  subtitle: "Everything you need to know about the product.",
+  questions: [
+    { question: "What is Eden UI?", answer: "Eden UI is a comprehensive component library for Ruby on Rails applications built with Tailwind CSS." },
+    { question: "How do I install it?", answer: "Add the gem to your Gemfile, run bundle install, and mount the engine." },
+    { question: "Is it free?", answer: "Yes, Eden UI is open source and free to use in personal and commercial projects." },
+    { question: "Can I customize the components?", answer: "Absolutely. All components support design tokens, custom classes, and theme overrides." }
+  ]
+)') do %>
+  <%= eden_faq_section(
+    title: "Frequently Asked Questions",
+    subtitle: "Everything you need to know about the product and billing. Can not find the answer you are looking for? Reach out to our support team.",
+    questions: [
+      { question: "What is Eden UI?", answer: "Eden UI is a comprehensive component library for Ruby on Rails applications. It provides 55+ production-ready components built with Tailwind CSS, designed to integrate seamlessly with the Rails view layer." },
+      { question: "How do I install it?", answer: "Add the eden_ui gem to your Gemfile, run bundle install, mount the engine in your routes, and include the stylesheet. Full installation instructions are available in the documentation." },
+      { question: "Is it free to use?", answer: "Yes, Eden UI is open source and completely free to use in both personal and commercial projects under the MIT license." },
+      { question: "Can I customize the components?", answer: "Absolutely. All components support design tokens for theming, custom CSS classes via html_options, and full style overrides. You can make them match any brand identity." },
+      { question: "Do you offer support?", answer: "Community support is available through GitHub Issues. For enterprise support with guaranteed response times, contact our sales team." }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Two-Column Layout", description: "Questions split across two columns for wider layouts.",
+  source: 'eden_faq_section(
+  title: "Common Questions",
+  columns: 2,
+  questions: [
+    { question: "What payment methods do you accept?", answer: "We accept all major credit cards, PayPal, and bank transfer." },
+    { question: "Can I cancel my subscription?", answer: "Yes, you can cancel at any time from your account settings." },
+    { question: "Do you offer refunds?", answer: "We offer a 30-day money-back guarantee on all plans." },
+    { question: "Is there a free trial?", answer: "Yes, all plans include a 14-day free trial." }
+  ]
+)') do %>
+  <%= eden_faq_section(
+    title: "Common Questions",
+    columns: 2,
+    questions: [
+      { question: "What payment methods do you accept?", answer: "We accept all major credit cards including Visa, Mastercard, and American Express. We also support PayPal and bank transfers for annual plans." },
+      { question: "Can I cancel my subscription?", answer: "Yes, you can cancel your subscription at any time from your account settings. Your access will continue until the end of your current billing period." },
+      { question: "Do you offer refunds?", answer: "We offer a full 30-day money-back guarantee on all plans. If you are not satisfied, contact us for a complete refund." },
+      { question: "Is there a free trial?", answer: "Yes, all plans include a 14-day free trial. No credit card required to get started." }
+    ]
+  ) %>
+<% end %>

@@ -1,0 +1,28 @@
+<%
+  id ||= "crud-modal"
+  title ||= "Create"
+  size ||= :md
+  submit_text ||= "Save"
+  cancel_text ||= "Cancel"
+  form_url ||= "#"
+  form_method ||= :post
+  html_options ||= {}
+  content ||= nil
+%>
+
+<%= eden_modal(id: id, size: size, **html_options) do %>
+  <form action="<%= form_url %>" method="<%= form_method == :get ? 'get' : 'post' %>">
+    <% unless form_method == :get || form_method == :post %>
+      <input type="hidden" name="_method" value="<%= form_method %>">
+    <% end %>
+
+    <div class="space-y-4 mb-6">
+      <%= content %>
+    </div>
+
+    <div class="flex items-center gap-3 border-t border-gray-200 dark:border-gray-600 pt-4">
+      <%= eden_button(variant: :primary, type: :submit) { submit_text } %>
+      <button type="button" data-action="eden-modal#close" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"><%= cancel_text %></button>
+    </div>
+  </form>
+<% end %>

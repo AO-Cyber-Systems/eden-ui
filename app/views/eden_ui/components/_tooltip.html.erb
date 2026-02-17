@@ -1,0 +1,27 @@
+<%
+  text ||= nil
+  placement ||= :top
+  variant ||= :dark
+  id ||= "tooltip-#{text&.parameterize}"
+  html_options ||= {}
+  content ||= nil
+
+  variant_classes = case variant.to_sym
+  when :light
+    "text-gray-900 bg-white border border-gray-200 shadow-sm"
+  else
+    "text-white bg-gray-900 dark:bg-gray-700"
+  end
+
+  classes = ["absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip", variant_classes, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<div data-controller="eden-tooltip" data-eden-tooltip-placement-value="<%= placement %>" class="relative inline-block" <%= tag.attributes(html_options) %>>
+  <div data-action="mouseenter->eden-tooltip#show mouseleave->eden-tooltip#hide">
+    <%= content %>
+  </div>
+  <div data-eden-tooltip-target="tooltip" role="tooltip" class="<%= classes %>">
+    <%= text %>
+    <div class="tooltip-arrow" data-popper-arrow></div>
+  </div>
+</div>

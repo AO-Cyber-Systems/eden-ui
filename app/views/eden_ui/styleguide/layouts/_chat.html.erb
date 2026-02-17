@@ -1,0 +1,77 @@
+<%
+  conversations = [
+    { id: 1, title: "Alice Johnson", last_message: "Hey, how are you doing?", time: "2m ago" },
+    { id: 2, title: "Bob Martinez", last_message: "The project is ready for review", time: "1h ago" },
+    { id: 3, title: "Team Chat", last_message: "Meeting rescheduled to 3pm", time: "3h ago" },
+    { id: 4, title: "Carol White", last_message: "Thanks for the update!", time: "5h ago" },
+    { id: 5, title: "Design Team", last_message: "New mockups are uploaded", time: "1d ago" },
+    { id: 6, title: "David Kim", last_message: "Can you review my PR?", time: "2d ago" },
+  ]
+  current = Struct.new(:id, :title).new(1, "Alice Johnson")
+  user = Struct.new(:name, :email).new("Jane Doe", "jane@example.com")
+%>
+
+<%= eden_chat_layout(app_name: "Eden Chat", conversations: conversations, current_conversation: current, user: user) do %>
+  <div class="space-y-6 py-4">
+    <%# Date separator %>
+    <div class="flex items-center justify-center">
+      <span class="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-500 dark:bg-gray-700 dark:text-gray-400">Today</span>
+    </div>
+
+    <%# Incoming messages %>
+    <%= eden_chat_bubble(
+      sender: "Alice Johnson",
+      message: "Hey Jane! How are you doing? I wanted to check in about the Eden UI project.",
+      time: "10:15 AM"
+    ) %>
+
+    <%= eden_chat_bubble(
+      sender: "Alice Johnson",
+      message: "I have been working on the new component library and I think we are making great progress. The design tokens are looking really solid.",
+      time: "10:16 AM"
+    ) %>
+
+    <%# Outgoing messages %>
+    <%= eden_chat_bubble(
+      sender: "Jane Doe",
+      message: "Hi Alice! I am doing well, thanks for asking. The project is coming along nicely.",
+      time: "10:20 AM",
+      variant: :sent
+    ) %>
+
+    <%= eden_chat_bubble(
+      sender: "Jane Doe",
+      message: "I just finished the layout helpers yesterday. We now have app, chat, marketing, and auth layouts all working with the helper API.",
+      time: "10:21 AM",
+      variant: :sent
+    ) %>
+
+    <%# Incoming reply %>
+    <%= eden_chat_bubble(
+      sender: "Alice Johnson",
+      message: "That is amazing! Can you walk me through the sidebar navigation pattern? I want to make sure it works well on mobile too.",
+      time: "10:25 AM"
+    ) %>
+
+    <%# Outgoing reply %>
+    <%= eden_chat_bubble(
+      sender: "Jane Doe",
+      message: "Of course! The sidebar collapses into a hamburger menu on smaller screens. I will set up a quick demo for the team meeting this afternoon.",
+      time: "10:28 AM",
+      variant: :sent
+    ) %>
+
+    <%= eden_chat_bubble(
+      sender: "Alice Johnson",
+      message: "Perfect, looking forward to it! I will prepare some questions from the design team as well.",
+      time: "10:30 AM"
+    ) %>
+
+    <%= eden_chat_bubble(
+      sender: "Jane Doe",
+      message: "Sounds good. See you at 3pm!",
+      time: "10:31 AM",
+      variant: :sent
+    ) %>
+  </div>
+<% end %>

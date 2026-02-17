@@ -1,0 +1,49 @@
+<%# Message View component preview %>
+
+<%= styleguide_example(title: "Default", description: "Full message view with sender info, subject, body, and action buttons.",
+  source: 'eden_message_view(
+  sender: "Joseph McFall",
+  sender_email: "joseph@company.com",
+  recipient: "me",
+  subject: "Inquiry about design services",
+  time: "Feb 6, 2025, 10:19 AM",
+  avatar_initials: "JM"
+) do
+  "Hi, I am interested in your design services..."
+end') do %>
+  <div class="max-w-3xl border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+    <%= eden_message_view(
+      sender: "Joseph McFall",
+      sender_email: "joseph@company.com",
+      recipient: "me",
+      subject: "Inquiry about design services",
+      time: "Feb 6, 2025, 10:19 AM",
+      avatar_initials: "JM"
+    ) do %>
+      <p>Hi there,</p>
+      <p class="mt-3">I am interested in learning more about your design services for our upcoming product launch. We are looking for someone to help with the user interface design and the overall user experience.</p>
+      <p class="mt-3">Could you share your portfolio and availability for a call this week? We would love to discuss the project requirements in more detail.</p>
+      <p class="mt-3">Best regards,<br>Joseph McFall</p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Minimal Message", description: "Message view with just sender and body content.",
+  source: 'eden_message_view(
+  sender: "Bonnie Green",
+  sender_email: "bonnie@flowbite.com",
+  avatar_initials: "BG"
+) do
+  "Quick note: the meeting has been moved to 3 PM."
+end') do %>
+  <div class="max-w-3xl border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+    <%= eden_message_view(
+      sender: "Bonnie Green",
+      sender_email: "bonnie@flowbite.com",
+      avatar_initials: "BG"
+    ) do %>
+      <p>Quick note: the meeting has been moved to 3 PM. Please update your calendars accordingly.</p>
+      <p class="mt-3">Thanks!</p>
+    <% end %>
+  </div>
+<% end %>

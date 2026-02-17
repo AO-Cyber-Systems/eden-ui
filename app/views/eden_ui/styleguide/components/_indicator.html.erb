@@ -1,0 +1,96 @@
+<%# ── Indicator component previews ── %>
+
+<%= styleguide_example(title: "Variants", source: 'eden_indicator(variant: :primary)
+eden_indicator(variant: :success)
+eden_indicator(variant: :warning)
+eden_indicator(variant: :danger)
+eden_indicator(variant: :neutral)') do %>
+  <div class="flex items-center gap-6">
+    <div class="flex items-center gap-2">
+      <%= eden_indicator(variant: :primary) %>
+      <span class="text-sm text-gray-600 dark:text-gray-400">Primary</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <%= eden_indicator(variant: :success) %>
+      <span class="text-sm text-gray-600 dark:text-gray-400">Success</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <%= eden_indicator(variant: :warning) %>
+      <span class="text-sm text-gray-600 dark:text-gray-400">Warning</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <%= eden_indicator(variant: :danger) %>
+      <span class="text-sm text-gray-600 dark:text-gray-400">Danger</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <%= eden_indicator(variant: :neutral) %>
+      <span class="text-sm text-gray-600 dark:text-gray-400">Neutral</span>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Sizes", source: 'eden_indicator(size: :xs, variant: :primary)
+eden_indicator(size: :sm, variant: :primary)
+eden_indicator(size: :md, variant: :primary)
+eden_indicator(size: :lg, variant: :primary)
+eden_indicator(size: :xl, variant: :primary)') do %>
+  <div class="flex items-center gap-6">
+    <div class="flex items-center gap-2">
+      <%= eden_indicator(size: :xs, variant: :primary) %>
+      <span class="text-sm text-gray-600 dark:text-gray-400">XS</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <%= eden_indicator(size: :sm, variant: :primary) %>
+      <span class="text-sm text-gray-600 dark:text-gray-400">SM</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <%= eden_indicator(size: :md, variant: :primary) %>
+      <span class="text-sm text-gray-600 dark:text-gray-400">MD</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <%= eden_indicator(size: :lg, variant: :primary) %>
+      <span class="text-sm text-gray-600 dark:text-gray-400">LG</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <%= eden_indicator(size: :xl, variant: :primary) %>
+      <span class="text-sm text-gray-600 dark:text-gray-400">XL</span>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Positioned on Avatar", source: 'eden_avatar(initials: "JD", size: :lg, rounded: true) # wrap with relative container
+eden_indicator(variant: :success, placement: :"top-right")
+eden_indicator(variant: :danger, placement: :"bottom-right")') do %>
+  <div class="flex items-center gap-8">
+    <div class="relative inline-flex">
+      <%= eden_avatar(initials: "JD", size: :lg, rounded: true) %>
+      <%= eden_indicator(variant: :success, placement: :"top-right", outline: true) %>
+    </div>
+    <div class="relative inline-flex">
+      <%= eden_avatar(initials: "AB", size: :lg, rounded: true) %>
+      <%= eden_indicator(variant: :danger, placement: :"bottom-right", outline: true) %>
+    </div>
+    <div class="relative inline-flex">
+      <%= eden_avatar(initials: "CD", size: :lg, rounded: true) %>
+      <%= eden_indicator(variant: :warning, placement: :"top-left", outline: true) %>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Count (Pill)", source: 'eden_indicator(variant: :danger, pill: true, count: 5, size: :lg)
+eden_indicator(variant: :primary, pill: true, count: 12, size: :lg)') do %>
+  <div class="flex items-center gap-6">
+    <div class="relative inline-flex">
+      <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-700">
+        Notifications
+      </button>
+      <%= eden_indicator(variant: :danger, pill: true, count: 5, size: :lg, placement: :"top-right") %>
+    </div>
+    <div class="relative inline-flex">
+      <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-700">
+        Messages
+      </button>
+      <%= eden_indicator(variant: :primary, pill: true, count: 12, size: :lg, placement: :"top-right") %>
+    </div>
+  </div>
+<% end %>

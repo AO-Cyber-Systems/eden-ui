@@ -1,0 +1,121 @@
+<%= styleguide_block_example(
+  title: "Create Product Modal",
+  description: "Modal dialog with form fields for creating a new product",
+  source: 'eden_modal(id: "create-product-modal", size: :lg) do
+  # Add New Product
+  eden_form_group(label: "Name", required: true) do
+    eden_input(placeholder: "Product name")
+  end
+  eden_button(variant: :primary) { "Add product" }
+end'
+) do %>
+  <div class="p-4 bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center min-h-[200px]">
+    <%= eden_button(variant: :primary) do %>
+      <%= eden_icon("plus", size: :sm) %>
+      <span class="ml-1">Add product</span>
+    <% end %>
+  </div>
+
+  <%# Modal preview (shown inline as static example) %>
+  <div class="relative p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-zinc-800 sm:p-5 max-w-xl mx-auto">
+      <%# Modal header %>
+      <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b border-zinc-200 dark:border-zinc-700">
+        <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">Add New Product</h3>
+        <button class="text-zinc-400 bg-transparent hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+      <%# Modal body %>
+      <form action="#">
+        <div class="grid gap-4 mb-4 sm:grid-cols-2">
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Name", required: true) do %>
+              <%= eden_input(placeholder: "Type product name") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Brand") do %>
+              <%= eden_input(placeholder: "Product brand") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Price") do %>
+              <%= eden_input(type: :number, placeholder: "$2999") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Category") do %>
+              <%= eden_select(options: ["Electronics", "TV/Monitors", "PC", "Phones"], placeholder: "Select category") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Item Weight (kg)") do %>
+              <%= eden_input(type: :number, placeholder: "12") %>
+            <% end %>
+          </div>
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Description") do %>
+              <%= eden_textarea(rows: 4, placeholder: "Write product description here") %>
+            <% end %>
+          </div>
+        </div>
+        <%= eden_button(variant: :primary) do %>
+          <%= eden_icon("plus", size: :sm) %>
+          <span class="ml-1">Add new product</span>
+        <% end %>
+      </form>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Create User Modal",
+  description: "Modal for adding a new user with role assignment",
+  source: 'eden_modal(id: "create-user-modal", size: :md) do
+  # Add New User
+  eden_form_group(label: "Email", required: true) do
+    eden_input(type: :email, placeholder: "name@company.com")
+  end
+  eden_form_group(label: "Role") do
+    eden_select(options: ["Admin", "Editor", "Viewer"])
+  end
+end'
+) do %>
+  <div class="relative p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-zinc-800 sm:p-5 max-w-md mx-auto">
+      <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b border-zinc-200 dark:border-zinc-700">
+        <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">Add New User</h3>
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+      <form action="#">
+        <div class="grid gap-4 mb-4">
+          <%= eden_form_group(label: "Full Name", required: true) do %>
+            <%= eden_input(placeholder: "John Doe") %>
+          <% end %>
+          <%= eden_form_group(label: "Email", required: true) do %>
+            <%= eden_input(type: :email, placeholder: "name@company.com") %>
+          <% end %>
+          <%= eden_form_group(label: "Role") do %>
+            <%= eden_select(options: ["Administrator", "Editor", "Viewer", "Guest"], placeholder: "Select role") %>
+          <% end %>
+          <%= eden_form_group(label: "Department") do %>
+            <%= eden_select(options: ["Engineering", "Design", "Marketing", "Sales", "Support"], placeholder: "Select department") %>
+          <% end %>
+          <div>
+            <%= eden_checkbox(label: "Send invitation email") %>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <%= eden_button(variant: :primary) do %>
+            <%= eden_icon("plus", size: :sm) %>
+            <span class="ml-1">Add user</span>
+          <% end %>
+          <%= eden_button(variant: :ghost) { "Cancel" } %>
+        </div>
+      </form>
+    </div>
+  </div>
+<% end %>

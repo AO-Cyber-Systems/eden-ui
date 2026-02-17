@@ -1,0 +1,36 @@
+<%# Dropdown component preview — interactive via eden-dropdown Stimulus controller %>
+
+<%= styleguide_example(
+  title: "Default Dropdown",
+  description: "Click the button to toggle the dropdown menu.",
+  source: 'eden_dropdown(label: "Options") do
+  eden_dropdown_item(label: "Dashboard", icon: "home")
+  eden_dropdown_item(label: "Settings", icon: "cog")
+  eden_dropdown_divider
+  eden_dropdown_item(label: "Sign out", icon: "arrow-right")
+end'
+) do %>
+  <%= eden_dropdown(label: "Options") do %>
+    <li><a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><%= eden_icon("home", size: :sm) %> Dashboard</a></li>
+    <li><a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><%= eden_icon("cog", size: :sm) %> Settings</a></li>
+    <li class="border-t border-gray-100 dark:border-gray-600"><a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a></li>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Dropdown without Icons",
+  source: 'eden_dropdown(label: "Actions") do
+  eden_dropdown_item(label: "Edit")
+  eden_dropdown_item(label: "Duplicate")
+  eden_dropdown_item(label: "Archive")
+  eden_dropdown_divider
+  eden_dropdown_item(label: "Delete")
+end'
+) do %>
+  <%= eden_dropdown(label: "Actions") do %>
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a></li>
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Duplicate</a></li>
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Archive</a></li>
+    <li class="border-t border-gray-100 dark:border-gray-600"><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a></li>
+  <% end %>
+<% end %>

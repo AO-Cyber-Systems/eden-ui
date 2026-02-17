@@ -1,0 +1,66 @@
+<%# Stats Section component previews %>
+
+<%= styleguide_block_example(title: "Default Stats Row", description: "Inline stats with dividers between values.",
+  source: 'eden_stats_section(
+  title: "Trusted by developers worldwide",
+  stats: [
+    { value: "73M+", label: "Developers", description: "and growing every day" },
+    { value: "100M+", label: "Downloads" },
+    { value: "1B+", label: "API Requests", description: "processed monthly" },
+    { value: "99.9%", label: "Uptime" }
+  ]
+)') do %>
+  <%= eden_stats_section(
+    title: "Trusted by developers worldwide",
+    stats: [
+      { value: "73M+", label: "Developers", description: "and growing every day" },
+      { value: "100M+", label: "Downloads" },
+      { value: "1B+", label: "API Requests", description: "processed monthly" },
+      { value: "99.9%", label: "Uptime" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Card Variant", description: "Each stat displayed in its own bordered card.",
+  source: 'eden_stats_section(
+  title: "Our Impact",
+  subtitle: "Numbers that speak for themselves.",
+  variant: :cards,
+  stats: [
+    { value: "2,500+", label: "Customers" },
+    { value: "$4.2B", label: "Revenue Processed" },
+    { value: "150+", label: "Countries" },
+    { value: "50+", label: "Team Members" }
+  ]
+)') do %>
+  <%= eden_stats_section(
+    title: "Our Impact",
+    subtitle: "Numbers that speak for themselves.",
+    variant: :cards,
+    stats: [
+      { value: "2,500+", label: "Active Customers" },
+      { value: "$4.2B", label: "Revenue Processed" },
+      { value: "150+", label: "Countries Served" },
+      { value: "50+", label: "Team Members" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Colored Variant", description: "Stats on a branded primary-color background.",
+  source: 'eden_stats_section(
+  variant: :colored,
+  stats: [
+    { value: "10K+", label: "Active Users" },
+    { value: "95%", label: "Satisfaction Rate" },
+    { value: "24/7", label: "Support" }
+  ]
+)') do %>
+  <%= eden_stats_section(
+    variant: :colored,
+    stats: [
+      { value: "10K+", label: "Active Users", description: "across all plans" },
+      { value: "95%", label: "Satisfaction Rate", description: "based on surveys" },
+      { value: "24/7", label: "Support Available", description: "for all customers" }
+    ]
+  ) %>
+<% end %>

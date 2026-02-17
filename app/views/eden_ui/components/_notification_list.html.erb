@@ -1,0 +1,66 @@
+<%
+  title ||= "Notifications"
+  notifications ||= []
+  mark_all_url ||= nil
+  view_all_url ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  unread_count = notifications.count { |n| !n[:read] }
+
+  classes = [
+    "bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%# Header %>
+  <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+    <div class="flex items-center gap-2">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white"><%= title %></h3>
+      <% if unread_count > 0 %>
+        <%= eden_badge(variant: :primary, size: :xs, pill: true) { unread_count.to_s } %>
+      <% end %>
+    </div>
+    <% if mark_all_url %>
+      <a href="<%= mark_all_url %>" class="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+        Mark all as read
+      </a>
+    <% end %>
+  </div>
+
+  <%# Body %>
+  <div class="divide-y divide-gray-200 dark:divide-gray-700">
+    <% if content %>
+      <%= content %>
+    <% elsif notifications.any? %>
+      <% notifications.each do |notification| %>
+        <%= eden_notification_item(
+          title: notification[:title],
+          body: notification[:body],
+          time: notification[:time],
+          icon: notification[:icon],
+          read: notification.fetch(:read, false),
+          href: notification[:href],
+          variant: notification.fetch(:variant, :default)
+        ) %>
+      <% end %>
+    <% else %>
+      <%= eden_empty_state(
+        title: "No notifications",
+        description: "You're all caught up! Check back later.",
+        icon: "bell"
+      ) %>
+    <% end %>
+  </div>
+
+  <%# Footer %>
+  <% if view_all_url %>
+    <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700 text-center">
+      <a href="<%= view_all_url %>" class="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+        View all notifications
+      </a>
+    </div>
+  <% end %>
+</div>

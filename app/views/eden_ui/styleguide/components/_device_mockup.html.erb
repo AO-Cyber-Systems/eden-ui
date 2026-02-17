@@ -1,0 +1,58 @@
+<%# Device mockup component preview %>
+
+<%= styleguide_example(
+  title: "Phone Mockup",
+  description: "iPhone-style device frame with placeholder content.",
+  source: 'eden_device_mockup(device: :iphone) do
+  content_tag(:div, "App content", class: "flex items-center justify-center h-full bg-zinc-100 dark:bg-zinc-900 text-zinc-400")
+end'
+) do %>
+  <div class="flex justify-center">
+    <%= eden_device_mockup(device: :iphone) do %>
+      <div class="flex items-center justify-center h-full bg-zinc-100 dark:bg-zinc-900 text-zinc-400">
+        <div class="text-center">
+          <p class="text-lg font-semibold">App Screen</p>
+          <p class="text-sm">272 x 572</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Tablet Mockup",
+  description: "iPad-style device frame.",
+  source: 'eden_device_mockup(device: :tablet) do
+  content_tag(:div, "Tablet content", class: "flex items-center justify-center h-full bg-zinc-100 dark:bg-zinc-900 text-zinc-400")
+end'
+) do %>
+  <div class="flex justify-center">
+    <%= eden_device_mockup(device: :tablet) do %>
+      <div class="flex items-center justify-center h-full bg-zinc-100 dark:bg-zinc-900 text-zinc-400">
+        <div class="text-center">
+          <p class="text-lg font-semibold">Tablet Screen</p>
+          <p class="text-sm">Responsive content area</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Laptop Mockup",
+  description: "Laptop-style device frame with keyboard base.",
+  source: 'eden_device_mockup(device: :laptop) do
+  content_tag(:div, "Desktop content", class: "flex items-center justify-center h-full bg-zinc-100 dark:bg-zinc-900 text-zinc-400")
+end'
+) do %>
+  <div class="flex justify-center">
+    <%= eden_device_mockup(device: :laptop) do %>
+      <div class="flex items-center justify-center h-full bg-zinc-100 dark:bg-zinc-900 text-zinc-400">
+        <div class="text-center">
+          <p class="text-lg font-semibold">Desktop App</p>
+          <p class="text-sm">Laptop screen area</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,67 @@
+<%
+  name ||= nil
+  price ||= nil
+  period ||= "/month"
+  description ||= nil
+  features ||= []
+  current ||= false
+  cta_text ||= "Upgrade"
+  cta_href ||= "#"
+  popular ||= false
+  html_options ||= {}
+  content ||= nil
+
+  border_class = popular ? "border-2 border-blue-500 dark:border-blue-400" : "border border-gray-200 dark:border-gray-700"
+
+  classes = [
+    "flex flex-col rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md text-center",
+    border_class,
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <% if popular %>
+    <div class="mb-4">
+      <%= eden_badge(variant: :primary, size: :sm, pill: true) { "Popular" } %>
+    </div>
+  <% end %>
+
+  <% if name %>
+    <h3 class="mb-4 text-xl font-semibold text-gray-900 dark:text-white"><%= name %></h3>
+  <% end %>
+
+  <% if price %>
+    <div class="flex items-baseline justify-center mb-4">
+      <span class="text-4xl font-bold text-gray-900 dark:text-white"><%= price %></span>
+      <span class="ms-1 text-gray-500 dark:text-gray-400"><%= period %></span>
+    </div>
+  <% end %>
+
+  <% if description %>
+    <p class="mb-6 text-sm text-gray-500 dark:text-gray-400"><%= description %></p>
+  <% end %>
+
+  <% if features.any? %>
+    <ul role="list" class="mb-8 space-y-3 text-left text-sm text-gray-500 dark:text-gray-400">
+      <% features.each do |feature| %>
+        <li class="flex items-center space-x-2.5">
+          <svg class="h-4 w-4 flex-shrink-0 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span><%= feature %></span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="mt-auto">
+    <% if current %>
+      <%= eden_badge(variant: :success, size: :md) { "Current plan" } %>
+    <% elsif popular %>
+      <%= eden_button(variant: :primary, href: cta_href) { cta_text } %>
+    <% else %>
+      <%= eden_button(variant: :dark, outline: true, href: cta_href) { cta_text } %>
+    <% end %>
+  </div>
+
+  <%= content %>
+</div>

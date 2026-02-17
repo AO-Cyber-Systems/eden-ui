@@ -1,0 +1,53 @@
+<%# Project Card component preview %>
+
+<%= styleguide_example(title: "Active Project", description: "Project card with progress, team, and due date.",
+  source: 'eden_project_card(
+  title: "Website Redesign",
+  description: "Complete overhaul of the marketing website with new branding.",
+  status: :active,
+  progress: 65,
+  team: [{name: "Alice", initials: "AC"}, {name: "Bob", initials: "BK"}, {name: "Carol", initials: "CD"}],
+  due_date: "Mar 15, 2026"
+)') do %>
+  <div class="max-w-sm">
+    <%= eden_project_card(
+      title: "Website Redesign",
+      description: "Complete overhaul of the marketing website with new branding.",
+      status: :active,
+      progress: 65,
+      team: [{name: "Alice", initials: "AC"}, {name: "Bob", initials: "BK"}, {name: "Carol", initials: "CD"}],
+      due_date: "Mar 15, 2026"
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Status Variants", description: "Cards showing different project statuses.",
+  source: 'eden_project_card(title: "Mobile App", status: :active, progress: 45)
+eden_project_card(title: "API v2", status: :completed, progress: 100)
+eden_project_card(title: "Analytics", status: :on_hold, progress: 30)
+eden_project_card(title: "Migration", status: :at_risk, progress: 20)') do %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <%= eden_project_card(title: "Mobile App", description: "Native iOS and Android application.", status: :active, progress: 45, team: [{name: "Dev Team", initials: "DT"}], due_date: "Apr 1") %>
+    <%= eden_project_card(title: "API v2", description: "New REST API with GraphQL support.", status: :completed, progress: 100, team: [{name: "BE", initials: "BE"}]) %>
+    <%= eden_project_card(title: "Analytics Dashboard", description: "Real-time analytics and reporting.", status: :on_hold, progress: 30, team: [{name: "Data", initials: "DA"}], due_date: "TBD") %>
+    <%= eden_project_card(title: "Database Migration", description: "Migrate from MySQL to PostgreSQL.", status: :at_risk, progress: 20, team: [{name: "Ops", initials: "OP"}, {name: "Dev", initials: "DV"}], due_date: "Feb 28") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Block Content", description: "Project card with custom content in the body.",
+  source: 'eden_project_card(title: "Design System", status: :active, progress: 80) do
+  content_tag(:div, class: "flex gap-2 mt-2") do
+    eden_badge(text: "Figma", variant: :purple, size: :xs) +
+    eden_badge(text: "Tailwind", variant: :info, size: :xs)
+  end
+end') do %>
+  <div class="max-w-sm">
+    <%= eden_project_card(title: "Design System", description: "Shared component library and design tokens.", status: :active, progress: 80, team: [{name: "Design", initials: "DS"}, {name: "FE", initials: "FE"}], due_date: "Mar 1") do %>
+      <div class="flex gap-2 mt-2">
+        <%= eden_badge(text: "Figma", variant: :purple, size: :xs) %>
+        <%= eden_badge(text: "Tailwind", variant: :info, size: :xs) %>
+        <%= eden_badge(text: "Storybook", variant: :warning, size: :xs) %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

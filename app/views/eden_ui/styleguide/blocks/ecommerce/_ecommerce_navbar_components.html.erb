@@ -1,0 +1,120 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_ecommerce_navbar_components.html.erb %>
+
+<%= styleguide_block_example(
+  title: "E-Commerce Navbar",
+  description: "Store navbar with logo, search, cart icon with count badge, and user menu",
+  source: '<nav class="bg-white border-b dark:bg-zinc-900">
+  <!-- logo -->
+  eden_search_input(placeholder: "Search products...", size: :sm)
+  <!-- cart icon with badge -->
+  eden_avatar(initials: "JD", size: :sm, rounded: true)
+</nav>'
+) do %>
+  <nav class="bg-white border-b border-zinc-200 dark:bg-zinc-900 dark:border-zinc-700">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-gold-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">E</div>
+          <span class="text-xl font-bold text-zinc-900 dark:text-white">Store</span>
+        </a>
+
+        <!-- Category Links -->
+        <div class="hidden lg:flex items-center gap-6">
+          <% ["New", "Women", "Men", "Kids", "Sale"].each do |link| %>
+            <a href="#" class="text-sm font-medium text-zinc-700 hover:text-gold-600 dark:text-zinc-300 dark:hover:text-gold-400 <%= link == 'Sale' ? 'text-red-600 dark:text-red-400' : '' %>"><%= link %></a>
+          <% end %>
+        </div>
+
+        <!-- Search + Actions -->
+        <div class="flex items-center gap-4">
+          <div class="hidden md:block w-64">
+            <%= eden_search_input(placeholder: "Search products...", size: :sm) %>
+          </div>
+          <button class="md:hidden text-zinc-500 dark:text-zinc-400">
+            <%= eden_icon("search", size: :sm) %>
+          </button>
+          <button class="relative text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300">
+            <%= eden_icon("heart", size: :sm) %>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+          </button>
+          <button class="relative text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300">
+            <%= eden_icon("shopping-cart", size: :sm) %>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-gold-600 text-white text-xs rounded-full flex items-center justify-center">2</span>
+          </button>
+          <%= eden_avatar(initials: "JD", size: :sm, rounded: true) %>
+          <button class="lg:hidden text-zinc-500 dark:text-zinc-400">
+            <%= eden_icon("bars-3", size: :sm) %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Navbar with Category Mega Menu",
+  description: "Store navbar with a mega menu dropdown for product categories",
+  source: '<nav class="bg-white dark:bg-zinc-900">
+  <!-- top bar with promo -->
+  <!-- main navbar with logo, categories, search, cart -->
+  <!-- mega menu dropdown panel -->
+</nav>'
+) do %>
+  <!-- Promo Strip -->
+  <div class="bg-zinc-900 dark:bg-zinc-950 text-white text-center py-2 text-xs">
+    Free shipping on orders over $50 | Use code <strong>SAVE10</strong>
+  </div>
+  <!-- Main Nav -->
+  <nav class="bg-white border-b border-zinc-200 dark:bg-zinc-900 dark:border-zinc-700">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="flex items-center justify-between h-14">
+        <a href="#" class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-gold-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">E</div>
+          <span class="text-xl font-bold text-zinc-900 dark:text-white">Store</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-6">
+          <% ["Electronics", "Fashion", "Home", "Sports", "Sale"].each_with_index do |cat, i| %>
+            <a href="#" class="text-sm font-medium text-zinc-700 hover:text-gold-600 dark:text-zinc-300 dark:hover:text-gold-400 flex items-center gap-1 <%= i == 4 ? 'text-red-600 dark:text-red-400' : '' %>">
+              <%= cat %>
+              <% if i < 4 %>
+                <%= eden_icon("chevron-down", size: :xs) %>
+              <% end %>
+            </a>
+          <% end %>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="text-zinc-500 dark:text-zinc-400"><%= eden_icon("search", size: :sm) %></button>
+          <button class="text-zinc-500 dark:text-zinc-400"><%= eden_icon("user", size: :sm) %></button>
+          <button class="relative text-zinc-500 dark:text-zinc-400">
+            <%= eden_icon("shopping-cart", size: :sm) %>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-gold-600 text-white text-xs rounded-full flex items-center justify-center">2</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Menu Panel (static preview) -->
+    <div class="border-t border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800">
+      <div class="max-w-screen-xl mx-auto px-4 py-6">
+        <div class="grid grid-cols-4 gap-8">
+          <% [
+            { title: "Phones", items: ["iPhone", "Samsung Galaxy", "Google Pixel", "OnePlus"] },
+            { title: "Laptops", items: ["MacBook", "Dell XPS", "ThinkPad", "Surface Pro"] },
+            { title: "Accessories", items: ["Cases", "Chargers", "Headphones", "Cables"] },
+            { title: "Wearables", items: ["Apple Watch", "Galaxy Watch", "Fitbit", "AirPods"] }
+          ].each do |col| %>
+            <div>
+              <h4 class="text-sm font-semibold text-zinc-900 dark:text-white mb-3"><%= col[:title] %></h4>
+              <ul class="space-y-2">
+                <% col[:items].each do |item| %>
+                  <li><a href="#" class="text-sm text-zinc-500 hover:text-gold-600 dark:text-zinc-400 dark:hover:text-gold-400"><%= item %></a></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
+<% end %>

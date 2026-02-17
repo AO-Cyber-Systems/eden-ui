@@ -1,0 +1,53 @@
+<%# Tooltip component preview — interactive via eden-tooltip Stimulus controller %>
+
+<%= styleguide_example(
+  title: "Default Tooltip",
+  description: "Hover over the button to see the tooltip.",
+  source: 'eden_tooltip(text: "Tooltip on top", placement: :top) do
+  eden_button(variant: :secondary) { "Hover me" }
+end'
+) do %>
+  <div class="py-8 flex justify-center">
+    <%= eden_tooltip(text: "Tooltip on top", placement: :top) do %>
+      <%= eden_button(variant: :secondary) { "Hover me" } %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Tooltip Placements",
+  description: "Hover over each button to see tooltips at different positions.",
+  source: 'eden_tooltip(text: "Top", placement: :top) do
+  eden_button(variant: :secondary) { "Top" }
+end
+
+eden_tooltip(text: "Bottom", placement: :bottom) do
+  eden_button(variant: :secondary) { "Bottom" }
+end
+
+eden_tooltip(text: "Left", placement: :left) do
+  eden_button(variant: :secondary) { "Left" }
+end
+
+eden_tooltip(text: "Right", placement: :right) do
+  eden_button(variant: :secondary) { "Right" }
+end'
+) do %>
+  <div class="py-8 flex flex-wrap gap-6 justify-center items-center">
+    <%= eden_tooltip(text: "Top tooltip", placement: :top) do %>
+      <%= eden_button(variant: :secondary) { "Top" } %>
+    <% end %>
+
+    <%= eden_tooltip(text: "Bottom tooltip", placement: :bottom) do %>
+      <%= eden_button(variant: :secondary) { "Bottom" } %>
+    <% end %>
+
+    <%= eden_tooltip(text: "Left tooltip", placement: :left) do %>
+      <%= eden_button(variant: :secondary) { "Left" } %>
+    <% end %>
+
+    <%= eden_tooltip(text: "Right tooltip", placement: :right) do %>
+      <%= eden_button(variant: :secondary) { "Right" } %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<%
+  html_options ||= {}
+  content ||= nil
+
+  classes = ["bg-white border-b dark:bg-gray-800 dark:border-gray-700", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<tr class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%= content %>
+</tr>

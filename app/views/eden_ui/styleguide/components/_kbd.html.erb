@@ -1,0 +1,60 @@
+<%# ── Kbd component previews ── %>
+
+<%= styleguide_example(title: "Keys", source: 'eden_kbd { "Ctrl" }
+eden_kbd { "Shift" }
+eden_kbd { "Enter" }
+eden_kbd { "Tab" }
+eden_kbd { "Esc" }') do %>
+  <%= eden_kbd { "Ctrl" } %>
+  <%= eden_kbd { "Shift" } %>
+  <%= eden_kbd { "Enter" } %>
+  <%= eden_kbd { "Tab" } %>
+  <%= eden_kbd { "Esc" } %>
+<% end %>
+
+<%= styleguide_example(title: "Special Keys", source: 'eden_kbd { "\u2318" }  # Command
+eden_kbd { "\u2325" }  # Option
+eden_kbd { "\u21E7" }  # Shift
+eden_kbd { "\u2303" }  # Control
+eden_kbd { "\u232B" }  # Delete') do %>
+  <%= eden_kbd { "\u2318" } %>
+  <%= eden_kbd { "\u2325" } %>
+  <%= eden_kbd { "\u21E7" } %>
+  <%= eden_kbd { "\u2303" } %>
+  <%= eden_kbd { "\u232B" } %>
+<% end %>
+
+<%= styleguide_example(title: "Key Combinations", source: 'eden_kbd { "Ctrl" } + " + " + eden_kbd { "C" }
+eden_kbd { "Ctrl" } + " + " + eden_kbd { "V" }
+eden_kbd { "\u2318" } + " + " + eden_kbd { "S" }') do %>
+  <div class="flex items-center gap-1">
+    <%= eden_kbd { "Ctrl" } %>
+    <span class="text-gray-500 dark:text-gray-400">+</span>
+    <%= eden_kbd { "C" } %>
+  </div>
+  <div class="flex items-center gap-1">
+    <%= eden_kbd { "Ctrl" } %>
+    <span class="text-gray-500 dark:text-gray-400">+</span>
+    <%= eden_kbd { "V" } %>
+  </div>
+  <div class="flex items-center gap-1">
+    <%= eden_kbd { "\u2318" } %>
+    <span class="text-gray-500 dark:text-gray-400">+</span>
+    <%= eden_kbd { "S" } %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "In Context", description: "Keyboard shortcuts inline with text", source: 'content_tag(:p) do
+  "Press " + eden_kbd { "Ctrl" } + " + " + eden_kbd { "K" } + " to open the command palette"
+end') do %>
+  <p class="text-sm text-gray-600 dark:text-gray-400">
+    Press <%= eden_kbd { "Ctrl" } %>
+    <span class="text-gray-500 dark:text-gray-400">+</span>
+    <%= eden_kbd { "K" } %>
+    to open the command palette
+  </p>
+  <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+    Press <%= eden_kbd { "Esc" } %>
+    to close the dialog
+  </p>
+<% end %>

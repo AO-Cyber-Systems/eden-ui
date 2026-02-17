@@ -1,0 +1,64 @@
+<%
+  title ||= "Latest Articles"
+  subtitle ||= nil
+  posts ||= []
+  columns ||= 3
+  html_options ||= {}
+  content ||= nil
+
+  col_class = case columns
+  when 1 then "max-w-screen-md mx-auto"
+  when 2 then "md:grid-cols-2 max-w-screen-lg mx-auto"
+  else "md:grid-cols-2 lg:grid-cols-3"
+  end
+
+  classes = ["bg-white dark:bg-gray-900", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<section class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+    <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-16">
+      <% if title %>
+        <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white md:text-4xl"><%= title %></h2>
+      <% end %>
+      <% if subtitle %>
+        <p class="font-light text-gray-500 dark:text-gray-400 sm:text-xl"><%= subtitle %></p>
+      <% end %>
+    </div>
+
+    <div class="grid gap-8 <%= col_class %>">
+      <% posts.each do |post| %>
+        <article class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
+          <% if post[:image] %>
+            <a href="<%= post[:href] || '#' %>">
+              <img class="w-full h-48 object-cover" src="<%= post[:image] %>" alt="<%= post[:title] %>">
+            </a>
+          <% end %>
+          <div class="p-6">
+            <% if post[:category] %>
+              <div class="mb-3">
+                <%= eden_badge(text: post[:category], variant: :primary, size: :sm) %>
+              </div>
+            <% end %>
+            <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <a href="<%= post[:href] || '#' %>" class="hover:text-blue-600 dark:hover:text-blue-400"><%= post[:title] %></a>
+            </h3>
+            <% if post[:excerpt] %>
+              <p class="mb-4 text-gray-500 dark:text-gray-400 line-clamp-3"><%= post[:excerpt] %></p>
+            <% end %>
+            <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+              <% if post[:author] %>
+                <span class="font-medium"><%= post[:author] %></span>
+              <% end %>
+              <% if post[:date] %>
+                <time><%= post[:date] %></time>
+              <% end %>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    </div>
+
+    <%= content %>
+  </div>
+</section>

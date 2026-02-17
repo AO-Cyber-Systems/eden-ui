@@ -1,0 +1,13 @@
+<%
+  html_options ||= {}
+  content ||= nil
+
+  classes = [
+    "flex gap-4 overflow-x-auto pb-4",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%= content %>
+</div>

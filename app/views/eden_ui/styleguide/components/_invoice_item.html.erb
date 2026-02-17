@@ -1,0 +1,40 @@
+<%# Invoice Item component preview %>
+
+<%= styleguide_example(title: "Default", description: "Invoice line items for use inside a table.",
+  source: 'eden_table do
+  eden_table_head do
+    "<th>Description</th><th>Qty</th><th>Unit Price</th><th>Total</th>"
+  end
+  eden_invoice_item(description: "Web Development", quantity: 40, unit_price: "$150.00", total: "$6,000.00")
+  eden_invoice_item(description: "UI Design", quantity: 20, unit_price: "$120.00", total: "$2,400.00")
+  eden_invoice_item(description: "Hosting", quantity: 1, unit_price: "$299.00", total: "$299.00")
+end') do %>
+  <%= eden_table do %>
+    <%= eden_table_head do %>
+      <th scope="col" class="px-6 py-3">Description</th>
+      <th scope="col" class="px-6 py-3 text-center">Qty</th>
+      <th scope="col" class="px-6 py-3 text-right">Unit Price</th>
+      <th scope="col" class="px-6 py-3 text-right">Total</th>
+    <% end %>
+    <tbody>
+      <%= eden_invoice_item(description: "Web Development", quantity: 40, unit_price: "$150.00", total: "$6,000.00") %>
+      <%= eden_invoice_item(description: "UI Design", quantity: 20, unit_price: "$120.00", total: "$2,400.00") %>
+      <%= eden_invoice_item(description: "Hosting (Annual)", quantity: 1, unit_price: "$299.00", total: "$299.00") %>
+    </tbody>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Single Item", description: "A single line item row.",
+  source: 'eden_invoice_item(description: "Premium Support Plan", quantity: 1, unit_price: "$499.00", total: "$499.00")') do %>
+  <%= eden_table do %>
+    <%= eden_table_head do %>
+      <th scope="col" class="px-6 py-3">Description</th>
+      <th scope="col" class="px-6 py-3 text-center">Qty</th>
+      <th scope="col" class="px-6 py-3 text-right">Unit Price</th>
+      <th scope="col" class="px-6 py-3 text-right">Total</th>
+    <% end %>
+    <tbody>
+      <%= eden_invoice_item(description: "Premium Support Plan", quantity: 1, unit_price: "$499.00", total: "$499.00") %>
+    </tbody>
+  <% end %>
+<% end %>

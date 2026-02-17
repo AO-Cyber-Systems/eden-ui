@@ -1,0 +1,131 @@
+<%= styleguide_block_example(
+  title: "CRUD Table Layout",
+  description: "Product management table with search, filters, and action buttons",
+  source: 'eden_search_input(placeholder: "Search products...")
+eden_button(variant: :primary, size: :sm) { "Add product" }
+eden_table(striped: true, hoverable: true) do
+  # Table head and body rows
+end
+eden_pagination(current_page: 1, total_pages: 10)'
+) do %>
+  <section class="bg-zinc-50 dark:bg-zinc-900 p-3 sm:p-5 antialiased">
+    <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+      <div class="bg-white dark:bg-zinc-800 relative shadow-md sm:rounded-lg overflow-hidden">
+        <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+          <div class="w-full md:w-1/2">
+            <%= eden_search_input(placeholder: "Search products...") %>
+          </div>
+          <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+            <%= eden_button(variant: :primary, size: :sm) do %>
+              <%= eden_icon("plus", size: :sm) %>
+              <span class="ml-1">Add product</span>
+            <% end %>
+            <%= eden_dropdown(label: "Actions") do %>
+              <li><a href="#" class="block px-4 py-2 text-sm text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700">Mass Edit</a></li>
+              <li><a href="#" class="block px-4 py-2 text-sm text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700">Delete all</a></li>
+            <% end %>
+            <%= eden_dropdown(label: "Filter") do %>
+              <li class="px-4 py-2">
+                <%= eden_checkbox(label: "Apple (56)") %>
+              </li>
+              <li class="px-4 py-2">
+                <%= eden_checkbox(label: "Microsoft (16)") %>
+              </li>
+              <li class="px-4 py-2">
+                <%= eden_checkbox(label: "Logitech (97)") %>
+              </li>
+            <% end %>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <%= eden_table(striped: true, hoverable: true) do %>
+            <thead>
+              <tr>
+                <th scope="col" class="px-4 py-3">Product name</th>
+                <th scope="col" class="px-4 py-3">Category</th>
+                <th scope="col" class="px-4 py-3">Brand</th>
+                <th scope="col" class="px-4 py-3">Price</th>
+                <th scope="col" class="px-4 py-3">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% [
+                ["Apple iMac 27\"", "PC", "Apple", "$1,499"],
+                ["Apple MacBook Pro 17\"", "Laptop", "Apple", "$2,999"],
+                ["iPhone 14 Pro", "Phone", "Apple", "$999"],
+                ["iPad Air 5", "Tablet", "Apple", "$799"],
+                ["Xbox Series X", "Gaming", "Microsoft", "$499"],
+              ].each do |name, category, brand, price| %>
+                <tr class="border-b dark:border-zinc-700">
+                  <th scope="row" class="px-4 py-3 font-medium text-zinc-900 whitespace-nowrap dark:text-white"><%= name %></th>
+                  <td class="px-4 py-3"><%= category %></td>
+                  <td class="px-4 py-3"><%= brand %></td>
+                  <td class="px-4 py-3"><%= price %></td>
+                  <td class="px-4 py-3 flex items-center gap-2">
+                    <%= eden_button(variant: :ghost, size: :xs) { eden_icon("pencil", size: :sm) } %>
+                    <%= eden_button(variant: :ghost, size: :xs) { eden_icon("trash", size: :sm) } %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          <% end %>
+        </div>
+        <div class="p-4">
+          <%= eden_pagination(current_page: 1, total_pages: 10) %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "CRUD Card Grid Layout",
+  description: "Card-based CRUD layout with grid display and action buttons",
+  source: 'eden_card do
+  # Product card content
+end
+eden_button(variant: :primary) { "Add product" }'
+) do %>
+  <section class="bg-zinc-50 dark:bg-zinc-900 p-3 sm:p-5 antialiased">
+    <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+      <div class="flex flex-col md:flex-row items-center justify-between mb-4 space-y-3 md:space-y-0">
+        <div class="w-full md:w-1/2">
+          <%= eden_search_input(placeholder: "Search products...") %>
+        </div>
+        <div class="flex items-center gap-3">
+          <%= eden_button(variant: :primary, size: :sm) do %>
+            <%= eden_icon("plus", size: :sm) %>
+            <span class="ml-1">Add product</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <% [
+          ["Apple iMac 27\"", "PC & Desktop", "$1,499", "352"],
+          ["Apple MacBook Pro", "Laptop", "$2,999", "184"],
+          ["iPhone 14 Pro", "Smartphone", "$999", "876"],
+          ["iPad Air 5", "Tablet", "$799", "421"],
+        ].each do |name, category, price, sales| %>
+          <div class="rounded-lg shadow-md bg-white border border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700 overflow-hidden">
+            <div class="h-32 bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center">
+              <span class="text-zinc-400 dark:text-zinc-500 text-sm">Product Image</span>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-zinc-900 dark:text-white"><%= name %></h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400"><%= category %></p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-bold text-zinc-900 dark:text-white"><%= price %></span>
+                <span class="text-xs text-zinc-500"><%= sales %> sales</span>
+              </div>
+              <div class="flex items-center gap-3 mt-3 text-xs font-medium">
+                <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">Edit</a>
+                <a href="#" class="text-zinc-500 hover:underline dark:text-zinc-400">Preview</a>
+                <a href="#" class="text-red-600 hover:underline dark:text-red-500">Delete</a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

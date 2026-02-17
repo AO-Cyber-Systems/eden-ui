@@ -1,0 +1,29 @@
+<%
+  name ||= nil
+  id ||= nil
+  label ||= nil
+  value ||= nil
+  checked ||= false
+  disabled ||= false
+  description ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  input_classes = "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+%>
+
+<div class="flex items-start">
+  <div class="flex items-center h-5">
+    <input type="radio" <% if name %>name="<%= name %>"<% end %> <% if id %>id="<%= id %>"<% end %> <% if value %>value="<%= value %>"<% end %> class="<%= [input_classes, html_options.delete(:class)].compact_blank.join(" ") %>" <%= "checked" if checked %> <%= "disabled" if disabled %> <%= tag.attributes(html_options) %>>
+  </div>
+  <% if label || description %>
+    <div class="ms-2 text-sm">
+      <% if label %>
+        <label for="<%= id %>" class="font-medium text-gray-900 dark:text-gray-300"><%= label %></label>
+      <% end %>
+      <% if description %>
+        <p class="text-xs font-normal text-gray-500 dark:text-gray-300"><%= description %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

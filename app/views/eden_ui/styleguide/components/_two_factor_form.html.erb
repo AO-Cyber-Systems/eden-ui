@@ -1,0 +1,56 @@
+<%# Two Factor Form component preview %>
+
+<%= styleguide_example(title: "Default", description: "Standard 6-digit two-factor authentication form.",
+  source: 'eden_two_factor_form(
+  url: "/auth/verify",
+  heading: "Two-factor authentication",
+  description: "Enter the code from your authenticator app.",
+  resend_url: "/auth/resend",
+  back_url: "/auth/login"
+)') do %>
+  <div class="max-w-md rounded-lg bg-white p-6 shadow-sm dark:bg-gray-800">
+    <%= eden_two_factor_form(
+      url: "/auth/verify",
+      heading: "Two-factor authentication",
+      description: "Enter the code from your authenticator app.",
+      resend_url: "/auth/resend",
+      back_url: "/auth/login"
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "SMS Verification", description: "Two-factor form for SMS-based verification with custom description.",
+  source: 'eden_two_factor_form(
+  url: "/auth/sms-verify",
+  heading: "Verify your phone number",
+  description: "We sent a 6-digit code to +1 (555) ***-**89.",
+  resend_url: "/auth/resend-sms"
+)') do %>
+  <div class="max-w-md rounded-lg bg-white p-6 shadow-sm dark:bg-gray-800">
+    <%= eden_two_factor_form(
+      url: "/auth/sms-verify",
+      heading: "Verify your phone number",
+      description: "We sent a 6-digit code to +1 (555) ***-**89.",
+      resend_url: "/auth/resend-sms"
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "4-Digit Code", description: "Shorter 4-digit verification form for PIN-based auth.",
+  source: 'eden_two_factor_form(
+  url: "/auth/pin",
+  heading: "Enter your PIN",
+  description: "Enter the 4-digit security PIN to continue.",
+  code_length: 4,
+  submit_text: "Confirm"
+)') do %>
+  <div class="max-w-md rounded-lg bg-white p-6 shadow-sm dark:bg-gray-800">
+    <%= eden_two_factor_form(
+      url: "/auth/pin",
+      heading: "Enter your PIN",
+      description: "Enter the 4-digit security PIN to continue.",
+      code_length: 4,
+      submit_text: "Confirm"
+    ) %>
+  </div>
+<% end %>

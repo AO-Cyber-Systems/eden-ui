@@ -1,0 +1,16 @@
+<%
+  flush ||= false
+  always_open ||= false
+  id ||= "accordion"
+  html_options ||= {}
+  content ||= nil
+
+  border_class = flush ? "" : "border border-gray-200 dark:border-gray-700"
+  rounded_class = flush ? "" : "rounded-lg"
+
+  classes = [border_class, rounded_class, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<div id="<%= id %>" data-accordion="<%= always_open ? 'open' : 'collapse' %>" class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%= content %>
+</div>

@@ -1,0 +1,26 @@
+<%# Table Toolbar component preview %>
+
+<%= styleguide_example(title: "Default", description: "Table toolbar with title, count badge, and search.",
+  source: 'eden_table_toolbar(title: "Products", count: 156, search_placeholder: "Search products...")') do %>
+  <%= eden_table_toolbar(title: "Products", count: 156, search_placeholder: "Search products...") %>
+<% end %>
+
+<%= styleguide_example(title: "With Action Buttons", description: "Table toolbar with filter and create buttons.",
+  source: 'eden_table_toolbar(title: "Users", count: 42, search_placeholder: "Search users...") do
+  eden_button(variant: :secondary) { "Export" }
+  eden_button(variant: :primary) { "Add User" }
+end') do %>
+  <%= eden_table_toolbar(title: "Users", count: 42, search_placeholder: "Search users...") do %>
+    <%= eden_button(variant: :secondary) { "Export" } %>
+    <%= eden_button(variant: :primary) { "Add User" } %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Minimal", description: "Toolbar with only search and no title.",
+  source: 'eden_table_toolbar(search_placeholder: "Search orders...") do
+  eden_button(variant: :primary) { "New Order" }
+end') do %>
+  <%= eden_table_toolbar(search_placeholder: "Search orders...") do %>
+    <%= eden_button(variant: :primary) { "New Order" } %>
+  <% end %>
+<% end %>

@@ -1,0 +1,78 @@
+/* =============================================================
+   Eden UI — Tailwind Theme Integration
+   Maps eden design tokens to Tailwind @theme utilities.
+   Host apps import this after tokens.css.
+   ============================================================= */
+
+@theme {
+  /* Brand colors */
+  --color-gold-50: var(--eden-gold-50);
+  --color-gold-100: var(--eden-gold-100);
+  --color-gold-200: var(--eden-gold-200);
+  --color-gold-300: var(--eden-gold-300);
+  --color-gold-400: var(--eden-gold-400);
+  --color-gold-500: var(--eden-gold-500);
+  --color-gold-600: var(--eden-gold-600);
+  --color-gold-700: var(--eden-gold-700);
+  --color-gold-800: var(--eden-gold-800);
+  --color-gold-900: var(--eden-gold-900);
+  --color-gold-950: var(--eden-gold-950);
+
+  /* Map gold as primary alias */
+  --color-primary-50: var(--eden-gold-50);
+  --color-primary-100: var(--eden-gold-100);
+  --color-primary-200: var(--eden-gold-200);
+  --color-primary-300: var(--eden-gold-300);
+  --color-primary-400: var(--eden-gold-400);
+  --color-primary-500: var(--eden-gold-500);
+  --color-primary-600: var(--eden-gold-600);
+  --color-primary-700: var(--eden-gold-700);
+  --color-primary-800: var(--eden-gold-800);
+  --color-primary-900: var(--eden-gold-900);
+  --color-primary-950: var(--eden-gold-950);
+
+  /* Neutral colors (Zinc scale) */
+  --color-neutral-50: var(--eden-neutral-50);
+  --color-neutral-100: var(--eden-neutral-100);
+  --color-neutral-200: var(--eden-neutral-200);
+  --color-neutral-300: var(--eden-neutral-300);
+  --color-neutral-400: var(--eden-neutral-400);
+  --color-neutral-500: var(--eden-neutral-500);
+  --color-neutral-600: var(--eden-neutral-600);
+  --color-neutral-700: var(--eden-neutral-700);
+  --color-neutral-800: var(--eden-neutral-800);
+  --color-neutral-900: var(--eden-neutral-900);
+  --color-neutral-950: var(--eden-neutral-950);
+
+  /* Fonts */
+  --font-sans: var(--eden-font-body);
+  --font-display: var(--eden-font-display);
+  --font-body: var(--eden-font-body);
+  --font-mono: var(--eden-font-mono);
+}
+
+/* Base layer — typography, focus ring, selection */
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  code, pre, kbd {
+    font-family: var(--font-mono);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: rgba(212, 168, 83, 0.2);
+  }
+}

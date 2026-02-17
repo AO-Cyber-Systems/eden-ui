@@ -1,0 +1,38 @@
+<div class="max-w-5xl mx-auto">
+  <%# Breadcrumb %>
+  <div class="flex items-center gap-2 text-sm text-zinc-400 dark:text-zinc-500 mb-6">
+    <a href="<%= eden_ui.styleguide_blocks_path %>" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">Blocks</a>
+    <span>/</span>
+    <span class="text-zinc-900 dark:text-white font-medium"><%= @block_category[:label] %></span>
+  </div>
+
+  <%# Header %>
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="p-2.5 rounded-lg bg-gold-500/10 text-gold-600 dark:text-gold-400">
+        <%= eden_icon(@block_category[:icon], size: :md) rescue eden_icon("document", size: :md) %>
+      </div>
+      <div>
+        <h1 class="text-2xl lg:text-3xl font-display font-bold text-zinc-900 dark:text-white"><%= @block_category[:label] %> Blocks</h1>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400"><%= @block_category[:blocks].size %> page sections</p>
+      </div>
+    </div>
+    <p class="text-zinc-500 dark:text-zinc-400 mt-2"><%= @block_category[:description] %></p>
+  </div>
+
+  <%# Block cards grid %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% @block_category[:blocks].each do |block| %>
+      <a href="<%= eden_ui.styleguide_block_path(block_category: @block_category_slug, block: block.slug) %>"
+         class="group block p-5 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 hover:border-gold-500/50 dark:hover:border-gold-500/30 hover:shadow-lg transition-all duration-200">
+        <h3 class="text-sm font-display font-semibold text-zinc-900 dark:text-white mb-2 group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
+          <%= block.name %>
+        </h3>
+        <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mb-3"><%= block.description %></p>
+        <span class="text-xs text-gold-600 dark:text-gold-400 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+          View examples <%= eden_icon("arrow-right", size: :xs) %>
+        </span>
+      </a>
+    <% end %>
+  </div>
+</div>

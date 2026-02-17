@@ -1,0 +1,80 @@
+<%# Profile Header component preview %>
+
+<%= styleguide_example(title: "Default", description: "Profile header with cover, avatar, name, role, and contact details.",
+  source: 'eden_profile_header(
+  name: "Bonnie Green",
+  role: "Senior Software Engineer",
+  email: "bonnie@company.com",
+  location: "San Francisco, CA",
+  avatar_initials: "BG",
+  stats: [
+    { label: "Projects", value: "12" },
+    { label: "Tasks", value: "34" },
+    { label: "Reports", value: "7" }
+  ]
+)') do %>
+  <div class="max-w-2xl">
+    <%= eden_profile_header(
+      name: "Bonnie Green",
+      role: "Senior Software Engineer",
+      email: "bonnie@company.com",
+      location: "San Francisco, CA",
+      avatar_initials: "BG",
+      stats: [
+        { label: "Projects", value: "12" },
+        { label: "Tasks", value: "34" },
+        { label: "Reports", value: "7" }
+      ]
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Action Buttons", description: "Profile header with block content for action buttons.",
+  source: 'eden_profile_header(
+  name: "Joseph McFall",
+  role: "Product Designer",
+  email: "joseph@flowbite.com",
+  avatar_initials: "JM",
+  cover_color: :purple,
+  stats: [
+    { label: "Following", value: "256" },
+    { label: "Followers", value: "1.2K" }
+  ]
+) do
+  eden_button(variant: :primary, size: :sm) { "Follow" }
+  eden_button(variant: :secondary, size: :sm) { "Message" }
+end') do %>
+  <div class="max-w-2xl">
+    <%= eden_profile_header(
+      name: "Joseph McFall",
+      role: "Product Designer",
+      email: "joseph@flowbite.com",
+      avatar_initials: "JM",
+      cover_color: :purple,
+      stats: [
+        { label: "Following", value: "256" },
+        { label: "Followers", value: "1.2K" }
+      ]
+    ) do %>
+      <%= eden_button(variant: :primary, size: :sm) { "Follow" } %>
+      <%= eden_button(variant: :secondary, size: :sm) { "Message" } %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Minimal Profile", description: "Simple profile with just name and role, no stats.",
+  source: 'eden_profile_header(
+  name: "Alex Rivera",
+  role: "Marketing Lead",
+  avatar_initials: "AR",
+  cover_color: :dark
+)') do %>
+  <div class="max-w-2xl">
+    <%= eden_profile_header(
+      name: "Alex Rivera",
+      role: "Marketing Lead",
+      avatar_initials: "AR",
+      cover_color: :dark
+    ) %>
+  </div>
+<% end %>

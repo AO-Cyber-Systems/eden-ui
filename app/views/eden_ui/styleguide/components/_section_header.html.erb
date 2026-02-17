@@ -1,0 +1,22 @@
+<%# Section Header component preview %>
+
+<%= styleguide_example(title: "Default", description: "Simple section header with title.",
+  source: 'eden_section_header(title: "Recent Activity")') do %>
+  <div class="max-w-lg">
+    <%= eden_section_header(title: "Recent Activity") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Subtitle", description: "Section header with title and subtitle.",
+  source: 'eden_section_header(title: "Team Members", subtitle: "Manage who has access to this project.")') do %>
+  <div class="max-w-lg">
+    <%= eden_section_header(title: "Team Members", subtitle: "Manage who has access to this project.") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Action Link", description: "Section header with an action link on the right.",
+  source: 'eden_section_header(title: "Recent Orders", subtitle: "Your latest transactions.", action_text: "View all", action_href: "#")') do %>
+  <div class="max-w-lg">
+    <%= eden_section_header(title: "Recent Orders", subtitle: "Your latest transactions.", action_text: "View all", action_href: "#") %>
+  </div>
+<% end %>

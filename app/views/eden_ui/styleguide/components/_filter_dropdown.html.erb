@@ -1,0 +1,54 @@
+<%# Filter Dropdown component preview %>
+
+<%= styleguide_example(title: "Default", description: "Filter dropdown with checkbox options.",
+  source: 'eden_filter_dropdown(label: "Filter", icon: "filter") do
+  tag.h6("Status", class: "mb-3 text-sm font-medium text-gray-900 dark:text-white")
+  # checkbox items...
+end') do %>
+  <div class="min-h-[250px]">
+    <%= eden_filter_dropdown(label: "Filter", icon: "filter", open: true) do %>
+      <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">Status</h6>
+      <ul class="space-y-2 text-sm">
+        <li><%= eden_checkbox(label: "Active", name: "status[]", value: "active", id: "filter-active") %></li>
+        <li><%= eden_checkbox(label: "Inactive", name: "status[]", value: "inactive", id: "filter-inactive") %></li>
+        <li><%= eden_checkbox(label: "Pending", name: "status[]", value: "pending", id: "filter-pending") %></li>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Without Icon", description: "Simple filter dropdown without a filter icon.",
+  source: 'eden_filter_dropdown(label: "Category") do
+  # filter content...
+end') do %>
+  <div class="min-h-[200px]">
+    <%= eden_filter_dropdown(label: "Category", open: true) do %>
+      <ul class="space-y-2 text-sm">
+        <li><%= eden_checkbox(label: "Electronics", name: "category[]", value: "electronics", id: "cat-elec") %></li>
+        <li><%= eden_checkbox(label: "Clothing", name: "category[]", value: "clothing", id: "cat-cloth") %></li>
+        <li><%= eden_checkbox(label: "Books", name: "category[]", value: "books", id: "cat-books") %></li>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Apply Button", description: "Filter dropdown with a form and apply button.",
+  source: 'eden_filter_dropdown(label: "Price Range", icon: "filter") do
+  # form fields and apply button
+end') do %>
+  <div class="min-h-[220px]">
+    <%= eden_filter_dropdown(label: "Price Range", icon: "filter", open: true) do %>
+      <div class="space-y-3">
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Min Price</label>
+          <%= eden_input(type: :number, placeholder: "$0", name: "min_price", size: :sm) %>
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Max Price</label>
+          <%= eden_input(type: :number, placeholder: "$1000", name: "max_price", size: :sm) %>
+        </div>
+        <%= eden_button(variant: :primary, size: :sm) { "Apply" } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

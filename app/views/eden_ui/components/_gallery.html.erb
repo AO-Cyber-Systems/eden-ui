@@ -1,0 +1,28 @@
+<%
+  images ||= []
+  columns ||= 3
+  gap ||= 4
+  html_options ||= {}
+  content ||= nil
+
+  grid_classes = case columns.to_i
+  when 2 then "grid-cols-2"
+  when 4 then "grid-cols-2 md:grid-cols-4"
+  when 5 then "grid-cols-2 md:grid-cols-5"
+  else "grid-cols-2 md:grid-cols-3"
+  end
+
+  classes = ["grid #{grid_classes} gap-#{gap}", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <% if images.any? %>
+    <% images.each do |img| %>
+      <div>
+        <img class="h-auto max-w-full rounded-lg" src="<%= img[:src] %>" alt="<%= img[:alt] || "" %>">
+      </div>
+    <% end %>
+  <% else %>
+    <%= content %>
+  <% end %>
+</div>

@@ -1,0 +1,88 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_cta_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default CTA",
+  description: "Centered call-to-action with heading, description, and buttons",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+    <div class="mx-auto max-w-screen-sm text-center">
+      <h2>...</h2>
+      <p>...</p>
+      eden_button(variant: :primary, size: :lg) { "Free trial" }
+      eden_button(variant: :ghost, size: :lg) { "Learn more" }
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-sm text-center">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold leading-tight text-zinc-900 dark:text-white">Start your free trial today</h2>
+        <p class="mb-6 font-light text-zinc-500 dark:text-zinc-400 md:text-lg">Try Eden Platform for 30 days. No credit card required.</p>
+        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+          <%= eden_button(variant: :primary, size: :lg, href: "#") { "Free trial for 30 days" } %>
+          <%= eden_button(variant: :ghost, size: :lg, href: "#") { "Learn more" } %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "CTA with Image",
+  description: "Split CTA section with image placeholder and feature list",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+    <!-- image placeholder -->
+    <div class="mt-4 md:mt-0">
+      <h2>...</h2>
+      <p>...</p>
+      eden_button(variant: :primary, size: :lg) { "Get started" }
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+      <div class="w-full h-64 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center">
+        <%= eden_icon("photo", size: :xl) %>
+      </div>
+      <div class="mt-4 md:mt-0">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">Let&rsquo;s create more tools and ideas that bring us together.</h2>
+        <p class="mb-6 font-light text-zinc-500 md:text-lg dark:text-zinc-400">Eden helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
+        <%= eden_button(variant: :primary, size: :lg, href: "#") do %>
+          Get started
+          <%= eden_icon("arrow-right", size: :sm) %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Heading CTA",
+  description: "Simple inline CTA with heading and button side by side",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+    <div class="mx-auto max-w-screen-sm text-center">
+      <p>...</p>
+      <h2>...</h2>
+      eden_button(variant: :primary, size: :lg) { "Get started" }
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div>
+          <p class="text-sm font-semibold text-gold-600 dark:text-gold-400 uppercase tracking-wider">Get started</p>
+          <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">Boost your productivity. Start using Eden today.</h2>
+        </div>
+        <div class="flex-shrink-0">
+          <%= eden_button(variant: :primary, size: :lg, href: "#") { "Get started" } %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

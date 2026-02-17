@@ -1,0 +1,128 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_reviews_history_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "My Reviews History",
+  description: "User review history page with list of submitted reviews and edit/delete actions",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    <h2>My Reviews</h2>
+    <!-- reviews list with product info, rating, text, actions -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">My Reviews</h2>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">12 reviews written</p>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-4 text-center">
+          <p class="text-2xl font-bold text-zinc-900 dark:text-white">12</p>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">Total Reviews</p>
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-4 text-center">
+          <p class="text-2xl font-bold text-zinc-900 dark:text-white">4.5</p>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">Avg Rating</p>
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-4 text-center">
+          <p class="text-2xl font-bold text-zinc-900 dark:text-white">87</p>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">Helpful Votes</p>
+        </div>
+      </div>
+
+      <!-- Reviews List -->
+      <div class="space-y-4">
+        <% [
+          { product: "Apple iMac 24\"", date: "Feb 10, 2026", rating: 5, title: "Best computer I've ever owned", text: "The display is stunning and the M3 chip handles everything I throw at it. Perfect for my design work.", helpful: 24, image: true },
+          { product: "AirPods Pro (2nd gen)", date: "Jan 25, 2026", rating: 4, title: "Great noise cancellation", text: "The noise cancellation is excellent. Sound quality is very good. Only wish the battery lasted a bit longer.", helpful: 12, image: false },
+          { product: "Sony WH-1000XM5", date: "Jan 10, 2026", rating: 5, title: "Premium headphones", text: "Incredible sound quality and the noise cancellation is the best in class. Very comfortable for long sessions.", helpful: 31, image: true },
+          { product: "Magic Keyboard", date: "Dec 28, 2025", rating: 3, title: "Good but pricey", text: "The keyboard works well and Touch ID is convenient. However, for the price, I expected more. Build quality is good.", helpful: 8, image: false }
+        ].each do |review| %>
+          <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-5">
+            <div class="flex items-start gap-4">
+              <div class="w-16 h-16 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                <%= eden_icon("photo", size: :sm) %>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 class="text-sm font-semibold text-zinc-900 dark:text-white"><%= review[:product] %></h3>
+                    <div class="flex items-center gap-2 mt-1">
+                      <%= eden_rating(value: review[:rating], max: 5, size: :sm) %>
+                      <span class="text-xs text-zinc-500 dark:text-zinc-400"><%= review[:date] %></span>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2 flex-shrink-0">
+                    <button class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300">
+                      <%= eden_icon("pencil", size: :xs) %>
+                    </button>
+                    <button class="text-zinc-400 hover:text-red-600 dark:hover:text-red-400">
+                      <%= eden_icon("trash", size: :xs) %>
+                    </button>
+                  </div>
+                </div>
+                <h4 class="text-sm font-medium text-zinc-900 dark:text-white mt-2"><%= review[:title] %></h4>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1"><%= review[:text] %></p>
+                <div class="flex items-center gap-4 mt-3">
+                  <span class="text-xs text-zinc-400 dark:text-zinc-500 flex items-center gap-1">
+                    <%= eden_icon("check", size: :xs) %>
+                    <%= review[:helpful] %> found helpful
+                  </span>
+                  <% if review[:image] %>
+                    <span class="text-xs text-zinc-400 dark:text-zinc-500 flex items-center gap-1">
+                      <%= eden_icon("photo", size: :xs) %>
+                      Photo attached
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Pending Reviews",
+  description: "Section showing products awaiting review with call-to-action buttons",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <h3>Products Awaiting Review</h3>
+  <!-- products list with "Write Review" buttons -->
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-4">Products Awaiting Your Review</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <% [
+          { name: "Wireless Charger", purchased: "Feb 5, 2026" },
+          { name: "USB-C Cable (3-pack)", purchased: "Jan 28, 2026" },
+          { name: "Laptop Stand", purchased: "Jan 15, 2026" }
+        ].each do |product| %>
+          <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-4">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-12 h-12 bg-zinc-200 dark:bg-zinc-700 rounded flex items-center justify-center">
+                <%= eden_icon("photo", size: :sm) %>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-zinc-900 dark:text-white"><%= product[:name] %></p>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400">Purchased <%= product[:purchased] %></p>
+              </div>
+            </div>
+            <%= eden_button(variant: :ghost, size: :sm) do %>
+              <%= eden_icon("star", size: :xs) %>
+              Write a Review
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

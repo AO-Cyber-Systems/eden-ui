@@ -1,0 +1,11 @@
+<%# locals: (app_name: EdenUi.configuration.app_name, logo_path: EdenUi.configuration.logo_path, nav_items: [], cta_text: nil, cta_path: nil, login_text: nil, login_path: nil, content: nil) %>
+
+<div class="min-h-screen bg-white dark:bg-gray-900">
+  <%= render partial: "eden_ui/layouts/marketing_navbar", locals: { app_name: app_name, logo_path: logo_path, nav_items: nav_items, cta_text: cta_text, cta_path: cta_path, login_text: login_text, login_path: login_path } %>
+
+  <main>
+    <%= content %>
+  </main>
+
+  <%= render partial: "eden_ui/layouts/marketing_footer", locals: { app_name: app_name } %>
+</div>

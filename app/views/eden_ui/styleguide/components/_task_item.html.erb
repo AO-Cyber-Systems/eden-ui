@@ -1,0 +1,28 @@
+<%# Task Item component preview %>
+
+<%= styleguide_example(title: "Default Task Item", description: "A single task with checkbox and priority indicator.",
+  source: 'eden_task_item(title: "Review pull request #42", priority: :high, assignee: "Alice", due_date: "Feb 15")') do %>
+  <div class="max-w-2xl">
+    <%= eden_task_item(title: "Review pull request #42", priority: :high, assignee: "Alice", due_date: "Feb 15") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Completed Task", description: "Completed tasks show a checked checkbox and strikethrough title.",
+  source: 'eden_task_item(title: "Setup project repository", completed: true, priority: :medium)
+eden_task_item(title: "Configure CI/CD pipeline", completed: true, priority: :high, assignee: "DevOps")') do %>
+  <div class="max-w-2xl space-y-1">
+    <%= eden_task_item(title: "Setup project repository", completed: true, priority: :medium) %>
+    <%= eden_task_item(title: "Configure CI/CD pipeline", completed: true, priority: :high, assignee: "DevOps") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Priority Levels", description: "Tasks with different priority dots: red (high), yellow (medium), green (low).",
+  source: 'eden_task_item(title: "Fix production outage", priority: :high)
+eden_task_item(title: "Update dependencies", priority: :medium)
+eden_task_item(title: "Clean up old branches", priority: :low)') do %>
+  <div class="max-w-2xl space-y-1">
+    <%= eden_task_item(title: "Fix production outage", priority: :high, due_date: "Today") %>
+    <%= eden_task_item(title: "Update dependencies", priority: :medium, assignee: "Bob") %>
+    <%= eden_task_item(title: "Clean up old branches", priority: :low) %>
+  </div>
+<% end %>

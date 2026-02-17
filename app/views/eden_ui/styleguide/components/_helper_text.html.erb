@@ -1,0 +1,27 @@
+<%# Helper Text component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_helper_text(text: "This is some helpful guidance text.")') do %>
+  <%= eden_helper_text(text: "This is some helpful guidance text.") %>
+<% end %>
+
+<%= styleguide_example(title: "Variants", source: 'eden_helper_text(text: "Default helper text", variant: :default)
+eden_helper_text(text: "Success! Your changes have been saved.", variant: :success)
+eden_helper_text(text: "Error: Please enter a valid email address.", variant: :error)') do %>
+  <%= eden_helper_text(text: "Default helper text", variant: :default) %>
+  <%= eden_helper_text(text: "Success! Your changes have been saved.", variant: :success) %>
+  <%= eden_helper_text(text: "Error: Please enter a valid email address.", variant: :error) %>
+<% end %>
+
+<%= styleguide_example(title: "With Block Content", source: 'eden_helper_text(variant: :default) do
+  "Your password must be at least <strong>8 characters</strong> long."
+end') do %>
+  <%= eden_helper_text(variant: :default) do %>
+    Your password must be at least <strong>8 characters</strong> long.
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Error Text", description: "Convenience helper that renders error-styled text", source: 'eden_error_text(text: "This field is required.")
+eden_error_text(text: "Email address is not valid.")') do %>
+  <%= eden_error_text(text: "This field is required.") %>
+  <%= eden_error_text(text: "Email address is not valid.") %>
+<% end %>

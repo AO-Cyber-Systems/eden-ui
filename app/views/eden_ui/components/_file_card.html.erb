@@ -1,0 +1,71 @@
+<%
+  name ||= nil
+  size ||= nil
+  type ||= nil
+  modified ||= nil
+  icon ||= nil
+  href ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  type_config = case type.to_s.downcase
+  when "pdf"
+    { color: "text-red-500 dark:text-red-400", bg: "bg-red-100 dark:bg-red-900/50" }
+  when "doc", "docx"
+    { color: "text-blue-500 dark:text-blue-400", bg: "bg-blue-100 dark:bg-blue-900/50" }
+  when "xls", "xlsx", "csv"
+    { color: "text-green-500 dark:text-green-400", bg: "bg-green-100 dark:bg-green-900/50" }
+  when "img", "png", "jpg", "jpeg", "gif", "svg"
+    { color: "text-purple-500 dark:text-purple-400", bg: "bg-purple-100 dark:bg-purple-900/50" }
+  when "zip", "rar", "tar", "gz"
+    { color: "text-yellow-500 dark:text-yellow-400", bg: "bg-yellow-100 dark:bg-yellow-900/50" }
+  else
+    { color: "text-gray-500 dark:text-gray-400", bg: "bg-gray-100 dark:bg-gray-700" }
+  end
+
+  classes = [
+    "bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-4 hover:shadow-md transition-shadow block",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<% if href %>
+  <a href="<%= href %>" class="<%= classes %>" <%= tag.attributes(html_options) %>>
+<% else %>
+  <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+<% end %>
+
+  <div class="flex flex-col items-center text-center">
+    <%# File icon %>
+    <div class="flex items-center justify-center w-14 h-14 rounded-lg mb-3 <%= type_config[:bg] %>">
+      <svg class="w-7 h-7 <%= type_config[:color] %>" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd"/>
+      </svg>
+    </div>
+
+    <%# Name %>
+    <% if name %>
+      <p class="text-sm font-medium text-gray-900 dark:text-white truncate w-full"><%= name %></p>
+    <% end %>
+
+    <%# Metadata %>
+    <div class="flex items-center gap-2 mt-1">
+      <% if size %>
+        <span class="text-xs text-gray-500 dark:text-gray-400"><%= size %></span>
+      <% end %>
+      <% if size && modified %>
+        <span class="text-xs text-gray-400 dark:text-gray-500">&middot;</span>
+      <% end %>
+      <% if modified %>
+        <span class="text-xs text-gray-500 dark:text-gray-400"><%= modified %></span>
+      <% end %>
+    </div>
+  </div>
+
+  <%= content %>
+
+<% if href %>
+  </a>
+<% else %>
+  </div>
+<% end %>

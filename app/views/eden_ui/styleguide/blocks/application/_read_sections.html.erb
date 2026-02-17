@@ -1,0 +1,125 @@
+<%= styleguide_block_example(
+  title: "Product Detail Section",
+  description: "Read-only product detail view with image, metadata, and description",
+  source: 'eden_badge(text: "In Stock", variant: :success)
+
+# Rendered inside a product detail section with
+# image, metadata grid, and action buttons'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16">
+        <%# Product image placeholder %>
+        <div class="bg-zinc-100 dark:bg-zinc-800 rounded-lg h-80 flex items-center justify-center">
+          <span class="text-zinc-400 dark:text-zinc-500">Product Image</span>
+        </div>
+        <%# Product details %>
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <%= eden_badge(text: "In Stock", variant: :success, size: :sm) %>
+            <%= eden_badge(text: "Best Seller", variant: :warning, size: :sm) %>
+          </div>
+          <h1 class="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl mb-2">Apple iMac 27" 5K Retina</h1>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="flex items-center text-gold-400">
+              <% 4.times do %><%= eden_icon("star", size: :sm) %><% end %>
+              <span class="text-zinc-300 dark:text-zinc-600"><%= eden_icon("star", size: :sm) %></span>
+            </div>
+            <span class="text-sm text-zinc-500 dark:text-zinc-400">(4.0) - 455 reviews</span>
+          </div>
+          <p class="text-3xl font-extrabold text-zinc-900 dark:text-white mb-4">$1,499</p>
+          <p class="text-zinc-500 dark:text-zinc-400 mb-6">
+            The iMac 27" features a stunning 5K Retina display with 500 nits of brightness, P3 wide color, and True Tone technology for a more natural viewing experience.
+          </p>
+          <%# Specs %>
+          <dl class="grid grid-cols-2 gap-3 mb-6 text-sm">
+            <% [
+              ["Brand", "Apple"],
+              ["Model", "iMac 27\""],
+              ["Color", "Silver"],
+              ["Storage", "512GB SSD"],
+              ["Memory", "16GB"],
+              ["Processor", "M1 Pro"],
+            ].each do |label, value| %>
+              <div>
+                <dt class="text-zinc-500 dark:text-zinc-400"><%= label %></dt>
+                <dd class="font-medium text-zinc-900 dark:text-white"><%= value %></dd>
+              </div>
+            <% end %>
+          </dl>
+          <div class="flex items-center gap-3">
+            <%= eden_button(variant: :primary, size: :lg) do %>
+              <%= eden_icon("shopping-cart", size: :sm) %>
+              <span class="ml-1">Add to cart</span>
+            <% end %>
+            <%= eden_button(variant: :ghost, size: :lg) do %>
+              <%= eden_icon("heart", size: :sm) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "User Profile Section",
+  description: "Read-only user profile with avatar, contact info, and activity stats",
+  source: 'eden_avatar(initials: "BG", size: :xl)
+eden_badge(text: "Admin", variant: :primary)
+
+# Rendered inside a user profile section with
+# avatar, stats grid, and contact info'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-md lg:py-16">
+      <div class="text-center mb-8">
+        <div class="flex justify-center mb-4">
+          <%= eden_avatar(initials: "BG", size: :xl) %>
+        </div>
+        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mb-1">Bonnie Green</h2>
+        <p class="text-zinc-500 dark:text-zinc-400 mb-3">Senior Software Engineer</p>
+        <div class="flex justify-center gap-2 mb-4">
+          <%= eden_badge(text: "Admin", variant: :primary, size: :sm) %>
+          <%= eden_badge(text: "Pro Member", variant: :warning, size: :sm) %>
+        </div>
+      </div>
+
+      <%# Stats %>
+      <div class="grid grid-cols-3 gap-4 mb-8">
+        <% [
+          ["Projects", "42"],
+          ["Tasks", "186"],
+          ["Reviews", "4.9"],
+        ].each do |label, value| %>
+          <div class="text-center p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg">
+            <p class="text-2xl font-bold text-zinc-900 dark:text-white"><%= value %></p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400"><%= label %></p>
+          </div>
+        <% end %>
+      </div>
+
+      <%# Info grid %>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <% [
+          ["envelope", "Email", "bonnie@company.com"],
+          ["phone", "Phone", "+1 (555) 234-5678"],
+          ["map-pin", "Location", "San Francisco, CA"],
+          ["building", "Department", "Engineering"],
+          ["calendar", "Joined", "March 2021"],
+          ["clock", "Timezone", "PST (UTC-8)"],
+        ].each do |icon, label, value| %>
+          <div class="flex items-center gap-3 p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800">
+            <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-gold-100 dark:bg-gold-900/30 text-gold-600 dark:text-gold-400">
+              <%= eden_icon(icon, size: :md) %>
+            </div>
+            <div>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400"><%= label %></p>
+              <p class="text-sm font-medium text-zinc-900 dark:text-white"><%= value %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

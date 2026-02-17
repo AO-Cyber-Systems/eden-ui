@@ -1,0 +1,121 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_contact_form_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Contact Form",
+  description: "Centered contact form with name, email, subject, and message fields",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+    <h2 class="text-center">Contact Us</h2>
+    <p class="text-center">...</p>
+    <form class="space-y-8">
+      eden_form_group(label: "Your email") do
+        eden_input(type: :email, placeholder: "name@eden.com")
+      end
+      eden_form_group(label: "Subject") do
+        eden_input(placeholder: "Let us know how we can help you")
+      end
+      eden_form_group(label: "Your message") do
+        eden_textarea(rows: 6, placeholder: "Leave a comment...")
+      end
+      eden_button(variant: :primary) { "Send message" }
+    </form>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-zinc-900 dark:text-white">Contact Us</h2>
+      <p class="mb-8 lg:mb-16 font-light text-center text-zinc-500 dark:text-zinc-400 sm:text-xl">Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.</p>
+      <form action="#" class="space-y-8">
+        <%= eden_form_group(label: "Your email", required: true) do %>
+          <%= eden_input(type: :email, placeholder: "name@eden.com", id: "contact-email", name: "email") %>
+        <% end %>
+        <%= eden_form_group(label: "Subject", required: true) do %>
+          <%= eden_input(placeholder: "Let us know how we can help you", id: "contact-subject", name: "subject") %>
+        <% end %>
+        <%= eden_form_group(label: "Your message") do %>
+          <%= eden_textarea(rows: 6, placeholder: "Leave a comment...", id: "contact-message", name: "message") %>
+        <% end %>
+        <%= eden_button(variant: :primary, type: :submit) { "Send message" } %>
+      </form>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Contact with Details",
+  description: "Split layout with contact form and company contact details",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-xl grid lg:grid-cols-2 gap-16">
+    <div>
+      <h2>...</h2>
+      <p>...</p>
+      <!-- contact details -->
+    </div>
+    <form class="space-y-8">
+      eden_form_group(label: "Name") { eden_input(...) }
+      eden_form_group(label: "Email") { eden_input(...) }
+      eden_form_group(label: "Message") { eden_textarea(...) }
+      eden_button(variant: :primary) { "Send" }
+    </form>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-xl grid lg:grid-cols-2 gap-16">
+      <div>
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-zinc-900 dark:text-white">Get in touch</h2>
+        <p class="mb-8 font-light text-zinc-500 dark:text-zinc-400 sm:text-xl">We&rsquo;d love to hear from you. Please fill out this form or use our contact details below.</p>
+        <div class="space-y-6">
+          <div class="flex items-center space-x-4">
+            <div class="flex justify-center items-center w-10 h-10 rounded-full bg-gold-100 dark:bg-gold-900">
+              <%= eden_icon("envelope", size: :md) %>
+            </div>
+            <div>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Email us at</p>
+              <p class="font-medium text-zinc-900 dark:text-white">hello@eden.com</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="flex justify-center items-center w-10 h-10 rounded-full bg-gold-100 dark:bg-gold-900">
+              <%= eden_icon("phone", size: :md) %>
+            </div>
+            <div>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Call us at</p>
+              <p class="font-medium text-zinc-900 dark:text-white">+1 (555) 000-0000</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="flex justify-center items-center w-10 h-10 rounded-full bg-gold-100 dark:bg-gold-900">
+              <%= eden_icon("map-pin", size: :md) %>
+            </div>
+            <div>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Visit us at</p>
+              <p class="font-medium text-zinc-900 dark:text-white">1234 Street Name, City, ST 12345</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form action="#" class="space-y-6">
+        <div class="grid grid-cols-2 gap-4">
+          <%= eden_form_group(label: "First name", required: true) do %>
+            <%= eden_input(placeholder: "John", id: "contact2-first", name: "first_name") %>
+          <% end %>
+          <%= eden_form_group(label: "Last name", required: true) do %>
+            <%= eden_input(placeholder: "Doe", id: "contact2-last", name: "last_name") %>
+          <% end %>
+        </div>
+        <%= eden_form_group(label: "Your email", required: true) do %>
+          <%= eden_input(type: :email, placeholder: "name@eden.com", id: "contact2-email", name: "email") %>
+        <% end %>
+        <%= eden_form_group(label: "Phone number") do %>
+          <%= eden_input(type: :tel, placeholder: "+1 (555) 000-0000", id: "contact2-phone", name: "phone") %>
+        <% end %>
+        <%= eden_form_group(label: "Your message") do %>
+          <%= eden_textarea(rows: 4, placeholder: "Leave a comment...", id: "contact2-message", name: "message") %>
+        <% end %>
+        <%= eden_button(variant: :primary, type: :submit) { "Send message" } %>
+      </form>
+    </div>
+  </section>
+<% end %>

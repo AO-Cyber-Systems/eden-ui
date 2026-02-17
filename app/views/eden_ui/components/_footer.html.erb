@@ -1,0 +1,45 @@
+<%
+  variant ||= :default
+  logo ||= nil
+  logo_href ||= "/"
+  app_name ||= nil
+  copyright ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  bg_class = case variant.to_sym
+  when :dark
+    "bg-gray-900"
+  when :bordered
+    "bg-white border-t border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+  else
+    "bg-white dark:bg-gray-900"
+  end
+
+  text_class = variant.to_sym == :dark ? "text-gray-400" : "text-gray-500 dark:text-gray-400"
+  classes = [bg_class, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<footer class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+    <% if logo || app_name %>
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="<%= logo_href %>" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+          <% if logo %>
+            <img src="<%= logo %>" class="h-8" alt="<%= app_name || "Logo" %>">
+          <% end %>
+          <% if app_name %>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap <%= variant.to_sym == :dark ? "text-white" : "dark:text-white" %>"><%= app_name %></span>
+          <% end %>
+        </a>
+      </div>
+    <% end %>
+
+    <%= content %>
+
+    <% if copyright %>
+      <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+      <span class="block text-sm <%= text_class %> sm:text-center"><%= copyright %></span>
+    <% end %>
+  </div>
+</footer>

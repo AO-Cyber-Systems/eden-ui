@@ -1,0 +1,30 @@
+// Eden UI Stimulus Controllers
+import AccordionController from "eden-ui/controllers/accordion_controller"
+import CarouselController from "eden-ui/controllers/carousel_controller"
+import ClipboardController from "eden-ui/controllers/clipboard_controller"
+import DarkModeController from "eden-ui/controllers/dark_mode_controller"
+import DrawerController from "eden-ui/controllers/drawer_controller"
+import DropdownController from "eden-ui/controllers/dropdown_controller"
+import FlashController from "eden-ui/controllers/flash_controller"
+import ModalController from "eden-ui/controllers/modal_controller"
+import PopoverController from "eden-ui/controllers/popover_controller"
+import SidebarController from "eden-ui/controllers/sidebar_controller"
+import SpeedDialController from "eden-ui/controllers/speed_dial_controller"
+import TabController from "eden-ui/controllers/tab_controller"
+import ToastController from "eden-ui/controllers/toast_controller"
+import TooltipController from "eden-ui/controllers/tooltip_controller"
+
+application.register("eden-accordion", AccordionController)
+application.register("eden-carousel", CarouselController)
+application.register("eden-clipboard", ClipboardController)
+application.register("eden-dark-mode", DarkModeController)
+application.register("eden-drawer", DrawerController)
+application.register("eden-dropdown", DropdownController)
+application.register("eden-flash", FlashController)
+application.register("eden-modal", ModalController)
+application.register("eden-popover", PopoverController)
+application.register("eden-sidebar", SidebarController)
+application.register("eden-speed-dial", SpeedDialController)
+application.register("eden-tab", TabController)
+application.register("eden-toast", ToastController)
+application.register("eden-tooltip", TooltipController)

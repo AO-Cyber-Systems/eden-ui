@@ -1,0 +1,48 @@
+<%# Description List component preview %>
+
+<%= styleguide_example(title: "Horizontal", description: "Side-by-side term and detail layout.",
+  source: 'eden_description_list(bordered: true) do
+  eden_description_item(term: "Full Name", detail: "Jane Cooper")
+  eden_description_item(term: "Email", detail: "jane@example.com")
+  eden_description_item(term: "Role", detail: "Administrator")
+  eden_description_item(term: "Status", detail: "Active")
+end') do %>
+  <div class="max-w-lg">
+    <%= eden_description_list(bordered: true) do %>
+      <%= eden_description_item(term: "Full Name", detail: "Jane Cooper") %>
+      <%= eden_description_item(term: "Email", detail: "jane@example.com") %>
+      <%= eden_description_item(term: "Role", detail: "Administrator") %>
+      <%= eden_description_item(term: "Status", detail: "Active") %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Vertical", description: "Stacked term and detail layout.",
+  source: 'eden_description_list(variant: :vertical) do
+  eden_description_item(term: "Name", detail: "John Doe", vertical: true)
+  eden_description_item(term: "Bio", detail: "Software developer with 10 years of experience.", vertical: true)
+end') do %>
+  <div class="max-w-lg">
+    <%= eden_description_list(variant: :vertical) do %>
+      <%= eden_description_item(term: "Name", detail: "John Doe", vertical: true) %>
+      <%= eden_description_item(term: "Bio", detail: "Software developer with 10 years of experience.", vertical: true) %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Multi-column", description: "Description list in a multi-column grid.",
+  source: 'eden_description_list(columns: 2, bordered: true) do
+  eden_description_item(term: "Plan", detail: "Pro", vertical: true)
+  eden_description_item(term: "Price", detail: "$29/mo", vertical: true)
+  eden_description_item(term: "Users", detail: "10", vertical: true)
+  eden_description_item(term: "Storage", detail: "50 GB", vertical: true)
+end') do %>
+  <div class="max-w-lg">
+    <%= eden_description_list(columns: 2, bordered: true) do %>
+      <%= eden_description_item(term: "Plan", detail: "Pro", vertical: true) %>
+      <%= eden_description_item(term: "Price", detail: "$29/mo", vertical: true) %>
+      <%= eden_description_item(term: "Users", detail: "10", vertical: true) %>
+      <%= eden_description_item(term: "Storage", detail: "50 GB", vertical: true) %>
+    <% end %>
+  </div>
+<% end %>

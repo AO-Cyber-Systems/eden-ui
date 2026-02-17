@@ -1,0 +1,47 @@
+<%
+  status ||= :operational
+  message ||= nil
+  href ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  config = case status.to_sym
+  when :operational
+    { bg: "bg-green-50 dark:bg-green-900/50", text: "text-green-800 dark:text-green-300", icon_color: "text-green-500", default_message: "All systems operational" }
+  when :degraded
+    { bg: "bg-yellow-50 dark:bg-yellow-900/50", text: "text-yellow-800 dark:text-yellow-300", icon_color: "text-yellow-500", default_message: "Some systems experiencing degraded performance" }
+  when :outage
+    { bg: "bg-red-50 dark:bg-red-900/50", text: "text-red-800 dark:text-red-300", icon_color: "text-red-500", default_message: "System outage detected" }
+  when :maintenance
+    { bg: "bg-blue-50 dark:bg-blue-900/50", text: "text-blue-800 dark:text-blue-300", icon_color: "text-blue-500", default_message: "Scheduled maintenance in progress" }
+  else
+    { bg: "bg-gray-50 dark:bg-gray-800", text: "text-gray-800 dark:text-gray-300", icon_color: "text-gray-500", default_message: "System status unknown" }
+  end
+
+  display_message = message || config[:default_message]
+
+  classes = [
+    "w-full px-4 py-3 flex items-center justify-center gap-2",
+    config[:bg], config[:text],
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" role="status" <%= tag.attributes(html_options) %>>
+  <%# Status icon %>
+  <% if status.to_sym == :operational %>
+    <svg class="w-4 h-4 flex-shrink-0 <%= config[:icon_color] %>" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+  <% elsif status.to_sym == :maintenance %>
+    <svg class="w-4 h-4 flex-shrink-0 <%= config[:icon_color] %>" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+  <% else %>
+    <svg class="w-4 h-4 flex-shrink-0 <%= config[:icon_color] %>" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+  <% end %>
+
+  <span class="text-sm font-medium"><%= display_message %></span>
+
+  <% if href %>
+    <a href="<%= href %>" class="text-sm font-medium underline hover:no-underline ms-1">Learn more</a>
+  <% end %>
+
+  <%= content %>
+</div>

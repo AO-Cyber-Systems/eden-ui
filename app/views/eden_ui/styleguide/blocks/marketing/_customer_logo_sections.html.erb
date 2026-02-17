@@ -1,0 +1,82 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_customer_logo_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Customer Logos",
+  description: "Grid of customer logos displayed as placeholder blocks",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
+    <h2 class="text-center">...</h2>
+    <div class="grid grid-cols-2 gap-8 sm:gap-12 lg:grid-cols-6">
+      <!-- logo placeholders -->
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
+      <h2 class="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-zinc-900 dark:text-white md:text-4xl">Trusted by over 1,000 companies worldwide</h2>
+      <div class="grid grid-cols-2 gap-8 text-zinc-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-zinc-400">
+        <div class="flex justify-center items-center h-12 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-semibold">Acme Inc</span>
+        </div>
+        <div class="flex justify-center items-center h-12 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-semibold">Globex</span>
+        </div>
+        <div class="flex justify-center items-center h-12 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-semibold">Initech</span>
+        </div>
+        <div class="flex justify-center items-center h-12 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-semibold">Umbrella</span>
+        </div>
+        <div class="flex justify-center items-center h-12 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-semibold">Waystar</span>
+        </div>
+        <div class="flex justify-center items-center h-12 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-semibold">Hooli</span>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Customer Logos with Description",
+  description: "Logo bar with heading and descriptive text",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
+    <div class="mx-auto max-w-screen-sm text-center mb-8">
+      <h2>...</h2>
+      <p>...</p>
+    </div>
+    <div class="flex flex-wrap justify-center items-center gap-8">
+      <!-- logo placeholders -->
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
+      <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+        <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">Backed by the best</h2>
+        <p class="font-light text-zinc-500 sm:text-xl dark:text-zinc-400">Join industry leaders who already trust Eden for their workflow.</p>
+      </div>
+      <div class="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
+        <div class="flex justify-center items-center h-16 w-32 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-bold text-zinc-600 dark:text-zinc-300">TechCorp</span>
+        </div>
+        <div class="flex justify-center items-center h-16 w-32 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-bold text-zinc-600 dark:text-zinc-300">DataFlow</span>
+        </div>
+        <div class="flex justify-center items-center h-16 w-32 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-bold text-zinc-600 dark:text-zinc-300">CloudNet</span>
+        </div>
+        <div class="flex justify-center items-center h-16 w-32 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-bold text-zinc-600 dark:text-zinc-300">AppSync</span>
+        </div>
+        <div class="flex justify-center items-center h-16 w-32 bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4">
+          <span class="text-sm font-bold text-zinc-600 dark:text-zinc-300">DevStack</span>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

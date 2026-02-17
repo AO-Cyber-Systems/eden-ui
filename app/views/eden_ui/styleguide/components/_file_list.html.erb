@@ -1,0 +1,23 @@
+<%# File List component preview %>
+
+<%= styleguide_example(title: "Default", description: "Table view of files with type icons, owner, and metadata.",
+  source: 'eden_file_list(files: [
+  { name: "Project Proposal.pdf", size: "2.4 MB", type: "pdf", modified: "Feb 10, 2026", owner: "Jane Cooper", href: "#" },
+  { name: "Design Mockups.zip", size: "45 MB", type: "zip", modified: "Feb 9, 2026", owner: "John Doe", href: "#" },
+  { name: "Budget 2026.xlsx", size: "1.1 MB", type: "xls", modified: "Feb 8, 2026", owner: "Alice Smith", href: "#" },
+  { name: "Meeting Notes.docx", size: "340 KB", type: "doc", modified: "Feb 7, 2026", owner: "Bob Wilson" },
+  { name: "Hero Image.png", size: "3.2 MB", type: "img", modified: "Feb 6, 2026", owner: "Jane Cooper" }
+])') do %>
+  <%= eden_file_list(files: [
+    { name: "Project Proposal.pdf", size: "2.4 MB", type: "pdf", modified: "Feb 10, 2026", owner: "Jane Cooper", href: "#" },
+    { name: "Design Mockups.zip", size: "45 MB", type: "zip", modified: "Feb 9, 2026", owner: "John Doe", href: "#" },
+    { name: "Budget 2026.xlsx", size: "1.1 MB", type: "xls", modified: "Feb 8, 2026", owner: "Alice Smith", href: "#" },
+    { name: "Meeting Notes.docx", size: "340 KB", type: "doc", modified: "Feb 7, 2026", owner: "Bob Wilson" },
+    { name: "Hero Image.png", size: "3.2 MB", type: "img", modified: "Feb 6, 2026", owner: "Jane Cooper" }
+  ]) %>
+<% end %>
+
+<%= styleguide_example(title: "Empty State", description: "File list with no files shows an empty state.",
+  source: 'eden_file_list(files: [])') do %>
+  <%= eden_file_list(files: []) %>
+<% end %>

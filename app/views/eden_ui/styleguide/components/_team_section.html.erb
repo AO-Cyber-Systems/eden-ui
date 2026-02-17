@@ -1,0 +1,45 @@
+<%# Team Section component previews %>
+
+<%= styleguide_block_example(title: "Default Team Grid", description: "Four-column grid with avatars, names, roles, and social links.",
+  source: 'eden_team_section(
+  title: "Our Team",
+  subtitle: "Meet the people behind the product.",
+  members: [
+    { name: "Bonnie Green", role: "CEO & Co-founder", avatar_initials: "BG", social: [{ platform: :twitter, href: "#" }, { platform: :github, href: "#" }] },
+    { name: "Jese Leos", role: "CTO", avatar_initials: "JL", social: [{ platform: :github, href: "#" }] },
+    { name: "Michael Gough", role: "Head of Design", avatar_initials: "MG" },
+    { name: "Lana Byrd", role: "Marketing Lead", avatar_initials: "LB" }
+  ]
+)') do %>
+  <%= eden_team_section(
+    title: "Our Team",
+    subtitle: "Meet the people behind the product. We are a diverse team of designers, engineers, and dreamers.",
+    members: [
+      { name: "Bonnie Green", role: "CEO & Co-founder", avatar_initials: "BG", bio: "Bonnie drives the vision and strategy for the company.", social: [{ platform: :twitter, href: "#" }, { platform: :github, href: "#" }, { platform: :linkedin, href: "#" }] },
+      { name: "Jese Leos", role: "CTO", avatar_initials: "JL", bio: "Jese leads the engineering team and technical architecture.", social: [{ platform: :github, href: "#" }, { platform: :linkedin, href: "#" }] },
+      { name: "Michael Gough", role: "Head of Design", avatar_initials: "MG", bio: "Michael shapes the look and feel of every product.", social: [{ platform: :twitter, href: "#" }] },
+      { name: "Lana Byrd", role: "Marketing Lead", avatar_initials: "LB", bio: "Lana drives growth and brand strategy.", social: [{ platform: :linkedin, href: "#" }] }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Three Columns", description: "Team section with three members per row.",
+  source: 'eden_team_section(
+  title: "Leadership",
+  columns: 3,
+  members: [
+    { name: "Alice Johnson", role: "VP Engineering", avatar_initials: "AJ" },
+    { name: "Bob Smith", role: "VP Product", avatar_initials: "BS" },
+    { name: "Carol Williams", role: "VP Sales", avatar_initials: "CW" }
+  ]
+)') do %>
+  <%= eden_team_section(
+    title: "Leadership",
+    columns: 3,
+    members: [
+      { name: "Alice Johnson", role: "VP Engineering", avatar_initials: "AJ", bio: "15+ years of experience building scalable platforms.", social: [{ platform: :linkedin, href: "#" }] },
+      { name: "Bob Smith", role: "VP Product", avatar_initials: "BS", bio: "Passionate about creating products users love.", social: [{ platform: :twitter, href: "#" }] },
+      { name: "Carol Williams", role: "VP Sales", avatar_initials: "CW", bio: "Expert in B2B sales and enterprise partnerships.", social: [{ platform: :linkedin, href: "#" }] }
+    ]
+  ) %>
+<% end %>

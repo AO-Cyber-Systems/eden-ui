@@ -1,0 +1,75 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_refund_forms.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Return Request Form",
+  description: "Multi-step return request form with item selection, reason, and refund method",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-2xl mx-auto px-4">
+    <h2>Request a Return</h2>
+    <!-- item selection -->
+    eden_select(options: [...], placeholder: "Select reason")
+    eden_textarea(rows: 4, placeholder: "Additional details")
+    eden_radio(label: "Original payment method")
+    eden_button(variant: :primary) { "Submit Request" }
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Request a Return</h2>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Order #ORD-20260213-7842</p>
+
+      <form class="space-y-6">
+        <!-- Item Selection -->
+        <div>
+          <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-3">Select items to return</h3>
+          <div class="space-y-3">
+            <% [
+              { name: "Apple iMac 24\"", variant: "Silver / M3", price: "$1,199.00", selected: true },
+              { name: "AirPods Pro (2nd gen)", variant: "White", price: "$249.00", selected: false },
+              { name: "Magic Keyboard", variant: "Silver", price: "$199.00", selected: false }
+            ].each do |item| %>
+              <label class="flex items-center gap-4 p-4 border rounded-lg cursor-pointer <%= item[:selected] ? 'border-gold-500 bg-gold-50 dark:bg-gold-900/20 dark:border-gold-600' : 'border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600' %>">
+                <input type="checkbox" class="text-gold-600 rounded" <%= 'checked' if item[:selected] %> />
+                <div class="w-12 h-12 bg-zinc-200 dark:bg-zinc-700 rounded flex items-center justify-center flex-shrink-0">
+                  <%= eden_icon("photo", size: :xs) %>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-zinc-900 dark:text-white"><%= item[:name] %></p>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400"><%= item[:variant] %></p>
+                </div>
+                <span class="text-sm text-zinc-900 dark:text-white"><%= item[:price] %></span>
+              </label>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Reason -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-2">Reason for return</label>
+          <%= eden_select(options: ["Item doesn't match description", "Damaged or defective", "Wrong item received", "Changed my mind", "Better price found", "Other"], placeholder: "Select a reason") %>
+        </div>
+
+        <!-- Details -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-2">Additional details (optional)</label>
+          <%= eden_textarea(rows: 3, placeholder: "Please provide more information about the issue...") %>
+        </div>
+
+        <!-- Refund Method -->
+        <div>
+          <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-3">Preferred refund method</h3>
+          <div class="space-y-2">
+            <%= eden_radio(label: "Original payment method (Visa ending in 4242)", checked: true) %>
+            <%= eden_radio(label: "Store credit (10% bonus added)") %>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 pt-2">
+          <%= eden_button(variant: :primary) { "Submit Return Request" } %>
+          <%= eden_button(variant: :ghost, href: "#") { "Cancel" } %>
+        </div>
+      </form>
+    </div>
+  </section>
+<% end %>

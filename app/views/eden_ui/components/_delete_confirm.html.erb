@@ -1,0 +1,32 @@
+<%
+  id ||= "delete-confirm"
+  title ||= "Confirm Deletion"
+  message ||= "Are you sure? This action cannot be undone."
+  confirm_text ||= "Delete"
+  cancel_text ||= "Cancel"
+  form_url ||= "#"
+  form_method ||= :delete
+  html_options ||= {}
+  content ||= nil
+%>
+
+<%= eden_modal(id: id, size: :sm, **html_options) do %>
+  <div class="text-center">
+    <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-100 dark:bg-red-900">
+      <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
+      </svg>
+    </div>
+
+    <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white"><%= title %></h3>
+    <p class="mb-5 text-sm text-gray-500 dark:text-gray-400"><%= message %></p>
+
+    <div class="flex items-center justify-center gap-3">
+      <button type="button" data-action="eden-modal#close" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"><%= cancel_text %></button>
+      <form action="<%= form_url %>" method="post" class="inline">
+        <input type="hidden" name="_method" value="<%= form_method %>">
+        <%= eden_button(variant: :danger, type: :submit) { confirm_text } %>
+      </form>
+    </div>
+  </div>
+<% end %>

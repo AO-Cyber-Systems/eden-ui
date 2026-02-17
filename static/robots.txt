@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://flowbite-svelte.com/sitemap.xml

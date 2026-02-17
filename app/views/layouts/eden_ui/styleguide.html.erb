@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eden UI — Styleguide</title>
+  <%= eden_design_font_tags %>
+  <%= eden_design_theme_script %>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Outfit', 'system-ui', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+          },
+          colors: {
+            gold: {
+              50: '#fdf8ef', 100: '#faecd5', 200: '#f4d5aa', 300: '#edb974',
+              400: '#e59a3c', 500: '#d4a853', 600: '#c49545', 700: '#a67a38',
+              800: '#856131', 900: '#6c5029', 950: '#3d2a14',
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    <%= styleguide_tokens_css %>
+    <%= styleguide_animations_css %>
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+    /* Code block styling */
+    .code-block { tab-size: 2; }
+    .code-block::selection, .code-block *::selection {
+      background: rgba(212, 168, 83, 0.3);
+    }
+  </style>
+  <script type="module">
+    import { Application, Controller } from "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.2.2/+esm"
+
+    const application = Application.start()
+
+    // styleguide-code controller
+    application.register("styleguide-code", class extends Controller {
+      static targets = ["preview", "code", "previewTab", "codeTab", "copyButton", "source"]
+
+      showPreview() {
+        this.previewTarget.classList.remove("hidden")
+        this.codeTarget.classList.add("hidden")
+        this.previewTabTarget.classList.add("bg-zinc-200", "dark:bg-zinc-700", "text-zinc-900", "dark:text-white")
+        this.previewTabTarget.classList.remove("text-zinc-500", "dark:text-zinc-400", "hover:bg-zinc-100", "dark:hover:bg-zinc-800")
+        this.codeTabTarget.classList.remove("bg-zinc-200", "dark:bg-zinc-700", "text-zinc-900", "dark:text-white")
+        this.codeTabTarget.classList.add("text-zinc-500", "dark:text-zinc-400", "hover:bg-zinc-100", "dark:hover:bg-zinc-800")
+      }
+
+      showCode() {
+        this.previewTarget.classList.add("hidden")
+        this.codeTarget.classList.remove("hidden")
+        this.codeTabTarget.classList.add("bg-zinc-200", "dark:bg-zinc-700", "text-zinc-900", "dark:text-white")
+        this.codeTabTarget.classList.remove("text-zinc-500", "dark:text-zinc-400", "hover:bg-zinc-100", "dark:hover:bg-zinc-800")
+        this.previewTabTarget.classList.remove("bg-zinc-200", "dark:bg-zinc-700", "text-zinc-900", "dark:text-white")
+        this.previewTabTarget.classList.add("text-zinc-500", "dark:text-zinc-400", "hover:bg-zinc-100", "dark:hover:bg-zinc-800")
+      }
+
+      async copy() {
+        const code = this.sourceTarget.textContent
+        try {
+          await navigator.clipboard.writeText(code)
+          const btn = this.copyButtonTarget
+          const original = btn.innerHTML
+          btn.innerHTML = '<svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>'
+          setTimeout(() => { btn.innerHTML = original }, 2000)
+        } catch (err) { /* Clipboard API not available */ }
+      }
+    })
+
+    // styleguide-search controller
+    application.register("styleguide-search", class extends Controller {
+      static targets = ["input", "nav", "group", "item"]
+
+      filter() {
+        const query = this.inputTarget.value.toLowerCase().trim()
+        if (!query) {
+          this.groupTargets.forEach(g => g.classList.remove("hidden"))
+          this.itemTargets.forEach(i => i.classList.remove("hidden"))
+          return
+        }
+        this.groupTargets.forEach(group => {
+          const category = group.dataset.category || ""
+          const categoryMatch = category.includes(query)
+          const componentNames = (group.dataset.componentNames || "").split(",")
+          const nameMatch = componentNames.some(name => name.includes(query))
+          const items = group.querySelectorAll("[data-component-name]")
+          let hasVisibleItem = categoryMatch || nameMatch
+          items.forEach(item => {
+            const name = item.dataset.componentName || ""
+            if (name.includes(query) || categoryMatch) {
+              item.classList.remove("hidden")
+              hasVisibleItem = true
+            } else {
+              item.classList.add("hidden")
+            }
+          })
+          group.classList.toggle("hidden", !hasVisibleItem)
+        })
+        this.itemTargets.forEach(item => {
+          if (!item.closest("[data-category]")) {
+            const name = item.dataset.componentName || ""
+            item.classList.toggle("hidden", !name.includes(query))
+          }
+        })
+      }
+    })
+
+    // styleguide-responsive controller
+    application.register("styleguide-responsive", class extends Controller {
+      static targets = ["iframe", "mobileBtn", "tabletBtn", "desktopBtn"]
+      static values = { size: { type: String, default: "desktop" } }
+
+      mobile() { this.sizeValue = "mobile"; this._resize(375) }
+      tablet() { this.sizeValue = "tablet"; this._resize(768) }
+      desktop() { this.sizeValue = "desktop"; this._resize("100%") }
+
+      _resize(width) {
+        this.iframeTarget.style.width = typeof width === "number" ? `${width}px` : width
+        this._updateButtons()
+      }
+
+      _updateButtons() {
+        const buttons = {
+          mobile: this.hasMobileBtnTarget ? this.mobileBtnTarget : null,
+          tablet: this.hasTabletBtnTarget ? this.tabletBtnTarget : null,
+          desktop: this.hasDesktopBtnTarget ? this.desktopBtnTarget : null,
+        }
+        Object.entries(buttons).forEach(([size, btn]) => {
+          if (!btn) return
+          if (size === this.sizeValue) {
+            btn.classList.add("bg-zinc-200", "dark:bg-zinc-700", "text-zinc-900", "dark:text-white")
+            btn.classList.remove("text-zinc-500", "dark:text-zinc-400")
+          } else {
+            btn.classList.remove("bg-zinc-200", "dark:bg-zinc-700", "text-zinc-900", "dark:text-white")
+            btn.classList.add("text-zinc-500", "dark:text-zinc-400")
+          }
+        })
+      }
+    })
+
+    // ── Eden overlay controllers (interactive previews) ─────────────
+
+    // eden-dropdown: toggle menu, outside-click close, keyboard nav
+    application.register("eden-dropdown", class extends Controller {
+      static targets = ["menu", "item"]
+
+      connect() {
+        this._close = (e) => { if (!this.element.contains(e.target)) this.close() }
+        this._key = (e) => {
+          if (!this.hasMenuTarget || this.menuTarget.classList.contains("hidden")) return
+          if (e.key === "Escape") { e.preventDefault(); this.close() }
+        }
+        document.addEventListener("click", this._close)
+        document.addEventListener("keydown", this._key)
+      }
+      disconnect() {
+        document.removeEventListener("click", this._close)
+        document.removeEventListener("keydown", this._key)
+      }
+      toggle() { this.menuTarget.classList.toggle("hidden") }
+      open()   { this.menuTarget.classList.remove("hidden") }
+      close()  { this.menuTarget.classList.add("hidden") }
+    })
+
+    // eden-tooltip: show/hide on hover, position with fixed coords
+    application.register("eden-tooltip", class extends Controller {
+      static targets = ["tooltip"]
+      static values = { placement: { type: String, default: "top" } }
+
+      show() {
+        const tt = this.tooltipTarget
+        tt.classList.remove("invisible", "opacity-0")
+        tt.classList.add("opacity-100")
+        const tr = this.element.getBoundingClientRect()
+        const tp = tt.getBoundingClientRect()
+        let top = 0, left = 0
+        switch (this.placementValue) {
+          case "bottom": top = tr.bottom + 8; left = tr.left + (tr.width - tp.width) / 2; break
+          case "left":   top = tr.top + (tr.height - tp.height) / 2; left = tr.left - tp.width - 8; break
+          case "right":  top = tr.top + (tr.height - tp.height) / 2; left = tr.right + 8; break
+          default:       top = tr.top - tp.height - 8; left = tr.left + (tr.width - tp.width) / 2; break
+        }
+        tt.style.position = "fixed"; tt.style.top = `${top}px`; tt.style.left = `${left}px`
+      }
+      hide() {
+        const tt = this.tooltipTarget
+        tt.classList.add("invisible", "opacity-0")
+        tt.classList.remove("opacity-100")
+        tt.style.position = ""; tt.style.top = ""; tt.style.left = ""
+      }
+    })
+
+    // eden-popover: show/hide on hover, position with fixed coords
+    application.register("eden-popover", class extends Controller {
+      static targets = ["popover"]
+      static values = { placement: { type: String, default: "top" } }
+
+      show() {
+        const p = this.popoverTarget
+        p.classList.remove("invisible", "opacity-0")
+        p.classList.add("opacity-100")
+        const tr = this.element.getBoundingClientRect()
+        const pp = p.getBoundingClientRect()
+        let top = 0, left = 0
+        switch (this.placementValue) {
+          case "bottom": top = tr.bottom + 8; left = tr.left + (tr.width - pp.width) / 2; break
+          case "left":   top = tr.top + (tr.height - pp.height) / 2; left = tr.left - pp.width - 8; break
+          case "right":  top = tr.top + (tr.height - pp.height) / 2; left = tr.right + 8; break
+          default:       top = tr.top - pp.height - 8; left = tr.left + (tr.width - pp.width) / 2; break
+        }
+        p.style.position = "fixed"; p.style.top = `${top}px`; p.style.left = `${left}px`
+      }
+      hide() {
+        const p = this.popoverTarget
+        p.classList.add("invisible", "opacity-0")
+        p.classList.remove("opacity-100")
+        p.style.position = ""; p.style.top = ""; p.style.left = ""
+      }
+    })
+
+    // eden-modal: open/close with hidden class, escape key
+    application.register("eden-modal", class extends Controller {
+      connect() {
+        this._key = (e) => { if (e.key === "Escape" && !this.element.classList.contains("hidden")) this.close() }
+        document.addEventListener("keydown", this._key)
+      }
+      disconnect() { document.removeEventListener("keydown", this._key) }
+      open()  { this.element.classList.remove("hidden"); this.element.classList.add("flex") }
+      close() { this.element.classList.add("hidden"); this.element.classList.remove("flex") }
+      closeOnOverlay(e) { if (e.target === this.element) this.close() }
+    })
+
+    // eden-toast: dismiss with fade-out animation
+    application.register("eden-toast", class extends Controller {
+      static values = { autoDismiss: { type: Boolean, default: false } }
+
+      connect() {
+        if (this.autoDismissValue) this._timer = setTimeout(() => this.dismiss(), 5000)
+      }
+      disconnect() { if (this._timer) clearTimeout(this._timer) }
+      dismiss() {
+        if (this._timer) clearTimeout(this._timer)
+        this.element.style.transition = "opacity 300ms ease, transform 300ms ease"
+        this.element.style.opacity = "0"
+        this.element.style.transform = "translateY(-10px)"
+        setTimeout(() => this.element.remove(), 300)
+      }
+    })
+
+    // eden-carousel: prev/next/goTo slide navigation
+    application.register("eden-carousel", class extends Controller {
+      static targets = ["slide", "indicator"]
+      static values = { autoplay: { type: Boolean, default: false }, interval: { type: Number, default: 5000 } }
+
+      connect() {
+        this.currentIndex = 0
+        this.showSlide(0)
+        if (this.autoplayValue) this._timer = setInterval(() => this.next(), this.intervalValue)
+      }
+      disconnect() { if (this._timer) clearInterval(this._timer) }
+      next() { this.showSlide((this.currentIndex + 1) % this.slideTargets.length) }
+      prev() { this.showSlide((this.currentIndex - 1 + this.slideTargets.length) % this.slideTargets.length) }
+      goTo(e) { const i = parseInt(e.params?.index ?? e.currentTarget.dataset.edenCarouselIndexParam, 10); if (!isNaN(i)) this.showSlide(i) }
+      showSlide(i) {
+        this.currentIndex = i
+        this.slideTargets.forEach((s, idx) => s.classList.toggle("hidden", idx !== i))
+        this.indicatorTargets.forEach((ind, idx) => {
+          ind.classList.toggle("bg-white", idx === i)
+          ind.classList.toggle("bg-white/50", idx !== i)
+        })
+      }
+    })
+  </script>
+</head>
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
+  <div class="flex h-screen overflow-hidden">
+    <%# Sidebar %>
+    <aside id="styleguide-sidebar" class="w-72 flex-shrink-0 border-r border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 overflow-y-auto hidden lg:block">
+      <%= render "eden_ui/styleguide/sidebar" %>
+    </aside>
+
+    <%# Main content %>
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <%# Top bar %>
+      <header class="h-14 flex items-center justify-between px-6 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex-shrink-0">
+        <div class="flex items-center gap-3">
+          <button onclick="document.getElementById('styleguide-sidebar').classList.toggle('hidden')" class="lg:hidden p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+            <%= eden_icon("bars-3", size: :md) %>
+          </button>
+          <a href="<%= eden_ui.root_path %>" class="flex items-center gap-2 text-lg font-display font-bold text-zinc-900 dark:text-white">
+            <span class="text-gold-500">Eden</span> <span class="text-zinc-400 font-normal">UI</span>
+          </a>
+          <span class="text-xs px-2 py-0.5 bg-gold-500/10 text-gold-600 dark:text-gold-400 rounded-full font-medium">
+            v<%= EdenUi::VERSION %>
+          </span>
+        </div>
+        <div class="flex items-center gap-2">
+          <%# Dark mode toggle %>
+          <button
+            onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light')"
+            class="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            title="Toggle dark mode"
+          >
+            <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/></svg>
+            <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <%# Page content %>
+      <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+        <%= yield %>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

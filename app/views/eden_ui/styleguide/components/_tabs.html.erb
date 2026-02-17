@@ -1,0 +1,69 @@
+<%= styleguide_example(
+  title: "Default (Underline) Tabs",
+  source: 'eden_tabs(variant: :default) do
+  eden_tab_item(label: "Profile", active: true)
+  eden_tab_item(label: "Dashboard")
+  eden_tab_item(label: "Settings")
+  eden_tab_item(label: "Contacts")
+  eden_tab_item(label: "Disabled", disabled: true)
+end'
+) do %>
+  <%= eden_tabs(variant: :default) do %>
+    <%= eden_tab_item(label: "Profile", active: true) %>
+    <%= eden_tab_item(label: "Dashboard") %>
+    <%= eden_tab_item(label: "Settings") %>
+    <%= eden_tab_item(label: "Contacts") %>
+    <%= eden_tab_item(label: "Disabled", disabled: true) %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Underline Tabs",
+  source: 'eden_tabs(variant: :underline) do
+  eden_tab_item(label: "Profile", active: true)
+  eden_tab_item(label: "Dashboard")
+  eden_tab_item(label: "Settings")
+  eden_tab_item(label: "Contacts")
+end'
+) do %>
+  <%= eden_tabs(variant: :underline) do %>
+    <%= eden_tab_item(label: "Profile", active: true) %>
+    <%= eden_tab_item(label: "Dashboard") %>
+    <%= eden_tab_item(label: "Settings") %>
+    <%= eden_tab_item(label: "Contacts") %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Pill Tabs",
+  source: 'eden_tabs(variant: :pill) do
+  eden_tab_item(label: "Profile", active: true, variant: :pill)
+  eden_tab_item(label: "Dashboard", variant: :pill)
+  eden_tab_item(label: "Settings", variant: :pill)
+  eden_tab_item(label: "Disabled", disabled: true, variant: :pill)
+end'
+) do %>
+  <%= eden_tabs(variant: :pill) do %>
+    <%= eden_tab_item(label: "Profile", active: true) %>
+    <%= eden_tab_item(label: "Dashboard") %>
+    <%= eden_tab_item(label: "Settings") %>
+    <%= eden_tab_item(label: "Disabled", disabled: true) %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Full Width Tabs",
+  source: 'eden_tabs(variant: :full_width) do
+  eden_tab_item(label: "Profile", active: true, variant: :full_width)
+  eden_tab_item(label: "Dashboard", variant: :full_width)
+  eden_tab_item(label: "Settings", variant: :full_width)
+  eden_tab_item(label: "Invoice", variant: :full_width)
+end'
+) do %>
+  <%= eden_tabs(variant: :full_width) do %>
+    <%= eden_tab_item(label: "Profile", active: true) %>
+    <%= eden_tab_item(label: "Dashboard") %>
+    <%= eden_tab_item(label: "Settings") %>
+    <%= eden_tab_item(label: "Invoice") %>
+  <% end %>
+<% end %>

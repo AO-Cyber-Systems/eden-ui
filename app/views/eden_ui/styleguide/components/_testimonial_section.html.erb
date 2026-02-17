@@ -1,0 +1,62 @@
+<%# Testimonial Section component previews %>
+
+<%= styleguide_block_example(title: "Grid Layout", description: "Two-column grid of testimonial cards with quotes, ratings, and author info.",
+  source: 'eden_testimonial_section(
+  title: "What our customers say",
+  subtitle: "Hear from the people who use our platform every day.",
+  testimonials: [
+    { quote: "Eden UI transformed how we build interfaces.", author: "Sarah Chen", role: "CTO", company: "TechCorp", rating: 5, avatar_initials: "SC" },
+    { quote: "The best component library for Rails.", author: "James Wilson", role: "Lead Developer", company: "StartupXYZ", rating: 5, avatar_initials: "JW" }
+  ]
+)') do %>
+  <%= eden_testimonial_section(
+    title: "What our customers say",
+    subtitle: "Hear from the people who use our platform every day.",
+    testimonials: [
+      { quote: "Eden UI transformed how we build interfaces. Our development speed doubled and the consistency across our app is incredible.", author: "Sarah Chen", role: "CTO", company: "TechCorp", rating: 5, avatar_initials: "SC" },
+      { quote: "The best component library for Rails, period. It just works, and the documentation is outstanding.", author: "James Wilson", role: "Lead Developer", company: "StartupXYZ", rating: 5, avatar_initials: "JW" },
+      { quote: "We reduced our frontend development time by 60%. The Tailwind integration is seamless.", author: "Maria Garcia", role: "Engineering Manager", company: "DataFlow", rating: 4, avatar_initials: "MG" },
+      { quote: "Our designers love the consistency and our developers love how easy it is to implement.", author: "David Park", role: "Product Manager", company: "BuildCo", rating: 5, avatar_initials: "DP" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Featured Layout", description: "One large featured testimonial with smaller ones in a sidebar.",
+  source: 'eden_testimonial_section(
+  title: "Trusted by developers",
+  variant: :featured,
+  testimonials: [
+    { quote: "This library has been a game-changer for our team.", author: "Emily Davis", role: "VP Engineering", company: "ScaleUp Inc", rating: 5, avatar_initials: "ED" },
+    { quote: "Incredibly well designed components.", author: "Tom Baker", role: "Developer", company: "CodeShop", avatar_initials: "TB" },
+    { quote: "The best investment we made this year.", author: "Lisa Zhang", role: "Founder", company: "LaunchPad", avatar_initials: "LZ" }
+  ]
+)') do %>
+  <%= eden_testimonial_section(
+    title: "Trusted by developers",
+    variant: :featured,
+    testimonials: [
+      { quote: "This library has been a game-changer for our team. We shipped our redesign in half the time we originally estimated. The components are thoughtfully designed and the API is intuitive.", author: "Emily Davis", role: "VP Engineering", company: "ScaleUp Inc", rating: 5, avatar_initials: "ED" },
+      { quote: "Incredibly well designed components. Every detail has been considered.", author: "Tom Baker", role: "Senior Developer", company: "CodeShop", avatar_initials: "TB" },
+      { quote: "The best investment we made this year. Our entire team is more productive.", author: "Lisa Zhang", role: "Founder", company: "LaunchPad", avatar_initials: "LZ" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Carousel", description: "Single testimonial displayed at a time with navigation support.",
+  source: 'eden_testimonial_section(
+  title: "Customer Stories",
+  variant: :carousel,
+  testimonials: [
+    { quote: "Absolutely love working with Eden UI.", author: "Alex Rivera", role: "Designer", company: "DesignLab", rating: 5, avatar_initials: "AR" },
+    { quote: "Clean code, great docs, excellent support.", author: "Nina Patel", role: "Developer", company: "WebWorks", rating: 4, avatar_initials: "NP" }
+  ]
+)') do %>
+  <%= eden_testimonial_section(
+    title: "Customer Stories",
+    variant: :carousel,
+    testimonials: [
+      { quote: "Absolutely love working with Eden UI. It has become an essential part of our development toolkit. The quality of the components is unmatched.", author: "Alex Rivera", role: "Lead Designer", company: "DesignLab", rating: 5, avatar_initials: "AR" },
+      { quote: "Clean code, great documentation, and excellent community support. Everything you need.", author: "Nina Patel", role: "Full Stack Developer", company: "WebWorks", rating: 4, avatar_initials: "NP" }
+    ]
+  ) %>
+<% end %>

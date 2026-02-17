@@ -1,0 +1,41 @@
+<%# Pricing Section component previews %>
+
+<%= styleguide_block_example(title: "Three-Tier Pricing", description: "Classic pricing grid with a highlighted popular plan.",
+  source: 'eden_pricing_section(
+  title: "Simple, transparent pricing",
+  subtitle: "All the tools you need to grow your business.",
+  plans: [
+    { name: "Starter", price: "$29", period: "/month", description: "For individuals.", features: ["1 user", "5 projects", "5GB storage", "Email support"], cta_text: "Get started" },
+    { name: "Professional", price: "$79", period: "/month", description: "For small teams.", features: ["5 users", "25 projects", "50GB storage", "Priority support", "Analytics"], cta_text: "Get started", popular: true },
+    { name: "Enterprise", price: "$199", period: "/month", description: "For large organizations.", features: ["Unlimited users", "Unlimited projects", "500GB storage", "24/7 phone support", "Custom integrations", "SSO"], cta_text: "Contact sales" }
+  ]
+)') do %>
+  <%= eden_pricing_section(
+    title: "Simple, transparent pricing",
+    subtitle: "All the tools you need to grow your business. No hidden fees.",
+    plans: [
+      { name: "Starter", price: "$29", period: "/month", description: "Best for individuals and freelancers.", features: ["1 user account", "5 projects", "5GB storage", "Email support"], cta_text: "Get started", cta_href: "#" },
+      { name: "Professional", price: "$79", period: "/month", description: "Ideal for small teams and startups.", features: ["5 user accounts", "25 projects", "50GB storage", "Priority support", "Advanced analytics"], cta_text: "Get started", cta_href: "#", popular: true },
+      { name: "Enterprise", price: "$199", period: "/month", description: "For large organizations and agencies.", features: ["Unlimited users", "Unlimited projects", "500GB storage", "24/7 phone support", "Custom integrations", "Single sign-on"], cta_text: "Contact sales", cta_href: "#" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Two Plans with Toggle", description: "Simpler two-plan layout with a billing period toggle.",
+  source: 'eden_pricing_section(
+  title: "Choose your plan",
+  billing_toggle: true,
+  plans: [
+    { name: "Basic", price: "$19", features: ["10 users", "Unlimited projects", "Email support"], cta_text: "Start trial" },
+    { name: "Pro", price: "$49", features: ["Unlimited users", "Priority support", "API access", "Custom branding"], cta_text: "Start trial", popular: true }
+  ]
+)') do %>
+  <%= eden_pricing_section(
+    title: "Choose your plan",
+    billing_toggle: true,
+    plans: [
+      { name: "Basic", price: "$19", period: "/month", features: ["10 users included", "Unlimited projects", "Email support", "Community access"], cta_text: "Start trial", cta_href: "#" },
+      { name: "Pro", price: "$49", period: "/month", features: ["Unlimited users", "Priority support", "API access", "Custom branding", "Advanced reporting"], cta_text: "Start trial", cta_href: "#", popular: true }
+    ]
+  ) %>
+<% end %>

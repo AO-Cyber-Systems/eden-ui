@@ -1,0 +1,129 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_product_card_components.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Product Card",
+  description: "Product card with image placeholder, title, rating, and price with add to cart button",
+  source: 'eden_card do
+  # Product image, title, rating, price, add to cart button
+  eden_rating(value: 4, max: 5, size: :sm)
+  eden_badge(text: "4.0", variant: :primary, size: :xs)
+  eden_button(variant: :primary, size: :sm) { "Add to cart" }
+end'
+) do %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <% [
+      { name: "Apple Watch Series 7", price: "$599", rating: 4, badge: "4.0" },
+      { name: "MacBook Pro 16\"", price: "$2,399", rating: 5, badge: "5.0" },
+      { name: "iPad Air", price: "$599", rating: 4, badge: "4.5" },
+      { name: "AirPods Pro", price: "$249", rating: 4, badge: "4.8" }
+    ].each do |product| %>
+      <div class="w-full bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
+        <div class="w-full h-48 bg-zinc-200 dark:bg-zinc-700 rounded-t-lg flex items-center justify-center">
+          <%= eden_icon("photo", size: :lg) %>
+        </div>
+        <div class="px-5 pb-5 pt-4">
+          <h5 class="text-xl font-semibold tracking-tight text-zinc-900 dark:text-white"><%= product[:name] %></h5>
+          <div class="flex items-center mt-2.5 mb-5">
+            <%= eden_rating(value: product[:rating], max: 5, size: :sm) %>
+            <span class="ml-2">
+              <%= eden_badge(text: product[:badge], variant: :primary, size: :xs) %>
+            </span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-3xl font-bold text-zinc-900 dark:text-white"><%= product[:price] %></span>
+            <%= eden_button(variant: :primary, size: :sm) { "Add to cart" } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Product Card with Discount Badge",
+  description: "Product card featuring a discount badge, original price strikethrough, and sale price",
+  source: '<div class="bg-white rounded-lg shadow-sm dark:bg-zinc-800">
+  eden_badge(text: "-25%", variant: :danger, size: :sm)
+  # Product image, title, prices
+  eden_button(variant: :primary, size: :sm) { "Add to cart" }
+  eden_button(variant: :ghost, size: :sm) # wishlist
+end'
+) do %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% [
+      { name: "Sony WH-1000XM5", original: "$399", sale: "$299", discount: "-25%" },
+      { name: "Samsung Galaxy S24", original: "$999", sale: "$799", discount: "-20%" },
+      { name: "Nike Air Max 90", original: "$150", sale: "$105", discount: "-30%" }
+    ].each do |product| %>
+      <div class="w-full bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
+        <div class="relative">
+          <div class="w-full h-48 bg-zinc-200 dark:bg-zinc-700 rounded-t-lg flex items-center justify-center">
+            <%= eden_icon("photo", size: :lg) %>
+          </div>
+          <span class="absolute top-2 left-2">
+            <%= eden_badge(text: product[:discount], variant: :danger, size: :sm) %>
+          </span>
+        </div>
+        <div class="px-5 pb-5 pt-4">
+          <h5 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-white"><%= product[:name] %></h5>
+          <div class="flex items-center mt-2.5 mb-4">
+            <%= eden_rating(value: 4, max: 5, size: :sm) %>
+            <span class="ml-2 text-sm text-zinc-500 dark:text-zinc-400">(124)</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl font-bold text-zinc-900 dark:text-white"><%= product[:sale] %></span>
+              <span class="text-sm text-zinc-500 line-through dark:text-zinc-400"><%= product[:original] %></span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 mt-4">
+            <%= eden_button(variant: :primary, size: :sm) { "Add to cart" } %>
+            <%= eden_button(variant: :ghost, size: :sm) do %>
+              <%= eden_icon("heart", size: :sm) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Horizontal Product Card",
+  description: "Horizontal layout product card with image on the left and details on the right",
+  source: '<div class="flex bg-white rounded-lg shadow-sm dark:bg-zinc-800">
+  <!-- image placeholder -->
+  <div class="p-5">
+    <h5>Product Name</h5>
+    eden_rating(value: 4, max: 5, size: :sm)
+    <span>$599</span>
+    eden_button(variant: :primary, size: :sm) { "Add to cart" }
+  </div>
+</div>'
+) do %>
+  <div class="space-y-4 max-w-2xl">
+    <% [
+      { name: "Wireless Keyboard", desc: "Slim wireless keyboard with backlit keys and multi-device support.", price: "$79", rating: 4 },
+      { name: "Ergonomic Mouse", desc: "Vertical ergonomic mouse designed for all-day comfort and precision.", price: "$49", rating: 5 }
+    ].each do |product| %>
+      <div class="flex flex-col sm:flex-row bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
+        <div class="sm:w-48 h-48 sm:h-auto bg-zinc-200 dark:bg-zinc-700 rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none flex items-center justify-center flex-shrink-0">
+          <%= eden_icon("photo", size: :lg) %>
+        </div>
+        <div class="p-5 flex flex-col justify-between">
+          <div>
+            <h5 class="text-xl font-semibold text-zinc-900 dark:text-white"><%= product[:name] %></h5>
+            <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400"><%= product[:desc] %></p>
+            <div class="flex items-center mt-2">
+              <%= eden_rating(value: product[:rating], max: 5, size: :sm) %>
+            </div>
+          </div>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-2xl font-bold text-zinc-900 dark:text-white"><%= product[:price] %></span>
+            <%= eden_button(variant: :primary, size: :sm) { "Add to cart" } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

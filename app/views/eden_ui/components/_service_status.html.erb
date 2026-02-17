@@ -1,0 +1,51 @@
+<%
+  name ||= nil
+  status ||= :operational
+  uptime ||= nil
+  response_time ||= nil
+  last_incident ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  status_config = case status.to_sym
+  when :operational
+    { color: "bg-green-500", text_color: "text-green-700 dark:text-green-400", label: "Operational" }
+  when :degraded
+    { color: "bg-yellow-400", text_color: "text-yellow-700 dark:text-yellow-400", label: "Degraded" }
+  when :partial_outage
+    { color: "bg-orange-500", text_color: "text-orange-700 dark:text-orange-400", label: "Partial Outage" }
+  when :major_outage
+    { color: "bg-red-500", text_color: "text-red-700 dark:text-red-400", label: "Major Outage" }
+  when :maintenance
+    { color: "bg-blue-500", text_color: "text-blue-700 dark:text-blue-400", label: "Maintenance" }
+  else
+    { color: "bg-gray-500", text_color: "text-gray-700 dark:text-gray-400", label: status.to_s.titleize }
+  end
+
+  classes = [
+    "flex items-center justify-between border-b border-gray-200 dark:border-gray-700 py-3",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="flex items-center gap-3 min-w-0">
+    <span class="flex-shrink-0 w-2.5 h-2.5 rounded-full <%= status_config[:color] %>"></span>
+    <div class="min-w-0">
+      <p class="text-sm font-medium text-gray-900 dark:text-white truncate"><%= name %></p>
+      <p class="text-xs <%= status_config[:text_color] %>"><%= status_config[:label] %></p>
+    </div>
+  </div>
+  <div class="flex items-center gap-4 ms-4 text-xs text-gray-500 dark:text-gray-400">
+    <% if uptime %>
+      <span class="hidden sm:inline" title="Uptime"><%= uptime %> uptime</span>
+    <% end %>
+    <% if response_time %>
+      <span class="hidden sm:inline" title="Response time"><%= response_time %></span>
+    <% end %>
+    <% if last_incident %>
+      <span title="Last incident"><%= last_incident %></span>
+    <% end %>
+  </div>
+  <%= content %>
+</div>

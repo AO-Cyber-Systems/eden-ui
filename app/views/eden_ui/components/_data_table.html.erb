@@ -1,0 +1,65 @@
+<%
+  columns ||= []
+  rows ||= []
+  striped ||= false
+  hoverable ||= true
+  selectable ||= false
+  html_options ||= {}
+  content ||= nil
+%>
+
+<% if rows.any? || content %>
+  <%= eden_table(striped: striped, hoverable: hoverable, shadow: true, **html_options) do %>
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <% if selectable %>
+          <th scope="col" class="p-4">
+            <div class="flex items-center">
+              <input type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            </div>
+          </th>
+        <% end %>
+        <% columns.each do |col| %>
+          <th scope="col" class="px-6 py-3">
+            <% if col[:sortable] %>
+              <button type="button" class="flex items-center gap-1 hover:text-gray-900 dark:hover:text-white">
+                <%= col[:label] %>
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/></svg>
+              </button>
+            <% else %>
+              <%= col[:label] %>
+            <% end %>
+          </th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% if content %>
+        <%= content %>
+      <% else %>
+        <% rows.each do |row| %>
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <% if selectable %>
+              <td class="w-4 p-4">
+                <div class="flex items-center">
+                  <input type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                </div>
+              </td>
+            <% end %>
+            <% columns.each_with_index do |col, index| %>
+              <% if index == 0 %>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <%= row[col[:key]] %>
+                </th>
+              <% else %>
+                <td class="px-6 py-4"><%= row[col[:key]] %></td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  <% end %>
+<% else %>
+  <%= eden_empty_state(title: "No data", description: "There are no records to display.", icon: "table-cells") %>
+<% end %>

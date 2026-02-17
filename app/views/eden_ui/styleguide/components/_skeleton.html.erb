@@ -1,0 +1,53 @@
+<%# Skeleton component preview %>
+
+<%= styleguide_example(
+  title: "Text Skeleton",
+  description: "Default text placeholder with multiple lines.",
+  source: 'eden_skeleton(variant: :text)'
+) do %>
+  <%= eden_skeleton(variant: :text) %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Card Skeleton",
+  description: "Placeholder for a card component with image area and text lines.",
+  source: 'eden_skeleton(variant: :card)'
+) do %>
+  <div class="max-w-sm">
+    <%= eden_skeleton(variant: :card) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Image Skeleton",
+  description: "Placeholder for an image area.",
+  source: 'eden_skeleton(variant: :image)'
+) do %>
+  <div class="max-w-sm">
+    <%= eden_skeleton(variant: :image) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Table Skeleton",
+  description: "Placeholder for tabular data.",
+  source: 'eden_skeleton(variant: :table)'
+) do %>
+  <div class="max-w-md">
+    <%= eden_skeleton(variant: :table) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Multiple Skeletons",
+  description: "You can render multiple skeleton variants side by side.",
+  source: 'eden_skeleton(variant: :text)
+eden_skeleton(variant: :card)
+eden_skeleton(variant: :image)'
+) do %>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div><%= eden_skeleton(variant: :text) %></div>
+    <div><%= eden_skeleton(variant: :card) %></div>
+    <div><%= eden_skeleton(variant: :image) %></div>
+  </div>
+<% end %>

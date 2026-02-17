@@ -1,0 +1,24 @@
+<%
+  variant ||= :horizontal
+  columns ||= 1
+  bordered ||= false
+  striped ||= false
+  html_options ||= {}
+  content ||= nil
+
+  grid_class = case columns.to_i
+  when 2 then "md:grid-cols-2"
+  when 3 then "md:grid-cols-3"
+  else ""
+  end
+
+  classes = [
+    columns > 1 ? "grid gap-4 #{grid_class}" : "",
+    bordered ? "divide-y divide-gray-200 dark:divide-gray-700" : "",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<dl class="<%= classes %>" data-variant="<%= variant %>" data-striped="<%= striped %>" <%= tag.attributes(html_options) %>>
+  <%= content %>
+</dl>

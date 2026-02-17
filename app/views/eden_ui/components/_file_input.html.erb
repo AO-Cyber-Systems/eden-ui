@@ -1,0 +1,25 @@
+<%
+  name ||= nil
+  id ||= name
+  size ||= :md
+  disabled ||= false
+  required ||= false
+  accept ||= nil
+  multiple ||= false
+  helper_text ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  size_classes = case size.to_sym
+  when :sm then "text-xs"
+  when :lg then "text-lg"
+  else "text-sm"
+  end
+
+  classes = ["block w-full #{size_classes} text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<input type="file" <% if name %>name="<%= name %>"<% end %> <% if id %>id="<%= id %>"<% end %> class="<%= classes %>" <% if accept %>accept="<%= accept %>"<% end %> <%= "multiple" if multiple %> <%= "disabled" if disabled %> <%= "required" if required %> <%= tag.attributes(html_options) %>>
+<% if helper_text %>
+  <p class="mt-1 text-sm text-gray-500 dark:text-gray-300"><%= helper_text %></p>
+<% end %>

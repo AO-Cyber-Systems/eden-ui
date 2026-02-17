@@ -1,0 +1,54 @@
+<%# Plan Card component preview %>
+
+<%= styleguide_example(title: "Pricing Plans", description: "Three pricing tiers with popular plan highlighted.",
+  source: 'eden_plan_card(name: "Starter", price: "$9", description: "For individuals getting started.", features: ["5 projects", "Up to 10 users", "2GB storage", "Email support"])
+eden_plan_card(name: "Pro", price: "$29", popular: true, description: "For growing teams.", features: ["Unlimited projects", "Up to 50 users", "20GB storage", "Priority support", "Advanced analytics"])
+eden_plan_card(name: "Enterprise", price: "$99", description: "For large organizations.", features: ["Unlimited everything", "Unlimited users", "100GB storage", "24/7 support", "Custom integrations", "SLA guarantee"])') do %>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <%= eden_plan_card(
+      name: "Starter",
+      price: "$9",
+      description: "For individuals getting started.",
+      features: ["5 projects", "Up to 10 users", "2GB storage", "Email support"]
+    ) %>
+    <%= eden_plan_card(
+      name: "Pro",
+      price: "$29",
+      popular: true,
+      description: "For growing teams.",
+      features: ["Unlimited projects", "Up to 50 users", "20GB storage", "Priority support", "Advanced analytics"]
+    ) %>
+    <%= eden_plan_card(
+      name: "Enterprise",
+      price: "$99",
+      description: "For large organizations.",
+      features: ["Unlimited everything", "Unlimited users", "100GB storage", "24/7 support", "Custom integrations", "SLA guarantee"]
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Current Plan", description: "Card showing the user's active plan.",
+  source: 'eden_plan_card(name: "Pro", price: "$29", current: true, features: ["Unlimited projects", "Up to 50 users", "20GB storage"])') do %>
+  <div class="max-w-sm">
+    <%= eden_plan_card(
+      name: "Pro",
+      price: "$29",
+      current: true,
+      features: ["Unlimited projects", "Up to 50 users", "20GB storage"]
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Annual Pricing", description: "Plan with annual billing period.",
+  source: 'eden_plan_card(name: "Team", price: "$199", period: "/year", description: "Best value for teams.", features: ["Everything in Pro", "Team management", "50GB storage"], cta_text: "Start Free Trial")') do %>
+  <div class="max-w-sm">
+    <%= eden_plan_card(
+      name: "Team",
+      price: "$199",
+      period: "/year",
+      description: "Best value for teams.",
+      features: ["Everything in Pro", "Team management", "50GB storage"],
+      cta_text: "Start Free Trial"
+    ) %>
+  </div>
+<% end %>

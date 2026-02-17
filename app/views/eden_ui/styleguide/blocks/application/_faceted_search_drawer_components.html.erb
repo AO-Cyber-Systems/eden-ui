@@ -1,0 +1,130 @@
+<%= styleguide_block_example(
+  title: "Faceted Search Drawer",
+  description: "Side drawer with multiple filter categories for advanced search",
+  source: 'eden_search_input(placeholder: "Search...")
+# Category filter
+eden_checkbox(label: "Electronics")
+eden_checkbox(label: "Clothing")
+# Price Range filter
+eden_input(type: :number, placeholder: "Min")
+eden_button(variant: :primary) { "Apply filters" }
+
+# Rendered inside a side drawer with filter sections'
+) do %>
+  <div class="relative bg-zinc-100 dark:bg-zinc-900 min-h-[600px] flex">
+    <%# Filter drawer %>
+    <div class="w-72 bg-white dark:bg-zinc-800 border-r border-zinc-200 dark:border-zinc-700 overflow-y-auto flex-shrink-0">
+      <div class="flex items-center justify-between p-4 border-b border-zinc-200 dark:border-zinc-700">
+        <h5 class="text-lg font-semibold text-zinc-900 dark:text-white">Filters</h5>
+        <button class="text-sm text-gold-600 hover:text-gold-700 dark:text-gold-400 font-medium">Clear all</button>
+      </div>
+
+      <div class="p-4 border-b border-zinc-200 dark:border-zinc-700">
+        <%= eden_search_input(placeholder: "Search products...", size: :sm) %>
+      </div>
+
+      <%# Category filter %>
+      <div class="p-4 border-b border-zinc-200 dark:border-zinc-700">
+        <button class="flex items-center justify-between w-full text-sm font-medium text-zinc-900 dark:text-white mb-3">
+          <span>Category</span>
+          <%= eden_icon("chevron-up", size: :xs) %>
+        </button>
+        <div class="space-y-2">
+          <% [
+            ["Electronics", 156, true],
+            ["Clothing", 89, false],
+            ["Home & Garden", 67, false],
+            ["Sports", 42, true],
+            ["Books", 34, false],
+          ].each do |label, count, checked| %>
+            <div class="flex items-center justify-between">
+              <%= eden_checkbox(label: label, checked: checked) %>
+              <span class="text-xs text-zinc-400"><%= count %></span>
+            </div>
+          <% end %>
+          <button class="text-sm text-gold-600 hover:text-gold-700 dark:text-gold-400">Show more</button>
+        </div>
+      </div>
+
+      <%# Brand filter %>
+      <div class="p-4 border-b border-zinc-200 dark:border-zinc-700">
+        <button class="flex items-center justify-between w-full text-sm font-medium text-zinc-900 dark:text-white mb-3">
+          <span>Brand</span>
+          <%= eden_icon("chevron-up", size: :xs) %>
+        </button>
+        <div class="space-y-2">
+          <% ["Apple", "Samsung", "Microsoft", "Sony", "Dell"].each do |brand| %>
+            <%= eden_checkbox(label: brand) %>
+          <% end %>
+        </div>
+      </div>
+
+      <%# Price range %>
+      <div class="p-4 border-b border-zinc-200 dark:border-zinc-700">
+        <button class="flex items-center justify-between w-full text-sm font-medium text-zinc-900 dark:text-white mb-3">
+          <span>Price Range</span>
+          <%= eden_icon("chevron-up", size: :xs) %>
+        </button>
+        <div class="flex items-center gap-2 mb-3">
+          <%= eden_input(type: :number, placeholder: "$0", size: :sm) %>
+          <span class="text-zinc-400 text-sm">to</span>
+          <%= eden_input(type: :number, placeholder: "$5000", size: :sm) %>
+        </div>
+        <div class="space-y-2">
+          <% [
+            ["Under $100", false],
+            ["$100 - $500", true],
+            ["$500 - $1000", false],
+            ["$1000 - $5000", false],
+            ["Over $5000", false],
+          ].each do |label, checked| %>
+            <%= eden_radio(label: label, checked: checked) %>
+          <% end %>
+        </div>
+      </div>
+
+      <%# Rating filter %>
+      <div class="p-4 border-b border-zinc-200 dark:border-zinc-700">
+        <button class="flex items-center justify-between w-full text-sm font-medium text-zinc-900 dark:text-white mb-3">
+          <span>Customer Rating</span>
+          <%= eden_icon("chevron-up", size: :xs) %>
+        </button>
+        <div class="space-y-2">
+          <% [4, 3, 2, 1].each do |min_stars| %>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="rounded border-zinc-300 text-gold-500 focus:ring-gold-500">
+              <div class="flex items-center text-gold-400">
+                <% min_stars.times do %><%= eden_icon("star", size: :xs) %><% end %>
+                <% (5 - min_stars).times do %><span class="text-zinc-300 dark:text-zinc-600"><%= eden_icon("star", size: :xs) %></span><% end %>
+              </div>
+              <span class="text-sm text-zinc-500">& up</span>
+            </label>
+          <% end %>
+        </div>
+      </div>
+
+      <%# Apply button %>
+      <div class="p-4">
+        <%= eden_button(variant: :primary, size: :sm) { "Apply filters (3)" } %>
+      </div>
+    </div>
+
+    <%# Main content area %>
+    <div class="flex-1 p-6">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-sm text-zinc-500 dark:text-zinc-400">Active filters:</span>
+        <% ["Electronics", "Sports", "$100-$500"].each do |filter| %>
+          <span class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium bg-gold-100 text-gold-800 rounded-md dark:bg-gold-900/30 dark:text-gold-400">
+            <%= filter %>
+            <button class="text-gold-600 hover:text-gold-800 dark:text-gold-400 dark:hover:text-gold-200">
+              <%= eden_icon("x-mark", size: :xs) %>
+            </button>
+          </span>
+        <% end %>
+      </div>
+      <div class="p-8 border-2 border-dashed rounded-lg border-zinc-200 dark:border-zinc-700 flex items-center justify-center">
+        <span class="text-zinc-400 dark:text-zinc-500 text-sm">Search results area</span>
+      </div>
+    </div>
+  </div>
+<% end %>

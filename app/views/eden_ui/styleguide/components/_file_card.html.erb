@@ -1,0 +1,25 @@
+<%# File Card component preview %>
+
+<%= styleguide_example(title: "File Type Grid", description: "Cards for various file types with appropriate colors.",
+  source: 'eden_file_card(name: "Report Q4.pdf", size: "2.4 MB", type: "pdf", modified: "Feb 10")
+eden_file_card(name: "Proposal.docx", size: "840 KB", type: "doc", modified: "Feb 9")
+eden_file_card(name: "Budget.xlsx", size: "1.1 MB", type: "xls", modified: "Feb 8")
+eden_file_card(name: "Screenshot.png", size: "3.2 MB", type: "img", modified: "Feb 7")
+eden_file_card(name: "Archive.zip", size: "45 MB", type: "zip", modified: "Feb 6")
+eden_file_card(name: "Notes.txt", size: "12 KB", type: "txt", modified: "Feb 5")') do %>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+    <%= eden_file_card(name: "Report Q4.pdf", size: "2.4 MB", type: "pdf", modified: "Feb 10") %>
+    <%= eden_file_card(name: "Proposal.docx", size: "840 KB", type: "doc", modified: "Feb 9") %>
+    <%= eden_file_card(name: "Budget.xlsx", size: "1.1 MB", type: "xls", modified: "Feb 8") %>
+    <%= eden_file_card(name: "Screenshot.png", size: "3.2 MB", type: "img", modified: "Feb 7") %>
+    <%= eden_file_card(name: "Archive.zip", size: "45 MB", type: "zip", modified: "Feb 6") %>
+    <%= eden_file_card(name: "Notes.txt", size: "12 KB", type: "txt", modified: "Feb 5") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Linked File Card", description: "A file card that links to the file.",
+  source: 'eden_file_card(name: "Design System.pdf", size: "8.5 MB", type: "pdf", modified: "Feb 10, 2026", href: "#")') do %>
+  <div class="max-w-[160px]">
+    <%= eden_file_card(name: "Design System.pdf", size: "8.5 MB", type: "pdf", modified: "Feb 10, 2026", href: "#") %>
+  </div>
+<% end %>

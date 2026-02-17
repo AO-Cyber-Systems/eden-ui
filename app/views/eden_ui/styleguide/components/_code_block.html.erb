@@ -1,0 +1,54 @@
+<%# Code Block component preview %>
+
+<%= styleguide_example(title: "Default", description: "Code block with language label and copy button.",
+  source: 'eden_code_block(
+  code: "puts \"Hello, world!\"",
+  language: "Ruby"
+)') do %>
+  <%= eden_code_block(
+    code: "puts \"Hello, world!\"",
+    language: "Ruby"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Multi-line Code", description: "Code block with multiple lines of code.",
+  source: 'eden_code_block(
+  code: "class User < ApplicationRecord\n  validates :email, presence: true\n  validates :name, length: { minimum: 2 }\n\n  def full_name\n    \"#{first_name} #{last_name}\"\n  end\nend",
+  language: "Ruby"
+)') do %>
+  <%= eden_code_block(
+    code: "class User < ApplicationRecord\n  validates :email, presence: true\n  validates :name, length: { minimum: 2 }\n\n  def full_name\n    \"\#{first_name} \#{last_name}\"\n  end\nend",
+    language: "Ruby"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "With Line Numbers", description: "Code block showing line numbers.",
+  source: 'eden_code_block(
+  code: "const greet = (name) => {\n  return `Hello, ${name}!`;\n};\n\nconsole.log(greet(\"World\"));",
+  language: "JavaScript",
+  line_numbers: true
+)') do %>
+  <%= eden_code_block(
+    code: "const greet = (name) => {\n  return `Hello, ${name}!`;\n};\n\nconsole.log(greet(\"World\"));",
+    language: "JavaScript",
+    line_numbers: true
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Without Copy Button", description: "Code block with copy disabled.",
+  source: 'eden_code_block(
+  code: "SELECT * FROM users WHERE active = true;",
+  language: "SQL",
+  copyable: false
+)') do %>
+  <%= eden_code_block(
+    code: "SELECT * FROM users WHERE active = true;",
+    language: "SQL",
+    copyable: false
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Plain (No Language)", description: "Code block without a language label.",
+  source: 'eden_code_block(code: "gem install eden_ui")') do %>
+  <%= eden_code_block(code: "gem install eden_ui") %>
+<% end %>

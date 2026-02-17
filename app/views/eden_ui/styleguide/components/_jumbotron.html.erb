@@ -1,0 +1,60 @@
+<%# ── Jumbotron component previews ── %>
+
+<%= styleguide_example(title: "Default with Title and Subtitle", source: 'eden_jumbotron(
+  title: "We invest in the world\'s potential",
+  subtitle: "Here at Eden UI we focus on building components where technology, innovation, and capital can unlock long-term value."
+)') do %>
+  <div class="w-full">
+    <%= eden_jumbotron(
+      title: "We invest in the world's potential",
+      subtitle: "Here at Eden UI we focus on building components where technology, innovation, and capital can unlock long-term value."
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Block Content (CTA buttons)", source: 'eden_jumbotron(
+  title: "Build with confidence",
+  subtitle: "A comprehensive component library for Rails applications."
+) do
+  eden_button(variant: :primary, size: :lg) { "Get Started" }
+  eden_button(variant: :default, size: :lg, outline: true) { "Learn More" }
+end') do %>
+  <div class="w-full">
+    <%= eden_jumbotron(
+      title: "Build with confidence",
+      subtitle: "A comprehensive component library for Rails applications built with Tailwind CSS."
+    ) do %>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <%= eden_button(variant: :primary, size: :lg) { "Get Started" } %>
+        <%= eden_button(variant: :default, size: :lg, outline: true) { "Learn More" } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Title Only", source: 'eden_jumbotron(title: "Welcome to Eden UI")') do %>
+  <div class="w-full">
+    <%= eden_jumbotron(title: "Welcome to Eden UI") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Custom Block Content Only", source: 'eden_jumbotron do
+  content_tag(:div, class: "text-center") do
+    content_tag(:h1, "Fully Custom Jumbotron", class: "...") +
+    content_tag(:p, "When you need full control, use block content.", class: "...") +
+    eden_button(variant: :primary) { "Take Action" }
+  end
+end') do %>
+  <div class="w-full">
+    <%= eden_jumbotron do %>
+      <div class="text-center">
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">Fully Custom Jumbotron</h1>
+        <p class="mb-6 text-lg text-gray-500 dark:text-gray-400">When you need full control over the content, pass a block with your own markup instead of using the title and subtitle params.</p>
+        <div class="flex justify-center gap-3">
+          <%= eden_button(variant: :primary) { "Take Action" } %>
+          <%= eden_button(variant: :default, outline: true) { "View Docs" } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

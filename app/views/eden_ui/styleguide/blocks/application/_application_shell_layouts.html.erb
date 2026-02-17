@@ -1,0 +1,121 @@
+<%= styleguide_block_example(
+  title: "Stacked Application Shell",
+  description: "Classic top-nav application shell with sidebar and main content area",
+  source: 'eden_sidebar do
+  # Sidebar navigation items
+end
+# nav bar + main content area'
+) do %>
+  <div class="relative bg-zinc-50 dark:bg-zinc-900 antialiased h-[500px] overflow-hidden">
+    <%# Navbar %>
+    <nav class="absolute left-0 right-0 top-0 z-50 bg-white border-b border-zinc-200 px-4 py-2.5 dark:bg-zinc-800 dark:border-zinc-700">
+      <div class="flex flex-wrap justify-between items-center">
+        <div class="flex justify-start items-center">
+          <button class="p-2 mr-2 text-zinc-600 rounded-lg cursor-pointer md:hidden hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-700">
+            <%= eden_icon("bars-3", size: :md) %>
+          </button>
+          <a href="#" class="flex items-center justify-between mr-4">
+            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Dashboard</span>
+          </a>
+        </div>
+        <div class="flex items-center gap-3">
+          <%= eden_search_input(placeholder: "Search...", size: :sm) %>
+          <button class="p-2 text-zinc-500 rounded-lg hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-700">
+            <%= eden_icon("bell", size: :md) %>
+          </button>
+          <%= eden_avatar(initials: "JD", size: :sm) %>
+        </div>
+      </div>
+    </nav>
+
+    <%# Sidebar %>
+    <aside class="absolute top-0 left-0 z-40 w-64 h-full pt-14 transition-transform bg-white border-r border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700">
+      <div class="overflow-y-auto py-5 px-3 h-full">
+        <ul class="space-y-2">
+          <% [
+            ["home", "Dashboard", true],
+            ["chart-bar", "Analytics", false],
+            ["shopping-cart", "E-commerce", false],
+            ["document", "Pages", false],
+            ["user", "Users", false],
+            ["cog", "Settings", false],
+          ].each do |icon, label, active| %>
+            <li>
+              <a href="#" class="flex items-center p-2 text-base font-medium rounded-lg <%= active ? 'bg-zinc-100 dark:bg-zinc-700 text-zinc-900 dark:text-white' : 'text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-700' %>">
+                <%= eden_icon(icon, size: :md) %>
+                <span class="ml-3"><%= label %></span>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </aside>
+
+    <%# Main content %>
+    <main class="absolute top-14 left-64 right-0 bottom-0 p-4">
+      <div class="p-4 border-2 border-dashed rounded-lg border-zinc-200 dark:border-zinc-700 h-full flex items-center justify-center">
+        <span class="text-zinc-400 dark:text-zinc-500 text-sm">Main Content Area</span>
+      </div>
+    </main>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Sidebar Collapsed Shell",
+  description: "Application shell with collapsible icon-only sidebar",
+  source: '# Top navbar
+# Icon-only sidebar (w-16)
+# Main content area'
+) do %>
+  <div class="relative bg-zinc-50 dark:bg-zinc-900 antialiased h-[500px] overflow-hidden">
+    <%# Navbar %>
+    <nav class="absolute left-0 right-0 top-0 z-50 bg-white border-b border-zinc-200 px-4 py-2.5 dark:bg-zinc-800 dark:border-zinc-700">
+      <div class="flex flex-wrap justify-between items-center">
+        <div class="flex justify-start items-center">
+          <button class="p-2 mr-2 text-zinc-600 rounded-lg hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700">
+            <%= eden_icon("bars-3", size: :md) %>
+          </button>
+          <span class="text-xl font-semibold dark:text-white">App Name</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="p-2 text-zinc-500 rounded-lg hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700">
+            <%= eden_icon("bell", size: :md) %>
+          </button>
+          <button class="p-2 text-zinc-500 rounded-lg hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700">
+            <%= eden_icon("cog", size: :md) %>
+          </button>
+          <%= eden_avatar(initials: "JD", size: :sm) %>
+        </div>
+      </div>
+    </nav>
+
+    <%# Collapsed sidebar %>
+    <aside class="absolute top-0 left-0 z-40 w-16 h-full pt-14 bg-white border-r border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700">
+      <div class="flex flex-col items-center py-5 h-full">
+        <ul class="space-y-2">
+          <% [
+            ["home", true],
+            ["chart-bar", false],
+            ["shopping-cart", false],
+            ["document", false],
+            ["user", false],
+            ["cog", false],
+          ].each do |icon, active| %>
+            <li>
+              <a href="#" class="flex items-center justify-center p-3 rounded-lg <%= active ? 'bg-zinc-100 dark:bg-zinc-700 text-zinc-900 dark:text-white' : 'text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-700' %>">
+                <%= eden_icon(icon, size: :md) %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </aside>
+
+    <%# Main content %>
+    <main class="absolute top-14 left-16 right-0 bottom-0 p-4">
+      <div class="p-4 border-2 border-dashed rounded-lg border-zinc-200 dark:border-zinc-700 h-full flex items-center justify-center">
+        <span class="text-zinc-400 dark:text-zinc-500 text-sm">Main Content Area</span>
+      </div>
+    </main>
+  </div>
+<% end %>

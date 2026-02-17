@@ -1,0 +1,80 @@
+<%= styleguide_block_example(
+  title: "Read Product Drawer",
+  description: "Slide-out drawer showing product details with image and specs",
+  source: 'eden_badge(text: "In Stock", variant: :success)
+eden_button(variant: :primary) { "Edit" }
+
+# Rendered inside a side drawer with product
+# image, specs grid, and action buttons'
+) do %>
+  <div class="relative bg-zinc-100 dark:bg-zinc-900 min-h-[500px] flex">
+    <%# Left area placeholder %>
+    <div class="flex-1 p-8 flex items-center justify-center">
+      <span class="text-zinc-400 dark:text-zinc-500 text-sm">Page content behind drawer</span>
+    </div>
+
+    <%# Drawer panel %>
+    <div class="w-96 bg-white dark:bg-zinc-800 border-l border-zinc-200 dark:border-zinc-700 overflow-y-auto">
+      <%# Header %>
+      <div class="flex items-center justify-between p-5 border-b border-zinc-200 dark:border-zinc-700">
+        <h5 class="text-lg font-semibold text-zinc-900 dark:text-white">Product Details</h5>
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+      <%# Content %>
+      <div class="p-5">
+        <%# Image %>
+        <div class="bg-zinc-100 dark:bg-zinc-700 rounded-lg h-48 flex items-center justify-center mb-4">
+          <span class="text-zinc-400 dark:text-zinc-500 text-sm">Product Image</span>
+        </div>
+        <%# Title and badges %>
+        <div class="mb-4">
+          <div class="flex items-center gap-2 mb-1">
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-white">Apple iMac 27"</h3>
+          </div>
+          <div class="flex items-center gap-2">
+            <%= eden_badge(text: "In Stock", variant: :success, size: :sm) %>
+            <%= eden_badge(text: "Featured", variant: :primary, size: :sm) %>
+          </div>
+        </div>
+        <p class="text-2xl font-bold text-zinc-900 dark:text-white mb-4">$1,499</p>
+        <%# Specs %>
+        <dl class="space-y-3 text-sm mb-6">
+          <% [
+            ["Brand", "Apple"],
+            ["Category", "Electronics / Desktop"],
+            ["SKU", "IMAC-27-5K-2024"],
+            ["Weight", "9.88 kg"],
+            ["Dimensions", "65.0 x 20.3 x 51.6 cm"],
+            ["Stock", "95 units"],
+          ].each do |label, value| %>
+            <div class="flex justify-between">
+              <dt class="text-zinc-500 dark:text-zinc-400"><%= label %></dt>
+              <dd class="font-medium text-zinc-900 dark:text-white"><%= value %></dd>
+            </div>
+          <% end %>
+        </dl>
+        <%# Description %>
+        <div class="mb-6">
+          <h4 class="text-sm font-medium text-zinc-900 dark:text-white mb-2">Description</h4>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">
+            The all-new iMac features a stunning 27-inch 5K Retina display with True Tone, Apple M1 Pro chip, 16GB unified memory, and 512GB SSD storage.
+          </p>
+        </div>
+        <%# Actions %>
+        <div class="flex items-center gap-2">
+          <%= eden_button(variant: :primary, size: :sm) do %>
+            <%= eden_icon("pencil", size: :sm) %>
+            <span class="ml-1">Edit</span>
+          <% end %>
+          <%= eden_button(variant: :ghost, size: :sm) { "Duplicate" } %>
+          <%= eden_button(variant: :danger, size: :sm) do %>
+            <%= eden_icon("trash", size: :sm) %>
+            <span class="ml-1">Delete</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

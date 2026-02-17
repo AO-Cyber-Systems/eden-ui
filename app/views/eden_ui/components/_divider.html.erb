@@ -1,0 +1,36 @@
+<%
+  text ||= nil
+  variant ||= :default
+  spacing ||= :md
+  icon ||= nil
+  html_options ||= {}
+
+  spacing_class = case spacing.to_sym
+  when :sm then "my-2"
+  when :lg then "my-8"
+  else "my-4"
+  end
+
+  line_class = case variant.to_sym
+  when :primary then "border-blue-300 dark:border-blue-700"
+  when :dashed  then "border-gray-200 dark:border-gray-700 border-dashed"
+  else "border-gray-200 dark:border-gray-700"
+  end
+
+  classes = [spacing_class, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<% if text || icon %>
+  <div class="relative flex items-center <%= classes %>" <%= tag.attributes(html_options) %>>
+    <div class="flex-grow border-t <%= line_class %>"></div>
+    <span class="flex-shrink-0 mx-4 text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 px-2">
+      <% if icon %>
+        <%= eden_icon(icon, size: :sm) %>
+      <% end %>
+      <% if text %><%= text %><% end %>
+    </span>
+    <div class="flex-grow border-t <%= line_class %>"></div>
+  </div>
+<% else %>
+  <hr class="<%= [line_class, classes].compact_blank.join(" ") %>" <%= tag.attributes(html_options) %>>
+<% end %>

@@ -1,0 +1,123 @@
+<%= styleguide_block_example(
+  title: "Delete Confirmation Modal",
+  description: "Standard confirmation dialog for deleting a single item",
+  source: 'eden_modal(id: "delete-confirm-modal", size: :sm) do
+  eden_icon("exclamation-triangle", size: :lg)
+  # "Are you sure?" message
+  eden_button(variant: :danger) { "Yes, delete" }
+  eden_button(variant: :ghost) { "Cancel" }
+end'
+) do %>
+  <div class="relative p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div class="relative p-4 text-center bg-white rounded-lg shadow dark:bg-zinc-800 sm:p-5 max-w-md mx-auto">
+      <button class="text-zinc-400 absolute top-2.5 right-2.5 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+        <%= eden_icon("x-mark", size: :sm) %>
+      </button>
+      <div class="flex justify-center mb-4 text-zinc-400 dark:text-zinc-500">
+        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
+        </svg>
+      </div>
+      <p class="mb-4 text-zinc-500 dark:text-zinc-300">Are you sure you want to delete this item? This action cannot be undone.</p>
+      <div class="flex justify-center items-center gap-3">
+        <%= eden_button(variant: :danger) { "Yes, I'm sure" } %>
+        <%= eden_button(variant: :ghost) { "No, cancel" } %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Delete with Item Details",
+  description: "Confirmation modal showing the item to be deleted for verification",
+  source: 'eden_modal(id: "delete-detail-modal", size: :md) do
+  # Item details shown for verification
+  eden_input(placeholder: "Type DELETE to confirm")
+  eden_button(variant: :danger) { "Delete permanently" }
+end'
+) do %>
+  <div class="relative p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-zinc-800 sm:p-5 max-w-md mx-auto">
+      <div class="flex justify-between items-center pb-4 mb-4 border-b border-zinc-200 dark:border-zinc-700">
+        <h3 class="text-lg font-semibold text-red-600 dark:text-red-500">Delete Product</h3>
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+
+      <%# Item being deleted %>
+      <div class="flex items-center gap-3 p-3 mb-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+        <div class="w-12 h-12 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center flex-shrink-0">
+          <span class="text-zinc-400 text-xs">IMG</span>
+        </div>
+        <div>
+          <p class="text-sm font-medium text-zinc-900 dark:text-white">Apple iMac 27"</p>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">SKU: IMAC-27-5K &middot; $1,499</p>
+        </div>
+      </div>
+
+      <%= eden_alert(variant: :danger) do %>
+        <span class="text-sm">This will permanently delete the product and all associated data including orders, reviews, and analytics.</span>
+      <% end %>
+
+      <div class="mt-4 mb-4">
+        <%= eden_form_group(label: "Type DELETE to confirm", required: true) do %>
+          <%= eden_input(placeholder: "DELETE") %>
+        <% end %>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <%= eden_button(variant: :danger) do %>
+          <%= eden_icon("trash", size: :sm) %>
+          <span class="ml-1">Delete permanently</span>
+        <% end %>
+        <%= eden_button(variant: :ghost) { "Cancel" } %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Bulk Delete Confirmation",
+  description: "Confirmation for deleting multiple selected items",
+  source: 'eden_modal(id: "bulk-delete-modal") do
+  # List of items to be deleted
+  eden_button(variant: :danger) { "Delete all" }
+end'
+) do %>
+  <div class="relative p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-zinc-800 sm:p-5 max-w-md mx-auto">
+      <div class="flex justify-between items-center pb-4 mb-4 border-b border-zinc-200 dark:border-zinc-700">
+        <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">Delete 5 items?</h3>
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-3">The following items will be permanently deleted:</p>
+
+      <ul class="space-y-2 mb-4 max-h-48 overflow-y-auto">
+        <% [
+          "Apple iMac 27\"",
+          "Apple MacBook Pro 17\"",
+          "iPhone 14 Pro",
+          "iPad Air 5",
+          "Xbox Series X",
+        ].each do |item| %>
+          <li class="flex items-center gap-2 p-2 text-sm bg-zinc-50 dark:bg-zinc-700 rounded-lg">
+            <span class="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
+            <span class="text-zinc-700 dark:text-zinc-300"><%= item %></span>
+          </li>
+        <% end %>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <%= eden_button(variant: :danger) do %>
+          <%= eden_icon("trash", size: :sm) %>
+          <span class="ml-1">Delete all (5)</span>
+        <% end %>
+        <%= eden_button(variant: :ghost) { "Cancel" } %>
+      </div>
+    </div>
+  </div>
+<% end %>

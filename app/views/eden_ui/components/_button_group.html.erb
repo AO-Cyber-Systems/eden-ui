@@ -1,0 +1,11 @@
+<%
+  size ||= :md
+  html_options ||= {}
+  content ||= nil
+
+  classes = ["inline-flex rounded-lg shadow-sm", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" role="group" <%= tag.attributes(html_options) %>>
+  <%= content %>
+</div>

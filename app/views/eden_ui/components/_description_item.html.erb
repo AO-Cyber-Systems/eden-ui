@@ -1,0 +1,21 @@
+<%
+  term ||= nil
+  detail ||= nil
+  vertical ||= false
+  html_options ||= {}
+  content ||= nil
+
+  classes = [
+    vertical ? "py-3" : "py-3 sm:grid sm:grid-cols-3 sm:gap-4",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <% if term %>
+    <dt class="text-sm font-medium text-gray-500 dark:text-gray-400"><%= term %></dt>
+  <% end %>
+  <dd class="<%= vertical ? "mt-1" : "mt-1 sm:mt-0 sm:col-span-2" %> text-sm text-gray-900 dark:text-white">
+    <%= content || detail %>
+  </dd>
+</div>

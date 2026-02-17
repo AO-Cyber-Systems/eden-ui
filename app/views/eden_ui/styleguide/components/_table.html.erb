@@ -1,0 +1,177 @@
+<%# Table component preview %>
+
+<%= styleguide_example(title: "Default table", source: 'eden_table do
+  eden_table_head do
+    "<th>Product name</th><th>Category</th><th>Price</th>"
+  end
+  eden_table_row do
+    "<td>Apple MacBook Pro</td><td>Laptops</td><td>$2,999</td>"
+  end
+  eden_table_row do
+    "<td>Microsoft Surface Pro</td><td>Tablets</td><td>$1,999</td>"
+  end
+  eden_table_row do
+    "<td>Magic Mouse</td><td>Accessories</td><td>$99</td>"
+  end
+end') do %>
+  <div class="w-full">
+    <%= eden_table do %>
+      <%= eden_table_head do %>
+        <th>Product name</th>
+        <th>Category</th>
+        <th>Price</th>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Apple MacBook Pro 17"</td>
+        <td>Laptops</td>
+        <td>$2,999</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Microsoft Surface Pro</td>
+        <td>Tablets</td>
+        <td>$1,999</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Magic Mouse 2</td>
+        <td>Accessories</td>
+        <td>$99</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Google Pixel Phone</td>
+        <td>Phones</td>
+        <td>$799</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Apple Watch Ultra</td>
+        <td>Wearables</td>
+        <td>$799</td>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Striped rows", description: "Alternating row backgrounds for readability", source: 'eden_table(striped: true) do
+  eden_table_head { "<th>Product name</th><th>Category</th><th>Price</th>" }
+  eden_table_row { "<td>Apple MacBook Pro</td><td>Laptops</td><td>$2,999</td>" }
+  eden_table_row { "<td>Microsoft Surface Pro</td><td>Tablets</td><td>$1,999</td>" }
+  eden_table_row { "<td>Magic Mouse</td><td>Accessories</td><td>$99</td>" }
+end') do %>
+  <div class="w-full">
+    <%= eden_table(striped: true) do %>
+      <%= eden_table_head do %>
+        <th>Product name</th>
+        <th>Category</th>
+        <th>Price</th>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Apple MacBook Pro 17"</td>
+        <td>Laptops</td>
+        <td>$2,999</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Microsoft Surface Pro</td>
+        <td>Tablets</td>
+        <td>$1,999</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Magic Mouse 2</td>
+        <td>Accessories</td>
+        <td>$99</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Google Pixel Phone</td>
+        <td>Phones</td>
+        <td>$799</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Apple Watch Ultra</td>
+        <td>Wearables</td>
+        <td>$799</td>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Hoverable rows", description: "Rows highlight on hover", source: 'eden_table(hoverable: true) do
+  eden_table_head { "<th>Product name</th><th>Category</th><th>Price</th>" }
+  eden_table_row { "<td>Apple MacBook Pro</td><td>Laptops</td><td>$2,999</td>" }
+  eden_table_row { "<td>Microsoft Surface Pro</td><td>Tablets</td><td>$1,999</td>" }
+  eden_table_row { "<td>Magic Mouse</td><td>Accessories</td><td>$99</td>" }
+end') do %>
+  <div class="w-full">
+    <%= eden_table(hoverable: true) do %>
+      <%= eden_table_head do %>
+        <th>Product name</th>
+        <th>Category</th>
+        <th>Price</th>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Apple MacBook Pro 17"</td>
+        <td>Laptops</td>
+        <td>$2,999</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Microsoft Surface Pro</td>
+        <td>Tablets</td>
+        <td>$1,999</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Magic Mouse 2</td>
+        <td>Accessories</td>
+        <td>$99</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Google Pixel Phone</td>
+        <td>Phones</td>
+        <td>$799</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Apple Watch Ultra</td>
+        <td>Wearables</td>
+        <td>$799</td>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Striped and hoverable", description: "Combined striped and hoverable options", source: 'eden_table(striped: true, hoverable: true) do
+  eden_table_head { "<th>Product name</th><th>Category</th><th>Price</th>" }
+  eden_table_row { "<td>Apple MacBook Pro</td><td>Laptops</td><td>$2,999</td>" }
+  eden_table_row { "<td>Microsoft Surface Pro</td><td>Tablets</td><td>$1,999</td>" }
+  eden_table_row { "<td>Magic Mouse</td><td>Accessories</td><td>$99</td>" }
+end') do %>
+  <div class="w-full">
+    <%= eden_table(striped: true, hoverable: true) do %>
+      <%= eden_table_head do %>
+        <th>Product name</th>
+        <th>Category</th>
+        <th>Price</th>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Apple MacBook Pro 17"</td>
+        <td>Laptops</td>
+        <td>$2,999</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Microsoft Surface Pro</td>
+        <td>Tablets</td>
+        <td>$1,999</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Magic Mouse 2</td>
+        <td>Accessories</td>
+        <td>$99</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Google Pixel Phone</td>
+        <td>Phones</td>
+        <td>$799</td>
+      <% end %>
+      <%= eden_table_row do %>
+        <td>Apple Watch Ultra</td>
+        <td>Wearables</td>
+        <td>$799</td>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

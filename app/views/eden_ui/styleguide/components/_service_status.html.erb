@@ -1,0 +1,29 @@
+<%# Service Status component preview %>
+
+<%= styleguide_example(title: "Status List", description: "List of services with different statuses.",
+  source: 'eden_service_status(name: "API Server", status: :operational, uptime: "99.99%", response_time: "45ms")
+eden_service_status(name: "Database Cluster", status: :operational, uptime: "99.95%", response_time: "12ms")
+eden_service_status(name: "CDN", status: :degraded, uptime: "98.5%", response_time: "320ms", last_incident: "2 hours ago")
+eden_service_status(name: "Email Service", status: :maintenance, last_incident: "Scheduled")') do %>
+  <div class="max-w-2xl bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+    <%= eden_service_status(name: "API Server", status: :operational, uptime: "99.99%", response_time: "45ms") %>
+    <%= eden_service_status(name: "Database Cluster", status: :operational, uptime: "99.95%", response_time: "12ms") %>
+    <%= eden_service_status(name: "CDN", status: :degraded, uptime: "98.5%", response_time: "320ms", last_incident: "2 hours ago") %>
+    <%= eden_service_status(name: "Email Service", status: :maintenance, last_incident: "Scheduled") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "All Status Types", description: "Each possible status state.",
+  source: 'eden_service_status(name: "Operational Service", status: :operational)
+eden_service_status(name: "Degraded Service", status: :degraded)
+eden_service_status(name: "Partial Outage", status: :partial_outage)
+eden_service_status(name: "Major Outage", status: :major_outage)
+eden_service_status(name: "Under Maintenance", status: :maintenance)') do %>
+  <div class="max-w-2xl bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+    <%= eden_service_status(name: "Operational Service", status: :operational) %>
+    <%= eden_service_status(name: "Degraded Service", status: :degraded) %>
+    <%= eden_service_status(name: "Partial Outage", status: :partial_outage) %>
+    <%= eden_service_status(name: "Major Outage", status: :major_outage) %>
+    <%= eden_service_status(name: "Under Maintenance", status: :maintenance) %>
+  </div>
+<% end %>

@@ -1,0 +1,52 @@
+<%# Kanban Card component preview %>
+
+<%= styleguide_example(title: "Basic Card", description: "Simple kanban card with title and priority.",
+  source: 'eden_kanban_card(title: "Design system audit", priority: :high)') do %>
+  <div class="max-w-sm">
+    <%= eden_kanban_card(title: "Design system audit", priority: :high) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Full Featured Card", description: "Card with all options: description, tags, assignees, and due date.",
+  source: 'eden_kanban_card(
+  title: "Implement search feature",
+  description: "Add full-text search with Elasticsearch",
+  priority: :high,
+  due_date: "Feb 20",
+  assignees: [
+    {name: "Alice Chen", initials: "AC"},
+    {name: "Bob Kim", initials: "BK"}
+  ],
+  tags: [
+    {label: "Feature", color: :blue},
+    {label: "Backend", color: :purple}
+  ]
+)') do %>
+  <div class="max-w-sm">
+    <%= eden_kanban_card(
+      title: "Implement search feature",
+      description: "Add full-text search with Elasticsearch integration",
+      priority: :high,
+      due_date: "Feb 20",
+      assignees: [
+        {name: "Alice Chen", initials: "AC"},
+        {name: "Bob Kim", initials: "BK"}
+      ],
+      tags: [
+        {label: "Feature", color: :blue},
+        {label: "Backend", color: :purple}
+      ]
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Priority Levels", description: "Cards showing different priority indicators.",
+  source: 'eden_kanban_card(title: "Critical bug fix", priority: :high)
+eden_kanban_card(title: "Update documentation", priority: :medium)
+eden_kanban_card(title: "Code cleanup", priority: :low)') do %>
+  <div class="max-w-sm space-y-3">
+    <%= eden_kanban_card(title: "Critical bug fix", priority: :high, description: "Login failing on mobile Safari") %>
+    <%= eden_kanban_card(title: "Update documentation", priority: :medium, description: "Add API reference docs") %>
+    <%= eden_kanban_card(title: "Code cleanup", priority: :low, description: "Remove deprecated methods") %>
+  </div>
+<% end %>

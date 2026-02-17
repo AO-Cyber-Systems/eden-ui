@@ -1,0 +1,114 @@
+<%= styleguide_block_example(
+  title: "Success Modal",
+  description: "Modal confirmation with success icon and next-step actions",
+  source: 'eden_modal(id: "success-modal", size: :sm) do
+  eden_icon("check", size: :xl)
+  # "Successfully created!" message
+  eden_button(variant: :primary) { "Continue" }
+end'
+) do %>
+  <div class="relative p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div class="relative p-4 text-center bg-white rounded-lg shadow dark:bg-zinc-800 sm:p-5 max-w-md mx-auto">
+      <button class="text-zinc-400 absolute top-2.5 right-2.5 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+        <%= eden_icon("x-mark", size: :sm) %>
+      </button>
+      <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 p-2 flex items-center justify-center mx-auto mb-3.5">
+        <svg class="w-8 h-8 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+      <p class="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">Successfully created!</p>
+      <p class="mb-6 text-sm text-zinc-500 dark:text-zinc-400">Your new product has been added to the catalog and is now visible to customers.</p>
+      <div class="flex justify-center gap-3">
+        <%= eden_button(variant: :primary) { "Continue" } %>
+        <%= eden_button(variant: :ghost) { "View product" } %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Success Alert Banner",
+  description: "Inline success alert with details and dismiss action",
+  source: 'eden_alert(variant: :success, dismissible: true) do
+  # Success message with product details
+end'
+) do %>
+  <div class="p-6 bg-zinc-50 dark:bg-zinc-900 space-y-4 max-w-2xl mx-auto">
+    <%# Simple success alert %>
+    <%= eden_alert(variant: :success, dismissible: true) do %>
+      <span class="font-medium">Success!</span> Product has been created successfully.
+    <% end %>
+
+    <%# Detailed success alert %>
+    <div class="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+      <div class="flex items-start">
+        <div class="flex-shrink-0">
+          <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div class="ml-3 flex-1">
+          <h3 class="text-sm font-medium text-green-800 dark:text-green-200">Product created successfully</h3>
+          <div class="mt-2 text-sm text-green-700 dark:text-green-300">
+            <p>Your product <span class="font-semibold">"Apple iMac 27"</span> has been added to the catalog.</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+              <li>Product ID: #PRD-001234</li>
+              <li>Status: Published</li>
+              <li>Category: Electronics</li>
+            </ul>
+          </div>
+          <div class="mt-3 flex items-center gap-3">
+            <a href="#" class="text-sm font-medium text-green-800 dark:text-green-200 underline hover:no-underline">View product</a>
+            <a href="#" class="text-sm font-medium text-green-800 dark:text-green-200 underline hover:no-underline">Add another</a>
+          </div>
+        </div>
+        <button class="flex-shrink-0 text-green-500 hover:text-green-700 dark:hover:text-green-300">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+    </div>
+
+    <%# Success with progress/next steps %>
+    <div class="p-4 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-zinc-900 dark:text-white">Order #ORD-5678 confirmed</h4>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">Just now</p>
+        </div>
+      </div>
+      <div class="ml-11">
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-3">The order has been confirmed and payment processed. Next steps:</p>
+        <div class="space-y-2 mb-4">
+          <% [
+            ["Payment processed", true],
+            ["Inventory updated", true],
+            ["Confirmation email sent", true],
+            ["Shipping label created", false],
+          ].each do |step, done| %>
+            <div class="flex items-center gap-2 text-sm">
+              <% if done %>
+                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-zinc-700 dark:text-zinc-300"><%= step %></span>
+              <% else %>
+                <span class="w-4 h-4 rounded-full border-2 border-zinc-300 dark:border-zinc-600"></span>
+                <span class="text-zinc-400 dark:text-zinc-500"><%= step %></span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="flex items-center gap-2">
+          <%= eden_button(variant: :primary, size: :xs) { "View order" } %>
+          <%= eden_button(variant: :ghost, size: :xs) { "Print receipt" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

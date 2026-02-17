@@ -1,0 +1,37 @@
+<%
+  label ||= nil
+  active ||= false
+  disabled ||= false
+  variant ||= :underline
+  target ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  display_text = label || content
+
+  tab_classes = case variant.to_sym
+  when :pill
+    if active
+      "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
+    elsif disabled
+      "inline-block px-4 py-3 text-gray-400 cursor-not-allowed dark:text-gray-500 rounded-lg"
+    else
+      "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+    end
+  when :full_width
+    active_fw = active ? "text-gray-900 bg-gray-100 dark:bg-gray-700 dark:text-white" : "bg-white hover:text-gray-700 hover:bg-gray-50 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+    "inline-block w-full p-4 #{active_fw} focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800"
+  else
+    if active
+      "inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500"
+    elsif disabled
+      "inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500"
+    else
+      "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+    end
+  end
+%>
+
+<li role="presentation">
+  <button class="<%= [tab_classes, html_options.delete(:class)].compact_blank.join(" ") %>" role="tab" type="button" aria-selected="<%= active %>" <% if target %>data-eden-tab-target="tab" data-action="eden-tab#select"<% end %> <%= "disabled" if disabled %> <%= tag.attributes(html_options) %>><%= display_text %></button>
+</li>

@@ -1,0 +1,44 @@
+<%= eden_auth_layout(app_name: "Eden", heading: "Sign in to your account") do %>
+  <form class="space-y-4 md:space-y-6" action="#">
+    <%= eden_form_group(label: "Email address", required: true) do %>
+      <%= eden_input(type: :email, id: "email", name: "email", placeholder: "name@company.com") %>
+    <% end %>
+
+    <%= eden_form_group(label: "Password", required: true) do %>
+      <%= eden_input(type: :password, id: "password", name: "password", placeholder: "••••••••") %>
+    <% end %>
+
+    <div class="flex items-center justify-between">
+      <%= eden_toggle(label: "Remember me", id: "remember", name: "remember", size: :sm) %>
+      <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
+    </div>
+
+    <%= eden_button(variant: :primary, type: :submit, size: :lg) do %>
+      <span class="w-full text-center">Sign in</span>
+    <% end %>
+
+    <%# Divider %>
+    <div class="flex items-center">
+      <div class="h-px flex-1 bg-gray-200 dark:bg-gray-700"></div>
+      <span class="px-3 text-sm text-gray-500 dark:text-gray-400">or continue with</span>
+      <div class="h-px flex-1 bg-gray-200 dark:bg-gray-700"></div>
+    </div>
+
+    <%# Social login buttons %>
+    <div class="grid grid-cols-2 gap-3">
+      <%= eden_button(variant: :dark, outline: true) do %>
+        <svg class="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+        GitHub
+      <% end %>
+      <%= eden_button(variant: :dark, outline: true) do %>
+        <svg class="mr-2 h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Google
+      <% end %>
+    </div>
+
+    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+      Don't have an account yet?
+      <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
+    </p>
+  </form>
+<% end %>

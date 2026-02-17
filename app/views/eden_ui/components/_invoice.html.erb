@@ -1,0 +1,160 @@
+<%
+  invoice_number ||= nil
+  date ||= nil
+  due_date ||= nil
+  from ||= {}
+  to ||= {}
+  items ||= []
+  subtotal ||= nil
+  tax ||= nil
+  shipping ||= nil
+  discount ||= nil
+  total ||= nil
+  status ||= :pending
+  notes ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  status_classes = case status.to_sym
+  when :paid
+    "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
+  when :overdue
+    "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
+  when :draft
+    "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300"
+  else
+    "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
+  end
+
+  status_label = status.to_s.capitalize
+
+  classes = [
+    "bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 sm:p-8 space-y-6",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%# Header %>
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-gray-200 dark:border-gray-700 pb-6">
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Invoice</h2>
+      <% if invoice_number %>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">#<%= invoice_number %></p>
+      <% end %>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="inline-flex items-center text-xs font-medium px-2.5 py-0.5 rounded <%= status_classes %>"><%= status_label %></span>
+      <% if date %>
+        <span class="text-sm text-gray-500 dark:text-gray-400"><%= date %></span>
+      <% end %>
+    </div>
+  </div>
+
+  <%# From / To addresses %>
+  <% if from.any? || to.any? %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <% if from.any? %>
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">From:</h3>
+          <address class="text-sm text-gray-500 dark:text-gray-400 not-italic space-y-1">
+            <% if from[:name] %><p class="font-medium text-gray-900 dark:text-white"><%= from[:name] %></p><% end %>
+            <% if from[:address] %><p><%= from[:address] %></p><% end %>
+            <% if from[:city] %><p><%= from[:city] %></p><% end %>
+            <% if from[:email] %><p><%= from[:email] %></p><% end %>
+            <% if from[:phone] %><p><%= from[:phone] %></p><% end %>
+          </address>
+        </div>
+      <% end %>
+      <% if to.any? %>
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">To:</h3>
+          <address class="text-sm text-gray-500 dark:text-gray-400 not-italic space-y-1">
+            <% if to[:name] %><p class="font-medium text-gray-900 dark:text-white"><%= to[:name] %></p><% end %>
+            <% if to[:address] %><p><%= to[:address] %></p><% end %>
+            <% if to[:city] %><p><%= to[:city] %></p><% end %>
+            <% if to[:email] %><p><%= to[:email] %></p><% end %>
+            <% if to[:phone] %><p><%= to[:phone] %></p><% end %>
+          </address>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%# Due date %>
+  <% if due_date %>
+    <p class="text-sm text-gray-500 dark:text-gray-400">Due date: <span class="font-medium text-gray-900 dark:text-white"><%= due_date %></span></p>
+  <% end %>
+
+  <%# Items table %>
+  <% if items.any? %>
+    <div class="relative overflow-x-auto">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">Description</th>
+            <th scope="col" class="px-6 py-3 text-center">Qty</th>
+            <th scope="col" class="px-6 py-3 text-right">Unit Price</th>
+            <th scope="col" class="px-6 py-3 text-right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.each do |item| %>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <td class="px-6 py-4 font-medium text-gray-900 dark:text-white"><%= item[:description] %></td>
+              <td class="px-6 py-4 text-center"><%= item[:quantity] %></td>
+              <td class="px-6 py-4 text-right"><%= item[:unit_price] %></td>
+              <td class="px-6 py-4 text-right font-semibold text-gray-900 dark:text-white"><%= item[:total] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+
+  <%# Summary %>
+  <div class="flex justify-end">
+    <div class="w-full max-w-xs space-y-2">
+      <% if subtotal %>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500 dark:text-gray-400">Subtotal</span>
+          <span class="font-medium text-gray-900 dark:text-white"><%= subtotal %></span>
+        </div>
+      <% end %>
+      <% if tax %>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500 dark:text-gray-400">Tax</span>
+          <span class="font-medium text-gray-900 dark:text-white"><%= tax %></span>
+        </div>
+      <% end %>
+      <% if shipping %>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500 dark:text-gray-400">Shipping</span>
+          <span class="font-medium text-gray-900 dark:text-white"><%= shipping %></span>
+        </div>
+      <% end %>
+      <% if discount %>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500 dark:text-gray-400">Discount</span>
+          <span class="font-medium text-green-600 dark:text-green-400">-<%= discount %></span>
+        </div>
+      <% end %>
+      <% if total %>
+        <div class="flex justify-between pt-3 border-t border-gray-200 dark:border-gray-700">
+          <span class="text-base font-bold text-gray-900 dark:text-white">Total</span>
+          <span class="text-base font-bold text-gray-900 dark:text-white"><%= total %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%# Notes %>
+  <% if notes %>
+    <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+      <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Notes</h4>
+      <p class="text-sm text-gray-500 dark:text-gray-400"><%= notes %></p>
+    </div>
+  <% end %>
+
+  <%= content %>
+</div>

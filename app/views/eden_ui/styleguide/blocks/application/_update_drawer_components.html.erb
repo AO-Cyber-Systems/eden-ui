@@ -1,0 +1,121 @@
+<%= styleguide_block_example(
+  title: "Update Product Drawer",
+  description: "Side drawer with pre-populated form for editing product details",
+  source: 'eden_form_group(label: "Name") do
+  eden_input(value: "Apple iMac 27\"")
+end
+eden_button(variant: :primary) { "Update" }
+
+# Rendered inside a side drawer with form fields'
+) do %>
+  <div class="relative bg-zinc-100 dark:bg-zinc-900 min-h-[500px] flex">
+    <%# Left area placeholder %>
+    <div class="flex-1 p-8 flex items-center justify-center">
+      <span class="text-zinc-400 dark:text-zinc-500 text-sm">Page content behind drawer</span>
+    </div>
+
+    <%# Drawer panel %>
+    <div class="w-80 bg-white dark:bg-zinc-800 border-l border-zinc-200 dark:border-zinc-700 overflow-y-auto">
+      <div class="flex items-center justify-between p-5 border-b border-zinc-200 dark:border-zinc-700">
+        <h5 class="text-lg font-semibold text-zinc-900 dark:text-white">Edit Product</h5>
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+      <div class="p-5">
+        <form action="#" class="space-y-4">
+          <%= eden_form_group(label: "Name", required: true) do %>
+            <%= eden_input(value: "Apple iMac 27\"") %>
+          <% end %>
+          <%= eden_form_group(label: "Brand") do %>
+            <%= eden_input(value: "Apple") %>
+          <% end %>
+          <%= eden_form_group(label: "Price") do %>
+            <%= eden_input(type: :number, value: "1499") %>
+          <% end %>
+          <%= eden_form_group(label: "Category") do %>
+            <%= eden_select(options: ["Electronics", "TV/Monitors", "PC", "Phones"], placeholder: "Electronics") %>
+          <% end %>
+          <%= eden_form_group(label: "Weight (kg)") do %>
+            <%= eden_input(type: :number, value: "9.88") %>
+          <% end %>
+          <%= eden_form_group(label: "Description") do %>
+            <%= eden_textarea(rows: 4, placeholder: "5K Retina display with True Tone technology...") %>
+          <% end %>
+
+          <%# Status toggle %>
+          <div class="p-3 bg-zinc-50 dark:bg-zinc-700 rounded-lg">
+            <%= eden_toggle(label: "Published", checked: true) %>
+          </div>
+
+          <div class="flex items-center gap-2 pt-2">
+            <%= eden_button(variant: :primary) { "Update product" } %>
+            <%= eden_button(variant: :ghost) { "Cancel" } %>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Update User Drawer",
+  description: "Drawer for editing user details with role and status controls",
+  source: 'eden_avatar(initials: "BG", size: :lg)
+eden_form_group(label: "Name") do
+  eden_input(value: "Bonnie Green")
+end
+eden_toggle(label: "Active", checked: true)
+
+# Rendered inside a side drawer with user fields'
+) do %>
+  <div class="relative bg-zinc-100 dark:bg-zinc-900 min-h-[500px] flex">
+    <div class="flex-1 p-8 flex items-center justify-center">
+      <span class="text-zinc-400 dark:text-zinc-500 text-sm">Page content behind drawer</span>
+    </div>
+
+    <div class="w-80 bg-white dark:bg-zinc-800 border-l border-zinc-200 dark:border-zinc-700 overflow-y-auto">
+      <div class="flex items-center justify-between p-5 border-b border-zinc-200 dark:border-zinc-700">
+        <h5 class="text-lg font-semibold text-zinc-900 dark:text-white">Edit User</h5>
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+      <div class="p-5">
+        <%# Avatar section %>
+        <div class="flex items-center gap-3 mb-5 pb-5 border-b border-zinc-200 dark:border-zinc-700">
+          <%= eden_avatar(initials: "BG", size: :lg) %>
+          <div>
+            <p class="text-sm font-medium text-zinc-900 dark:text-white">Bonnie Green</p>
+            <%= eden_button(variant: :ghost, size: :xs) { "Change photo" } %>
+          </div>
+        </div>
+
+        <form action="#" class="space-y-4">
+          <%= eden_form_group(label: "Full Name") do %>
+            <%= eden_input(value: "Bonnie Green") %>
+          <% end %>
+          <%= eden_form_group(label: "Email") do %>
+            <%= eden_input(type: :email, value: "bonnie@company.com") %>
+          <% end %>
+          <%= eden_form_group(label: "Role") do %>
+            <%= eden_select(options: ["Administrator", "Editor", "Viewer", "Guest"], placeholder: "Administrator") %>
+          <% end %>
+          <%= eden_form_group(label: "Department") do %>
+            <%= eden_select(options: ["Engineering", "Design", "Marketing", "Sales"], placeholder: "Engineering") %>
+          <% end %>
+
+          <div class="space-y-3 p-3 bg-zinc-50 dark:bg-zinc-700 rounded-lg">
+            <%= eden_toggle(label: "Account active", checked: true) %>
+            <%= eden_toggle(label: "Email verified", checked: true) %>
+          </div>
+
+          <div class="flex items-center gap-2 pt-2">
+            <%= eden_button(variant: :primary) { "Save changes" } %>
+            <%= eden_button(variant: :ghost) { "Cancel" } %>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<% end %>

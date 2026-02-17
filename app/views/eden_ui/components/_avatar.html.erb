@@ -1,0 +1,57 @@
+<%
+  src ||= nil
+  alt ||= ""
+  size ||= :md
+  rounded ||= false
+  bordered ||= false
+  status ||= nil
+  status_position ||= :"top-right"
+  initials ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  size_classes = case size.to_sym
+  when :xs then "w-6 h-6"
+  when :sm then "w-8 h-8"
+  when :lg then "w-12 h-12"
+  when :xl then "w-16 h-16"
+  else "w-10 h-10"
+  end
+
+  rounded_class = rounded ? "rounded-full" : "rounded"
+  border_class = bordered ? "ring-2 ring-gray-300 dark:ring-gray-500" : ""
+
+  status_color = case status&.to_sym
+  when :online then "bg-green-400"
+  when :offline then "bg-gray-400"
+  when :busy then "bg-red-400"
+  when :away then "bg-yellow-400"
+  else nil
+  end
+
+  status_pos = case status_position.to_sym
+  when :"bottom-right" then "bottom-0 end-0"
+  when :"bottom-left" then "bottom-0 start-0"
+  when :"top-left" then "top-0 start-0"
+  else "top-0 end-0"
+  end
+
+  classes = [size_classes, rounded_class, border_class, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<div class="relative inline-flex items-center justify-center" <%= tag.attributes(html_options) %>>
+  <% if src %>
+    <img class="<%= classes %>" src="<%= src %>" alt="<%= alt %>">
+  <% elsif initials %>
+    <div class="<%= classes %> overflow-hidden bg-gray-100 dark:bg-gray-600 flex items-center justify-center">
+      <span class="font-medium text-gray-600 dark:text-gray-300"><%= initials %></span>
+    </div>
+  <% else %>
+    <div class="<%= classes %> overflow-hidden bg-gray-100 dark:bg-gray-600 flex items-center justify-center">
+      <svg class="w-full h-full text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7 9a7 7 0 1 1 14 0H3Z" clip-rule="evenodd"/></svg>
+    </div>
+  <% end %>
+  <% if status_color %>
+    <span class="<%= status_pos %> absolute w-3.5 h-3.5 <%= status_color %> border-2 border-white dark:border-gray-800 rounded-full"></span>
+  <% end %>
+</div>

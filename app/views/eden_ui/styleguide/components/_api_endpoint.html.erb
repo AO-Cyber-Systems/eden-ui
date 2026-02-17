@@ -1,0 +1,66 @@
+<%# API Endpoint component preview %>
+
+<%= styleguide_example(title: "GET Endpoint", description: "API endpoint card for a GET request with parameters and response example.",
+  source: 'eden_api_endpoint(
+  method: :get,
+  path: "/api/v1/users",
+  description: "Retrieve a paginated list of all users.",
+  auth_required: true,
+  params: [
+    { name: "page", type: "integer", required: false, description: "Page number (default: 1)" },
+    { name: "per_page", type: "integer", required: false, description: "Items per page (default: 25, max: 100)" },
+    { name: "status", type: "string", required: false, description: "Filter by status: active, inactive, pending" }
+  ],
+  response_example: "{\n  \"data\": [...],\n  \"meta\": { \"total\": 150, \"page\": 1 }\n}"
+)') do %>
+  <%= eden_api_endpoint(
+    method: :get,
+    path: "/api/v1/users",
+    description: "Retrieve a paginated list of all users.",
+    auth_required: true,
+    params: [
+      { name: "page", type: "integer", required: false, description: "Page number (default: 1)" },
+      { name: "per_page", type: "integer", required: false, description: "Items per page (default: 25, max: 100)" },
+      { name: "status", type: "string", required: false, description: "Filter by status: active, inactive, pending" }
+    ],
+    response_example: "{\n  \"data\": [\n    { \"id\": 1, \"name\": \"Alice\", \"email\": \"alice@example.com\" }\n  ],\n  \"meta\": { \"total\": 150, \"page\": 1 }\n}"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "POST Endpoint", description: "API endpoint card for creating a resource.",
+  source: 'eden_api_endpoint(
+  method: :post,
+  path: "/api/v1/users",
+  description: "Create a new user account.",
+  params: [
+    { name: "name", type: "string", required: true, description: "Full name" },
+    { name: "email", type: "string", required: true, description: "Email address" },
+    { name: "role", type: "string", required: false, description: "User role (default: member)" }
+  ]
+)') do %>
+  <%= eden_api_endpoint(
+    method: :post,
+    path: "/api/v1/users",
+    description: "Create a new user account.",
+    params: [
+      { name: "name", type: "string", required: true, description: "Full name of the user" },
+      { name: "email", type: "string", required: true, description: "Unique email address" },
+      { name: "role", type: "string", required: false, description: "User role (default: member)" }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "All Methods", description: "Endpoint cards for each HTTP method showing border colors.",
+  source: 'eden_api_endpoint(method: :get, path: "/api/v1/posts", auth_required: false)
+eden_api_endpoint(method: :post, path: "/api/v1/posts")
+eden_api_endpoint(method: :put, path: "/api/v1/posts/:id")
+eden_api_endpoint(method: :patch, path: "/api/v1/posts/:id")
+eden_api_endpoint(method: :delete, path: "/api/v1/posts/:id")') do %>
+  <div class="space-y-3">
+    <%= eden_api_endpoint(method: :get, path: "/api/v1/posts", auth_required: false) %>
+    <%= eden_api_endpoint(method: :post, path: "/api/v1/posts") %>
+    <%= eden_api_endpoint(method: :put, path: "/api/v1/posts/:id") %>
+    <%= eden_api_endpoint(method: :patch, path: "/api/v1/posts/:id") %>
+    <%= eden_api_endpoint(method: :delete, path: "/api/v1/posts/:id") %>
+  </div>
+<% end %>

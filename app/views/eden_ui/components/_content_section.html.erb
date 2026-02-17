@@ -1,0 +1,68 @@
+<%
+  title ||= nil
+  subtitle ||= nil
+  body ||= nil
+  image ||= nil
+  image_alt ||= ""
+  image_position ||= :right
+  features ||= []
+  html_options ||= {}
+  content ||= nil
+
+  image_position = image_position.to_sym
+
+  classes = ["bg-gray-50 dark:bg-gray-800", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<section class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+    <div class="grid gap-8 lg:grid-cols-2 lg:gap-16 items-center">
+      <%# Text column %>
+      <div class="<%= image_position == :left ? 'lg:order-2' : '' %>">
+        <% if title %>
+          <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white md:text-4xl"><%= title %></h2>
+        <% end %>
+        <% if subtitle %>
+          <p class="mb-6 text-lg font-light text-gray-500 dark:text-gray-400"><%= subtitle %></p>
+        <% end %>
+
+        <% if body %>
+          <div class="mb-6 text-gray-500 dark:text-gray-400 space-y-4"><%= body.html_safe %></div>
+        <% end %>
+
+        <%= content %>
+
+        <% if features.any? %>
+          <ul class="space-y-4 mt-6">
+            <% features.each do |feature| %>
+              <li class="flex items-start space-x-3">
+                <% if feature[:icon] %>
+                  <div class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 shrink-0 mt-0.5">
+                    <%= eden_icon(feature[:icon], size: :xs, class: "text-blue-600 dark:text-blue-300") %>
+                  </div>
+                <% else %>
+                  <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <% end %>
+                <div>
+                  <% if feature[:title] %>
+                    <h3 class="font-semibold text-gray-900 dark:text-white"><%= feature[:title] %></h3>
+                  <% end %>
+                  <% if feature[:description] %>
+                    <p class="text-gray-500 dark:text-gray-400"><%= feature[:description] %></p>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
+      <%# Image column %>
+      <% if image %>
+        <div class="<%= image_position == :left ? 'lg:order-1' : '' %>">
+          <img src="<%= image %>" alt="<%= image_alt %>" class="w-full rounded-lg shadow-xl">
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

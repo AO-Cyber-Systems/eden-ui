@@ -1,0 +1,45 @@
+<%# Empty State component preview %>
+
+<%= styleguide_example(title: "Default", description: "Empty state with title, description, and action button.",
+  source: 'eden_empty_state(
+  title: "No projects yet",
+  description: "Get started by creating your first project.",
+  icon: "folder",
+  action_text: "Create Project",
+  action_href: "#"
+)') do %>
+  <%= eden_empty_state(
+    title: "No projects yet",
+    description: "Get started by creating your first project.",
+    icon: "folder",
+    action_text: "Create Project",
+    action_href: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Without Action", description: "Empty state without action button.",
+  source: 'eden_empty_state(
+  title: "No results found",
+  description: "Try adjusting your search or filter to find what you are looking for.",
+  icon: "magnifying-glass"
+)') do %>
+  <%= eden_empty_state(
+    title: "No results found",
+    description: "Try adjusting your search or filter to find what you are looking for.",
+    icon: "magnifying-glass"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Minimal", description: "Simple empty state with just text.",
+  source: 'eden_empty_state(title: "Nothing here", description: "This section is empty.")') do %>
+  <%= eden_empty_state(title: "Nothing here", description: "This section is empty.") %>
+<% end %>
+
+<%= styleguide_example(title: "With Block Content", description: "Empty state with custom block content.",
+  source: 'eden_empty_state(title: "No notifications", icon: "bell") do
+  content_tag(:p, "You are all caught up!", class: "text-sm text-gray-500")
+end') do %>
+  <%= eden_empty_state(title: "No notifications", icon: "bell") do %>
+    <p class="text-sm text-gray-500">You're all caught up!</p>
+  <% end %>
+<% end %>

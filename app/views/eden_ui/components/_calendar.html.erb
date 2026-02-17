@@ -1,0 +1,110 @@
+<%
+  month ||= Date.current.month
+  year ||= Date.current.year
+  events ||= []
+  start_day ||= :sunday
+  html_options ||= {}
+  content ||= nil
+
+  # Build calendar data
+  first_of_month = Date.new(year, month, 1)
+  last_of_month = first_of_month.end_of_month
+  month_name = first_of_month.strftime("%B %Y")
+
+  # Day names based on start_day
+  if start_day.to_sym == :monday
+    day_names = %w[Mon Tue Wed Thu Fri Sat Sun]
+    start_wday = first_of_month.cwday # 1=Mon, 7=Sun
+    offset = start_wday - 1
+  else
+    day_names = %w[Sun Mon Tue Wed Thu Fri Sat]
+    offset = first_of_month.wday # 0=Sun
+  end
+
+  # Previous month navigation
+  prev_month = month == 1 ? 12 : month - 1
+  prev_year = month == 1 ? year - 1 : year
+  next_month_val = month == 12 ? 1 : month + 1
+  next_year = month == 12 ? year + 1 : year
+
+  # Build grid: 6 rows x 7 columns
+  calendar_start = first_of_month - offset.days
+  total_cells = 42 # 6 weeks x 7 days
+
+  # Index events by date string
+  events_by_date = {}
+  events.each do |evt|
+    date_str = evt[:date].to_s
+    events_by_date[date_str] ||= []
+    events_by_date[date_str] << evt
+  end
+
+  today = Date.current
+
+  classes = [
+    "bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%# Header with navigation %>
+  <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+    <button type="button" class="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700" data-calendar-prev data-month="<%= prev_month %>" data-year="<%= prev_year %>">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <h2 class="text-lg font-semibold text-gray-900 dark:text-white"><%= month_name %></h2>
+    <button type="button" class="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700" data-calendar-next data-month="<%= next_month_val %>" data-year="<%= next_year %>">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <div class="p-4">
+    <%# Day names header %>
+    <div class="grid grid-cols-7 mb-2">
+      <% day_names.each do |day| %>
+        <div class="text-center text-xs font-medium text-gray-500 dark:text-gray-400 py-1"><%= day %></div>
+      <% end %>
+    </div>
+
+    <%# Calendar grid %>
+    <div class="grid grid-cols-7">
+      <% total_cells.times do |i| %>
+        <%
+          current_date = calendar_start + i.days
+          is_current_month = current_date.month == month
+          is_today = current_date == today
+          date_str = current_date.strftime("%Y-%m-%d")
+          day_events = events_by_date[date_str] || []
+        %>
+        <div class="relative p-1 min-h-[40px] text-center">
+          <span class="inline-flex items-center justify-center w-7 h-7 text-sm rounded-full
+            <%= if is_today
+              "bg-blue-600 text-white font-semibold"
+            elsif is_current_month
+              "text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+            else
+              "text-gray-300 dark:text-gray-600"
+            end %>
+          "><%= current_date.day %></span>
+          <% if day_events.any? %>
+            <div class="flex justify-center gap-0.5 mt-0.5">
+              <% day_events.first(3).each do |evt| %>
+                <%
+                  dot_color = case evt[:color]&.to_sym
+                  when :success then "bg-green-500"
+                  when :warning then "bg-yellow-500"
+                  when :danger then "bg-red-500"
+                  when :purple then "bg-purple-500"
+                  else "bg-blue-500"
+                  end
+                %>
+                <span class="w-1 h-1 rounded-full <%= dot_color %>"></span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

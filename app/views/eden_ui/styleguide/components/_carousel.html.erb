@@ -1,0 +1,60 @@
+<%# Carousel component preview — renders partial directly to pass correct locals %>
+
+<%= styleguide_example(
+  title: "Default Carousel",
+  description: "A carousel with placeholder slides, navigation controls, and indicators.",
+  source: 'eden_carousel do
+  # slide content
+end'
+) do %>
+  <div class="w-full">
+    <%= render partial: "eden_ui/components/carousel", locals: {
+      id: "demo-carousel", slides: [], indicators: true, controls: true,
+      autoplay: false, interval: 5000, html_options: {},
+      content: capture do %>
+        <div data-eden-carousel-target="slide" class="duration-700 ease-in-out">
+          <div class="flex items-center justify-center h-56 md:h-96 bg-zinc-200 dark:bg-zinc-800 rounded-lg">
+            <span class="text-2xl font-semibold text-zinc-400 dark:text-zinc-500">Slide 1</span>
+          </div>
+        </div>
+        <div data-eden-carousel-target="slide" class="hidden duration-700 ease-in-out">
+          <div class="flex items-center justify-center h-56 md:h-96 bg-zinc-300 dark:bg-zinc-700 rounded-lg">
+            <span class="text-2xl font-semibold text-zinc-400 dark:text-zinc-500">Slide 2</span>
+          </div>
+        </div>
+        <div data-eden-carousel-target="slide" class="hidden duration-700 ease-in-out">
+          <div class="flex items-center justify-center h-56 md:h-96 bg-zinc-200 dark:bg-zinc-800 rounded-lg">
+            <span class="text-2xl font-semibold text-zinc-400 dark:text-zinc-500">Slide 3</span>
+          </div>
+        </div>
+      <% end
+    } %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Carousel without Controls",
+  description: "A minimal carousel without navigation arrows — use indicators or autoplay to navigate.",
+  source: 'eden_carousel(controls: false) do
+  # slide content
+end'
+) do %>
+  <div class="w-full">
+    <%= render partial: "eden_ui/components/carousel", locals: {
+      id: "no-controls-carousel", slides: [], indicators: false, controls: false,
+      autoplay: false, interval: 5000, html_options: {},
+      content: capture do %>
+        <div data-eden-carousel-target="slide" class="duration-700 ease-in-out">
+          <div class="flex items-center justify-center h-56 md:h-96 bg-blue-100 dark:bg-blue-900 rounded-lg">
+            <span class="text-2xl font-semibold text-blue-400 dark:text-blue-300">First</span>
+          </div>
+        </div>
+        <div data-eden-carousel-target="slide" class="hidden duration-700 ease-in-out">
+          <div class="flex items-center justify-center h-56 md:h-96 bg-green-100 dark:bg-green-900 rounded-lg">
+            <span class="text-2xl font-semibold text-green-400 dark:text-green-300">Second</span>
+          </div>
+        </div>
+      <% end
+    } %>
+  </div>
+<% end %>

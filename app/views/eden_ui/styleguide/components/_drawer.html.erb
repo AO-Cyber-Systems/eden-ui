@@ -1,0 +1,76 @@
+<%# ── Drawer component previews ── %>
+
+<%= styleguide_example(title: "Left Drawer (default)", source: 'eden_button(variant: :primary, data: { action: "eden-drawer#open", eden_drawer_outlet: "#drawer-left" }) { "Open Left Drawer" }
+
+eden_drawer(id: "drawer-left", position: :left) do
+  content_tag(:p, "This is the left drawer content.", class: "text-gray-500 dark:text-gray-400")
+end') do %>
+  <%= eden_button(variant: :primary, data: { action: "eden-drawer#open", "eden-drawer-outlet": "#drawer-left" }) { "Open Left Drawer" } %>
+
+  <%= eden_drawer(id: "drawer-left", position: :left) do %>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">This is the left drawer content. It slides in from the left side of the screen.</p>
+    <div class="space-y-2">
+      <%= eden_button(variant: :primary, size: :sm) { "Action" } %>
+      <%= eden_button(variant: :default, size: :sm, outline: true) { "Cancel" } %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Right Drawer", source: 'eden_button(variant: :primary, data: { action: "eden-drawer#open", eden_drawer_outlet: "#drawer-right" }) { "Open Right Drawer" }
+
+eden_drawer(id: "drawer-right", position: :right) do
+  content_tag(:p, "This is the right drawer content.", class: "...")
+end') do %>
+  <%= eden_button(variant: :primary, data: { action: "eden-drawer#open", "eden-drawer-outlet": "#drawer-right" }) { "Open Right Drawer" } %>
+
+  <%= eden_drawer(id: "drawer-right", position: :right) do %>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">This is the right drawer content. It slides in from the right side of the screen.</p>
+    <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+      <li class="flex items-center gap-2">Settings</li>
+      <li class="flex items-center gap-2">Profile</li>
+      <li class="flex items-center gap-2">Notifications</li>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Top Drawer", source: 'eden_button(variant: :primary, data: { action: "eden-drawer#open", eden_drawer_outlet: "#drawer-top" }) { "Open Top Drawer" }
+
+eden_drawer(id: "drawer-top", position: :top) do
+  content_tag(:p, "This drawer slides down from the top.", class: "...")
+end') do %>
+  <%= eden_button(variant: :primary, data: { action: "eden-drawer#open", "eden-drawer-outlet": "#drawer-top" }) { "Open Top Drawer" } %>
+
+  <%= eden_drawer(id: "drawer-top", position: :top) do %>
+    <div class="max-w-lg mx-auto text-center">
+      <p class="text-sm text-gray-500 dark:text-gray-400">This drawer slides down from the top of the screen. Useful for announcements or search bars.</p>
+    </div>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Bottom Drawer", source: 'eden_button(variant: :primary, data: { action: "eden-drawer#open", eden_drawer_outlet: "#drawer-bottom" }) { "Open Bottom Drawer" }
+
+eden_drawer(id: "drawer-bottom", position: :bottom) do
+  content_tag(:p, "This drawer slides up from the bottom.", class: "...")
+end') do %>
+  <%= eden_button(variant: :primary, data: { action: "eden-drawer#open", "eden-drawer-outlet": "#drawer-bottom" }) { "Open Bottom Drawer" } %>
+
+  <%= eden_drawer(id: "drawer-bottom", position: :bottom) do %>
+    <div class="max-w-lg mx-auto text-center">
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">This drawer slides up from the bottom. Great for mobile-friendly actions and menus.</p>
+      <div class="flex justify-center gap-2">
+        <%= eden_button(variant: :primary, size: :sm) { "Confirm" } %>
+        <%= eden_button(variant: :default, size: :sm, outline: true) { "Dismiss" } %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Without Backdrop", source: 'eden_drawer(id: "drawer-no-backdrop", position: :left, backdrop: false) do
+  content_tag(:p, "This drawer has no backdrop overlay.", class: "...")
+end') do %>
+  <%= eden_button(variant: :primary, outline: true, data: { action: "eden-drawer#open", "eden-drawer-outlet": "#drawer-no-backdrop" }) { "Open Without Backdrop" } %>
+
+  <%= eden_drawer(id: "drawer-no-backdrop", position: :left, backdrop: false) do %>
+    <p class="text-sm text-gray-500 dark:text-gray-400">This drawer opens without the semi-transparent backdrop overlay behind it.</p>
+  <% end %>
+<% end %>

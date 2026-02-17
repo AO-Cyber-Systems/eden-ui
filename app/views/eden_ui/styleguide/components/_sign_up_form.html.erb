@@ -1,0 +1,61 @@
+<%# ── Sign Up Form component previews ── %>
+
+<%= styleguide_example(title: "Default Sign Up", source: 'eden_sign_up_form(
+  url: "#",
+  terms_url: "#",
+  sign_in_url: "#"
+)') do %>
+  <%= eden_sign_up_form(
+    url: "#",
+    terms_url: "#",
+    sign_in_url: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "With Password Hint", source: 'eden_sign_up_form(
+  url: "#",
+  password_hint: "8 characters minimum",
+  terms_url: "#",
+  sign_in_url: "#"
+)') do %>
+  <%= eden_sign_up_form(
+    url: "#",
+    password_hint: "8 characters minimum",
+    terms_url: "#",
+    sign_in_url: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Without Name Field", source: 'eden_sign_up_form(
+  url: "#",
+  name_field: false,
+  sign_in_url: "#"
+)') do %>
+  <%= eden_sign_up_form(
+    url: "#",
+    name_field: false,
+    sign_in_url: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "Without Password Confirmation", source: 'eden_sign_up_form(
+  url: "#",
+  confirm_password: false,
+  terms_url: "#",
+  sign_in_url: "#"
+)') do %>
+  <%= eden_sign_up_form(
+    url: "#",
+    confirm_password: false,
+    terms_url: "#",
+    sign_in_url: "#"
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "With Error Messages", source: 'eden_sign_up_form(url: "#", sign_in_url: "#") do
+  eden_alert(variant: :danger) { "Email has already been taken." }
+end') do %>
+  <%= eden_sign_up_form(url: "#", sign_in_url: "#") do %>
+    <%= eden_alert(variant: :danger) { "Email has already been taken." } %>
+  <% end %>
+<% end %>

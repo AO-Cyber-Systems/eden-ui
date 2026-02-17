@@ -1,0 +1,23 @@
+<%# Textarea component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_textarea(placeholder: "Write your message here...")') do %>
+  <%= eden_textarea(placeholder: "Write your message here...") %>
+<% end %>
+
+<%= styleguide_example(title: "With Value", source: 'eden_textarea(value: "This textarea already has some content in it that the user previously entered.")') do %>
+  <%= eden_textarea(value: "This textarea already has some content in it that the user previously entered.") %>
+<% end %>
+
+<%= styleguide_example(title: "Different Row Counts", source: 'eden_textarea(rows: 2, placeholder: "2 rows")
+eden_textarea(rows: 4, placeholder: "4 rows (default)")
+eden_textarea(rows: 8, placeholder: "8 rows")') do %>
+  <%= eden_textarea(rows: 2, placeholder: "2 rows") %>
+  <%= eden_textarea(rows: 4, placeholder: "4 rows (default)") %>
+  <%= eden_textarea(rows: 8, placeholder: "8 rows") %>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", source: 'eden_textarea(disabled: true, placeholder: "Disabled textarea")
+eden_textarea(disabled: true, value: "Disabled with content")') do %>
+  <%= eden_textarea(disabled: true, placeholder: "Disabled textarea") %>
+  <%= eden_textarea(disabled: true, value: "Disabled with content") %>
+<% end %>

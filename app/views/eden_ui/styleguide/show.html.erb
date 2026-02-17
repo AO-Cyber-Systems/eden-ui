@@ -1,0 +1,40 @@
+<div class="max-w-5xl mx-auto">
+  <%# Breadcrumb %>
+  <div class="flex items-center gap-2 text-sm text-zinc-400 dark:text-zinc-500 mb-6">
+    <a href="<%= eden_ui.root_path %>" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">Styleguide</a>
+    <%= eden_icon("chevron-right", size: :xs) %>
+    <a href="<%= eden_ui.styleguide_category_path(category: @category_slug) %>" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"><%= @category[:label] %></a>
+    <%= eden_icon("chevron-right", size: :xs) %>
+    <span class="text-zinc-700 dark:text-zinc-200"><%= @component.name %></span>
+  </div>
+
+  <%# Header %>
+  <div class="mb-8">
+    <h1 class="text-2xl font-display font-bold text-zinc-900 dark:text-white mb-2"><%= @component.name %></h1>
+    <p class="text-zinc-500 dark:text-zinc-400 mb-3"><%= @component.description %></p>
+    <div class="flex items-center gap-3">
+      <code class="text-sm font-mono px-2 py-1 bg-zinc-100 dark:bg-zinc-800 text-gold-600 dark:text-gold-400 rounded-md"><%= @component.helper_method %></code>
+      <% if @component.has_block %>
+        <span class="text-xs px-2 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-md font-medium">Accepts block</span>
+      <% end %>
+    </div>
+  </div>
+
+  <%# Component preview partial %>
+  <div class="space-y-6 mb-8">
+    <% partial_path = "eden_ui/styleguide/components/#{@component.slug}" %>
+    <% if lookup_context.exists?(partial_path, [], true) %>
+      <%= render partial: partial_path %>
+    <% else %>
+      <div class="p-8 border border-dashed border-zinc-300 dark:border-zinc-700 rounded-xl text-center">
+        <p class="text-zinc-400 dark:text-zinc-500 mb-2">Preview coming soon</p>
+        <p class="text-sm text-zinc-400 dark:text-zinc-600">
+          Create <code class="font-mono text-xs px-1 py-0.5 bg-zinc-100 dark:bg-zinc-800 rounded">app/views/eden_ui/styleguide/components/_<%= @component.slug %>.html.erb</code>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <%# Parameter table %>
+  <%= render "eden_ui/styleguide/param_table", params: @component.params %>
+</div>

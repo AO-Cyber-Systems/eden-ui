@@ -1,0 +1,31 @@
+<%# Clipboard component preview %>
+
+<%= styleguide_example(
+  title: "Clipboard with Text Input",
+  description: "Copy text from a read-only input field to the clipboard.",
+  source: 'eden_clipboard(value: "npm install eden-ui")'
+) do %>
+  <div class="max-w-sm">
+    <%= eden_clipboard(value: "npm install eden-ui") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Clipboard with URL",
+  description: "Useful for sharing links or API endpoints.",
+  source: 'eden_clipboard(value: "https://example.com/api/v1/users")'
+) do %>
+  <div class="max-w-md">
+    <%= eden_clipboard(value: "https://example.com/api/v1/users") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Clipboard with Custom Label",
+  description: "Custom button text and success message.",
+  source: 'eden_clipboard(value: "sk_live_abc123xyz", label: "Copy Key", success_label: "Key Copied!")'
+) do %>
+  <div class="max-w-sm">
+    <%= eden_clipboard(value: "sk_live_abc123xyz", label: "Copy Key", success_label: "Key Copied!") %>
+  </div>
+<% end %>

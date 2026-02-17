@@ -1,0 +1,53 @@
+<%
+  title ||= "FAQ"
+  subtitle ||= nil
+  questions ||= []
+  columns ||= 1
+  html_options ||= {}
+  content ||= nil
+
+  classes = ["bg-white dark:bg-gray-900", html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<section class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+    <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-16">
+      <% if title %>
+        <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white md:text-4xl"><%= title %></h2>
+      <% end %>
+      <% if subtitle %>
+        <p class="font-light text-gray-500 dark:text-gray-400 sm:text-xl"><%= subtitle %></p>
+      <% end %>
+    </div>
+
+    <div class="max-w-screen-md mx-auto">
+      <% if columns == 2 && questions.size > 1 %>
+        <% mid = (questions.size / 2.0).ceil %>
+        <div class="grid gap-8 md:grid-cols-2">
+          <div>
+            <%= eden_accordion(flush: true) do %>
+              <% questions.first(mid).each do |q| %>
+                <%= eden_accordion_item(title: q[:question]) { q[:answer] } %>
+              <% end %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_accordion(flush: true) do %>
+              <% questions.drop(mid).each do |q| %>
+                <%= eden_accordion_item(title: q[:question]) { q[:answer] } %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <%= eden_accordion(flush: true) do %>
+          <% questions.each do |q| %>
+            <%= eden_accordion_item(title: q[:question]) { q[:answer] } %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= content %>
+  </div>
+</section>

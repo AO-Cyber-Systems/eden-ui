@@ -1,0 +1,63 @@
+<%# Content Section component previews %>
+
+<%= styleguide_block_example(title: "With Feature List", description: "Two-column layout with title, subtitle, feature checklist, and an image.",
+  source: 'eden_content_section(
+  title: "We invest in the world potential",
+  subtitle: "Delivering great experiences through innovative technology solutions.",
+  image: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-content-1.png",
+  image_alt: "Office collaboration",
+  features: [
+    { title: "Continuous integration and deployment", description: "Automated pipelines that test and deploy your code." },
+    { title: "Real-time monitoring", description: "Track performance metrics and errors as they happen." },
+    { title: "Team collaboration", description: "Work together seamlessly with built-in tools." }
+  ]
+)') do %>
+  <%= eden_content_section(
+    title: "We invest in the world's potential",
+    subtitle: "Delivering great experiences through innovative technology solutions that help businesses grow and succeed in a digital-first world.",
+    image: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-content-1.png",
+    image_alt: "Office collaboration",
+    features: [
+      { title: "Continuous integration and deployment", description: "Automated pipelines that test and deploy your code with confidence on every push." },
+      { title: "Real-time monitoring", description: "Track performance metrics, errors, and user behavior as they happen with live dashboards." },
+      { title: "Team collaboration", description: "Work together seamlessly with built-in commenting, reviews, and notification tools." }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Image on Left", description: "Reversed layout with the image on the left side.",
+  source: 'eden_content_section(
+  title: "Designed for scale",
+  subtitle: "Our platform handles millions of requests per second.",
+  image: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-content-2.png",
+  image_position: :left,
+  features: [
+    { title: "Horizontal scaling", description: "Add capacity on demand." },
+    { title: "Global CDN", description: "Content served from the edge." }
+  ]
+)') do %>
+  <%= eden_content_section(
+    title: "Designed for scale",
+    subtitle: "Our platform is built to handle millions of requests per second, so you can focus on building features instead of managing infrastructure.",
+    image: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-content-2.png",
+    image_alt: "Modern office",
+    image_position: :left,
+    features: [
+      { title: "Horizontal scaling", description: "Add capacity on demand with auto-scaling that responds to traffic patterns in real time." },
+      { title: "Global CDN", description: "Content served from edge locations around the world for minimal latency." }
+    ]
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "With Body Text", description: "Content section using body text instead of features.",
+  source: 'eden_content_section(
+  title: "About our company",
+  subtitle: "Building the future of developer tools.",
+  body: "<p>Founded in 2020, we set out to simplify the way developers build web applications.</p><p>Today, our tools are used by thousands of teams worldwide.</p>"
+)') do %>
+  <%= eden_content_section(
+    title: "About our company",
+    subtitle: "Building the future of developer tools since 2020.",
+    body: "<p>Founded in 2020, we set out to simplify the way developers build web applications. We believe that great tools should be accessible to everyone, not just large enterprises with big budgets.</p><p>Today, our component library and development tools are used by thousands of teams worldwide, from solo developers to Fortune 500 companies. We are proud to be part of the open source community.</p>"
+  ) %>
+<% end %>

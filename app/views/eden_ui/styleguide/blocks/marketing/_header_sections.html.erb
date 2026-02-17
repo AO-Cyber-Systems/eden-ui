@@ -1,0 +1,81 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_header_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Header",
+  description: "Navigation header with logo, links, and action button",
+  source: 'eden_navbar(fixed: false) do
+  <a href="#" class="flex items-center">
+    <span class="text-xl font-semibold">Eden</span>
+  </a>
+  <nav class="hidden md:flex items-center space-x-8">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </nav>
+  eden_button(variant: :primary, size: :sm) { "Get started" }
+end'
+) do %>
+  <header class="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+    <nav class="px-4 lg:px-6 py-3 mx-auto max-w-screen-xl">
+      <div class="flex flex-wrap justify-between items-center">
+        <a href="#" class="flex items-center">
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Eden</span>
+        </a>
+        <div class="flex items-center lg:order-2 gap-2">
+          <%= eden_button(variant: :ghost, size: :sm, href: "#") { "Log in" } %>
+          <%= eden_button(variant: :primary, size: :sm, href: "#") { "Get started" } %>
+          <button class="inline-flex items-center p-2 ml-1 text-sm text-zinc-500 rounded-lg lg:hidden hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700">
+            <%= eden_icon("bars-3", size: :md) %>
+          </button>
+        </div>
+        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
+          <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+            <li><a href="#" class="block py-2 pr-4 pl-3 text-gold-600 dark:text-gold-500 lg:p-0">Home</a></li>
+            <li><a href="#" class="block py-2 pr-4 pl-3 text-zinc-700 hover:text-gold-600 dark:text-zinc-400 dark:hover:text-white lg:p-0">Company</a></li>
+            <li><a href="#" class="block py-2 pr-4 pl-3 text-zinc-700 hover:text-gold-600 dark:text-zinc-400 dark:hover:text-white lg:p-0">Marketplace</a></li>
+            <li><a href="#" class="block py-2 pr-4 pl-3 text-zinc-700 hover:text-gold-600 dark:text-zinc-400 dark:hover:text-white lg:p-0">Features</a></li>
+            <li><a href="#" class="block py-2 pr-4 pl-3 text-zinc-700 hover:text-gold-600 dark:text-zinc-400 dark:hover:text-white lg:p-0">Team</a></li>
+            <li><a href="#" class="block py-2 pr-4 pl-3 text-zinc-700 hover:text-gold-600 dark:text-zinc-400 dark:hover:text-white lg:p-0">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Header with Search",
+  description: "Navigation header with integrated search input",
+  source: '<header class="bg-white dark:bg-zinc-900 border-b">
+  <nav class="px-4 lg:px-6 py-3 mx-auto max-w-screen-xl">
+    <div class="flex justify-between items-center">
+      <a href="#">Eden</a>
+      eden_search_input(placeholder: "Search...")
+      eden_button(variant: :primary, size: :sm) { "Sign in" }
+    </div>
+  </nav>
+</header>'
+) do %>
+  <header class="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+    <nav class="px-4 lg:px-6 py-3 mx-auto max-w-screen-xl">
+      <div class="flex flex-wrap justify-between items-center gap-4">
+        <a href="#" class="flex items-center">
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Eden</span>
+        </a>
+        <div class="hidden lg:flex flex-1 max-w-md mx-8">
+          <%= eden_search_input(placeholder: "Search anything...", size: :md) %>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="p-2 text-zinc-500 rounded-lg hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700 lg:hidden">
+            <%= eden_icon("search", size: :md) %>
+          </button>
+          <button class="p-2 text-zinc-500 rounded-lg hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-700">
+            <%= eden_icon("bell", size: :md) %>
+          </button>
+          <%= eden_avatar(initials: "JD", size: :sm) %>
+        </div>
+      </div>
+    </nav>
+  </header>
+<% end %>

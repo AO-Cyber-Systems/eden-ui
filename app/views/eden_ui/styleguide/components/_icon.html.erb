@@ -1,0 +1,68 @@
+<%# Icon component preview %>
+
+<%= styleguide_example(
+  title: "All Icons",
+  source: 'eden_icon("home", size: :md)
+eden_icon("user", size: :md)
+eden_icon("cog", size: :md)
+# ... all available icons',
+  description: "Complete icon library. All icons are Heroicons-style SVG outlines."
+) do %>
+  <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4">
+    <% styleguide_icon_names.each do |name| %>
+      <div class="flex flex-col items-center gap-1.5 p-3 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+        <%= eden_icon(name, size: :md) %>
+        <span class="text-[10px] text-zinc-500 dark:text-zinc-400 text-center font-mono"><%= name %></span>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Icon Sizes",
+  description: "Icons are available in xs, sm, md, lg, and xl sizes.",
+  source: 'eden_icon("home", size: :xs)  # w-3 h-3
+eden_icon("home", size: :sm)  # w-4 h-4
+eden_icon("home", size: :md)  # w-5 h-5
+eden_icon("home", size: :lg)  # w-6 h-6
+eden_icon("home", size: :xl)  # w-8 h-8'
+) do %>
+  <div class="flex items-end gap-6">
+    <div class="flex flex-col items-center gap-1.5">
+      <%= eden_icon("home", size: :xs) %>
+      <span class="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono">xs</span>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <%= eden_icon("home", size: :sm) %>
+      <span class="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono">sm</span>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <%= eden_icon("home", size: :md) %>
+      <span class="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono">md</span>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <%= eden_icon("home", size: :lg) %>
+      <span class="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono">lg</span>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <%= eden_icon("home", size: :xl) %>
+      <span class="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono">xl</span>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Icon with Custom Color",
+  description: "Icons inherit the current text color and can be styled with Tailwind classes.",
+  source: 'eden_icon("heart", size: :lg, class: "text-red-500")
+eden_icon("check-circle", size: :lg, class: "text-green-500")
+eden_icon("exclamation-circle", size: :lg, class: "text-yellow-500")
+eden_icon("information-circle", size: :lg, class: "text-blue-500")'
+) do %>
+  <div class="flex items-center gap-4">
+    <%= eden_icon("heart", size: :lg, class: "text-red-500") %>
+    <%= eden_icon("check-circle", size: :lg, class: "text-green-500") %>
+    <%= eden_icon("exclamation-circle", size: :lg, class: "text-yellow-500") %>
+    <%= eden_icon("information-circle", size: :lg, class: "text-blue-500") %>
+  </div>
+<% end %>

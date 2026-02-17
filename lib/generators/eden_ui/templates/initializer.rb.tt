@@ -1,0 +1,32 @@
+EdenUi.configure do |config|
+  # Application name displayed in layouts and auth pages.
+  # config.app_name = "Eden"
+
+  # Path to your application logo (used in auth pages and sidebar).
+  # Set to an image path accessible via the asset pipeline.
+  # config.logo_path = nil
+
+  # Default layout for Eden UI pages (:app, :chat, :marketing).
+  # config.default_layout = :app
+
+  # Enable dark mode support (adds dark: variant classes).
+  # config.dark_mode = true
+
+  # Use Eden UI styled Devise views automatically.
+  # Set to false if you want to use your own Devise views.
+  # config.devise_views = true
+
+  # OmniAuth providers to display on login/registration pages.
+  # Each provider will render a social login button.
+  # config.omniauth_providers = [:google_oauth2, :github]
+  # config.omniauth_providers = []
+
+  # Sidebar position for the app layout (:left or :right).
+  # config.sidebar_position = :left
+
+  # Show footer in layouts.
+  # config.footer = true
+
+  # Brand color palette name (maps to CSS token set).
+  # config.brand_color = :gold
+end

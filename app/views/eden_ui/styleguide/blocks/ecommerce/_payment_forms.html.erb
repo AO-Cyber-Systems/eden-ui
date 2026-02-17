@@ -1,0 +1,112 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_payment_forms.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Credit Card Payment Form",
+  description: "Payment form with card number, expiry, CVV fields and saved card selection",
+  source: '<form class="max-w-lg">
+  <h3>Payment Details</h3>
+  eden_input(type: :text, placeholder: "Card number")
+  eden_input(type: :text, placeholder: "MM/YY")
+  eden_input(type: :text, placeholder: "CVV")
+  eden_button(variant: :primary, size: :lg) { "Pay $1,836.97" }
+</form>'
+) do %>
+  <div class="max-w-lg mx-auto">
+    <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-6">
+      <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-6">Payment Details</h3>
+
+      <div class="mb-6">
+        <p class="text-sm font-medium text-zinc-900 dark:text-white mb-3">Payment Method</p>
+        <div class="grid grid-cols-3 gap-3">
+          <label class="flex items-center justify-center p-3 border-2 border-gold-500 rounded-lg cursor-pointer bg-gold-50 dark:bg-gold-900/20">
+            <input type="radio" name="payment" class="sr-only" checked />
+            <span class="text-sm font-medium text-gold-700 dark:text-gold-400">Credit Card</span>
+          </label>
+          <label class="flex items-center justify-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:border-zinc-300 dark:border-zinc-700 dark:hover:border-zinc-600">
+            <input type="radio" name="payment" class="sr-only" />
+            <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">PayPal</span>
+          </label>
+          <label class="flex items-center justify-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:border-zinc-300 dark:border-zinc-700 dark:hover:border-zinc-600">
+            <input type="radio" name="payment" class="sr-only" />
+            <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Bank Transfer</span>
+          </label>
+        </div>
+      </div>
+
+      <form class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">Cardholder Name</label>
+          <%= eden_input(type: :text, placeholder: "John Doe") %>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">Card Number</label>
+          <%= eden_input(type: :text, placeholder: "1234 5678 9012 3456") %>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">Expiry Date</label>
+            <%= eden_input(type: :text, placeholder: "MM/YY") %>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-1">CVV</label>
+            <%= eden_input(type: :text, placeholder: "123") %>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mt-2">
+          <%= eden_checkbox(label: "Save card for future purchases") %>
+        </div>
+        <div class="pt-2">
+          <%= eden_button(variant: :primary, size: :lg) do %>
+            <%= eden_icon("lock", size: :sm) %>
+            Pay $1,836.97
+          <% end %>
+        </div>
+        <p class="text-xs text-zinc-500 dark:text-zinc-400 flex items-center gap-1">
+          <%= eden_icon("shield", size: :xs) %>
+          Your payment is secured with 256-bit SSL encryption
+        </p>
+      </form>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Payment Method Selection",
+  description: "Payment method cards with saved cards and option to add new payment",
+  source: '<div class="max-w-lg">
+  <h3>Choose Payment Method</h3>
+  <!-- saved card list -->
+  eden_button(variant: :ghost) { "Add new card" }
+  eden_button(variant: :primary) { "Continue" }
+</div>'
+) do %>
+  <div class="max-w-lg mx-auto">
+    <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-6">
+      <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-4">Choose Payment Method</h3>
+      <div class="space-y-3">
+        <% [
+          { type: "Visa", last4: "4242", expiry: "12/27", selected: true },
+          { type: "Mastercard", last4: "8888", expiry: "08/26", selected: false }
+        ].each do |card| %>
+          <label class="flex items-center gap-4 p-4 border rounded-lg cursor-pointer <%= card[:selected] ? 'border-gold-500 bg-gold-50 dark:bg-gold-900/20 dark:border-gold-600' : 'border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600' %>">
+            <input type="radio" name="saved_card" class="text-gold-600" <%= 'checked' if card[:selected] %> />
+            <div class="flex-1">
+              <p class="text-sm font-medium text-zinc-900 dark:text-white"><%= card[:type] %> ending in <%= card[:last4] %></p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">Expires <%= card[:expiry] %></p>
+            </div>
+            <div class="w-10 h-7 bg-zinc-200 dark:bg-zinc-700 rounded flex items-center justify-center">
+              <span class="text-xs font-bold text-zinc-500 dark:text-zinc-400"><%= card[:type][0..1] %></span>
+            </div>
+          </label>
+        <% end %>
+        <button class="w-full flex items-center justify-center gap-2 p-4 border-2 border-dashed border-zinc-300 dark:border-zinc-600 rounded-lg text-sm text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-500">
+          <%= eden_icon("plus", size: :sm) %>
+          Add new payment method
+        </button>
+      </div>
+      <div class="mt-6">
+        <%= eden_button(variant: :primary, size: :lg) { "Continue" } %>
+      </div>
+    </div>
+  </div>
+<% end %>

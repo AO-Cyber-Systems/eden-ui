@@ -1,0 +1,44 @@
+<%
+  label ||= nil
+  href ||= nil
+  active ||= false
+  disabled ||= false
+  icon ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  base = "w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600 last:border-b-0 first:rounded-t-lg last:rounded-b-lg"
+  base += icon ? " flex items-center gap-2" : " block"
+
+  if active
+    state_classes = "text-white bg-blue-700 cursor-pointer dark:bg-blue-600"
+  elsif disabled
+    state_classes = "text-gray-400 bg-gray-100 cursor-not-allowed dark:bg-gray-600 dark:text-gray-500"
+  else
+    state_classes = "text-gray-900 bg-white hover:bg-gray-100 hover:text-blue-700 cursor-pointer dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:hover:text-white"
+  end
+
+  classes = [base, state_classes, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<li>
+  <% if href && !disabled %>
+    <a href="<%= href %>" class="<%= classes %>" <%= tag.attributes(html_options) %>>
+      <% if content %>
+        <%= content %>
+      <% else %>
+        <% if icon %><%= eden_icon(icon, size: :sm) %><% end %>
+        <%= label %>
+      <% end %>
+    </a>
+  <% else %>
+    <span class="<%= classes %>" <%= tag.attributes(html_options) %>>
+      <% if content %>
+        <%= content %>
+      <% else %>
+        <% if icon %><%= eden_icon(icon, size: :sm) %><% end %>
+        <%= label %>
+      <% end %>
+    </span>
+  <% end %>
+</li>

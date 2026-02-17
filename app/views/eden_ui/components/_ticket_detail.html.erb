@@ -1,0 +1,141 @@
+<%
+  id ||= nil
+  subject ||= nil
+  status ||= :open
+  priority ||= :medium
+  requester ||= {}
+  assignee ||= nil
+  created_at ||= nil
+  messages ||= []
+  html_options ||= {}
+  content ||= nil
+
+  status_variant = case status.to_sym
+  when :open        then :info
+  when :in_progress then :warning
+  when :resolved    then :success
+  when :closed      then :neutral
+  else :neutral
+  end
+
+  priority_variant = case priority.to_sym
+  when :low    then :success
+  when :medium then :warning
+  when :high   then :danger
+  when :urgent then :danger
+  else :neutral
+  end
+
+  classes = [
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %> flex flex-col lg:flex-row gap-6" <%= tag.attributes(html_options) %>>
+  <%# Left column - messages %>
+  <div class="flex-1 min-w-0 lg:w-2/3">
+    <%# Header %>
+    <div class="mb-6">
+      <div class="flex flex-wrap items-center gap-2 mb-2">
+        <% if id %>
+          <span class="text-sm font-mono text-gray-400 dark:text-gray-500">#<%= id %></span>
+        <% end %>
+        <%= eden_badge(variant: status_variant, size: :sm) { status.to_s.titleize } %>
+        <%= eden_badge(variant: priority_variant, size: :sm) { priority.to_s.titleize } %>
+      </div>
+      <% if subject %>
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white"><%= subject %></h2>
+      <% end %>
+    </div>
+
+    <%# Message thread %>
+    <% if messages.any? %>
+      <div class="space-y-4">
+        <% messages.each do |msg| %>
+          <%
+            is_agent = msg[:is_agent] == true
+            bubble_bg = is_agent ? "bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800" : "bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600"
+          %>
+          <div class="rounded-lg p-4 <%= bubble_bg %>">
+            <div class="flex items-center gap-3 mb-2">
+              <% if msg[:avatar_src] %>
+                <%= eden_avatar(src: msg[:avatar_src], size: :sm) %>
+              <% else %>
+                <%= eden_avatar(initials: (msg[:sender] || "?")[0..1].upcase, size: :sm) %>
+              <% end %>
+              <div>
+                <p class="text-sm font-medium text-gray-900 dark:text-white">
+                  <%= msg[:sender] %>
+                  <% if is_agent %>
+                    <span class="text-xs font-normal text-blue-600 dark:text-blue-400 ms-1">Agent</span>
+                  <% end %>
+                </p>
+                <% if msg[:time] %>
+                  <p class="text-xs text-gray-500 dark:text-gray-400"><%= msg[:time] %></p>
+                <% end %>
+              </div>
+            </div>
+            <div class="text-sm text-gray-700 dark:text-gray-300 ms-11">
+              <%= msg[:body] %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%# Reply form area (block content) %>
+    <% if content %>
+      <div class="mt-6">
+        <%= content %>
+      </div>
+    <% end %>
+  </div>
+
+  <%# Right column - sidebar metadata %>
+  <div class="lg:w-1/3">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-5 sticky top-4">
+      <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-4">Ticket Details</h3>
+      <%= eden_description_list(bordered: true) do %>
+        <%= eden_description_item(term: "Status") do %>
+          <%= eden_badge(variant: status_variant, size: :xs) { status.to_s.titleize } %>
+        <% end %>
+        <%= eden_description_item(term: "Priority") do %>
+          <%= eden_badge(variant: priority_variant, size: :xs) { priority.to_s.titleize } %>
+        <% end %>
+        <% if requester.any? %>
+          <%= eden_description_item(term: "Requester") do %>
+            <div class="flex items-center gap-2">
+              <% if requester[:avatar_src] %>
+                <%= eden_avatar(src: requester[:avatar_src], size: :xs) %>
+              <% end %>
+              <div>
+                <p class="text-sm text-gray-900 dark:text-white"><%= requester[:name] %></p>
+                <% if requester[:email] %>
+                  <p class="text-xs text-gray-500 dark:text-gray-400"><%= requester[:email] %></p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <% if assignee %>
+          <%= eden_description_item(term: "Assignee") do %>
+            <div class="flex items-center gap-2">
+              <% if assignee[:avatar_src] %>
+                <%= eden_avatar(src: assignee[:avatar_src], size: :xs) %>
+              <% end %>
+              <div>
+                <p class="text-sm text-gray-900 dark:text-white"><%= assignee[:name] %></p>
+                <% if assignee[:email] %>
+                  <p class="text-xs text-gray-500 dark:text-gray-400"><%= assignee[:email] %></p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <% if created_at %>
+          <%= eden_description_item(term: "Created", detail: created_at) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

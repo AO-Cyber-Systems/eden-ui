@@ -1,0 +1,96 @@
+<div class="max-w-5xl mx-auto">
+  <%# Hero %>
+  <div class="mb-10">
+    <h1 class="text-3xl lg:text-4xl font-display font-bold text-zinc-900 dark:text-white mb-3">
+      <span class="text-gold-500">Eden</span> UI Styleguide
+    </h1>
+    <p class="text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl">
+      Browse and preview all <%= @component_count %> components, <%= EdenUi::Styleguide::BlockRegistry.block_count %> page blocks, 4 layout systems, and the complete icon library.
+    </p>
+  </div>
+
+  <%# Category cards %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+    <% @categories.each do |slug, category| %>
+      <a href="<%= eden_ui.styleguide_category_path(category: slug) %>"
+         class="group block p-5 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 hover:border-gold-500/50 dark:hover:border-gold-500/30 hover:shadow-lg transition-all duration-200">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="p-2 rounded-lg bg-gold-500/10 text-gold-600 dark:text-gold-400 group-hover:bg-gold-500/20 transition-colors">
+            <%= eden_icon(category[:icon], size: :md) rescue eden_icon("document", size: :md) %>
+          </div>
+          <h2 class="text-base font-display font-semibold text-zinc-900 dark:text-white"><%= category[:label] %></h2>
+        </div>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-3"><%= category[:description] %></p>
+        <div class="flex items-center justify-between">
+          <span class="text-xs text-zinc-400 dark:text-zinc-500"><%= category[:components].size %> components</span>
+          <span class="text-xs text-gold-600 dark:text-gold-400 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+            Explore <%= eden_icon("arrow-right", size: :xs) %>
+          </span>
+        </div>
+      </a>
+    <% end %>
+  </div>
+
+  <%# Layout previews section %>
+  <div class="mb-10">
+    <h2 class="text-xl font-display font-bold text-zinc-900 dark:text-white mb-4">Layout Systems</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <% @layouts.each do |slug, layout_info| %>
+        <a href="<%= eden_ui.styleguide_layout_path(layout: slug) %>"
+           target="_blank"
+           class="group flex items-center gap-4 p-4 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 hover:border-gold-500/50 dark:hover:border-gold-500/30 hover:shadow-lg transition-all duration-200">
+          <div class="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 group-hover:bg-gold-500/10 group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
+            <%= eden_icon("document", size: :md) %>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-white"><%= layout_info[:label] %></h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 truncate"><%= layout_info[:description] %></p>
+          </div>
+          <svg class="w-4 h-4 text-zinc-400 group-hover:text-gold-500 transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+        </a>
+      <% end %>
+    </div>
+  </div>
+
+  <%# Page Blocks section %>
+  <div class="mb-10">
+    <h2 class="text-xl font-display font-bold text-zinc-900 dark:text-white mb-4">Page Blocks</h2>
+    <a href="<%= eden_ui.styleguide_blocks_path %>"
+       class="group flex items-center gap-4 p-5 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 hover:border-gold-500/50 dark:hover:border-gold-500/30 hover:shadow-lg transition-all duration-200">
+      <div class="p-3 rounded-lg bg-gold-500/10 text-gold-600 dark:text-gold-400 group-hover:bg-gold-500/20 transition-colors">
+        <%= eden_icon("document", size: :lg) %>
+      </div>
+      <div class="flex-1 min-w-0">
+        <h3 class="text-base font-semibold text-zinc-900 dark:text-white">Browse All Page Blocks</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400"><%= EdenUi::Styleguide::BlockRegistry.block_count %> production-ready page sections across <%= EdenUi::Styleguide::BlockRegistry.categories.size %> categories</p>
+      </div>
+      <span class="text-gold-600 dark:text-gold-400 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+        Explore <%= eden_icon("arrow-right", size: :sm) %>
+      </span>
+    </a>
+  </div>
+
+  <%# Quick stats %>
+  <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+    <div class="p-4 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-center">
+      <p class="text-2xl font-display font-bold text-gold-500"><%= @component_count %></p>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Components</p>
+    </div>
+    <div class="p-4 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-center">
+      <p class="text-2xl font-display font-bold text-gold-500"><%= EdenUi::Styleguide::BlockRegistry.block_count %></p>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Page Blocks</p>
+    </div>
+    <div class="p-4 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-center">
+      <p class="text-2xl font-display font-bold text-gold-500"><%= @layouts.size %></p>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Layouts</p>
+    </div>
+    <div class="p-4 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-center">
+      <p class="text-2xl font-display font-bold text-gold-500"><%= EdenUi::IconHelper::ICONS.size %></p>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Icons</p>
+    </div>
+    <div class="p-4 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-center">
+      <p class="text-2xl font-display font-bold text-gold-500">14</p>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Stimulus Controllers</p>
+    </div>
+  </div>
+</div>

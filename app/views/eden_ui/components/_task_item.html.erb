@@ -1,0 +1,47 @@
+<%
+  title ||= ""
+  completed ||= false
+  priority ||= :medium
+  assignee ||= nil
+  due_date ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  priority_color = case priority.to_sym
+  when :high then "bg-red-500"
+  when :low then "bg-green-500"
+  else "bg-yellow-400"
+  end
+
+  title_class = completed ? "line-through text-gray-400 dark:text-gray-500" : "text-gray-900 dark:text-white"
+
+  classes = [
+    "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 group transition-colors",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <%= eden_checkbox(checked: completed) %>
+
+  <span class="w-2 h-2 rounded-full flex-shrink-0 <%= priority_color %>"></span>
+
+  <span class="flex-1 text-sm font-medium <%= title_class %>"><%= title %></span>
+
+  <% if assignee %>
+    <span class="text-xs text-gray-500 dark:text-gray-400"><%= assignee %></span>
+  <% end %>
+
+  <% if due_date %>
+    <span class="flex items-center text-xs text-gray-500 dark:text-gray-400">
+      <svg class="w-3 h-3 me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      <%= due_date %>
+    </span>
+  <% end %>
+
+  <% if content %>
+    <div class="flex items-center gap-1">
+      <%= content %>
+    </div>
+  <% end %>
+</div>

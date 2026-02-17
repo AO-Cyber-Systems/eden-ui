@@ -1,0 +1,25 @@
+<%
+  count ||= 0
+  visible ||= false
+  html_options ||= {}
+  content ||= nil
+
+  classes = [
+    "fixed bottom-0 left-0 right-0 z-40 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg transition-transform duration-300",
+    visible ? "translate-y-0" : "translate-y-full",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="text-sm font-medium text-gray-900 dark:text-white"><%= count %> item<%= count == 1 ? '' : 's' %> selected</span>
+    </div>
+    <% if content %>
+      <div class="flex items-center gap-3">
+        <%= content %>
+      </div>
+    <% end %>
+  </div>
+</div>

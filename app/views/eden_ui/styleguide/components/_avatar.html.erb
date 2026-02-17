@@ -1,0 +1,47 @@
+<%# ── Avatar component previews ── %>
+
+<%= styleguide_example(title: "Sizes", source: 'eden_avatar(initials: "XS", size: :xs)
+eden_avatar(initials: "SM", size: :sm)
+eden_avatar(initials: "MD", size: :md)
+eden_avatar(initials: "LG", size: :lg)
+eden_avatar(initials: "XL", size: :xl)') do %>
+  <%= eden_avatar(initials: "XS", size: :xs) %>
+  <%= eden_avatar(initials: "SM", size: :sm) %>
+  <%= eden_avatar(initials: "MD", size: :md) %>
+  <%= eden_avatar(initials: "LG", size: :lg) %>
+  <%= eden_avatar(initials: "XL", size: :xl) %>
+<% end %>
+
+<%= styleguide_example(title: "Rounded vs Square", source: 'eden_avatar(initials: "RD", rounded: true)
+eden_avatar(initials: "SQ", rounded: false)') do %>
+  <%= eden_avatar(initials: "RD", rounded: true) %>
+  <%= eden_avatar(initials: "SQ", rounded: false) %>
+<% end %>
+
+<%= styleguide_example(title: "Bordered", source: 'eden_avatar(initials: "BD", bordered: true, rounded: true)
+eden_avatar(initials: "BD", bordered: true, rounded: false)') do %>
+  <%= eden_avatar(initials: "BD", bordered: true, rounded: true) %>
+  <%= eden_avatar(initials: "BD", bordered: true, rounded: false) %>
+<% end %>
+
+<%= styleguide_example(title: "Status Indicators", source: 'eden_avatar(initials: "ON", status: :online, rounded: true)
+eden_avatar(initials: "OF", status: :offline, rounded: true)
+eden_avatar(initials: "AW", status: :away, rounded: true)
+eden_avatar(initials: "BS", status: :busy, rounded: true)') do %>
+  <%= eden_avatar(initials: "ON", status: :online, rounded: true) %>
+  <%= eden_avatar(initials: "OF", status: :offline, rounded: true) %>
+  <%= eden_avatar(initials: "AW", status: :away, rounded: true) %>
+  <%= eden_avatar(initials: "BS", status: :busy, rounded: true) %>
+<% end %>
+
+<%= styleguide_example(title: "Initials Fallback", source: 'eden_avatar(initials: "JD", size: :lg, rounded: true)
+eden_avatar(initials: "AB", size: :lg, rounded: true, bordered: true)') do %>
+  <%= eden_avatar(initials: "JD", size: :lg, rounded: true) %>
+  <%= eden_avatar(initials: "AB", size: :lg, rounded: true, bordered: true) %>
+<% end %>
+
+<%= styleguide_example(title: "Default Placeholder (no src or initials)", source: 'eden_avatar(size: :md, rounded: true)
+eden_avatar(size: :lg, rounded: true)') do %>
+  <%= eden_avatar(size: :md, rounded: true) %>
+  <%= eden_avatar(size: :lg, rounded: true) %>
+<% end %>

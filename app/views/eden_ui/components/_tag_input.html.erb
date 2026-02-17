@@ -1,0 +1,49 @@
+<%
+  name ||= nil
+  id ||= nil
+  value ||= []
+  placeholder ||= "Add a tag..."
+  max_tags ||= nil
+  delimiter ||= ","
+  disabled ||= false
+  html_options ||= {}
+
+  initial_value = Array(value).join(delimiter)
+
+  classes = [
+    "flex flex-wrap items-center gap-2 min-h-[42px] px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500",
+    disabled ? "opacity-50 cursor-not-allowed bg-gray-100 dark:bg-gray-800" : "",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>"
+     data-controller="eden-tag-input"
+     data-eden-tag-input-delimiter-value="<%= delimiter %>"
+     <% if max_tags %>data-eden-tag-input-max-tags-value="<%= max_tags %>"<% end %>
+     <%= tag.attributes(html_options) %>>
+  <input type="hidden"
+         data-eden-tag-input-target="hidden"
+         <% if name %>name="<%= name %>"<% end %>
+         <% if id %>id="<%= id %>"<% end %>
+         value="<%= initial_value %>">
+  <div data-eden-tag-input-target="tags" class="flex flex-wrap gap-2">
+    <% Array(value).each do |tag_text| %>
+      <% next if tag_text.blank? %>
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 rounded-full">
+        <%= tag_text %>
+        <% unless disabled %>
+          <button type="button" data-action="eden-tag-input#removeTag" class="inline-flex items-center p-0.5 text-blue-400 hover:text-blue-900 hover:bg-blue-200 dark:hover:bg-blue-800 dark:hover:text-blue-300 rounded-full" aria-label="Remove tag">
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M14.348 14.849a1.2 1.2 0 01-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 11-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 111.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 111.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 010 1.698z"/></svg>
+          </button>
+        <% end %>
+      </span>
+    <% end %>
+  </div>
+  <input type="text"
+         data-eden-tag-input-target="input"
+         data-action="keydown->eden-tag-input#handleKeydown"
+         class="flex-1 min-w-[120px] border-0 bg-transparent p-0 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-0 focus:outline-none"
+         placeholder="<%= placeholder %>"
+         <% if disabled %>disabled<% end %>>
+</div>

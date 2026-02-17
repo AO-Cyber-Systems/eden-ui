@@ -1,0 +1,111 @@
+<%= styleguide_block_example(
+  title: "Dropdown Filter with Checkboxes",
+  description: "Multi-select dropdown filter with checkbox options and apply button",
+  source: 'eden_dropdown(label: "Filter by category") do
+  eden_search_input(placeholder: "Search...", size: :sm)
+  eden_checkbox(label: "Electronics")
+  eden_checkbox(label: "Clothing")
+  eden_button(variant: :primary, size: :xs) { "Apply" }
+end'
+) do %>
+  <div class="bg-zinc-50 dark:bg-zinc-900 p-8 flex items-start justify-center min-h-[350px]">
+    <%# Simulated open dropdown %>
+    <div class="relative inline-block">
+      <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-lg hover:bg-zinc-100 dark:bg-zinc-800 dark:text-white dark:border-zinc-700 dark:hover:bg-zinc-700">
+        <%= eden_icon("chevron-down", size: :xs) %>
+        Filter by category
+      </button>
+      <%# Dropdown panel %>
+      <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 z-10">
+        <div class="p-3 border-b border-zinc-200 dark:border-zinc-700">
+          <%= eden_search_input(placeholder: "Search categories...", size: :sm) %>
+        </div>
+        <ul class="p-3 space-y-2 max-h-48 overflow-y-auto">
+          <% [
+            ["Electronics", 156, true],
+            ["Clothing", 89, false],
+            ["Home & Garden", 67, true],
+            ["Sports & Outdoors", 42, false],
+            ["Books", 34, false],
+            ["Toys & Games", 28, false],
+            ["Automotive", 19, false],
+          ].each do |label, count, checked| %>
+            <li class="flex items-center justify-between">
+              <%= eden_checkbox(label: label, checked: checked) %>
+              <span class="text-xs text-zinc-400 dark:text-zinc-500"><%= count %></span>
+            </li>
+          <% end %>
+        </ul>
+        <div class="p-3 border-t border-zinc-200 dark:border-zinc-700 flex items-center justify-between">
+          <button class="text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200">Clear all</button>
+          <%= eden_button(variant: :primary, size: :xs) { "Apply filters" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Dropdown Filter with Radio and Range",
+  description: "Filter dropdown with radio selection and price range inputs",
+  source: 'eden_dropdown(label: "Filters") do
+  # Status section
+  eden_radio(label: "Active")
+  eden_radio(label: "Inactive")
+  # Price Range section
+  eden_input(type: :number, placeholder: "Min")
+  eden_input(type: :number, placeholder: "Max")
+end'
+) do %>
+  <div class="bg-zinc-50 dark:bg-zinc-900 p-8 flex items-start justify-center min-h-[400px]">
+    <div class="relative inline-block">
+      <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-lg hover:bg-zinc-100 dark:bg-zinc-800 dark:text-white dark:border-zinc-700 dark:hover:bg-zinc-700">
+        <%= eden_icon("chevron-down", size: :xs) %>
+        Filters
+        <span class="inline-flex items-center justify-center w-5 h-5 text-xs font-semibold text-gold-800 bg-gold-100 rounded-full">2</span>
+      </button>
+      <%# Dropdown panel %>
+      <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-lg dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 z-10">
+        <%# Status section %>
+        <div class="p-3 border-b border-zinc-200 dark:border-zinc-700">
+          <h6 class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Status</h6>
+          <div class="space-y-2">
+            <%= eden_radio(label: "All") %>
+            <%= eden_radio(label: "Active", checked: true) %>
+            <%= eden_radio(label: "Inactive") %>
+            <%= eden_radio(label: "Archived") %>
+          </div>
+        </div>
+        <%# Price range section %>
+        <div class="p-3 border-b border-zinc-200 dark:border-zinc-700">
+          <h6 class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Price Range</h6>
+          <div class="flex items-center gap-2">
+            <%= eden_input(type: :number, placeholder: "Min", size: :sm) %>
+            <span class="text-zinc-400">-</span>
+            <%= eden_input(type: :number, placeholder: "Max", size: :sm) %>
+          </div>
+        </div>
+        <%# Rating section %>
+        <div class="p-3 border-b border-zinc-200 dark:border-zinc-700">
+          <h6 class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Rating</h6>
+          <div class="space-y-2">
+            <% [5, 4, 3, 2].each do |stars| %>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" class="rounded border-zinc-300 text-gold-500 focus:ring-gold-500">
+                <div class="flex items-center text-gold-400">
+                  <% stars.times do %><%= eden_icon("star", size: :xs) %><% end %>
+                  <% (5 - stars).times do %><span class="text-zinc-300 dark:text-zinc-600"><%= eden_icon("star", size: :xs) %></span><% end %>
+                </div>
+                <span class="text-sm text-zinc-500 dark:text-zinc-400">& up</span>
+              </label>
+            <% end %>
+          </div>
+        </div>
+        <div class="p-3 flex items-center justify-between">
+          <button class="text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200">Reset</button>
+          <%= eden_button(variant: :primary, size: :xs) { "Apply filters" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

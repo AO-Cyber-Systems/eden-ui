@@ -1,0 +1,80 @@
+<%
+  title ||= nil
+  price ||= nil
+  image ||= nil
+  category ||= nil
+  rating ||= nil
+  reviews_count ||= nil
+  badge_text ||= nil
+  badge_variant ||= nil
+  href ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  classes = [
+    "bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 overflow-hidden",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %> relative" <%= tag.attributes(html_options) %>>
+  <%# Badge overlay %>
+  <% if badge_text %>
+    <div class="absolute top-3 left-3 z-10">
+      <%= eden_badge(variant: badge_variant || :danger, size: :sm, pill: true) { badge_text } %>
+    </div>
+  <% end %>
+
+  <%# Image %>
+  <% if href %>
+    <a href="<%= href %>">
+  <% end %>
+    <% if image %>
+      <img class="w-full h-48 object-cover rounded-t-lg" src="<%= image %>" alt="<%= title %>">
+    <% else %>
+      <div class="w-full h-48 bg-gray-200 dark:bg-gray-700 rounded-t-lg flex items-center justify-center">
+        <svg class="w-10 h-10 text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/></svg>
+      </div>
+    <% end %>
+  <% if href %>
+    </a>
+  <% end %>
+
+  <div class="p-5">
+    <%# Category %>
+    <% if category %>
+      <p class="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1"><%= category %></p>
+    <% end %>
+
+    <%# Title %>
+    <% if title %>
+      <% if href %>
+        <a href="<%= href %>" class="text-lg font-semibold text-gray-900 dark:text-white hover:underline"><%= title %></a>
+      <% else %>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white"><%= title %></h3>
+      <% end %>
+    <% end %>
+
+    <%# Rating %>
+    <% if rating %>
+      <div class="flex items-center mt-2.5 mb-3">
+        <%= eden_rating(value: rating, size: :sm) %>
+        <% if reviews_count %>
+          <span class="ms-2 text-xs text-gray-500 dark:text-gray-400">(<%= reviews_count %>)</span>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%# Price & Cart %>
+    <div class="flex items-center justify-between mt-3">
+      <% if price %>
+        <span class="text-xl font-bold text-gray-900 dark:text-white"><%= price %></span>
+      <% end %>
+      <% if href %>
+        <%= eden_button(variant: :primary, size: :sm, href: href) { "Add to cart" } %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= content %>
+</div>

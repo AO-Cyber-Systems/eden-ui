@@ -1,0 +1,65 @@
+<%# List Group component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_list_group do
+  eden_list_group_item(label: "Profile")
+  eden_list_group_item(label: "Settings")
+  eden_list_group_item(label: "Messages")
+  eden_list_group_item(label: "Downloads")
+end') do %>
+  <div class="w-full max-w-sm">
+    <%= eden_list_group do %>
+      <%= eden_list_group_item(label: "Profile") %>
+      <%= eden_list_group_item(label: "Settings") %>
+      <%= eden_list_group_item(label: "Messages") %>
+      <%= eden_list_group_item(label: "Downloads") %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With icons", description: "List items with leading icons", source: 'eden_list_group do
+  eden_list_group_item(label: "Profile", icon: "user")
+  eden_list_group_item(label: "Settings", icon: "cog")
+  eden_list_group_item(label: "Messages", icon: "envelope")
+  eden_list_group_item(label: "Downloads", icon: "arrow-down-tray")
+end') do %>
+  <div class="w-full max-w-sm">
+    <%= eden_list_group do %>
+      <%= eden_list_group_item(label: "Profile", icon: "user") %>
+      <%= eden_list_group_item(label: "Settings", icon: "cog") %>
+      <%= eden_list_group_item(label: "Messages", icon: "envelope") %>
+      <%= eden_list_group_item(label: "Downloads", icon: "arrow-down-tray") %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With links", description: "Clickable list items as navigation", source: 'eden_list_group do
+  eden_list_group_item(label: "Profile", href: "#", icon: "user")
+  eden_list_group_item(label: "Settings", href: "#", icon: "cog")
+  eden_list_group_item(label: "Messages", href: "#", icon: "envelope")
+  eden_list_group_item(label: "Sign out", href: "#", icon: "arrow-right-on-rectangle")
+end') do %>
+  <div class="w-full max-w-sm">
+    <%= eden_list_group do %>
+      <%= eden_list_group_item(label: "Profile", href: "#", icon: "user") %>
+      <%= eden_list_group_item(label: "Settings", href: "#", icon: "cog") %>
+      <%= eden_list_group_item(label: "Messages", href: "#", icon: "envelope") %>
+      <%= eden_list_group_item(label: "Sign out", href: "#", icon: "arrow-right-on-rectangle") %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Active and disabled states", description: "Items with active highlight and disabled state", source: 'eden_list_group do
+  eden_list_group_item(label: "Profile", href: "#", icon: "user", active: true)
+  eden_list_group_item(label: "Settings", href: "#", icon: "cog")
+  eden_list_group_item(label: "Messages", href: "#", icon: "envelope")
+  eden_list_group_item(label: "Restricted", href: "#", icon: "lock-closed", disabled: true)
+end') do %>
+  <div class="w-full max-w-sm">
+    <%= eden_list_group do %>
+      <%= eden_list_group_item(label: "Profile", href: "#", icon: "user", active: true) %>
+      <%= eden_list_group_item(label: "Settings", href: "#", icon: "cog") %>
+      <%= eden_list_group_item(label: "Messages", href: "#", icon: "envelope") %>
+      <%= eden_list_group_item(label: "Restricted", href: "#", icon: "lock-closed", disabled: true) %>
+    <% end %>
+  </div>
+<% end %>

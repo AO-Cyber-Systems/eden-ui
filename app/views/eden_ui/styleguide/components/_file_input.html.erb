@@ -1,0 +1,21 @@
+<%# File Input component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_file_input') do %>
+  <%= eden_file_input %>
+<% end %>
+
+<%= styleguide_example(title: "With Label and Hint", source: 'eden_file_input(label: "Upload file", hint: "SVG, PNG, JPG or GIF (MAX. 800x400px)")') do %>
+  <%= eden_file_input(label: "Upload file", hint: "SVG, PNG, JPG or GIF (MAX. 800x400px)") %>
+<% end %>
+
+<%= styleguide_example(title: "Multiple Files", source: 'eden_file_input(label: "Upload multiple files", multiple: true, hint: "Select one or more files")') do %>
+  <%= eden_file_input(label: "Upload multiple files", multiple: true, hint: "Select one or more files") %>
+<% end %>
+
+<%= styleguide_example(title: "With Accept Filter", source: 'eden_file_input(label: "Profile photo", accept: "image/png,image/jpeg", hint: "Only PNG and JPEG files are accepted")') do %>
+  <%= eden_file_input(label: "Profile photo", accept: "image/png,image/jpeg", hint: "Only PNG and JPEG files are accepted") %>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", source: 'eden_file_input(label: "Disabled upload", disabled: true)') do %>
+  <%= eden_file_input(label: "Disabled upload", disabled: true) %>
+<% end %>

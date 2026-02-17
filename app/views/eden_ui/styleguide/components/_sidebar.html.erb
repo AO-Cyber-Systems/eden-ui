@@ -1,0 +1,61 @@
+<%= styleguide_example(
+  title: "Default Sidebar",
+  description: "Sidebar with items and badge counters, shown in a contained div",
+  source: 'eden_sidebar(collapsed: false) do
+  eden_sidebar_item(label: "Dashboard", href: "#", active: true)
+  eden_sidebar_item(label: "Users", href: "#", badge: "5")
+  eden_sidebar_item(label: "Products", href: "#")
+  eden_sidebar_item(label: "Settings", href: "#")
+  eden_sidebar_item(label: "Help", href: "#")
+end'
+) do %>
+  <div class="relative w-64 border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden" style="min-height: 320px;">
+    <aside class="w-full h-full" aria-label="Sidebar">
+      <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+          <%= eden_sidebar_item(label: "Dashboard", href: "#", active: true) %>
+          <%= eden_sidebar_item(label: "Users", href: "#", badge: "5") %>
+          <%= eden_sidebar_item(label: "Products", href: "#") %>
+          <%= eden_sidebar_item(label: "Settings", href: "#") %>
+          <%= eden_sidebar_item(label: "Help", href: "#") %>
+        </ul>
+      </div>
+    </aside>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Sidebar with Groups",
+  description: "Sidebar using collapsible group sections",
+  source: 'eden_sidebar(collapsed: false) do
+  eden_sidebar_item(label: "Dashboard", href: "#", active: true)
+  eden_sidebar_group(label: "E-commerce", open: true) do
+    eden_sidebar_item(label: "Products", href: "#")
+    eden_sidebar_item(label: "Orders", href: "#", badge: "3")
+    eden_sidebar_item(label: "Customers", href: "#")
+  end
+  eden_sidebar_group(label: "Settings") do
+    eden_sidebar_item(label: "General", href: "#")
+    eden_sidebar_item(label: "Security", href: "#")
+  end
+end'
+) do %>
+  <div class="relative w-64 border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden" style="min-height: 400px;">
+    <aside class="w-full h-full" aria-label="Sidebar">
+      <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+          <%= eden_sidebar_item(label: "Dashboard", href: "#", active: true) %>
+          <%= eden_sidebar_group(label: "E-commerce", open: true) do %>
+            <%= eden_sidebar_item(label: "Products", href: "#") %>
+            <%= eden_sidebar_item(label: "Orders", href: "#", badge: "3") %>
+            <%= eden_sidebar_item(label: "Customers", href: "#") %>
+          <% end %>
+          <%= eden_sidebar_group(label: "Settings") do %>
+            <%= eden_sidebar_item(label: "General", href: "#") %>
+            <%= eden_sidebar_item(label: "Security", href: "#") %>
+          <% end %>
+        </ul>
+      </div>
+    </aside>
+  </div>
+<% end %>

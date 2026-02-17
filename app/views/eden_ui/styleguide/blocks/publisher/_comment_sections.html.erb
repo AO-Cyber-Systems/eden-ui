@@ -1,0 +1,274 @@
+<%# app/views/eden_ui/styleguide/blocks/publisher/_comment_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Comment Section",
+  description: "Comment section with post form, threaded replies, and dropdown actions",
+  source: '<section class="bg-white dark:bg-zinc-900 py-8 lg:py-16">
+  <div class="max-w-2xl mx-auto px-4">
+    <h2>Discussion (20)</h2>
+    <form>
+      eden_textarea(rows: 6, placeholder: "Write a comment...")
+      eden_button(variant: :primary, size: :sm) { "Post comment" }
+    </form>
+    <!-- Comments with avatars, timestamps, reply buttons -->
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900 py-8 lg:py-16 antialiased">
+    <div class="max-w-2xl mx-auto px-4">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-lg lg:text-2xl font-bold text-zinc-900 dark:text-white">Discussion (20)</h2>
+      </div>
+
+      <%# Comment form %>
+      <form class="mb-6">
+        <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700">
+          <%= eden_textarea(rows: 6, placeholder: "Write a comment...") %>
+        </div>
+        <%= eden_button(variant: :primary, size: :sm) { "Post comment" } %>
+      </form>
+
+      <%# Comments list %>
+      <% [
+        {
+          initials: "MB", name: "Michael Gough", date: "Feb. 8, 2022",
+          body: "Very straight-to-point article. Really worth time reading. Thank you! But tools are just the instruments for the people behind them. The, the, the, the, article.",
+          replies: [
+            { initials: "JL", name: "Jese Leos", date: "Feb. 12, 2022", body: "Much appreciated!, it makes me really proud and happy to hear that you find this article useful." }
+          ]
+        },
+        {
+          initials: "JL", name: "Jese Leos", date: "Feb. 12, 2022",
+          body: "Much appreciated!, really glad you found the article helpful. The key takeaway is that consistency in your design system will pay dividends over time.",
+          replies: []
+        },
+        {
+          initials: "BG", name: "Bonnie Green", date: "Mar. 12, 2022",
+          body: "The article covers the topic well. I particularly like the section about design tokens and how they bridge the gap between design and development.",
+          replies: []
+        }
+      ].each do |comment| %>
+        <article class="p-6 text-base bg-white dark:bg-zinc-900 <%= comment[:replies].any? ? 'mb-3 border-b border-zinc-200 dark:border-zinc-700' : 'mb-3' %>">
+          <footer class="flex justify-between items-center mb-2">
+            <div class="flex items-center">
+              <p class="inline-flex items-center mr-3 text-sm text-zinc-900 dark:text-white font-semibold">
+                <%= eden_avatar(initials: comment[:initials], size: :xs, rounded: true) %>
+                <span class="ml-2"><%= comment[:name] %></span>
+              </p>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400">
+                <time><%= comment[:date] %></time>
+              </p>
+            </div>
+            <%= eden_dropdown(label: "Comment actions", trigger: :click) do %>
+              <div class="py-1 text-sm text-zinc-700 dark:text-zinc-200">
+                <a href="#" class="block px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-600">Edit</a>
+                <a href="#" class="block px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-600">Remove</a>
+                <a href="#" class="block px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-600">Report</a>
+              </div>
+            <% end %>
+          </footer>
+          <p class="text-zinc-500 dark:text-zinc-400"><%= comment[:body] %></p>
+          <div class="flex items-center mt-4 space-x-4">
+            <%= eden_button(variant: :ghost, size: :xs) do %>
+              <%= eden_icon("chat-bubble-left", size: :sm) %>
+              <span class="ml-1">Reply</span>
+            <% end %>
+          </div>
+        </article>
+
+        <% comment[:replies].each do |reply| %>
+          <article class="p-6 mb-3 ml-6 lg:ml-12 text-base bg-zinc-50 dark:bg-zinc-800 rounded-lg">
+            <footer class="flex justify-between items-center mb-2">
+              <div class="flex items-center">
+                <p class="inline-flex items-center mr-3 text-sm text-zinc-900 dark:text-white font-semibold">
+                  <%= eden_avatar(initials: reply[:initials], size: :xs, rounded: true) %>
+                  <span class="ml-2"><%= reply[:name] %></span>
+                </p>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400">
+                  <time><%= reply[:date] %></time>
+                </p>
+              </div>
+            </footer>
+            <p class="text-zinc-500 dark:text-zinc-400"><%= reply[:body] %></p>
+            <div class="flex items-center mt-4 space-x-4">
+              <%= eden_button(variant: :ghost, size: :xs) do %>
+                <%= eden_icon("chat-bubble-left", size: :sm) %>
+                <span class="ml-1">Reply</span>
+              <% end %>
+            </div>
+          </article>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Comment Section with Upvotes",
+  description: "Comment section with upvote/downvote buttons and vote counts on each comment",
+  source: '<section class="bg-white dark:bg-zinc-900 py-8 lg:py-16">
+  <div class="max-w-2xl mx-auto px-4">
+    <h2>Comments (14)</h2>
+    eden_textarea(rows: 4, placeholder: "Write a comment...")
+    eden_button(variant: :primary, size: :sm) { "Post comment" }
+    <!-- Comments with upvote/downvote and counts -->
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900 py-8 lg:py-16 antialiased">
+    <div class="max-w-2xl mx-auto px-4">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-lg lg:text-2xl font-bold text-zinc-900 dark:text-white">Comments (14)</h2>
+        <div>
+          <%= eden_button(variant: :ghost, size: :xs) do %>
+            Most popular
+            <%= eden_icon("chevron-down", size: :sm) %>
+          <% end %>
+        </div>
+      </div>
+
+      <%# Comment form %>
+      <form class="mb-8">
+        <div class="py-2 px-4 mb-4 bg-white rounded-lg border border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700">
+          <%= eden_textarea(rows: 4, placeholder: "Write a comment...") %>
+        </div>
+        <div class="flex justify-between items-center">
+          <%= eden_button(variant: :primary, size: :sm) { "Post comment" } %>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">
+            Remember to be respectful and follow our
+            <a href="#" class="text-gold-600 dark:text-gold-500 hover:underline">community guidelines</a>.
+          </p>
+        </div>
+      </form>
+
+      <%# Comments with upvotes %>
+      <% [
+        { initials: "NF", name: "Neil Flowers", date: "Nov. 12, 2023", upvotes: 24, downvotes: 2,
+          body: "This is exactly what I was looking for. The approach to design tokens is well-thought-out and the integration with Tailwind CSS makes it very practical for real-world projects." },
+        { initials: "HS", name: "Helene Smith", date: "Nov. 14, 2023", upvotes: 18, downvotes: 1,
+          body: "I have been using Flowbite for the past few months and it has significantly improved my development workflow. The component library is comprehensive and well-documented." },
+        { initials: "TR", name: "Thomas Lean", date: "Nov. 15, 2023", upvotes: 7, downvotes: 0,
+          body: "Great article! One thing I would add is the importance of versioning your design system. This helps teams stay in sync as components evolve over time." }
+      ].each do |comment| %>
+        <article class="flex gap-4 p-5 mb-4 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700">
+          <%# Upvote/downvote column %>
+          <div class="flex flex-col items-center gap-1 flex-shrink-0">
+            <button type="button" class="text-zinc-400 hover:text-gold-600 dark:hover:text-gold-400">
+              <%= eden_icon("chevron-up", size: :sm) %>
+            </button>
+            <span class="text-sm font-bold text-zinc-900 dark:text-white"><%= comment[:upvotes] %></span>
+            <button type="button" class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300">
+              <%= eden_icon("chevron-down", size: :sm) %>
+            </button>
+          </div>
+          <%# Comment body %>
+          <div class="flex-1">
+            <footer class="flex justify-between items-center mb-2">
+              <div class="flex items-center">
+                <p class="inline-flex items-center mr-3 text-sm text-zinc-900 dark:text-white font-semibold">
+                  <%= eden_avatar(initials: comment[:initials], size: :xs, rounded: true) %>
+                  <span class="ml-2"><%= comment[:name] %></span>
+                </p>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400">
+                  <time><%= comment[:date] %></time>
+                </p>
+              </div>
+            </footer>
+            <p class="text-zinc-500 dark:text-zinc-400"><%= comment[:body] %></p>
+            <div class="flex items-center mt-3 space-x-4">
+              <%= eden_button(variant: :ghost, size: :xs) do %>
+                <%= eden_icon("chat-bubble-left", size: :sm) %>
+                <span class="ml-1">Reply</span>
+              <% end %>
+              <%= eden_button(variant: :ghost, size: :xs) do %>
+                <%= eden_icon("heart", size: :sm) %>
+                <span class="ml-1">Like</span>
+              <% end %>
+            </div>
+          </div>
+        </article>
+      <% end %>
+
+      <%# Load more button %>
+      <div class="text-center mt-6">
+        <%= eden_button(variant: :ghost, size: :sm) { "Load more comments" } %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Comment Section with Solid Background",
+  description: "Comments displayed on a solid background with card-style comment items",
+  source: '<section class="bg-zinc-100 dark:bg-zinc-800 py-8 lg:py-16">
+  <div class="max-w-2xl mx-auto px-4">
+    <h2>Leave a comment</h2>
+    eden_textarea(rows: 4, placeholder: "Write your thoughts...")
+    eden_button(variant: :primary) { "Submit" }
+    <!-- Comment cards on solid bg -->
+  </div>
+</section>'
+) do %>
+  <section class="bg-zinc-50 dark:bg-zinc-800 py-8 lg:py-16 antialiased">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="text-lg lg:text-2xl font-bold text-zinc-900 dark:text-white mb-6">Leave a comment</h2>
+
+      <%# Comment form card %>
+      <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-700 p-6 mb-8">
+        <div class="flex items-center gap-3 mb-4">
+          <%= eden_avatar(initials: "You", size: :sm, rounded: true) %>
+          <span class="text-sm font-medium text-zinc-900 dark:text-white">Commenting as <strong>You</strong></span>
+        </div>
+        <div class="mb-4">
+          <%= eden_textarea(rows: 4, placeholder: "Write your thoughts...") %>
+        </div>
+        <div class="flex justify-between items-center">
+          <%= eden_button(variant: :primary, size: :sm) { "Submit" } %>
+          <div class="flex items-center gap-2">
+            <%= eden_button(variant: :ghost, size: :xs) do %>
+              <%= eden_icon("photo", size: :sm) %>
+            <% end %>
+            <%= eden_button(variant: :ghost, size: :xs) do %>
+              <%= eden_icon("link", size: :sm) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <%# Comments list %>
+      <div class="space-y-4">
+        <% [
+          { initials: "RR", name: "Robert Brown", date: "2 hours ago", body: "I have been following this series and it keeps getting better. The examples are practical and easy to follow. Looking forward to the next installment!", likes: 12 },
+          { initials: "KS", name: "Karen Smith", date: "5 hours ago", body: "Great overview of the topic. I especially appreciated the comparison between different approaches. It helped me decide which direction to take for my own project.", likes: 8 },
+          { initials: "DP", name: "David Park", date: "1 day ago", body: "Thanks for putting this together. One question though: how do you handle theming across multiple brands? Would love to see a follow-up article on that topic.", likes: 5 }
+        ].each do |comment| %>
+          <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-700 p-6">
+            <div class="flex justify-between items-center mb-3">
+              <div class="flex items-center gap-3">
+                <%= eden_avatar(initials: comment[:initials], size: :sm, rounded: true) %>
+                <div>
+                  <span class="text-sm font-bold text-zinc-900 dark:text-white"><%= comment[:name] %></span>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400"><%= comment[:date] %></p>
+                </div>
+              </div>
+              <button type="button" class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300">
+                <%= eden_icon("ellipsis-horizontal", size: :sm) %>
+              </button>
+            </div>
+            <p class="text-zinc-500 dark:text-zinc-400 mb-4"><%= comment[:body] %></p>
+            <div class="flex items-center gap-4 pt-3 border-t border-zinc-100 dark:border-zinc-700">
+              <%= eden_button(variant: :ghost, size: :xs) do %>
+                <%= eden_icon("heart", size: :sm) %>
+                <span class="ml-1"><%= comment[:likes] %></span>
+              <% end %>
+              <%= eden_button(variant: :ghost, size: :xs) do %>
+                <%= eden_icon("chat-bubble-left", size: :sm) %>
+                <span class="ml-1">Reply</span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

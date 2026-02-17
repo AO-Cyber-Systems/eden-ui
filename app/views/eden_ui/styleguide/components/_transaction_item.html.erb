@@ -1,0 +1,21 @@
+<%# Transaction Item component preview %>
+
+<%= styleguide_example(title: "Transaction List", description: "Multiple transactions showing credits and debits.",
+  source: 'eden_transaction_item(description: "Payment from client", amount: "$2,500.00", type: :credit, status: :completed, date: "Feb 10", party: "Jane Cooper")
+eden_transaction_item(description: "Server hosting", amount: "$49.99", type: :debit, status: :completed, date: "Feb 9", party: "DigitalOcean")
+eden_transaction_item(description: "Subscription renewal", amount: "$29.00", type: :debit, status: :pending, date: "Feb 8", party: "Figma")
+eden_transaction_item(description: "Refund - order #1234", amount: "$150.00", type: :credit, status: :refunded, date: "Feb 7", party: "Amazon")') do %>
+  <div class="max-w-lg bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+    <%= eden_transaction_item(description: "Payment from client", amount: "$2,500.00", type: :credit, status: :completed, date: "Feb 10", party: "Jane Cooper") %>
+    <%= eden_transaction_item(description: "Server hosting", amount: "$49.99", type: :debit, status: :completed, date: "Feb 9", party: "DigitalOcean") %>
+    <%= eden_transaction_item(description: "Subscription renewal", amount: "$29.00", type: :debit, status: :pending, date: "Feb 8", party: "Figma") %>
+    <%= eden_transaction_item(description: "Refund - order #1234", amount: "$150.00", type: :credit, status: :refunded, date: "Feb 7", party: "Amazon") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Failed Transaction", description: "A transaction with failed status.",
+  source: 'eden_transaction_item(description: "Payment to vendor", amount: "$1,200.00", type: :debit, status: :failed, date: "Feb 6", party: "Stripe")') do %>
+  <div class="max-w-lg bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+    <%= eden_transaction_item(description: "Payment to vendor", amount: "$1,200.00", type: :debit, status: :failed, date: "Feb 6", party: "Stripe") %>
+  </div>
+<% end %>

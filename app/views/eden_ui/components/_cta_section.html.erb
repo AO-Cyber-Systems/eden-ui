@@ -1,0 +1,83 @@
+<%
+  title ||= nil
+  subtitle ||= nil
+  primary_cta_text ||= nil
+  primary_cta_href ||= "#"
+  secondary_cta_text ||= nil
+  secondary_cta_href ||= "#"
+  variant ||= :centered
+  html_options ||= {}
+  content ||= nil
+
+  variant = variant.to_sym
+
+  bg_classes = case variant
+  when :gradient
+    "bg-blue-600 dark:bg-blue-700"
+  else
+    "bg-gray-50 dark:bg-gray-800"
+  end
+
+  title_color = case variant
+  when :gradient
+    "text-white"
+  else
+    "text-gray-900 dark:text-white"
+  end
+
+  subtitle_color = case variant
+  when :gradient
+    "text-blue-100"
+  else
+    "text-gray-500 dark:text-gray-400"
+  end
+
+  classes = [bg_classes, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<section class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 <%= variant == :split ? 'lg:flex lg:items-center lg:gap-16' : '' %>">
+    <div class="<%= variant == :split ? 'lg:w-1/2' : 'mx-auto max-w-screen-sm text-center' %>">
+      <% if title %>
+        <h2 class="mb-4 text-3xl font-extrabold tracking-tight leading-tight <%= title_color %> md:text-4xl"><%= title %></h2>
+      <% end %>
+      <% if subtitle %>
+        <p class="mb-6 font-light <%= subtitle_color %> md:text-lg"><%= subtitle %></p>
+      <% end %>
+
+      <% if variant != :split && (primary_cta_text || secondary_cta_text) %>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <% if primary_cta_text %>
+            <% btn_variant = variant == :gradient ? :secondary : :primary %>
+            <%= eden_button(variant: btn_variant, size: :lg, href: primary_cta_href) { primary_cta_text } %>
+          <% end %>
+          <% if secondary_cta_text %>
+            <% outline_variant = variant == :gradient ? :secondary : :dark %>
+            <%= eden_button(variant: outline_variant, size: :lg, outline: true, href: secondary_cta_href) { secondary_cta_text } %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <% if variant == :split %>
+      <div class="lg:w-1/2 mt-8 lg:mt-0">
+        <% if content %>
+          <%= content %>
+        <% else %>
+          <% if primary_cta_text || secondary_cta_text %>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <% if primary_cta_text %>
+                <%= eden_button(variant: :primary, size: :lg, href: primary_cta_href) { primary_cta_text } %>
+              <% end %>
+              <% if secondary_cta_text %>
+                <%= eden_button(variant: :dark, size: :lg, outline: true, href: secondary_cta_href) { secondary_cta_text } %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= content %>
+    <% end %>
+  </div>
+</section>

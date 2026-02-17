@@ -1,0 +1,139 @@
+<%= styleguide_block_example(
+  title: "Update Product Form",
+  description: "Full-page edit form with pre-populated fields and save/discard actions",
+  source: 'eden_form_group(label: "Product Name", required: true) do
+  eden_input(value: "Apple iMac 27\"")
+end
+eden_form_group(label: "Description") do
+  eden_textarea(rows: 4)
+end
+eden_button(variant: :primary) { "Update product" }
+eden_button(variant: :ghost) { "Discard" }'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-bold text-zinc-900 dark:text-white">Edit Product</h2>
+        <%= eden_badge(text: "Published", variant: :success, size: :sm) %>
+      </div>
+      <form action="#">
+        <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Product Name", required: true) do %>
+              <%= eden_input(value: "Apple iMac 27\"", name: "name", id: "update-name") %>
+            <% end %>
+          </div>
+          <div class="w-full">
+            <%= eden_form_group(label: "Brand") do %>
+              <%= eden_input(value: "Apple", name: "brand", id: "update-brand") %>
+            <% end %>
+          </div>
+          <div class="w-full">
+            <%= eden_form_group(label: "Price") do %>
+              <%= eden_input(type: :number, value: "1499", name: "price", id: "update-price") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Category") do %>
+              <%= eden_select(options: ["Electronics", "TV/Monitors", "PC", "Gaming/Console", "Phones"], placeholder: "Electronics") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Item Weight (kg)") do %>
+              <%= eden_input(type: :number, value: "9.88", name: "weight", id: "update-weight") %>
+            <% end %>
+          </div>
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Description") do %>
+              <%= eden_textarea(rows: 8, placeholder: "Standard glass, 5K Retina display with True Tone technology and P3 wide color for a brilliant, realistic viewing experience.") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="mt-6 flex items-center gap-3">
+          <%= eden_button(variant: :primary) { "Update product" } %>
+          <%= eden_button(variant: :ghost) { "Discard changes" } %>
+          <%= eden_button(variant: :danger) do %>
+            <%= eden_icon("trash", size: :sm) %>
+            <span class="ml-1">Delete</span>
+          <% end %>
+        </div>
+      </form>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Update User Settings Form",
+  description: "User profile settings form with avatar upload and toggles",
+  source: 'eden_avatar(initials: "BG", size: :xl)
+eden_form_group(label: "Full Name") do
+  eden_input(value: "Bonnie Green")
+end
+eden_toggle(label: "Email notifications", checked: true)
+eden_button(variant: :primary) { "Save changes" }'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+      <h2 class="text-xl font-bold text-zinc-900 dark:text-white mb-6">Edit Profile</h2>
+      <form action="#">
+        <%# Avatar section %>
+        <div class="flex items-center gap-4 mb-6 p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg">
+          <%= eden_avatar(initials: "BG", size: :xl) %>
+          <div>
+            <p class="text-sm font-medium text-zinc-900 dark:text-white mb-1">Profile Photo</p>
+            <div class="flex items-center gap-2">
+              <%= eden_button(variant: :ghost, size: :xs) { "Change" } %>
+              <%= eden_button(variant: :ghost, size: :xs) { "Remove" } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div>
+            <%= eden_form_group(label: "First Name") do %>
+              <%= eden_input(value: "Bonnie") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Last Name") do %>
+              <%= eden_input(value: "Green") %>
+            <% end %>
+          </div>
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Email") do %>
+              <%= eden_input(type: :email, value: "bonnie@company.com") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Role") do %>
+              <%= eden_select(options: ["Administrator", "Editor", "Viewer"], placeholder: "Administrator") %>
+            <% end %>
+          </div>
+          <div>
+            <%= eden_form_group(label: "Department") do %>
+              <%= eden_select(options: ["Engineering", "Design", "Marketing", "Sales"], placeholder: "Engineering") %>
+            <% end %>
+          </div>
+          <div class="sm:col-span-2">
+            <%= eden_form_group(label: "Bio") do %>
+              <%= eden_textarea(rows: 3, placeholder: "Senior Software Engineer with 10+ years experience...") %>
+            <% end %>
+          </div>
+        </div>
+
+        <%# Notification preferences %>
+        <div class="mt-6 p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg space-y-3">
+          <h3 class="text-sm font-medium text-zinc-900 dark:text-white mb-2">Notification Preferences</h3>
+          <%= eden_toggle(label: "Email notifications", checked: true) %>
+          <%= eden_toggle(label: "Push notifications", checked: true) %>
+          <%= eden_toggle(label: "SMS notifications") %>
+        </div>
+
+        <div class="mt-6 flex items-center gap-3">
+          <%= eden_button(variant: :primary) { "Save changes" } %>
+          <%= eden_button(variant: :ghost) { "Cancel" } %>
+        </div>
+      </form>
+    </div>
+  </section>
+<% end %>

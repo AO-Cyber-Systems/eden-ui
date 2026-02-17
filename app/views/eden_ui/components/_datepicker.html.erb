@@ -1,0 +1,58 @@
+<%
+  name ||= nil
+  id ||= nil
+  value ||= nil
+  min ||= nil
+  max ||= nil
+  placeholder ||= "Select date"
+  format ||= "%Y-%m-%d"
+  disabled ||= false
+  html_options ||= {}
+
+  classes = [
+    "relative",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>"
+     data-controller="eden-datepicker"
+     data-eden-datepicker-format-value="<%= format %>"
+     <% if min %>data-eden-datepicker-min-value="<%= min %>"<% end %>
+     <% if max %>data-eden-datepicker-max-value="<%= max %>"<% end %>
+     <%= tag.attributes(html_options) %>>
+  <div class="relative">
+    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+      </svg>
+    </div>
+    <input type="text"
+           data-eden-datepicker-target="input"
+           data-action="click->eden-datepicker#toggle focus->eden-datepicker#open"
+           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+           placeholder="<%= placeholder %>"
+           <% if value %>value="<%= value %>"<% end %>
+           <% if name %>name="<%= name %>"<% end %>
+           <% if id %>id="<%= id %>"<% end %>
+           <% if disabled %>disabled<% end %>
+           readonly>
+  </div>
+  <div data-eden-datepicker-target="calendar" class="hidden absolute z-10 mt-1 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-4 w-72">
+    <div class="flex items-center justify-between mb-3">
+      <button type="button" data-action="eden-datepicker#prevMonth" class="p-1 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+      </button>
+      <span data-eden-datepicker-target="monthYear" class="text-sm font-semibold text-gray-900 dark:text-white"></span>
+      <button type="button" data-action="eden-datepicker#nextMonth" class="p-1 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+      </button>
+    </div>
+    <div class="grid grid-cols-7 mb-1">
+      <% %w[Su Mo Tu We Th Fr Sa].each do |day| %>
+        <div class="text-center text-xs font-medium text-gray-500 dark:text-gray-400 py-1"><%= day %></div>
+      <% end %>
+    </div>
+    <div data-eden-datepicker-target="days" class="grid grid-cols-7"></div>
+  </div>
+</div>

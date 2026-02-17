@@ -1,0 +1,111 @@
+<%= styleguide_block_example(
+  title: "Read Product Modal",
+  description: "Modal showing product details in a read-only view",
+  source: 'eden_modal(id: "read-product-modal", size: :lg) do
+  # Product title, badge, details grid
+  eden_badge(text: "In Stock", variant: :success)
+end'
+) do %>
+  <div class="relative p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-zinc-800 sm:p-5 max-w-xl mx-auto">
+      <%# Modal header %>
+      <div class="flex justify-between mb-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">Apple iMac 27"</h3>
+            <%= eden_badge(text: "In Stock", variant: :success, size: :sm) %>
+          </div>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">Product ID: #PRD-001234</p>
+        </div>
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 h-fit dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+      <%# Product image %>
+      <div class="bg-zinc-100 dark:bg-zinc-700 rounded-lg h-48 flex items-center justify-center mb-4">
+        <span class="text-zinc-400 dark:text-zinc-500 text-sm">Product Image</span>
+      </div>
+      <%# Details grid %>
+      <dl class="grid grid-cols-2 gap-3 text-sm mb-4">
+        <% [
+          ["Category", "Electronics"],
+          ["Brand", "Apple"],
+          ["Price", "$1,499"],
+          ["Weight", "9.88 kg"],
+          ["Stock", "95 units"],
+          ["SKU", "IMAC-27-5K"],
+        ].each do |label, value| %>
+          <div class="bg-zinc-50 dark:bg-zinc-700 rounded-lg p-3">
+            <dt class="text-zinc-500 dark:text-zinc-400 mb-0.5"><%= label %></dt>
+            <dd class="font-medium text-zinc-900 dark:text-white"><%= value %></dd>
+          </div>
+        <% end %>
+      </dl>
+      <%# Description %>
+      <div class="mb-4">
+        <h4 class="text-sm font-medium text-zinc-900 dark:text-white mb-1">Description</h4>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400">
+          The all-new iMac features a stunning 27-inch 5K Retina display, Apple M1 Pro chip, and up to 64GB of unified memory. Perfect for creative professionals.
+        </p>
+      </div>
+      <%# Actions %>
+      <div class="flex items-center justify-between border-t border-zinc-200 dark:border-zinc-700 pt-4">
+        <div class="flex items-center gap-2">
+          <%= eden_button(variant: :primary, size: :sm) { "Edit" } %>
+          <%= eden_button(variant: :ghost, size: :sm) { "Duplicate" } %>
+        </div>
+        <%= eden_button(variant: :danger, size: :sm) do %>
+          <%= eden_icon("trash", size: :sm) %>
+          <span class="ml-1">Delete</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Read User Modal",
+  description: "Modal displaying user information and recent activity",
+  source: 'eden_modal(id: "read-user-modal") do
+  eden_avatar(initials: "BG", size: :lg)
+  # User name, contact info, badges
+end'
+) do %>
+  <div class="relative p-4 bg-zinc-100 dark:bg-zinc-900">
+    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-zinc-800 sm:p-5 max-w-md mx-auto">
+      <div class="flex justify-end mb-2">
+        <button class="text-zinc-400 hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 dark:hover:bg-zinc-600 dark:hover:text-white">
+          <%= eden_icon("x-mark", size: :sm) %>
+        </button>
+      </div>
+      <div class="text-center mb-4">
+        <div class="flex justify-center mb-3">
+          <%= eden_avatar(initials: "BG", size: :lg) %>
+        </div>
+        <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">Bonnie Green</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400">Senior Developer</p>
+        <div class="flex justify-center gap-2 mt-2">
+          <%= eden_badge(text: "Admin", variant: :primary, size: :sm) %>
+          <%= eden_badge(text: "Active", variant: :success, size: :sm) %>
+        </div>
+      </div>
+      <div class="space-y-3 text-sm mb-4">
+        <% [
+          ["envelope", "bonnie@company.com"],
+          ["phone", "+1 (555) 234-5678"],
+          ["map-pin", "San Francisco, CA"],
+          ["calendar", "Joined March 2021"],
+        ].each do |icon, value| %>
+          <div class="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
+            <%= eden_icon(icon, size: :sm) %>
+            <span><%= value %></span>
+          </div>
+        <% end %>
+      </div>
+      <div class="flex items-center gap-2 border-t border-zinc-200 dark:border-zinc-700 pt-4">
+        <%= eden_button(variant: :primary, size: :sm) { "Edit user" } %>
+        <%= eden_button(variant: :ghost, size: :sm) { "Message" } %>
+      </div>
+    </div>
+  </div>
+<% end %>

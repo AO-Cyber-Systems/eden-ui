@@ -1,0 +1,74 @@
+<%# Error Page component preview %>
+
+<%= styleguide_example(title: "404 Not Found", description: "Standard 404 error page with back button and support link.",
+  source: 'eden_error_page(
+  code: "404",
+  title: "Page not found",
+  description: "Sorry, we can\'t find that page. You\'ll find lots to explore on the home page.",
+  back_href: "/",
+  back_text: "Go back home",
+  support_href: "/contact",
+  support_text: "Contact support"
+)') do %>
+  <div class="rounded-lg border border-gray-200 dark:border-gray-700">
+    <%= eden_error_page(
+      code: "404",
+      title: "Page not found",
+      description: "Sorry, we can't find that page. You'll find lots to explore on the home page.",
+      back_href: "/",
+      back_text: "Go back home",
+      support_href: "/contact",
+      support_text: "Contact support"
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "500 Server Error", description: "Internal server error page.",
+  source: 'eden_error_page(
+  code: "500",
+  title: "Internal server error",
+  description: "Something went wrong on our end. Please try again later.",
+  back_href: "/",
+  back_text: "Return to dashboard",
+  support_href: "/status"
+)') do %>
+  <div class="rounded-lg border border-gray-200 dark:border-gray-700">
+    <%= eden_error_page(
+      code: "500",
+      title: "Internal server error",
+      description: "Something went wrong on our end. Please try again later.",
+      back_href: "/",
+      back_text: "Return to dashboard",
+      support_href: "/status",
+      support_text: "Check system status"
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "403 Forbidden with Block Content", description: "Error page with custom block content for additional navigation.",
+  source: 'eden_error_page(
+  code: "403",
+  title: "Access denied",
+  description: "You don\'t have permission to access this resource.",
+  back_href: "/dashboard"
+) do
+  content_tag(:p, "Request access from your administrator.", class: "text-sm text-gray-500")
+end') do %>
+  <div class="rounded-lg border border-gray-200 dark:border-gray-700">
+    <%= eden_error_page(
+      code: "403",
+      title: "Access denied",
+      description: "You don't have permission to access this resource.",
+      back_href: "/dashboard"
+    ) do %>
+      <div class="text-center">
+        <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">Here are some pages you can access:</p>
+        <div class="flex flex-wrap justify-center gap-2">
+          <%= eden_button(variant: :secondary, size: :sm, href: "/dashboard") { "Dashboard" } %>
+          <%= eden_button(variant: :secondary, size: :sm, href: "/settings") { "Settings" } %>
+          <%= eden_button(variant: :secondary, size: :sm, href: "/help") { "Help Center" } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

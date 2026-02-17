@@ -1,0 +1,28 @@
+<%# Status Banner component preview %>
+
+<%= styleguide_example(title: "All Statuses", description: "Banner for each system status type.",
+  source: 'eden_status_banner(status: :operational)
+eden_status_banner(status: :degraded, message: "Some services are experiencing slower response times.")
+eden_status_banner(status: :outage, message: "We are investigating an issue affecting payments.", href: "#")
+eden_status_banner(status: :maintenance, message: "Scheduled maintenance window: Feb 15, 2AM-4AM UTC.", href: "#")') do %>
+  <div class="space-y-3 max-w-3xl">
+    <%= eden_status_banner(status: :operational) %>
+    <%= eden_status_banner(status: :degraded, message: "Some services are experiencing slower response times.") %>
+    <%= eden_status_banner(status: :outage, message: "We are investigating an issue affecting payments.", href: "#") %>
+    <%= eden_status_banner(status: :maintenance, message: "Scheduled maintenance window: Feb 15, 2AM-4AM UTC.", href: "#") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Operational Banner", description: "Default operational status with no custom message.",
+  source: 'eden_status_banner(status: :operational)') do %>
+  <div class="max-w-3xl">
+    <%= eden_status_banner(status: :operational) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Outage with Link", description: "Outage banner with a learn more link.",
+  source: 'eden_status_banner(status: :outage, message: "Major outage affecting all services.", href: "#status")') do %>
+  <div class="max-w-3xl">
+    <%= eden_status_banner(status: :outage, message: "Major outage affecting all services.", href: "#status") %>
+  </div>
+<% end %>

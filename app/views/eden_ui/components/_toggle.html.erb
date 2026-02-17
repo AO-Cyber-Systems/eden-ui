@@ -1,0 +1,38 @@
+<%
+  name ||= nil
+  id ||= name
+  label ||= nil
+  checked ||= false
+  disabled ||= false
+  size ||= :md
+  variant ||= :primary
+  html_options ||= {}
+  content ||= nil
+
+  size_classes = case size.to_sym
+  when :sm
+    { toggle: "w-9 h-5 after:h-4 after:w-4 after:start-[2px]", wrapper: "" }
+  when :lg
+    { toggle: "w-14 h-7 after:h-6 after:w-6 after:start-[4px]", wrapper: "" }
+  else
+    { toggle: "w-11 h-6 after:h-5 after:w-5 after:start-[2px]", wrapper: "" }
+  end
+
+  color_class = case variant.to_sym
+  when :success then "peer-checked:bg-green-600"
+  when :danger then "peer-checked:bg-red-600"
+  when :warning then "peer-checked:bg-yellow-400"
+  when :purple then "peer-checked:bg-purple-600"
+  else "peer-checked:bg-blue-600"
+  end
+
+  toggle_classes = "#{size_classes[:toggle]} bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 #{color_class} after:content-[''] after:absolute after:top-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:transition-all dark:border-gray-600 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white"
+%>
+
+<label class="inline-flex items-center cursor-pointer <%= disabled ? "opacity-50" : "" %>">
+  <input type="checkbox" <% if name %>name="<%= name %>"<% end %> <% if id %>id="<%= id %>"<% end %> class="sr-only peer" <%= "checked" if checked %> <%= "disabled" if disabled %> <%= tag.attributes(html_options) %>>
+  <div class="relative <%= toggle_classes %>"></div>
+  <% if label %>
+    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300"><%= label %></span>
+  <% end %>
+</label>

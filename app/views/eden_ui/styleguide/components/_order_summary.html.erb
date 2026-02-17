@@ -1,0 +1,29 @@
+<%# Order Summary component preview %>
+
+<%= styleguide_example(title: "Default", description: "Standard order summary with all fields.",
+  source: 'eden_order_summary(subtotal: "$89.97", tax: "$7.20", shipping: "$5.99", total: "$103.16")') do %>
+  <div class="max-w-sm">
+    <%= eden_order_summary(subtotal: "$89.97", tax: "$7.20", shipping: "$5.99", total: "$103.16") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Discount", description: "Order summary showing a discount applied.",
+  source: 'eden_order_summary(subtotal: "$149.99", tax: "$12.00", shipping: "$0.00", discount: "$15.00", total: "$146.99")') do %>
+  <div class="max-w-sm">
+    <%= eden_order_summary(subtotal: "$149.99", tax: "$12.00", shipping: "$0.00", discount: "$15.00", total: "$146.99") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Block Content", description: "Order summary with a promo code input in the block.",
+  source: 'eden_order_summary(subtotal: "$59.99", total: "$59.99") do
+  # block content (e.g. promo code input)
+end') do %>
+  <div class="max-w-sm">
+    <%= eden_order_summary(subtotal: "$59.99", total: "$59.99") do %>
+      <div class="flex gap-2">
+        <%= eden_input(placeholder: "Promo code", size: :sm) %>
+        <%= eden_button(variant: :secondary, size: :sm) { "Apply" } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

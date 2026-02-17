@@ -1,0 +1,46 @@
+<%= styleguide_example(
+  title: "Default Breadcrumb",
+  source: 'eden_breadcrumb do
+  eden_breadcrumb_item(label: "Home", href: "#")
+  eden_breadcrumb_item(label: "Projects", href: "#")
+  eden_breadcrumb_item(label: "Eden UI", current: true)
+end'
+) do %>
+  <%= eden_breadcrumb do %>
+    <%= eden_breadcrumb_item(label: "Home", href: "#") %>
+    <%= eden_breadcrumb_item(label: "Projects", href: "#") %>
+    <%= eden_breadcrumb_item(label: "Eden UI", current: true) %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Two-Level Breadcrumb",
+  source: 'eden_breadcrumb do
+  eden_breadcrumb_item(label: "Home", href: "#")
+  eden_breadcrumb_item(label: "Settings", current: true)
+end'
+) do %>
+  <%= eden_breadcrumb do %>
+    <%= eden_breadcrumb_item(label: "Home", href: "#") %>
+    <%= eden_breadcrumb_item(label: "Settings", current: true) %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Deep Breadcrumb",
+  source: 'eden_breadcrumb do
+  eden_breadcrumb_item(label: "Home", href: "#")
+  eden_breadcrumb_item(label: "Library", href: "#")
+  eden_breadcrumb_item(label: "Components", href: "#")
+  eden_breadcrumb_item(label: "Navigation", href: "#")
+  eden_breadcrumb_item(label: "Breadcrumb", current: true)
+end'
+) do %>
+  <%= eden_breadcrumb do %>
+    <%= eden_breadcrumb_item(label: "Home", href: "#") %>
+    <%= eden_breadcrumb_item(label: "Library", href: "#") %>
+    <%= eden_breadcrumb_item(label: "Components", href: "#") %>
+    <%= eden_breadcrumb_item(label: "Navigation", href: "#") %>
+    <%= eden_breadcrumb_item(label: "Breadcrumb", current: true) %>
+  <% end %>
+<% end %>

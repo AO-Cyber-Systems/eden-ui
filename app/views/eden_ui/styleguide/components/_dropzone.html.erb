@@ -1,0 +1,15 @@
+<%# Dropzone component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_dropzone') do %>
+  <%= eden_dropzone %>
+<% end %>
+
+<%= styleguide_example(title: "With Custom Content", source: 'eden_dropzone do
+  "<p class=\"mb-2 text-sm text-zinc-500 dark:text-zinc-400\"><span class=\"font-semibold\">Click to upload</span> or drag and drop</p>
+  <p class=\"text-xs text-zinc-500 dark:text-zinc-400\">PDF, DOC, or DOCX (MAX. 10MB)</p>"
+end') do %>
+  <%= eden_dropzone do %>
+    <p class="mb-2 text-sm text-zinc-500 dark:text-zinc-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+    <p class="text-xs text-zinc-500 dark:text-zinc-400">PDF, DOC, or DOCX (MAX. 10MB)</p>
+  <% end %>
+<% end %>

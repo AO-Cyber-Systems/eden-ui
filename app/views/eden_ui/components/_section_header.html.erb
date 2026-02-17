@@ -1,0 +1,31 @@
+<%
+  title ||= nil
+  subtitle ||= nil
+  action_text ||= nil
+  action_href ||= nil
+  html_options ||= {}
+  content ||= nil
+
+  classes = [
+    "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4",
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div>
+    <% if title %>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white"><%= title %></h2>
+    <% end %>
+    <% if subtitle %>
+      <p class="mt-0.5 text-sm text-gray-500 dark:text-gray-400"><%= subtitle %></p>
+    <% end %>
+  </div>
+  <% if action_text && action_href %>
+    <a href="<%= action_href %>" class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400">
+      <%= action_text %>
+      <svg class="w-4 h-4 ms-1" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+    </a>
+  <% end %>
+  <%= content %>
+</div>

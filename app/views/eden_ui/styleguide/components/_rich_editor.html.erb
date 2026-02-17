@@ -1,0 +1,34 @@
+<%# Rich Editor component preview %>
+
+<%= styleguide_example(title: "Default", description: "Rich text editor with default toolbar (bold, italic, underline, link, lists, quote, code, image).",
+  source: 'eden_rich_editor(name: "post[body]", placeholder: "Write your article content...")') do %>
+  <%= eden_rich_editor(name: "post[body]", placeholder: "Write your article content...") %>
+<% end %>
+
+<%= styleguide_example(title: "Minimal Toolbar", description: "Editor with only basic formatting tools.",
+  source: 'eden_rich_editor(
+  name: "comment[body]",
+  toolbar: [:bold, :italic, :link],
+  placeholder: "Write a comment..."
+)') do %>
+  <%= eden_rich_editor(
+    name: "comment[body]",
+    toolbar: [:bold, :italic, :link],
+    placeholder: "Write a comment..."
+  ) %>
+<% end %>
+
+<%= styleguide_example(title: "With Initial Value", description: "Editor pre-filled with content and custom toolbar buttons via block.",
+  source: 'eden_rich_editor(
+  id: "description-editor",
+  name: "project[description]",
+  value: "This project aims to...",
+  toolbar: [:bold, :italic, :underline, :list_ul, :list_ol, :code]
+)') do %>
+  <%= eden_rich_editor(
+    id: "description-editor",
+    name: "project[description]",
+    value: "This project aims to improve developer experience by providing a comprehensive set of reusable UI components that follow consistent design patterns.",
+    toolbar: [:bold, :italic, :underline, :list_ul, :list_ol, :code]
+  ) %>
+<% end %>

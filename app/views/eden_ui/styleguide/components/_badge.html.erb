@@ -1,0 +1,67 @@
+<%# Badge component preview %>
+
+<%= styleguide_example(title: "Variants", source: 'eden_badge(text: "Default")
+eden_badge(text: "Primary", variant: :primary)
+eden_badge(text: "Success", variant: :success)
+eden_badge(text: "Warning", variant: :warning)
+eden_badge(text: "Danger", variant: :danger)
+eden_badge(text: "Info", variant: :info)
+eden_badge(text: "Dark", variant: :dark)') do %>
+  <%= eden_badge(text: "Default") %>
+  <%= eden_badge(text: "Primary", variant: :primary) %>
+  <%= eden_badge(text: "Success", variant: :success) %>
+  <%= eden_badge(text: "Warning", variant: :warning) %>
+  <%= eden_badge(text: "Danger", variant: :danger) %>
+  <%= eden_badge(text: "Info", variant: :info) %>
+  <%= eden_badge(text: "Dark", variant: :dark) %>
+<% end %>
+
+<%= styleguide_example(title: "Sizes", source: 'eden_badge(text: "Extra small", size: :xs)
+eden_badge(text: "Small", size: :sm)') do %>
+  <%= eden_badge(text: "Extra small", size: :xs) %>
+  <%= eden_badge(text: "Small", size: :sm) %>
+<% end %>
+
+<%= styleguide_example(title: "Pill", description: "Fully rounded badge shape", source: 'eden_badge(text: "Default", pill: true)
+eden_badge(text: "Primary", variant: :primary, pill: true)
+eden_badge(text: "Success", variant: :success, pill: true)
+eden_badge(text: "Warning", variant: :warning, pill: true)
+eden_badge(text: "Danger", variant: :danger, pill: true)') do %>
+  <%= eden_badge(text: "Default", pill: true) %>
+  <%= eden_badge(text: "Primary", variant: :primary, pill: true) %>
+  <%= eden_badge(text: "Success", variant: :success, pill: true) %>
+  <%= eden_badge(text: "Warning", variant: :warning, pill: true) %>
+  <%= eden_badge(text: "Danger", variant: :danger, pill: true) %>
+<% end %>
+
+<%= styleguide_example(title: "Bordered", description: "Badge with border accent", source: 'eden_badge(text: "Default", bordered: true)
+eden_badge(text: "Primary", variant: :primary, bordered: true)
+eden_badge(text: "Success", variant: :success, bordered: true)
+eden_badge(text: "Danger", variant: :danger, bordered: true)') do %>
+  <%= eden_badge(text: "Default", bordered: true) %>
+  <%= eden_badge(text: "Primary", variant: :primary, bordered: true) %>
+  <%= eden_badge(text: "Success", variant: :success, bordered: true) %>
+  <%= eden_badge(text: "Danger", variant: :danger, bordered: true) %>
+<% end %>
+
+<%= styleguide_example(title: "With icon", description: "Badge with a prepended icon", source: 'eden_badge(text: "3 minutes ago", icon: "clock", variant: :info)
+eden_badge(text: "Published", icon: "check-circle", variant: :success)
+eden_badge(text: "Errors found", icon: "exclamation-circle", variant: :danger)') do %>
+  <%= eden_badge(text: "3 minutes ago", icon: "clock", variant: :info) %>
+  <%= eden_badge(text: "Published", icon: "check-circle", variant: :success) %>
+  <%= eden_badge(text: "Errors found", icon: "exclamation-circle", variant: :danger) %>
+<% end %>
+
+<%= styleguide_example(title: "Dismissible", description: "Badge with close button", source: 'eden_badge(text: "Default", dismissible: true)
+eden_badge(text: "Primary", variant: :primary, dismissible: true)
+eden_badge(text: "Success", variant: :success, dismissible: true)') do %>
+  <%= eden_badge(text: "Default", dismissible: true) %>
+  <%= eden_badge(text: "Primary", variant: :primary, dismissible: true) %>
+  <%= eden_badge(text: "Success", variant: :success, dismissible: true) %>
+<% end %>
+
+<%= styleguide_example(title: "Link badge", description: "Badge rendered as an anchor tag", source: 'eden_badge(text: "View docs", href: "#", variant: :primary)
+eden_badge(text: "Release notes", href: "#", variant: :info, icon: "arrow-top-right-on-square")') do %>
+  <%= eden_badge(text: "View docs", href: "#", variant: :primary) %>
+  <%= eden_badge(text: "Release notes", href: "#", variant: :info, icon: "arrow-top-right-on-square") %>
+<% end %>

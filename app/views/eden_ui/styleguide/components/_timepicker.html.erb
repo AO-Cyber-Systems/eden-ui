@@ -1,0 +1,19 @@
+<%# Timepicker component preview %>
+
+<%= styleguide_example(title: "Default", source: 'eden_timepicker') do %>
+  <%= eden_timepicker %>
+<% end %>
+
+<%= styleguide_example(title: "With Value", source: 'eden_timepicker(value: "09:30")
+eden_timepicker(value: "17:00")') do %>
+  <%= eden_timepicker(value: "09:30") %>
+  <%= eden_timepicker(value: "17:00") %>
+<% end %>
+
+<%= styleguide_example(title: "With Min and Max", source: 'eden_timepicker(min: "09:00", max: "17:00", value: "12:00")') do %>
+  <%= eden_timepicker(min: "09:00", max: "17:00", value: "12:00") %>
+<% end %>
+
+<%= styleguide_example(title: "With Step", description: "Step in seconds (900 = 15 minutes)", source: 'eden_timepicker(step: 900, value: "10:00")') do %>
+  <%= eden_timepicker(step: 900, value: "10:00") %>
+<% end %>

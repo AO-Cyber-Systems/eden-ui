@@ -1,0 +1,103 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_promotional_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Sale Banner",
+  description: "Full-width promotional banner with countdown-style urgency and CTA",
+  source: '<section class="bg-gold-600 dark:bg-gold-700">
+  <div class="max-w-screen-xl px-4 py-6 mx-auto text-center">
+    eden_badge(text: "Limited Time", variant: :dark)
+    <h2>Summer Sale - Up to 50% Off</h2>
+    eden_button(variant: :dark, size: :lg) { "Shop the Sale" }
+  </div>
+</section>'
+) do %>
+  <section class="bg-gradient-to-r from-gold-600 to-gold-800 dark:from-gold-700 dark:to-gold-900">
+    <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-12">
+      <div class="mb-3">
+        <%= eden_badge(text: "Limited Time Only", variant: :dark, size: :sm) %>
+      </div>
+      <h2 class="text-3xl font-extrabold text-white md:text-4xl lg:text-5xl mb-3">Summer Sale</h2>
+      <p class="text-lg text-gold-100 mb-2">Up to 50% off on selected items</p>
+
+      <!-- Countdown -->
+      <div class="flex justify-center gap-4 my-6">
+        <% [
+          { value: "02", label: "Days" },
+          { value: "14", label: "Hours" },
+          { value: "37", label: "Minutes" },
+          { value: "52", label: "Seconds" }
+        ].each do |unit| %>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center mb-1">
+              <span class="text-2xl font-bold text-white"><%= unit[:value] %></span>
+            </div>
+            <span class="text-xs text-gold-200"><%= unit[:label] %></span>
+          </div>
+        <% end %>
+      </div>
+
+      <%= eden_button(variant: :dark, size: :lg, href: "#") { "Shop the Sale" } %>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Promotional Cards Grid",
+  description: "Grid of promotional cards with different offer types and visual treatments",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- promo cards -->
+    </div>
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mb-6">Special Offers</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="relative overflow-hidden rounded-lg bg-gradient-to-br from-red-500 to-red-700 p-6 text-white">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-red-200">Flash Sale</span>
+          <h3 class="text-2xl font-bold mt-2 mb-1">30% Off Electronics</h3>
+          <p class="text-sm text-red-100 mb-4">Use code FLASH30 at checkout</p>
+          <%= eden_button(variant: :dark, size: :sm, href: "#") { "Shop Now" } %>
+        </div>
+
+        <div class="relative overflow-hidden rounded-lg bg-gradient-to-br from-gold-500 to-gold-700 p-6 text-white">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-gold-200">Member Exclusive</span>
+          <h3 class="text-2xl font-bold mt-2 mb-1">Free Shipping</h3>
+          <p class="text-sm text-gold-100 mb-4">On all orders over $25 this week</p>
+          <%= eden_button(variant: :dark, size: :sm, href: "#") { "Learn More" } %>
+        </div>
+
+        <div class="relative overflow-hidden rounded-lg bg-gradient-to-br from-zinc-700 to-zinc-900 p-6 text-white">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-zinc-400">New Season</span>
+          <h3 class="text-2xl font-bold mt-2 mb-1">Buy 2 Get 1 Free</h3>
+          <p class="text-sm text-zinc-300 mb-4">On selected fashion items</p>
+          <%= eden_button(variant: :primary, size: :sm, href: "#") { "Browse Collection" } %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Inline Promo Strip",
+  description: "Thin promotional strip banner for announcements at the top of a page",
+  source: '<div class="bg-gold-600 text-white text-center py-2 px-4">
+  <p>Free shipping on orders over $50 | Use code SAVE10</p>
+</div>'
+) do %>
+  <div class="bg-gold-600 dark:bg-gold-700">
+    <div class="max-w-screen-xl mx-auto px-4 py-2.5 flex items-center justify-center gap-4 text-sm text-white">
+      <p class="flex items-center gap-2">
+        <%= eden_icon("bolt", size: :xs) %>
+        <span><strong>Free shipping</strong> on orders over $50 &mdash; Use code <strong>SAVE10</strong> for an extra 10% off</span>
+      </p>
+      <a href="#" class="text-white underline hover:no-underline font-medium flex-shrink-0">Shop now</a>
+    </div>
+  </div>
+<% end %>

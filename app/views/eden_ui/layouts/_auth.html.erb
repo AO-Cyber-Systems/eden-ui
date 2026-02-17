@@ -1,0 +1,68 @@
+<%# locals: (app_name: EdenUi.configuration.app_name, logo_path: EdenUi.configuration.logo_path, variant: :centered, heading: nil, description: nil, content: nil) %>
+
+<% variant ||= :centered %>
+
+<% if variant.to_sym == :split %>
+  <section class="bg-white dark:bg-gray-900">
+    <div class="grid lg:h-screen lg:grid-cols-2">
+      <div class="flex items-center justify-center px-4 py-6 sm:px-0 lg:py-0">
+        <div class="w-full max-w-md space-y-4 md:space-y-6 xl:max-w-xl">
+          <a href="/" class="mb-4 inline-flex items-center text-xl font-semibold text-gray-900 dark:text-white">
+            <% if logo_path.present? %>
+              <%= image_tag logo_path, alt: app_name, class: "mr-2 h-8" %>
+            <% end %>
+            <%= app_name %>
+          </a>
+          <% if heading.present? %>
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white md:text-2xl"><%= heading %></h1>
+          <% end %>
+          <%= content %>
+        </div>
+      </div>
+      <div class="flex items-center justify-center bg-primary-600 px-4 py-6 sm:px-0 lg:py-0">
+        <div class="max-w-md xl:max-w-xl">
+          <h1 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-white xl:text-5xl">
+            <%= description || "Welcome to #{app_name}" %>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </section>
+<% elsif variant.to_sym == :background %>
+  <section class="bg-gray-700 bg-blend-multiply bg-opacity-60 bg-cover bg-center bg-no-repeat">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen">
+      <a href="/" class="mb-6 flex items-center text-2xl font-semibold text-white">
+        <% if logo_path.present? %>
+          <%= image_tag logo_path, alt: app_name, class: "mr-2 h-8" %>
+        <% end %>
+        <%= app_name %>
+      </a>
+      <div class="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800 sm:max-w-md md:mt-0 xl:p-0">
+        <div class="space-y-4 p-6 sm:p-8 md:space-y-6">
+          <% if heading.present? %>
+            <h1 class="text-xl font-bold leading-tight tracking-tight text-center text-gray-900 md:text-2xl dark:text-white"><%= heading %></h1>
+          <% end %>
+          <%= content %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% else %>
+  <div class="flex min-h-screen flex-col items-center justify-center bg-gray-50 px-6 py-8 dark:bg-gray-900 lg:py-0">
+    <a href="/" class="mb-6 flex items-center text-2xl font-semibold text-gray-900 dark:text-white">
+      <% if logo_path.present? %>
+        <%= image_tag logo_path, alt: app_name, class: "mr-2 h-8" %>
+      <% end %>
+      <%= app_name %>
+    </a>
+
+    <div class="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800 sm:max-w-md md:mt-0 xl:p-0">
+      <div class="space-y-4 p-6 sm:p-8 md:space-y-6">
+        <% if heading.present? %>
+          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"><%= heading %></h1>
+        <% end %>
+        <%= content %>
+      </div>
+    </div>
+  </div>
+<% end %>

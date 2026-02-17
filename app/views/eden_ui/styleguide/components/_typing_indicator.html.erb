@@ -1,0 +1,32 @@
+<%# Typing Indicator component preview %>
+
+<%= styleguide_example(title: "Default", description: "Simple typing indicator with animated dots.",
+  source: 'eden_typing_indicator') do %>
+  <div class="max-w-lg">
+    <%= eden_typing_indicator %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Sender", description: "Typing indicator with a sender name.",
+  source: 'eden_typing_indicator(sender: "Alice")') do %>
+  <div class="max-w-lg">
+    <%= eden_typing_indicator(sender: "Alice") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "In Chat Context", description: "Typing indicator shown within a chat conversation.",
+  source: 'eden_chat_bubble(sender: "Alice", time: "11:45 AM") { "Hey, how are you?" }
+eden_chat_bubble(sender: "You", time: "11:46 AM", position: :right) { "Doing well!" }
+eden_typing_indicator(sender: "Alice")') do %>
+  <div class="max-w-lg flex flex-col gap-4 w-full">
+    <%= render partial: "eden_ui/components/chat_bubble", locals: {
+      sender: "Alice", time: "11:45 AM", variant: :received, status: nil,
+      avatar: nil, html_options: {}, content: "Hey, how are you?"
+    } %>
+    <%= render partial: "eden_ui/components/chat_bubble", locals: {
+      sender: "You", time: "11:46 AM", variant: :sent, status: nil,
+      avatar: nil, html_options: {}, content: "Doing well!"
+    } %>
+    <%= eden_typing_indicator(sender: "Alice") %>
+  </div>
+<% end %>

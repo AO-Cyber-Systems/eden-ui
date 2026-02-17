@@ -1,0 +1,148 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_service_repair_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Service Request Form",
+  description: "Service and repair request form with product selection, issue description, and preferred service type",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-2xl mx-auto px-4">
+    <h2>Request Service or Repair</h2>
+    eden_select(options: [...], placeholder: "Select product")
+    eden_select(options: [...], placeholder: "Issue type")
+    eden_textarea(rows: 4, placeholder: "Describe the issue")
+    eden_radio(label: "Mail-in repair")
+    eden_button(variant: :primary) { "Submit Request" }
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Request Service or Repair</h2>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6">Fill out the form below and we'll get back to you within 1 business day.</p>
+
+      <form class="space-y-6">
+        <!-- Product Selection -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-2">Select Product</label>
+          <div class="space-y-3">
+            <% [
+              { name: "Apple iMac 24\"", order: "#ORD-7842", date: "Feb 13, 2026", selected: true },
+              { name: "AirPods Pro (2nd gen)", order: "#ORD-7695", date: "Feb 5, 2026", selected: false }
+            ].each do |product| %>
+              <label class="flex items-center gap-4 p-4 border rounded-lg cursor-pointer <%= product[:selected] ? 'border-gold-500 bg-gold-50 dark:bg-gold-900/20 dark:border-gold-600' : 'border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600' %>">
+                <input type="radio" name="product" class="text-gold-600" <%= 'checked' if product[:selected] %> />
+                <div class="w-10 h-10 bg-zinc-200 dark:bg-zinc-700 rounded flex items-center justify-center flex-shrink-0">
+                  <%= eden_icon("photo", size: :xs) %>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-zinc-900 dark:text-white"><%= product[:name] %></p>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400">Order <%= product[:order] %> &middot; Purchased <%= product[:date] %></p>
+                </div>
+              </label>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Issue Type -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-2">Issue Type</label>
+          <%= eden_select(options: ["Hardware malfunction", "Software issue", "Physical damage", "Battery problem", "Screen issue", "Connectivity problem", "Other"], placeholder: "Select issue type") %>
+        </div>
+
+        <!-- Description -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-2">Describe the Issue</label>
+          <%= eden_textarea(rows: 4, placeholder: "Please describe the problem in detail. When did it start? What troubleshooting have you tried?") %>
+        </div>
+
+        <!-- Upload Photos -->
+        <div>
+          <label class="block text-sm font-medium text-zinc-900 dark:text-white mb-2">Upload Photos (optional)</label>
+          <div class="flex items-center justify-center w-full h-28 border-2 border-dashed border-zinc-300 dark:border-zinc-600 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-700 cursor-pointer">
+            <div class="text-center">
+              <%= eden_icon("upload", size: :md) %>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Click to upload or drag and drop</p>
+              <p class="text-xs text-zinc-400 dark:text-zinc-500">PNG, JPG up to 10MB</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Type -->
+        <div>
+          <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-3">Preferred Service Type</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <label class="flex items-start gap-3 p-4 border border-gold-500 bg-gold-50 dark:bg-gold-900/20 dark:border-gold-600 rounded-lg cursor-pointer">
+              <input type="radio" name="service" class="text-gold-600 mt-0.5" checked />
+              <div>
+                <p class="text-sm font-medium text-zinc-900 dark:text-white">Mail-In Repair</p>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400">Ship your device to us for repair. Free shipping label included.</p>
+              </div>
+            </label>
+            <label class="flex items-start gap-3 p-4 border border-zinc-200 dark:border-zinc-700 rounded-lg cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-600">
+              <input type="radio" name="service" class="text-gold-600 mt-0.5" />
+              <div>
+                <p class="text-sm font-medium text-zinc-900 dark:text-white">In-Store Service</p>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400">Visit a service center near you for on-site repair.</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 pt-2">
+          <%= eden_button(variant: :primary, size: :lg) { "Submit Service Request" } %>
+          <%= eden_button(variant: :ghost, size: :lg, href: "#") { "Cancel" } %>
+        </div>
+      </form>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Service Request Status",
+  description: "Status card for a submitted service request with repair timeline",
+  source: '<div class="max-w-lg bg-white rounded-lg border dark:bg-zinc-800">
+  eden_badge(text: "In Repair", variant: :warning)
+  eden_progress(value: 50, size: :sm, variant: :primary)
+  <!-- service details -->
+</div>'
+) do %>
+  <div class="max-w-lg mx-auto">
+    <div class="bg-white border border-zinc-200 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-sm font-semibold text-zinc-900 dark:text-white">Service Request #SRV-2026-0891</h3>
+        <%= eden_badge(text: "In Repair", variant: :warning, size: :sm) %>
+      </div>
+
+      <%= eden_progress(value: 50, size: :sm, variant: :primary) %>
+
+      <div class="flex justify-between text-xs text-zinc-500 dark:text-zinc-400 mt-2 mb-4">
+        <span>Received</span>
+        <span>Diagnosing</span>
+        <span>Repairing</span>
+        <span>Complete</span>
+      </div>
+
+      <div class="space-y-3 pt-4 border-t border-zinc-200 dark:border-zinc-700">
+        <div class="flex justify-between text-sm">
+          <span class="text-zinc-500 dark:text-zinc-400">Product</span>
+          <span class="text-zinc-900 dark:text-white">Apple iMac 24"</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-zinc-500 dark:text-zinc-400">Issue</span>
+          <span class="text-zinc-900 dark:text-white">Screen flickering</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-zinc-500 dark:text-zinc-400">Service Type</span>
+          <span class="text-zinc-900 dark:text-white">Mail-In Repair</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-zinc-500 dark:text-zinc-400">Est. Completion</span>
+          <span class="font-medium text-zinc-900 dark:text-white">Feb 22, 2026</span>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <%= eden_button(variant: :ghost, size: :sm) { "Contact Support" } %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,57 @@
+<%# Rating component preview %>
+
+<%= styleguide_example(
+  title: "Rating Values",
+  source: 'eden_rating(value: 1)
+eden_rating(value: 2.5)
+eden_rating(value: 3)
+eden_rating(value: 4)
+eden_rating(value: 5)'
+) do %>
+  <div class="flex flex-col gap-3">
+    <%= eden_rating(value: 1) %>
+    <%= eden_rating(value: 2.5) %>
+    <%= eden_rating(value: 3) %>
+    <%= eden_rating(value: 4) %>
+    <%= eden_rating(value: 5) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Sizes",
+  source: 'eden_rating(value: 4, size: :sm)
+eden_rating(value: 4, size: :md)
+eden_rating(value: 4, size: :lg)'
+) do %>
+  <div class="flex flex-col gap-3">
+    <%= eden_rating(value: 4, size: :sm) %>
+    <%= eden_rating(value: 4, size: :md) %>
+    <%= eden_rating(value: 4, size: :lg) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "With Review Count",
+  description: "Display rating alongside a review count.",
+  source: 'eden_rating(value: 4, review_count: 128)
+eden_rating(value: 3.5, review_text: "3.5 out of 5")'
+) do %>
+  <div class="flex flex-col gap-3">
+    <%= eden_rating(value: 4, review_count: 128) %>
+    <%= eden_rating(value: 3.5, review_text: "3.5 out of 5") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Half Star",
+  description: "Ratings support half-star values for more precise scoring.",
+  source: 'eden_rating(value: 2.5, size: :lg)
+eden_rating(value: 3.5, size: :lg)
+eden_rating(value: 4.5, size: :lg)'
+) do %>
+  <div class="flex flex-col gap-3">
+    <%= eden_rating(value: 2.5, size: :lg) %>
+    <%= eden_rating(value: 3.5, size: :lg) %>
+    <%= eden_rating(value: 4.5, size: :lg) %>
+  </div>
+<% end %>

@@ -1,0 +1,137 @@
+<%# app/views/eden_ui/styleguide/blocks/marketing/_register_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Registration",
+  description: "Registration form with full name, email, password, and terms checkbox",
+  source: '<section class="bg-zinc-50 dark:bg-zinc-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+    eden_card do
+      <h1>Create an account</h1>
+      <form class="space-y-4">
+        eden_form_group(label: "Full name") { eden_input(placeholder: "John Doe") }
+        eden_form_group(label: "Email") { eden_input(type: :email) }
+        eden_form_group(label: "Password") { eden_input(type: :password) }
+        eden_form_group(label: "Confirm password") { eden_input(type: :password) }
+        eden_checkbox(label: "I agree to the Terms")
+        eden_button(variant: :primary) { "Create account" }
+      </form>
+    end
+  </div>
+</section>'
+) do %>
+  <section class="bg-zinc-50 dark:bg-zinc-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-16">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-zinc-900 dark:text-white">Eden</a>
+      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-zinc-800 dark:border-zinc-700">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <h1 class="text-xl font-bold leading-tight tracking-tight text-zinc-900 md:text-2xl dark:text-white">Create an account</h1>
+          <form class="space-y-4 md:space-y-6" action="#">
+            <%= eden_form_group(label: "Full name", required: true) do %>
+              <%= eden_input(placeholder: "John Doe", id: "register-name", name: "name") %>
+            <% end %>
+            <%= eden_form_group(label: "Your email", required: true) do %>
+              <%= eden_input(type: :email, placeholder: "name@eden.com", id: "register-email", name: "email") %>
+            <% end %>
+            <%= eden_form_group(label: "Password", required: true) do %>
+              <%= eden_input(type: :password, placeholder: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022", id: "register-password", name: "password") %>
+            <% end %>
+            <%= eden_form_group(label: "Confirm password", required: true) do %>
+              <%= eden_input(type: :password, placeholder: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022", id: "register-confirm", name: "password_confirmation") %>
+            <% end %>
+            <div class="flex items-start">
+              <%= eden_checkbox(label: nil, id: "register-terms") %>
+              <label for="register-terms" class="ml-2 text-sm text-zinc-500 dark:text-zinc-300">I accept the <a class="font-medium text-gold-600 hover:underline dark:text-gold-500" href="#">Terms and Conditions</a></label>
+            </div>
+            <%= eden_button(variant: :primary, type: :submit) { "Create an account" } %>
+            <p class="text-sm font-light text-zinc-500 dark:text-zinc-400">
+              Already have an account? <a href="#" class="font-medium text-gold-600 hover:underline dark:text-gold-500">Login here</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Split Registration",
+  description: "Two-column registration with form on the left and feature highlights on the right",
+  source: '<section class="bg-white dark:bg-zinc-900">
+  <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
+    <div class="flex items-center justify-center px-8 py-8 lg:col-span-7">
+      <div class="max-w-xl">
+        <h1>Get started today</h1>
+        <form class="mt-8 space-y-6">...</form>
+      </div>
+    </div>
+    <aside class="relative hidden lg:block lg:col-span-5 bg-zinc-900">
+      <!-- feature highlights -->
+    </aside>
+  </div>
+</section>'
+) do %>
+  <section class="bg-white dark:bg-zinc-900">
+    <div class="lg:grid lg:grid-cols-12">
+      <div class="flex items-center justify-center px-8 py-12 lg:col-span-7">
+        <div class="max-w-xl w-full">
+          <h1 class="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl md:text-4xl">Get started today</h1>
+          <p class="mt-4 leading-relaxed text-zinc-500 dark:text-zinc-400">Create your account and start building amazing applications with Eden.</p>
+          <form class="mt-8 space-y-6" action="#">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <%= eden_form_group(label: "First name") do %>
+                <%= eden_input(placeholder: "John", id: "split-first", name: "first_name") %>
+              <% end %>
+              <%= eden_form_group(label: "Last name") do %>
+                <%= eden_input(placeholder: "Doe", id: "split-last", name: "last_name") %>
+              <% end %>
+            </div>
+            <%= eden_form_group(label: "Email") do %>
+              <%= eden_input(type: :email, placeholder: "name@eden.com", id: "split-email", name: "email") %>
+            <% end %>
+            <%= eden_form_group(label: "Password") do %>
+              <%= eden_input(type: :password, placeholder: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022", id: "split-password", name: "password") %>
+            <% end %>
+            <%= eden_button(variant: :primary, type: :submit, size: :lg) { "Create account" } %>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">
+              Already have an account? <a href="#" class="text-gold-600 hover:underline dark:text-gold-500">Sign in</a>
+            </p>
+          </form>
+        </div>
+      </div>
+      <aside class="relative hidden lg:flex lg:col-span-5 bg-zinc-900 p-12 items-center">
+        <div class="text-white">
+          <h2 class="text-2xl font-bold mb-8">Why choose Eden?</h2>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400">
+                <%= eden_icon("bolt", size: :sm) %>
+              </div>
+              <div>
+                <h3 class="font-semibold">Lightning fast</h3>
+                <p class="text-sm text-zinc-400">Build and deploy in minutes, not days.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400">
+                <%= eden_icon("shield", size: :sm) %>
+              </div>
+              <div>
+                <h3 class="font-semibold">Secure by default</h3>
+                <p class="text-sm text-zinc-400">Enterprise-grade security built in.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400">
+                <%= eden_icon("heart", size: :sm) %>
+              </div>
+              <div>
+                <h3 class="font-semibold">Developer friendly</h3>
+                <p class="text-sm text-zinc-400">Beautiful APIs and extensive documentation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+<% end %>

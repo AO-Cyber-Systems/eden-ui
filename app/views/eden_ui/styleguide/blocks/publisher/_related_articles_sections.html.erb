@@ -1,0 +1,153 @@
+<%# app/views/eden_ui/styleguide/blocks/publisher/_related_articles_sections.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Default Related Articles",
+  description: "Grid of related article cards with image, title, description, and read more link",
+  source: '<aside aria-label="Related articles" class="py-8 lg:py-24 bg-zinc-50 dark:bg-zinc-800">
+  <div class="max-w-screen-xl mx-auto px-4">
+    <h2>Related articles</h2>
+    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Article cards with image, title, description -->
+      eden_icon("photo", size: :lg) # image placeholder
+      eden_button(variant: :ghost, size: :xs) { "Read more" }
+    </div>
+  </div>
+</aside>'
+) do %>
+  <aside aria-label="Related articles" class="py-8 lg:py-24 bg-zinc-50 dark:bg-zinc-800 antialiased">
+    <div class="px-4 mx-auto max-w-screen-xl">
+      <h2 class="mb-8 text-2xl font-bold text-zinc-900 dark:text-white">Related articles</h2>
+      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+        <% [
+          { title: "Our first office", desc: "Over the past year, Volosoft has undergone many changes! After months of preparation.", read_time: "2 minutes" },
+          { title: "Enterprise design tips", desc: "Over the past year, Volosoft has undergone many changes! After months of preparation.", read_time: "12 minutes" },
+          { title: "We partnered up with Google", desc: "Over the past year, Volosoft has undergone many changes! After months of preparation.", read_time: "8 minutes" },
+          { title: "Our first project with React", desc: "Over the past year, Volosoft has undergone many changes! After months of preparation.", read_time: "4 minutes" }
+        ].each do |article| %>
+          <article>
+            <a href="#">
+              <div class="w-full h-48 bg-zinc-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center mb-5">
+                <%= eden_icon("photo", size: :lg) %>
+              </div>
+            </a>
+            <h2 class="mb-2 text-xl font-bold leading-tight text-zinc-900 dark:text-white">
+              <a href="#"><%= article[:title] %></a>
+            </h2>
+            <p class="mb-4 text-zinc-500 dark:text-zinc-400"><%= article[:desc] %></p>
+            <a href="#" class="inline-flex items-center font-medium text-gold-600 dark:text-gold-500 hover:underline">
+              Read in <%= article[:read_time] %>
+              <%= eden_icon("arrow-right", size: :sm) %>
+            </a>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </aside>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Related Articles with Author Info",
+  description: "Rounded card articles with author avatars, category badges, and publication dates",
+  source: '<aside aria-label="Related articles" class="py-8 lg:py-24 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl mx-auto px-4">
+    <h2>Related articles</h2>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Cards with image, badge, author avatar, date -->
+      eden_badge(text: "Article", variant: :primary, size: :xs)
+      eden_avatar(initials: "JL", size: :xs, rounded: true)
+    </div>
+  </div>
+</aside>'
+) do %>
+  <aside aria-label="Related articles" class="py-8 lg:py-24 bg-white dark:bg-zinc-900 antialiased">
+    <div class="px-4 mx-auto max-w-screen-xl">
+      <h2 class="mb-8 text-2xl font-bold text-zinc-900 dark:text-white">Related articles</h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <% [
+          { title: "How to quickly deploy a static website", desc: "Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers.", category: "Article", author: "Jese Leos", initials: "JL", date: "Aug 15, 2023" },
+          { title: "Our first project with React", desc: "Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers.", category: "Tutorial", author: "Bonnie Green", initials: "BG", date: "Aug 12, 2023" },
+          { title: "API integration best practices", desc: "Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers.", category: "Resource", author: "Thomas Lean", initials: "TL", date: "Aug 10, 2023" }
+        ].each do |article| %>
+          <article class="p-6 bg-white rounded-lg border border-zinc-200 shadow-sm dark:bg-zinc-800 dark:border-zinc-700">
+            <div class="flex justify-between items-center mb-5 text-zinc-500">
+              <%= eden_badge(text: article[:category], variant: :primary, size: :xs) %>
+              <span class="text-sm"><%= article[:date] %></span>
+            </div>
+            <h2 class="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+              <a href="#"><%= article[:title] %></a>
+            </h2>
+            <p class="mb-5 text-zinc-500 dark:text-zinc-400"><%= article[:desc] %></p>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-3">
+                <%= eden_avatar(initials: article[:initials], size: :xs, rounded: true) %>
+                <span class="font-medium text-sm text-zinc-900 dark:text-white"><%= article[:author] %></span>
+              </div>
+              <a href="#" class="inline-flex items-center font-medium text-gold-600 dark:text-gold-500 hover:underline text-sm">
+                Read more
+                <%= eden_icon("arrow-right", size: :sm) %>
+              </a>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </aside>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Horizontal Related Articles",
+  description: "Related articles in horizontal card layout with side-by-side image and content",
+  source: '<aside aria-label="Related articles" class="py-8 lg:py-24 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl mx-auto px-4">
+    <h2>Read next</h2>
+    <div class="space-y-6">
+      <!-- Horizontal cards: image left, content right -->
+      eden_badge(text: "Design", variant: :primary, size: :xs)
+    </div>
+  </div>
+</aside>'
+) do %>
+  <aside aria-label="Related articles" class="py-8 lg:py-24 bg-white dark:bg-zinc-900 antialiased">
+    <div class="px-4 mx-auto max-w-screen-xl">
+      <h2 class="mb-8 text-2xl font-bold text-zinc-900 dark:text-white">Read next</h2>
+      <div class="space-y-6 max-w-3xl">
+        <% [
+          { title: "How to quickly deploy a static website", desc: "Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools.", category: "Design", author: "Jese Leos", initials: "JL", date: "Aug 15, 2023", read_time: "5 min read" },
+          { title: "Designing better error messages", desc: "Error messages are an opportunity to help users recover from mistakes. Good error messages turn a frustrating experience into a helpful one.", category: "UX", author: "Bonnie Green", initials: "BG", date: "Aug 12, 2023", read_time: "8 min read" },
+          { title: "Building accessible forms", desc: "Accessible forms ensure that everyone can interact with your website. Follow these best practices for inclusive design.", category: "Development", author: "Karen Smith", initials: "KS", date: "Aug 10, 2023", read_time: "12 min read" }
+        ].each do |article| %>
+          <article class="flex flex-col sm:flex-row bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700 overflow-hidden">
+            <div class="sm:w-56 h-48 sm:h-auto bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center flex-shrink-0">
+              <%= eden_icon("photo", size: :lg) %>
+            </div>
+            <div class="p-5 flex flex-col justify-between flex-1">
+              <div>
+                <div class="flex items-center gap-2 mb-3">
+                  <%= eden_badge(text: article[:category], variant: :primary, size: :xs) %>
+                  <span class="text-xs text-zinc-500 dark:text-zinc-400"><%= article[:read_time] %></span>
+                </div>
+                <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-2">
+                  <a href="#" class="hover:underline"><%= article[:title] %></a>
+                </h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400"><%= article[:desc] %></p>
+              </div>
+              <div class="flex justify-between items-center mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-700">
+                <div class="flex items-center space-x-3">
+                  <%= eden_avatar(initials: article[:initials], size: :xs, rounded: true) %>
+                  <div>
+                    <span class="text-sm font-medium text-zinc-900 dark:text-white"><%= article[:author] %></span>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400"><%= article[:date] %></p>
+                  </div>
+                </div>
+                <a href="#" class="inline-flex items-center text-sm font-medium text-gold-600 dark:text-gold-500 hover:underline">
+                  Read more
+                  <%= eden_icon("arrow-right", size: :sm) %>
+                </a>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </aside>
+<% end %>

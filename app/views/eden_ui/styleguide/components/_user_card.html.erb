@@ -1,0 +1,56 @@
+<%# User Card component preview %>
+
+<%= styleguide_example(title: "Default", description: "User card with avatar, name, email, and role.",
+  source: 'eden_user_card(
+  name: "Bonnie Green",
+  email: "bonnie@company.com",
+  role: "Senior Designer",
+  avatar_initials: "BG",
+  status: :active
+)') do %>
+  <div class="max-w-xs">
+    <%= eden_user_card(
+      name: "Bonnie Green",
+      email: "bonnie@company.com",
+      role: "Senior Designer",
+      avatar_initials: "BG",
+      status: :active
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Actions", description: "User card with action buttons in block content.",
+  source: 'eden_user_card(
+  name: "Joseph McFall",
+  email: "joseph@company.com",
+  role: "Product Manager",
+  avatar_initials: "JM",
+  status: :pending
+) do
+  eden_button(variant: :primary, size: :sm) { "Message" }
+  eden_button(variant: :secondary, size: :sm) { "Profile" }
+end') do %>
+  <div class="max-w-xs">
+    <%= eden_user_card(
+      name: "Joseph McFall",
+      email: "joseph@company.com",
+      role: "Product Manager",
+      avatar_initials: "JM",
+      status: :pending
+    ) do %>
+      <%= eden_button(variant: :primary, size: :sm) { "Message" } %>
+      <%= eden_button(variant: :secondary, size: :sm) { "Profile" } %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Status Variants", description: "User cards with different status badges.",
+  source: 'eden_user_card(name: "Active User", status: :active, avatar_initials: "AU")
+eden_user_card(name: "Pending User", status: :pending, avatar_initials: "PU")
+eden_user_card(name: "Inactive User", status: :inactive, avatar_initials: "IU")') do %>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <%= eden_user_card(name: "Active User", email: "active@co.com", role: "Developer", status: :active, avatar_initials: "AU") %>
+    <%= eden_user_card(name: "Pending User", email: "pending@co.com", role: "Reviewer", status: :pending, avatar_initials: "PU") %>
+    <%= eden_user_card(name: "Inactive User", email: "inactive@co.com", role: "Former member", status: :inactive, avatar_initials: "IU") %>
+  </div>
+<% end %>

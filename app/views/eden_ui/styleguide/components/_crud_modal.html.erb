@@ -1,0 +1,52 @@
+<%# CRUD Modal component preview %>
+
+<%= styleguide_example(
+  title: "Create Modal",
+  description: "Modal with a form for creating new records.",
+  source: 'eden_crud_modal(id: "create-user-modal", title: "Add New User", form_url: "/users", form_method: :post) do
+  eden_form_group(label: "Name") { eden_input(name: "name", placeholder: "Enter name") }
+  eden_form_group(label: "Email") { eden_input(name: "email", type: :email, placeholder: "Enter email") }
+end'
+) do %>
+  <div class="flex gap-3">
+    <button type="button" onclick="document.getElementById('create-user-modal').classList.remove('hidden'); document.getElementById('create-user-modal').classList.add('flex')" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      Add New User
+    </button>
+  </div>
+
+  <%= eden_crud_modal(id: "create-user-modal", title: "Add New User", form_url: "#", form_method: :post) do %>
+    <%= eden_form_group(label: "Full Name", required: true) do %>
+      <%= eden_input(name: "name", placeholder: "Enter full name") %>
+    <% end %>
+    <%= eden_form_group(label: "Email") do %>
+      <%= eden_input(name: "email", type: :email, placeholder: "Enter email address") %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(
+  title: "Edit Modal",
+  description: "Modal for editing an existing record with PUT method.",
+  source: 'eden_crud_modal(id: "edit-product-modal", title: "Edit Product", submit_text: "Update", form_url: "/products/1", form_method: :put) do
+  eden_form_group(label: "Product Name") { eden_input(name: "name", value: "MacBook Pro") }
+  eden_form_group(label: "Price") { eden_input(name: "price", value: "2999") }
+end'
+) do %>
+  <div class="flex gap-3">
+    <button type="button" onclick="document.getElementById('edit-product-modal').classList.remove('hidden'); document.getElementById('edit-product-modal').classList.add('flex')" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">
+      Edit Product
+    </button>
+  </div>
+
+  <%= eden_crud_modal(id: "edit-product-modal", title: "Edit Product", submit_text: "Update", form_url: "#", form_method: :put) do %>
+    <%= eden_form_group(label: "Product Name") do %>
+      <%= eden_input(name: "name", value: "MacBook Pro") %>
+    <% end %>
+    <%= eden_form_group(label: "Price") do %>
+      <%= eden_input(name: "price", value: "2999", type: :number) %>
+    <% end %>
+    <%= eden_form_group(label: "Category") do %>
+      <%= eden_select(name: "category", options: [["Laptops", "laptops"], ["Tablets", "tablets"], ["Phones", "phones"]], selected: "laptops") %>
+    <% end %>
+  <% end %>
+<% end %>

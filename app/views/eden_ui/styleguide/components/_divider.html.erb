@@ -1,0 +1,43 @@
+<%# Divider component preview %>
+
+<%= styleguide_example(title: "Default", description: "Simple horizontal divider.",
+  source: 'eden_divider') do %>
+  <div class="py-4">
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Content above</p>
+    <%= eden_divider %>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Content below</p>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Text", description: "Divider with centered text label.",
+  source: 'eden_divider(text: "OR")') do %>
+  <div class="py-4">
+    <%= eden_divider(text: "OR") %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Variants", description: "Different divider visual styles.",
+  source: 'eden_divider(text: "Default", variant: :default)
+eden_divider(text: "Primary", variant: :primary)
+eden_divider(text: "Dashed", variant: :dashed)') do %>
+  <div class="py-4 space-y-4">
+    <%= eden_divider(text: "Default", variant: :default) %>
+    <%= eden_divider(text: "Primary", variant: :primary) %>
+    <%= eden_divider(text: "Dashed", variant: :dashed) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Spacing", description: "Different vertical spacing options.",
+  source: 'eden_divider(spacing: :sm)
+eden_divider(spacing: :md)
+eden_divider(spacing: :lg)') do %>
+  <div class="py-4">
+    <p class="text-sm text-gray-600 dark:text-gray-400">Small spacing</p>
+    <%= eden_divider(spacing: :sm) %>
+    <p class="text-sm text-gray-600 dark:text-gray-400">Medium spacing (default)</p>
+    <%= eden_divider(spacing: :md) %>
+    <p class="text-sm text-gray-600 dark:text-gray-400">Large spacing</p>
+    <%= eden_divider(spacing: :lg) %>
+    <p class="text-sm text-gray-600 dark:text-gray-400">Content below</p>
+  </div>
+<% end %>

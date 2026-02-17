@@ -1,0 +1,23 @@
+<%
+  variant ||= :underline
+  id ||= "default-tabs"
+  html_options ||= {}
+  content ||= nil
+
+  wrapper_classes = case variant.to_sym
+  when :pill
+    "flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400"
+  when :full_width
+    "flex flex-wrap text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow dark:divide-gray-700 dark:text-gray-400"
+  else
+    "flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700"
+  end
+
+  classes = [wrapper_classes, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<div data-controller="eden-tab" data-eden-tab-active-tab-value="0" id="<%= id %>" <%= tag.attributes(html_options) %>>
+  <ul class="<%= classes %>" role="tablist">
+    <%= content %>
+  </ul>
+</div>

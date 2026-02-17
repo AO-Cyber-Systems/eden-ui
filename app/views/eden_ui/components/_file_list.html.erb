@@ -1,0 +1,76 @@
+<%
+  files ||= []
+  html_options ||= {}
+  content ||= nil
+
+  type_config = lambda { |type|
+    case type.to_s.downcase
+    when "pdf"
+      { color: "text-red-500 dark:text-red-400" }
+    when "doc", "docx"
+      { color: "text-blue-500 dark:text-blue-400" }
+    when "xls", "xlsx", "csv"
+      { color: "text-green-500 dark:text-green-400" }
+    when "img", "png", "jpg", "jpeg", "gif", "svg"
+      { color: "text-purple-500 dark:text-purple-400" }
+    when "zip", "rar", "tar", "gz"
+      { color: "text-yellow-500 dark:text-yellow-400" }
+    else
+      { color: "text-gray-500 dark:text-gray-400" }
+    end
+  }
+
+  classes = [
+    html_options.delete(:class)
+  ].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <% if files.any? || content %>
+    <%= eden_table(hoverable: true) do %>
+      <%= eden_table_head do %>
+        <th scope="col" class="px-6 py-3">Name</th>
+        <th scope="col" class="px-6 py-3">Owner</th>
+        <th scope="col" class="px-6 py-3">Modified</th>
+        <th scope="col" class="px-6 py-3">Size</th>
+        <th scope="col" class="px-6 py-3"><span class="sr-only">Actions</span></th>
+      <% end %>
+      <tbody>
+        <% files.each do |file| %>
+          <%
+            cfg = type_config.call(file[:type])
+          %>
+          <%= eden_table_row do %>
+            <td class="px-6 py-4">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 flex-shrink-0 <%= cfg[:color] %>" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd"/>
+                </svg>
+                <% if file[:href] %>
+                  <a href="<%= file[:href] %>" class="text-sm font-medium text-gray-900 dark:text-white hover:underline"><%= file[:name] %></a>
+                <% else %>
+                  <span class="text-sm font-medium text-gray-900 dark:text-white"><%= file[:name] %></span>
+                <% end %>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400"><%= file[:owner] %></td>
+            <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400"><%= file[:modified] %></td>
+            <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400"><%= file[:size] %></td>
+            <td class="px-6 py-4 text-right">
+              <button type="button" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"/></svg>
+              </button>
+            </td>
+          <% end %>
+        <% end %>
+        <%= content %>
+      </tbody>
+    <% end %>
+  <% else %>
+    <%= eden_empty_state(
+      title: "No files",
+      description: "Upload a file to get started.",
+      icon: "document"
+    ) %>
+  <% end %>
+</div>

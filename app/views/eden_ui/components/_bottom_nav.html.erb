@@ -1,0 +1,22 @@
+<%
+  variant ||= :default
+  html_options ||= {}
+  content ||= nil
+
+  base_classes = case variant.to_sym
+  when :bordered
+    "fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600"
+  when :app_bar
+    "fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600"
+  else
+    "fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600"
+  end
+
+  classes = [base_classes, html_options.delete(:class)].compact_blank.join(" ")
+%>
+
+<div class="<%= classes %>" <%= tag.attributes(html_options) %>>
+  <div class="grid h-full max-w-lg grid-flow-col auto-cols-fr mx-auto font-medium">
+    <%= content %>
+  </div>
+</div>

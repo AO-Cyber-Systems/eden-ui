@@ -1,0 +1,54 @@
+<%# CTA Section component previews %>
+
+<%= styleguide_block_example(title: "Centered CTA", description: "Default centered call-to-action with title, subtitle, and buttons.",
+  source: 'eden_cta_section(
+  title: "Start your free trial today",
+  subtitle: "Try our platform for 30 days. No credit card required.",
+  primary_cta_text: "Get started",
+  secondary_cta_text: "Learn more"
+)') do %>
+  <%= eden_cta_section(
+    title: "Start your free trial today",
+    subtitle: "Try our platform for 30 days. No credit card required. Cancel anytime.",
+    primary_cta_text: "Get started",
+    secondary_cta_text: "Learn more"
+  ) %>
+<% end %>
+
+<%= styleguide_block_example(title: "Split CTA with Form", description: "Two-column layout with text on the left and a signup form on the right.",
+  source: 'eden_cta_section(
+  title: "Stay in the loop",
+  subtitle: "Sign up for our newsletter and get the latest updates.",
+  variant: :split
+) do
+  # Custom form content in the right column
+end') do %>
+  <%= eden_cta_section(
+    title: "Stay in the loop",
+    subtitle: "Sign up for our newsletter to receive product updates, tips, and the latest news delivered straight to your inbox.",
+    variant: :split
+  ) do %>
+    <form class="flex flex-col sm:flex-row gap-3">
+      <%= eden_input(type: :email, placeholder: "Enter your email", name: "email") %>
+      <%= eden_button(variant: :primary) { "Subscribe" } %>
+    </form>
+    <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">We care about your data. Read our <a href="#" class="text-blue-600 hover:underline dark:text-blue-400">privacy policy</a>.</p>
+  <% end %>
+<% end %>
+
+<%= styleguide_block_example(title: "Gradient CTA", description: "Eye-catching gradient background variant.",
+  source: 'eden_cta_section(
+  title: "Ready to get started?",
+  subtitle: "Join thousands of satisfied customers.",
+  primary_cta_text: "Sign up now",
+  secondary_cta_text: "Talk to sales",
+  variant: :gradient
+)') do %>
+  <%= eden_cta_section(
+    title: "Ready to get started?",
+    subtitle: "Join thousands of satisfied customers building amazing products with Eden UI.",
+    primary_cta_text: "Sign up now",
+    secondary_cta_text: "Talk to sales",
+    variant: :gradient
+  ) %>
+<% end %>

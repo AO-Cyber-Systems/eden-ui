@@ -1,0 +1,31 @@
+<%# Tag Input component preview %>
+
+<%= styleguide_example(title: "Default", description: "Empty tag input ready for user input.",
+  source: 'eden_tag_input(name: "tags", placeholder: "Add a tag...")') do %>
+  <div class="max-w-md">
+    <%= eden_tag_input(name: "tags", placeholder: "Add a tag...") %>
+    <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Press Enter to add a tag. Backspace to remove the last tag.</p>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With Initial Values", description: "Tag input pre-populated with tags.",
+  source: 'eden_tag_input(name: "skills", value: ["Ruby", "Rails", "JavaScript"])') do %>
+  <div class="max-w-md">
+    <%= eden_tag_input(name: "skills", value: ["Ruby", "Rails", "JavaScript"]) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Max Tags", description: "Tag input limited to a maximum number of tags.",
+  source: 'eden_tag_input(name: "categories", value: ["Design", "Engineering"], max_tags: 3, placeholder: "Max 3 tags...")') do %>
+  <div class="max-w-md">
+    <%= eden_tag_input(name: "categories", value: ["Design", "Engineering"], max_tags: 3, placeholder: "Max 3 tags...") %>
+    <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Limited to 3 tags maximum.</p>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Disabled", description: "Tag input in disabled state.",
+  source: 'eden_tag_input(name: "locked_tags", value: ["Locked", "ReadOnly"], disabled: true)') do %>
+  <div class="max-w-md">
+    <%= eden_tag_input(name: "locked_tags", value: ["Locked", "ReadOnly"], disabled: true) %>
+  </div>
+<% end %>

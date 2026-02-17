@@ -1,0 +1,62 @@
+<%# Alert component preview %>
+
+<%= styleguide_example(title: "Variants", source: 'eden_alert(variant: :info) { "This is an info alert." }
+eden_alert(variant: :success) { "This is a success alert." }
+eden_alert(variant: :warning) { "This is a warning alert." }
+eden_alert(variant: :danger) { "This is a danger alert." }
+eden_alert(variant: :dark) { "This is a dark alert." }') do %>
+  <div class="w-full space-y-3">
+    <%= eden_alert(variant: :info) do %>This is an info alert. Review the details carefully.<% end %>
+    <%= eden_alert(variant: :success) do %>This is a success alert. Your changes have been saved.<% end %>
+    <%= eden_alert(variant: :warning) do %>This is a warning alert. Please check your input.<% end %>
+    <%= eden_alert(variant: :danger) do %>This is a danger alert. Something went wrong.<% end %>
+    <%= eden_alert(variant: :dark) do %>This is a dark alert. Neutral informational message.<% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Dismissible", description: "Alerts with a close button", source: 'eden_alert(variant: :info, dismissible: true) { "Dismissible info alert." }
+eden_alert(variant: :success, dismissible: true) { "Dismissible success alert." }
+eden_alert(variant: :danger, dismissible: true) { "Dismissible danger alert." }') do %>
+  <div class="w-full space-y-3">
+    <%= eden_alert(variant: :info, dismissible: true) do %>Dismissible info alert. Click the close button to remove.<% end %>
+    <%= eden_alert(variant: :success, dismissible: true) do %>Dismissible success alert. Click the close button to remove.<% end %>
+    <%= eden_alert(variant: :danger, dismissible: true) do %>Dismissible danger alert. Click the close button to remove.<% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Bordered", description: "Alerts with a left border accent", source: 'eden_alert(variant: :info, bordered: true) { "Bordered info alert." }
+eden_alert(variant: :success, bordered: true) { "Bordered success alert." }
+eden_alert(variant: :warning, bordered: true) { "Bordered warning alert." }
+eden_alert(variant: :danger, bordered: true) { "Bordered danger alert." }') do %>
+  <div class="w-full space-y-3">
+    <%= eden_alert(variant: :info, bordered: true) do %>Bordered info alert with left accent.<% end %>
+    <%= eden_alert(variant: :success, bordered: true) do %>Bordered success alert with left accent.<% end %>
+    <%= eden_alert(variant: :warning, bordered: true) do %>Bordered warning alert with left accent.<% end %>
+    <%= eden_alert(variant: :danger, bordered: true) do %>Bordered danger alert with left accent.<% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "With icon", description: "Alerts with a contextual icon", source: 'eden_alert(variant: :info, icon: "information-circle") { "Info with icon." }
+eden_alert(variant: :success, icon: "check-circle") { "Success with icon." }
+eden_alert(variant: :warning, icon: "exclamation-triangle") { "Warning with icon." }
+eden_alert(variant: :danger, icon: "x-circle") { "Danger with icon." }') do %>
+  <div class="w-full space-y-3">
+    <%= eden_alert(variant: :info, icon: "information-circle") do %>Informational message with relevant details for the user.<% end %>
+    <%= eden_alert(variant: :success, icon: "check-circle") do %>Operation completed successfully. All changes have been saved.<% end %>
+    <%= eden_alert(variant: :warning, icon: "exclamation-triangle") do %>Please review the following warnings before proceeding.<% end %>
+    <%= eden_alert(variant: :danger, icon: "x-circle") do %>An error occurred while processing your request. Please try again.<% end %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Combined options", description: "Alert with icon, border, and dismiss", source: 'eden_alert(variant: :info, icon: "information-circle", bordered: true, dismissible: true) do
+  "Fully featured alert with all options enabled."
+end') do %>
+  <div class="w-full space-y-3">
+    <%= eden_alert(variant: :info, icon: "information-circle", bordered: true, dismissible: true) do %>
+      A fully featured alert combining icon, border accent, and dismiss button.
+    <% end %>
+    <%= eden_alert(variant: :success, icon: "check-circle", bordered: true, dismissible: true) do %>
+      Your profile has been updated successfully. You can dismiss this message.
+    <% end %>
+  </div>
+<% end %>

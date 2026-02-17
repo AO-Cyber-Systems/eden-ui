@@ -1,0 +1,33 @@
+<%# Form Group component preview %>
+
+<%= styleguide_example(title: "With Label and Hint", source: 'eden_form_group(label: "Email", hint: "We\'ll never share your email", required: true) do
+  eden_input(type: :email, placeholder: "you@example.com")
+end') do %>
+  <%= eden_form_group(label: "Email", hint: "We'll never share your email", required: true) do %>
+    <%= eden_input(type: :email, placeholder: "you@example.com") %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "With Error State", source: 'eden_form_group(label: "Password", error: "Password must be at least 8 characters", required: true) do
+  eden_input(type: :password, placeholder: "Enter password")
+end') do %>
+  <%= eden_form_group(label: "Password", error: "Password must be at least 8 characters", required: true) do %>
+    <%= eden_input(type: :password, placeholder: "Enter password") %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "Optional Field", source: 'eden_form_group(label: "Bio", hint: "Tell us about yourself") do
+  eden_textarea(placeholder: "A short bio...", rows: 3)
+end') do %>
+  <%= eden_form_group(label: "Bio", hint: "Tell us about yourself") do %>
+    <%= eden_textarea(placeholder: "A short bio...", rows: 3) %>
+  <% end %>
+<% end %>
+
+<%= styleguide_example(title: "With Select", source: 'eden_form_group(label: "Country", required: true) do
+  eden_select(options: [["United States", "us"], ["Canada", "ca"], ["Mexico", "mx"]], placeholder: "Choose a country")
+end') do %>
+  <%= eden_form_group(label: "Country", required: true) do %>
+    <%= eden_select(options: [["United States", "us"], ["Canada", "ca"], ["Mexico", "mx"]], placeholder: "Choose a country") %>
+  <% end %>
+<% end %>

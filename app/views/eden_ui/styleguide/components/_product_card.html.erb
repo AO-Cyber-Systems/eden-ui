@@ -1,0 +1,47 @@
+<%# Product Card component preview %>
+
+<%= styleguide_example(title: "Product Grid", description: "Product cards in a responsive grid layout.",
+  source: 'eden_product_card(title: "Apple MacBook Pro 16\"", price: "$2,499", category: "Laptops", rating: 5, reviews_count: 238, href: "#")
+eden_product_card(title: "Sony WH-1000XM5", price: "$348", category: "Audio", rating: 4, reviews_count: 1024, badge_text: "-15%", href: "#")
+eden_product_card(title: "iPad Air M2", price: "$599", category: "Tablets", rating: 4, reviews_count: 456, badge_text: "New", badge_variant: :info, href: "#")') do %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <%= eden_product_card(
+      title: 'Apple MacBook Pro 16"',
+      price: "$2,499",
+      category: "Laptops",
+      rating: 5,
+      reviews_count: 238,
+      href: "#"
+    ) %>
+    <%= eden_product_card(
+      title: "Sony WH-1000XM5",
+      price: "$348",
+      category: "Audio",
+      rating: 4,
+      reviews_count: 1024,
+      badge_text: "-15%",
+      href: "#"
+    ) %>
+    <%= eden_product_card(
+      title: "iPad Air M2",
+      price: "$599",
+      category: "Tablets",
+      rating: 4,
+      reviews_count: 456,
+      badge_text: "New",
+      badge_variant: :info,
+      href: "#"
+    ) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(title: "Minimal Card", description: "Product card without image or rating.",
+  source: 'eden_product_card(title: "Wireless Mouse", price: "$29.99", category: "Accessories")') do %>
+  <div class="max-w-xs">
+    <%= eden_product_card(
+      title: "Wireless Mouse",
+      price: "$29.99",
+      category: "Accessories"
+    ) %>
+  </div>
+<% end %>

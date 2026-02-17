@@ -1,0 +1,136 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_mega_footer_components.html.erb %>
+
+<%= styleguide_block_example(
+  title: "E-Commerce Mega Footer",
+  description: "Full-featured store footer with multiple link columns, newsletter, payment icons, and social links",
+  source: '<footer class="bg-zinc-900 text-white">
+  <div class="max-w-screen-xl px-4 py-12 mx-auto">
+    <!-- logo + description -->
+    <!-- link columns: Shop, Support, Company, Legal -->
+    <!-- newsletter signup -->
+    <!-- payment methods + social links -->
+  </div>
+</footer>'
+) do %>
+  <footer class="bg-zinc-900">
+    <div class="max-w-screen-xl px-4 py-12 mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-8">
+        <!-- Brand -->
+        <div class="col-span-2">
+          <a href="#" class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 bg-gold-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">E</div>
+            <span class="text-xl font-bold text-white">Store</span>
+          </a>
+          <p class="text-sm text-zinc-400 mb-4">Premium quality products at great prices. Free shipping worldwide on orders over $50.</p>
+          <div class="mb-4">
+            <p class="text-sm font-medium text-white mb-2">Subscribe to our newsletter</p>
+            <div class="flex gap-2">
+              <%= eden_input(type: :email, placeholder: "Your email", size: :sm) %>
+              <%= eden_button(variant: :primary, size: :sm) { "Subscribe" } %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shop -->
+        <div>
+          <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Shop</h3>
+          <ul class="space-y-2">
+            <% ["New Arrivals", "Best Sellers", "Sale", "Electronics", "Fashion", "Home"].each do |link| %>
+              <li><a href="#" class="text-sm text-zinc-400 hover:text-white"><%= link %></a></li>
+            <% end %>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div>
+          <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Support</h3>
+          <ul class="space-y-2">
+            <% ["Help Center", "Track Order", "Returns", "Shipping Info", "Size Guide", "Contact Us"].each do |link| %>
+              <li><a href="#" class="text-sm text-zinc-400 hover:text-white"><%= link %></a></li>
+            <% end %>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Company</h3>
+          <ul class="space-y-2">
+            <% ["About Us", "Careers", "Blog", "Press", "Affiliates", "Sustainability"].each do |link| %>
+              <li><a href="#" class="text-sm text-zinc-400 hover:text-white"><%= link %></a></li>
+            <% end %>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+          <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Legal</h3>
+          <ul class="space-y-2">
+            <% ["Terms of Service", "Privacy Policy", "Cookie Policy", "Accessibility"].each do |link| %>
+              <li><a href="#" class="text-sm text-zinc-400 hover:text-white"><%= link %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="border-zinc-800 mb-6" />
+
+      <!-- Bottom bar -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-zinc-500">&copy; 2026 Store. All rights reserved.</p>
+
+        <!-- Payment Methods -->
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-zinc-500 mr-2">We accept:</span>
+          <% ["Visa", "MC", "Amex", "PP"].each do |method| %>
+            <div class="w-10 h-7 bg-zinc-800 rounded border border-zinc-700 flex items-center justify-center">
+              <span class="text-xs font-bold text-zinc-400"><%= method %></span>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- Social -->
+        <div class="flex items-center gap-3">
+          <% ["globe", "link", "envelope"].each do |icon| %>
+            <a href="#" class="text-zinc-500 hover:text-white">
+              <%= eden_icon(icon, size: :sm) %>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </footer>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "Compact Store Footer",
+  description: "Compact footer with essential links, payment methods, and copyright",
+  source: '<footer class="bg-white dark:bg-zinc-900 border-t">
+  <div class="max-w-screen-xl px-4 py-6 mx-auto">
+    <!-- links row + payment + copyright -->
+  </div>
+</footer>'
+) do %>
+  <footer class="bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-700">
+    <div class="max-w-screen-xl px-4 py-6 mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 bg-gold-600 rounded flex items-center justify-center text-white font-bold text-xs">E</div>
+          <span class="text-sm font-bold text-zinc-900 dark:text-white">Store</span>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <% ["About", "Contact", "Help", "Returns", "Privacy", "Terms"].each do |link| %>
+            <a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"><%= link %></a>
+          <% end %>
+        </div>
+        <div class="flex items-center gap-2">
+          <% ["Visa", "MC", "PP"].each do |method| %>
+            <div class="w-8 h-5 bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-200 dark:border-zinc-700 flex items-center justify-center">
+              <span class="text-[10px] font-bold text-zinc-400"><%= method %></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <p class="text-center text-xs text-zinc-400 dark:text-zinc-500 mt-4">&copy; 2026 Store. All rights reserved.</p>
+    </div>
+  </footer>
+<% end %>

@@ -1,0 +1,115 @@
+<%# app/views/eden_ui/styleguide/blocks/ecommerce/_customer_service_pages.html.erb %>
+
+<%= styleguide_block_example(
+  title: "Help Center",
+  description: "Customer service page with search, FAQ categories, and contact options",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-screen-xl px-4 mx-auto">
+    <h1>How can we help?</h1>
+    eden_search_input(placeholder: "Search for help...", size: :lg)
+    <!-- help categories grid -->
+    <!-- contact options -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <!-- Hero -->
+      <div class="text-center mb-10">
+        <h1 class="text-3xl font-bold text-zinc-900 dark:text-white mb-3">How can we help you?</h1>
+        <p class="text-zinc-500 dark:text-zinc-400 mb-6">Search our knowledge base or browse categories below</p>
+        <div class="max-w-lg mx-auto">
+          <%= eden_search_input(placeholder: "Search for help articles...", size: :lg) %>
+        </div>
+      </div>
+
+      <!-- Help Categories -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        <% [
+          { icon: "shopping-cart", title: "Orders & Shipping", desc: "Track orders, delivery times, shipping methods", count: 24 },
+          { icon: "arrow-left", title: "Returns & Refunds", desc: "Return policies, refund status, exchanges", count: 18 },
+          { icon: "lock", title: "Payment & Billing", desc: "Payment methods, invoices, promo codes", count: 12 },
+          { icon: "user", title: "Account & Settings", desc: "Profile, password, notifications", count: 15 },
+          { icon: "shield", title: "Warranty & Repairs", desc: "Product warranty, repair requests", count: 8 },
+          { icon: "information-circle", title: "Product Information", desc: "Specs, compatibility, care guides", count: 32 }
+        ].each do |category| %>
+          <a href="#" class="flex flex-col p-6 bg-white border border-zinc-200 rounded-lg hover:shadow-md hover:border-gold-300 dark:bg-zinc-800 dark:border-zinc-700 dark:hover:border-gold-600 transition-all">
+            <div class="w-12 h-12 rounded-lg bg-gold-50 dark:bg-gold-900/30 flex items-center justify-center text-gold-600 dark:text-gold-400 mb-3">
+              <%= eden_icon(category[:icon], size: :md) %>
+            </div>
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1"><%= category[:title] %></h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 flex-1"><%= category[:desc] %></p>
+            <p class="text-xs text-zinc-400 dark:text-zinc-500 mt-3"><%= category[:count] %> articles</p>
+          </a>
+        <% end %>
+      </div>
+
+      <!-- Contact Options -->
+      <div class="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-8">
+        <h2 class="text-lg font-semibold text-zinc-900 dark:text-white text-center mb-6">Still need help? Contact us</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="text-center p-4">
+            <div class="w-12 h-12 mx-auto rounded-full bg-gold-100 dark:bg-gold-900/30 flex items-center justify-center text-gold-600 dark:text-gold-400 mb-3">
+              <%= eden_icon("chat-bubble-left", size: :md) %>
+            </div>
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1">Live Chat</h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-3">Available Mon-Fri, 9AM-6PM</p>
+            <%= eden_button(variant: :primary, size: :sm) { "Start Chat" } %>
+          </div>
+          <div class="text-center p-4">
+            <div class="w-12 h-12 mx-auto rounded-full bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-zinc-600 dark:text-zinc-400 mb-3">
+              <%= eden_icon("envelope", size: :md) %>
+            </div>
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1">Email Support</h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-3">Response within 24 hours</p>
+            <%= eden_button(variant: :ghost, size: :sm) { "Send Email" } %>
+          </div>
+          <div class="text-center p-4">
+            <div class="w-12 h-12 mx-auto rounded-full bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-zinc-600 dark:text-zinc-400 mb-3">
+              <%= eden_icon("phone", size: :md) %>
+            </div>
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1">Phone</h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-3">1-800-555-0123</p>
+            <%= eden_button(variant: :ghost, size: :sm) { "Call Us" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= styleguide_block_example(
+  title: "FAQ Section",
+  description: "Frequently asked questions with expandable accordion-style answers",
+  source: '<section class="py-8 bg-white dark:bg-zinc-900">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2>Frequently Asked Questions</h2>
+    <!-- FAQ accordion -->
+  </div>
+</section>'
+) do %>
+  <section class="py-8 bg-white dark:bg-zinc-900 antialiased">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-xl font-semibold text-zinc-900 dark:text-white mb-6 text-center">Frequently Asked Questions</h2>
+      <div class="divide-y divide-zinc-200 dark:divide-zinc-700 border border-zinc-200 dark:border-zinc-700 rounded-lg">
+        <% [
+          { q: "How long does shipping take?", a: "Standard shipping takes 5-7 business days. Express shipping takes 2-3 business days. Free shipping is available on orders over $50.", open: true },
+          { q: "What is your return policy?", a: "We accept returns within 30 days of purchase. Items must be in original condition with tags attached. Start a return from your account page.", open: false },
+          { q: "How do I track my order?", a: "Once your order ships, you'll receive a tracking number via email. You can also track from your account under 'My Orders'.", open: false },
+          { q: "Do you offer international shipping?", a: "Yes, we ship to over 50 countries. International shipping rates and delivery times vary by location.", open: false },
+          { q: "How do I use a promo code?", a: "Enter your promo code at checkout in the 'Discount Code' field and click Apply. Only one code can be used per order.", open: false }
+        ].each do |faq| %>
+          <div class="p-5">
+            <button class="flex items-center justify-between w-full text-left">
+              <span class="text-sm font-medium text-zinc-900 dark:text-white"><%= faq[:q] %></span>
+              <%= eden_icon(faq[:open] ? "chevron-up" : "chevron-down", size: :sm) %>
+            </button>
+            <% if faq[:open] %>
+              <p class="mt-3 text-sm text-zinc-500 dark:text-zinc-400"><%= faq[:a] %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

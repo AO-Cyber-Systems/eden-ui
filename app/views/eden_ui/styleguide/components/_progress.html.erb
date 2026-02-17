@@ -1,0 +1,63 @@
+<%# Progress bar component preview %>
+
+<%= styleguide_example(
+  title: "Progress Values",
+  source: 'eden_progress(value: 25)
+eden_progress(value: 50)
+eden_progress(value: 75)
+eden_progress(value: 100)'
+) do %>
+  <div class="flex flex-col gap-4 w-full">
+    <%= eden_progress(value: 25) %>
+    <%= eden_progress(value: 50) %>
+    <%= eden_progress(value: 75) %>
+    <%= eden_progress(value: 100) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Sizes",
+  description: "Progress bars in sm, md (default), lg, and xl heights.",
+  source: 'eden_progress(value: 50, size: :sm)
+eden_progress(value: 50, size: :md)
+eden_progress(value: 50, size: :lg)
+eden_progress(value: 50, size: :xl)'
+) do %>
+  <div class="flex flex-col gap-4 w-full">
+    <%= eden_progress(value: 50, size: :sm) %>
+    <%= eden_progress(value: 50, size: :md) %>
+    <%= eden_progress(value: 50, size: :lg) %>
+    <%= eden_progress(value: 50, size: :xl) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "Color Variants",
+  source: 'eden_progress(value: 60, variant: :primary)
+eden_progress(value: 60, variant: :success)
+eden_progress(value: 60, variant: :warning)
+eden_progress(value: 60, variant: :danger)
+eden_progress(value: 60, variant: :indigo)
+eden_progress(value: 60, variant: :purple)'
+) do %>
+  <div class="flex flex-col gap-4 w-full">
+    <%= eden_progress(value: 60, variant: :primary) %>
+    <%= eden_progress(value: 60, variant: :success) %>
+    <%= eden_progress(value: 60, variant: :warning) %>
+    <%= eden_progress(value: 60, variant: :danger) %>
+    <%= eden_progress(value: 60, variant: :indigo) %>
+    <%= eden_progress(value: 60, variant: :purple) %>
+  </div>
+<% end %>
+
+<%= styleguide_example(
+  title: "With Labels",
+  description: "Progress bars with label text and percentage display. Labels are visible on lg and xl sizes.",
+  source: 'eden_progress(value: 45, size: :lg, label: true, label_text: "Uploading...")
+eden_progress(value: 75, size: :lg, label: true, label_text: "Processing...")'
+) do %>
+  <div class="flex flex-col gap-4 w-full">
+    <%= eden_progress(value: 45, size: :lg, label: true, label_text: "Uploading...") %>
+    <%= eden_progress(value: 75, size: :lg, label: true, label_text: "Processing...") %>
+  </div>
+<% end %>
