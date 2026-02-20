@@ -1,0 +1,26 @@
+<%# locals: (id:, labels:, data:, colors: [], height: 300, **options) -%>
+<%
+  config = {
+    labels: labels,
+    data: data,
+    options: options.except(:class, :title, :subtitle)
+  }
+%>
+<% if options[:title] || options[:subtitle] %>
+  <div class="mb-2">
+    <% if options[:title] %>
+      <h3 class="text-sm font-semibold text-neutral-900 dark:text-white"><%= options[:title] %></h3>
+    <% end %>
+    <% if options[:subtitle] %>
+      <p class="text-xs text-neutral-500 dark:text-neutral-400"><%= options[:subtitle] %></p>
+    <% end %>
+  </div>
+<% end %>
+<div id="<%= id %>"
+     class="<%= options[:class] %>"
+     data-controller="eden-ui--chart"
+     data-eden-ui--chart-type-value="donut"
+     data-eden-ui--chart-config-value="<%= config.to_json %>"
+     data-eden-ui--chart-height-value="<%= height %>"
+     data-eden-ui--chart-colors-value="<%= colors.to_json %>">
+</div>

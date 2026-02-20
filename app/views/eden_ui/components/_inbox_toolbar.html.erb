@@ -4,7 +4,7 @@
   content ||= nil
 
   classes = [
-    "flex items-center justify-between border-b border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800",
+    "flex items-center justify-between border-b border-zinc-200 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-800",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 %>
@@ -13,35 +13,35 @@
   <div class="flex items-center">
     <%# Select all checkbox %>
     <div class="pe-4">
-      <input type="checkbox" class="h-4 w-4 rounded-sm border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600" aria-label="Select all">
+      <input type="checkbox" class="h-4 w-4 rounded-sm border-zinc-300 bg-zinc-50 focus:ring-2 focus:ring-primary-300 dark:border-zinc-600 dark:bg-zinc-700 dark:ring-offset-zinc-800 dark:focus:ring-primary-600" aria-label="Select all">
     </div>
 
-    <div class="h-5 w-px bg-gray-200 dark:bg-gray-700"></div>
+    <div class="h-5 w-px bg-zinc-200 dark:bg-zinc-700"></div>
 
     <%# Action buttons %>
     <div class="flex space-x-1 px-2">
       <%# Archive %>
-      <button type="button" class="inline-flex cursor-pointer justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" title="Archive">
+      <button type="button" class="inline-flex cursor-pointer justify-center rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-600 dark:hover:text-white" title="Archive">
         <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M4 4a2 2 0 1 0 0 4h16a2 2 0 1 0 0-4H4Zm0 6h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8Zm10.7 5.7a1 1 0 0 0-1.4-1.4l-.3.3V12a1 1 0 1 0-2 0v2.6l-.3-.3a1 1 0 0 0-1.4 1.4l2 2a1 1 0 0 0 1.4 0l2-2Z" clip-rule="evenodd"/></svg>
         <span class="sr-only">Archive</span>
       </button>
 
       <%# Delete %>
-      <button type="button" class="inline-flex cursor-pointer justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" title="Delete">
+      <button type="button" class="inline-flex cursor-pointer justify-center rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-600 dark:hover:text-white" title="Delete">
         <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.6 2.6A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4c0-.5.2-1 .6-1.4ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/></svg>
         <span class="sr-only">Delete</span>
       </button>
 
       <%# Mark as read %>
-      <button type="button" class="hidden sm:inline-flex cursor-pointer justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" title="Mark as read">
+      <button type="button" class="hidden sm:inline-flex cursor-pointer justify-center rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-600 dark:hover:text-white" title="Mark as read">
         <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M2 5.6V18c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V5.6l-.9.7-7.9 6a2 2 0 0 1-2.4 0l-8-6-.8-.7Z"/><path d="M20.7 4.1A2 2 0 0 0 20 4H4a2 2 0 0 0-.6.1l.7.6 7.9 6 7.9-6 .8-.6Z"/></svg>
         <span class="sr-only">Mark as read</span>
       </button>
     </div>
 
     <% if selected_count > 0 %>
-      <div class="h-5 w-px bg-gray-200 dark:bg-gray-700 mx-2"></div>
-      <span class="text-sm font-medium text-gray-700 dark:text-gray-300"><%= selected_count %> selected</span>
+      <div class="h-5 w-px bg-zinc-200 dark:bg-zinc-700 mx-2"></div>
+      <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300"><%= selected_count %> selected</span>
     <% end %>
   </div>
 

@@ -6,7 +6,7 @@
   content ||= nil
 
   display = text || content
-  classes = ["block mb-2 text-sm font-medium text-gray-900 dark:text-white", html_options.delete(:class)].compact_blank.join(" ")
+  classes = ["block mb-2 text-sm font-medium text-zinc-900 dark:text-white", html_options.delete(:class)].compact_blank.join(" ")
 %>
 
 <label <% if for_id %>for="<%= for_id %>"<% end %> class="<%= classes %>" <%= tag.attributes(html_options) %>>

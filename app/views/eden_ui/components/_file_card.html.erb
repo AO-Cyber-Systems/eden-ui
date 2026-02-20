@@ -12,7 +12,7 @@
   when "pdf"
     { color: "text-red-500 dark:text-red-400", bg: "bg-red-100 dark:bg-red-900/50" }
   when "doc", "docx"
-    { color: "text-blue-500 dark:text-blue-400", bg: "bg-blue-100 dark:bg-blue-900/50" }
+    { color: "text-primary-500 dark:text-primary-400", bg: "bg-primary-100 dark:bg-primary-900/50" }
   when "xls", "xlsx", "csv"
     { color: "text-green-500 dark:text-green-400", bg: "bg-green-100 dark:bg-green-900/50" }
   when "img", "png", "jpg", "jpeg", "gif", "svg"
@@ -20,11 +20,11 @@
   when "zip", "rar", "tar", "gz"
     { color: "text-yellow-500 dark:text-yellow-400", bg: "bg-yellow-100 dark:bg-yellow-900/50" }
   else
-    { color: "text-gray-500 dark:text-gray-400", bg: "bg-gray-100 dark:bg-gray-700" }
+    { color: "text-zinc-500 dark:text-zinc-400", bg: "bg-zinc-100 dark:bg-zinc-700" }
   end
 
   classes = [
-    "bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-4 hover:shadow-md transition-shadow block",
+    "bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700 p-4 hover:shadow-md transition-shadow block",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 %>
@@ -45,19 +45,19 @@
 
     <%# Name %>
     <% if name %>
-      <p class="text-sm font-medium text-gray-900 dark:text-white truncate w-full"><%= name %></p>
+      <p class="text-sm font-medium text-zinc-900 dark:text-white truncate w-full"><%= name %></p>
     <% end %>
 
     <%# Metadata %>
     <div class="flex items-center gap-2 mt-1">
       <% if size %>
-        <span class="text-xs text-gray-500 dark:text-gray-400"><%= size %></span>
+        <span class="text-xs text-zinc-500 dark:text-zinc-400"><%= size %></span>
       <% end %>
       <% if size && modified %>
-        <span class="text-xs text-gray-400 dark:text-gray-500">&middot;</span>
+        <span class="text-xs text-zinc-400 dark:text-zinc-500">&middot;</span>
       <% end %>
       <% if modified %>
-        <span class="text-xs text-gray-500 dark:text-gray-400"><%= modified %></span>
+        <span class="text-xs text-zinc-500 dark:text-zinc-400"><%= modified %></span>
       <% end %>
     </div>
   </div>

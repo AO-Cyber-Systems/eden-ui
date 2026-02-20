@@ -27,6 +27,24 @@ EdenUi.configure do |config|
   # Show footer in layouts.
   # config.footer = true
 
-  # Brand color palette name (maps to CSS token set).
+  # Brand color preset. Built-in presets: :gold (default), :blue, :emerald,
+  # :purple, :red, :slate. Or pass a custom hash with shades 50-950 + :rgb_500:
+  #
+  #   config.brand_color = :blue
+  #   config.brand_color = {
+  #     50 => "#eff6ff", 100 => "#dbeafe", ..., 950 => "#172554",
+  #     rgb_500: "59, 130, 246"
+  #   }
   # config.brand_color = :gold
+
+  # Font preset. Built-in presets: :default (Outfit / Plus Jakarta Sans / JetBrains Mono),
+  # :inter (Inter / JetBrains Mono), :system (system fonts, no Google Fonts loaded).
+  # config.font_preset = :default
+
+  # ── Head tag helpers ──
+  # Add these to your application layout <head>:
+  #
+  #   <%= eden_font_tags %>           <%# Google Fonts (respects font_preset) %>
+  #   <%= eden_brand_style_tag %>     <%# Brand color overrides (no-op for :gold) %>
+  #   <%= eden_design_theme_script %> <%# Dark mode init script %>
 end

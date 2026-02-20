@@ -23,7 +23,7 @@
   state_classes = if error
     "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500"
   else
-    "bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    "bg-zinc-50 border-zinc-300 text-zinc-900 focus:ring-primary-500 focus:border-primary-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
   end
 
   icon_padding = icon_left ? "ps-10" : ""
@@ -35,13 +35,13 @@
   <div class="relative">
     <% if icon_left %>
       <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"><%= icon_left.html_safe %></svg>
+        <svg class="w-4 h-4 text-zinc-500 dark:text-zinc-400" fill="currentColor" viewBox="0 0 20 20"><%= icon_left.html_safe %></svg>
       </div>
     <% end %>
     <input type="<%= type %>" <% if name %>name="<%= name %>"<% end %> <% if id %>id="<%= id %>"<% end %> <% if value %>value="<%= value %>"<% end %> <% if placeholder %>placeholder="<%= placeholder %>"<% end %> class="<%= classes %>" <%= "disabled" if disabled %> <%= "readonly" if readonly %> <%= "required" if required %> <%= tag.attributes(html_options) %>>
     <% if icon_right %>
       <div class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none">
-        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"><%= icon_right.html_safe %></svg>
+        <svg class="w-4 h-4 text-zinc-500 dark:text-zinc-400" fill="currentColor" viewBox="0 0 20 20"><%= icon_right.html_safe %></svg>
       </div>
     <% end %>
   </div>

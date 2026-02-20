@@ -48,8 +48,12 @@ module EdenUi
         say ""
         say "Next steps:"
         say "  1. Configure Eden UI in config/initializers/eden_ui.rb"
-        say "  2. Run `rails generate eden_ui:devise` to install Devise views (optional)"
-        say "  3. Restart your Rails server"
+        say "  2. Add to your application layout <head>:"
+        say "       <%= eden_font_tags %>"
+        say "       <%= eden_brand_style_tag %>"
+        say "       <%= eden_design_theme_script %>"
+        say "  3. Run `rails generate eden_ui:devise` to install Devise views (optional)"
+        say "  4. Restart your Rails server"
         say ""
       end
     end

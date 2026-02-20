@@ -24,7 +24,7 @@
   variant_classes = if outline
     case variant.to_sym
     when :secondary
-      "text-gray-900 border border-gray-300 hover:bg-gray-100 focus:ring-gray-200 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+      "text-zinc-900 border border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-200 dark:text-white dark:border-zinc-600 dark:hover:bg-zinc-700 dark:focus:ring-zinc-700"
     when :danger
       "text-red-700 border border-red-700 hover:bg-red-800 hover:text-white focus:ring-red-300 dark:text-red-500 dark:border-red-500 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-900"
     when :success
@@ -32,16 +32,16 @@
     when :warning
       "text-yellow-400 border border-yellow-400 hover:bg-yellow-500 hover:text-white focus:ring-yellow-300 dark:text-yellow-300 dark:border-yellow-300 dark:hover:bg-yellow-400 dark:hover:text-white dark:focus:ring-yellow-900"
     when :dark
-      "text-gray-900 border border-gray-800 hover:bg-gray-900 hover:text-white focus:ring-gray-300 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-800"
+      "text-zinc-900 border border-zinc-800 hover:bg-zinc-900 hover:text-white focus:ring-zinc-300 dark:text-zinc-400 dark:border-zinc-600 dark:hover:bg-zinc-600 dark:hover:text-white dark:focus:ring-zinc-800"
     when :ghost
-      "text-primary-700 border-0 hover:bg-primary-50 focus:ring-primary-300 dark:text-primary-400 dark:hover:bg-gray-700 dark:focus:ring-primary-800"
+      "text-primary-700 border-0 hover:bg-primary-50 focus:ring-primary-300 dark:text-primary-400 dark:hover:bg-zinc-700 dark:focus:ring-primary-800"
     else
       "text-primary-700 border border-primary-700 hover:bg-primary-800 hover:text-white focus:ring-primary-300 dark:text-primary-500 dark:border-primary-500 dark:hover:bg-primary-600 dark:hover:text-white dark:focus:ring-primary-800"
     end
   else
     case variant.to_sym
     when :secondary
-      "text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+      "text-zinc-900 bg-white border border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-200 dark:bg-zinc-800 dark:text-white dark:border-zinc-600 dark:hover:bg-zinc-700 dark:focus:ring-zinc-700"
     when :danger
       "text-white bg-red-700 hover:bg-red-800 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
     when :success
@@ -49,9 +49,9 @@
     when :warning
       "text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-300 dark:focus:ring-yellow-900"
     when :dark
-      "text-white bg-gray-800 hover:bg-gray-900 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+      "text-white bg-zinc-800 hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:focus:ring-zinc-700 dark:border-zinc-700"
     when :ghost
-      "text-primary-700 bg-transparent hover:bg-primary-50 focus:ring-primary-300 dark:text-primary-400 dark:hover:bg-gray-700 dark:focus:ring-primary-800"
+      "text-primary-700 bg-transparent hover:bg-primary-50 focus:ring-primary-300 dark:text-primary-400 dark:hover:bg-zinc-700 dark:focus:ring-primary-800"
     else
       "text-white bg-primary-600 hover:bg-primary-700 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
     end

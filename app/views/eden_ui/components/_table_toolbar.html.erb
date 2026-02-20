@@ -15,7 +15,7 @@
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <div class="flex items-center gap-2">
     <% if title %>
-      <h5 class="text-lg font-semibold text-gray-900 dark:text-white"><%= title %></h5>
+      <h5 class="text-lg font-semibold text-zinc-900 dark:text-white"><%= title %></h5>
     <% end %>
     <% if count %>
       <%= eden_badge(text: count.to_s, variant: :default, size: :sm) %>

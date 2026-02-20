@@ -13,9 +13,9 @@
   when :outage
     { bg: "bg-red-50 dark:bg-red-900/50", text: "text-red-800 dark:text-red-300", icon_color: "text-red-500", default_message: "System outage detected" }
   when :maintenance
-    { bg: "bg-blue-50 dark:bg-blue-900/50", text: "text-blue-800 dark:text-blue-300", icon_color: "text-blue-500", default_message: "Scheduled maintenance in progress" }
+    { bg: "bg-primary-50 dark:bg-primary-900/50", text: "text-primary-800 dark:text-primary-300", icon_color: "text-primary-500", default_message: "Scheduled maintenance in progress" }
   else
-    { bg: "bg-gray-50 dark:bg-gray-800", text: "text-gray-800 dark:text-gray-300", icon_color: "text-gray-500", default_message: "System status unknown" }
+    { bg: "bg-zinc-50 dark:bg-zinc-800", text: "text-zinc-800 dark:text-zinc-300", icon_color: "text-zinc-500", default_message: "System status unknown" }
   end
 
   display_message = message || config[:default_message]

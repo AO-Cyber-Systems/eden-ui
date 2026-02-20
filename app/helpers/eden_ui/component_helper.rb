@@ -595,6 +595,32 @@ module EdenUi
       }
     end
 
+    # ── Charts (ApexCharts) ─────────────────────────────────────────
+
+    def eden_line_chart(id:, labels:, datasets:, height: 350, colors: [], **options)
+      render partial: "eden_ui/components/line_chart", locals: {
+        id:, labels:, datasets:, height:, colors:, **options
+      }
+    end
+
+    def eden_bar_chart(id:, labels:, datasets:, stacked: false, horizontal: false, height: 350, colors: [], **options)
+      render partial: "eden_ui/components/bar_chart", locals: {
+        id:, labels:, datasets:, stacked:, horizontal:, height:, colors:, **options
+      }
+    end
+
+    def eden_doughnut_chart(id:, labels:, data:, colors: [], height: 300, **options)
+      render partial: "eden_ui/components/doughnut_chart", locals: {
+        id:, labels:, data:, colors:, height:, **options
+      }
+    end
+
+    def eden_mini_chart(id:, data:, color: nil, height: 40, width: 120, **options)
+      render partial: "eden_ui/components/mini_chart", locals: {
+        id:, data:, color:, height:, width:, **options
+      }
+    end
+
     def eden_activity_timeline(items: [], **html_options, &block)
       render partial: "eden_ui/components/activity_timeline", locals: {
         items:, html_options:, content: block ? capture(&block) : nil
@@ -1026,7 +1052,7 @@ module EdenUi
 
       variant_cls = if outline
         case variant.to_sym
-        when :secondary then "text-gray-900 border border-gray-300 hover:bg-gray-100 focus:ring-gray-200 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        when :secondary then "text-zinc-900 border border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-200 dark:text-white dark:border-zinc-600 dark:hover:bg-zinc-700 dark:focus:ring-zinc-700"
         when :danger    then "text-red-700 border border-red-700 hover:bg-red-800 hover:text-white focus:ring-red-300 dark:text-red-500 dark:border-red-500 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-900"
         when :success   then "text-green-700 border border-green-700 hover:bg-green-800 hover:text-white focus:ring-green-300 dark:text-green-500 dark:border-green-500 dark:hover:bg-green-600 dark:hover:text-white dark:focus:ring-green-800"
         when :warning   then "text-yellow-400 border border-yellow-400 hover:bg-yellow-500 hover:text-white focus:ring-yellow-300 dark:text-yellow-300 dark:border-yellow-300 dark:hover:bg-yellow-400 dark:hover:text-white dark:focus:ring-yellow-900"
@@ -1034,7 +1060,7 @@ module EdenUi
         end
       else
         case variant.to_sym
-        when :secondary then "text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        when :secondary then "text-zinc-900 bg-white border border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-200 dark:bg-zinc-800 dark:text-white dark:border-zinc-600 dark:hover:bg-zinc-700 dark:focus:ring-zinc-700"
         when :danger    then "text-white bg-red-700 hover:bg-red-800 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
         when :success   then "text-white bg-green-700 hover:bg-green-800 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
         when :warning   then "text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-300 dark:focus:ring-yellow-900"

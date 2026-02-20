@@ -15,18 +15,18 @@
 
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <% if icon %>
-    <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gray-100 dark:bg-gray-700">
+    <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-zinc-100 dark:bg-zinc-700">
       <%= eden_icon(icon, size: :xl) %>
     </div>
   <% end %>
   <% if title %>
-    <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white"><%= title %></h3>
+    <h3 class="mb-2 text-lg font-semibold text-zinc-900 dark:text-white"><%= title %></h3>
   <% end %>
   <% if description %>
-    <p class="mb-4 text-sm text-gray-500 dark:text-gray-400 max-w-sm"><%= description %></p>
+    <p class="mb-4 text-sm text-zinc-500 dark:text-zinc-400 max-w-sm"><%= description %></p>
   <% end %>
   <% if action_text && action_href %>
-    <a href="<%= action_href %>" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+    <a href="<%= action_href %>" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
       <%= action_text %>
     </a>
   <% end %>

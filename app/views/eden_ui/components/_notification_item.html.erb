@@ -10,19 +10,19 @@
   content ||= nil
 
   icon_bg = case variant.to_sym
-  when :info    then "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300"
+  when :info    then "bg-primary-100 text-primary-600 dark:bg-primary-900 dark:text-primary-300"
   when :success then "bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300"
   when :warning then "bg-yellow-100 text-yellow-600 dark:bg-yellow-900 dark:text-yellow-300"
   when :danger  then "bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300"
-  else "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300"
+  else "bg-zinc-100 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-300"
   end
 
-  title_classes = read ? "font-medium text-gray-700 dark:text-gray-300" : "font-semibold text-gray-900 dark:text-white"
+  title_classes = read ? "font-medium text-zinc-700 dark:text-zinc-300" : "font-semibold text-zinc-900 dark:text-white"
 
   row_classes = [
     "flex items-start gap-3 p-4 transition-colors",
-    read ? "" : "bg-blue-50/50 dark:bg-blue-900/5",
-    "hover:bg-gray-50 dark:hover:bg-gray-700/50",
+    read ? "" : "bg-primary-50/50 dark:bg-primary-900/5",
+    "hover:bg-zinc-50 dark:hover:bg-zinc-700/50",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 
@@ -51,15 +51,15 @@
           <p class="text-sm <%= title_classes %>"><%= title %></p>
         <% end %>
         <% if body %>
-          <p class="mt-0.5 text-sm text-gray-500 dark:text-gray-400"><%= body %></p>
+          <p class="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400"><%= body %></p>
         <% end %>
       </div>
       <div class="shrink-0 flex items-center gap-2">
         <% if time %>
-          <span class="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap"><%= time %></span>
+          <span class="text-xs text-zinc-500 dark:text-zinc-400 whitespace-nowrap"><%= time %></span>
         <% end %>
         <% unless read %>
-          <span class="inline-block w-2 h-2 rounded-full bg-blue-600 shrink-0"></span>
+          <span class="inline-block w-2 h-2 rounded-full bg-primary-600 shrink-0"></span>
         <% end %>
       </div>
     </div>

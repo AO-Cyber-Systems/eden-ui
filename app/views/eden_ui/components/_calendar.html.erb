@@ -42,19 +42,19 @@
   today = Date.current
 
   classes = [
-    "bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700",
+    "bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 %>
 
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <%# Header with navigation %>
-  <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-    <button type="button" class="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700" data-calendar-prev data-month="<%= prev_month %>" data-year="<%= prev_year %>">
+  <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-200 dark:border-zinc-700">
+    <button type="button" class="p-2 text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 rounded-lg dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-700" data-calendar-prev data-month="<%= prev_month %>" data-year="<%= prev_year %>">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
     </button>
-    <h2 class="text-lg font-semibold text-gray-900 dark:text-white"><%= month_name %></h2>
-    <button type="button" class="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700" data-calendar-next data-month="<%= next_month_val %>" data-year="<%= next_year %>">
+    <h2 class="text-lg font-semibold text-zinc-900 dark:text-white"><%= month_name %></h2>
+    <button type="button" class="p-2 text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 rounded-lg dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-700" data-calendar-next data-month="<%= next_month_val %>" data-year="<%= next_year %>">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
     </button>
   </div>
@@ -63,7 +63,7 @@
     <%# Day names header %>
     <div class="grid grid-cols-7 mb-2">
       <% day_names.each do |day| %>
-        <div class="text-center text-xs font-medium text-gray-500 dark:text-gray-400 py-1"><%= day %></div>
+        <div class="text-center text-xs font-medium text-zinc-500 dark:text-zinc-400 py-1"><%= day %></div>
       <% end %>
     </div>
 
@@ -80,11 +80,11 @@
         <div class="relative p-1 min-h-[40px] text-center">
           <span class="inline-flex items-center justify-center w-7 h-7 text-sm rounded-full
             <%= if is_today
-              "bg-blue-600 text-white font-semibold"
+              "bg-primary-600 text-white font-semibold"
             elsif is_current_month
-              "text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              "text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700"
             else
-              "text-gray-300 dark:text-gray-600"
+              "text-zinc-300 dark:text-zinc-600"
             end %>
           "><%= current_date.day %></span>
           <% if day_events.any? %>
@@ -96,7 +96,7 @@
                   when :warning then "bg-yellow-500"
                   when :danger then "bg-red-500"
                   when :purple then "bg-purple-500"
-                  else "bg-blue-500"
+                  else "bg-primary-500"
                   end
                 %>
                 <span class="w-1 h-1 rounded-full <%= dot_color %>"></span>

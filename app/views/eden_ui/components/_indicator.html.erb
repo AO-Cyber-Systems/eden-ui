@@ -20,11 +20,11 @@
   when :success then "bg-green-500"
   when :warning then "bg-yellow-300"
   when :danger then "bg-red-500"
-  when :neutral then "bg-gray-500"
-  else "bg-blue-600"
+  when :neutral then "bg-zinc-500"
+  else "bg-primary-600"
   end
 
-  outline_class = outline ? "ring-2 ring-white dark:ring-gray-800" : ""
+  outline_class = outline ? "ring-2 ring-white dark:ring-zinc-800" : ""
 
   placement_class = case placement&.to_sym
   when :"top-right" then "absolute -top-1 -end-1"

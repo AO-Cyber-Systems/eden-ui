@@ -8,10 +8,10 @@
 
 <div data-controller="eden-clipboard" data-eden-clipboard-success-text-value="<%= success_label %>" class="inline-flex items-center" <%= tag.attributes(html_options) %>>
   <% if value %>
-    <input type="text" class="bg-gray-50 border border-e-0 border-gray-300 text-gray-500 text-sm rounded-s-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<%= value %>" data-eden-clipboard-target="source" readonly>
+    <input type="text" class="bg-zinc-50 border border-e-0 border-zinc-300 text-zinc-500 text-sm rounded-s-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-zinc-400 dark:focus:ring-primary-500 dark:focus:border-primary-500" value="<%= value %>" data-eden-clipboard-target="source" readonly>
   <% end %>
   <%= content %>
-  <button data-action="eden-clipboard#copy" data-eden-clipboard-target="button" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-<%= value ? 'e-lg' : 'lg' %> text-sm px-4 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+  <button data-action="eden-clipboard#copy" data-eden-clipboard-target="button" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-<%= value ? 'e-lg' : 'lg' %> text-sm px-4 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
     <span data-eden-clipboard-target="label"><%= label %></span>
   </button>
 </div>

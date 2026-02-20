@@ -17,9 +17,9 @@
   when :success then "text-green-600 fill-green-300"
   when :warning then "text-yellow-600 fill-yellow-300"
   when :danger then "text-red-600 fill-red-300"
-  when :neutral then "text-gray-600 fill-gray-300"
+  when :neutral then "text-zinc-600 fill-zinc-300"
   when :white then "text-white/30 fill-white"
-  else "text-blue-600 fill-blue-300"
+  else "text-primary-600 fill-primary-300"
   end
 
   classes = ["inline animate-spin #{size_classes} #{color_class}", html_options.delete(:class)].compact_blank.join(" ")

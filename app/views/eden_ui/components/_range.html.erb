@@ -17,10 +17,10 @@
   else "h-2"
   end
 
-  classes = ["w-full bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 #{size_classes}", html_options.delete(:class)].compact_blank.join(" ")
+  classes = ["w-full bg-zinc-200 rounded-lg appearance-none cursor-pointer dark:bg-zinc-700 #{size_classes}", html_options.delete(:class)].compact_blank.join(" ")
 %>
 
 <% if label %>
-  <label for="<%= id %>" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><%= label %></label>
+  <label for="<%= id %>" class="block mb-2 text-sm font-medium text-zinc-900 dark:text-white"><%= label %></label>
 <% end %>
 <input type="range" <% if name %>name="<%= name %>"<% end %> <% if id %>id="<%= id %>"<% end %> min="<%= min %>" max="<%= max %>" step="<%= step %>" <% if value %>value="<%= value %>"<% end %> class="<%= classes %>" <%= "disabled" if disabled %> <%= tag.attributes(html_options) %>>

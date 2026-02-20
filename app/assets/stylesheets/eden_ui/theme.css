@@ -18,18 +18,18 @@
   --color-gold-900: var(--eden-gold-900);
   --color-gold-950: var(--eden-gold-950);
 
-  /* Map gold as primary alias */
-  --color-primary-50: var(--eden-gold-50);
-  --color-primary-100: var(--eden-gold-100);
-  --color-primary-200: var(--eden-gold-200);
-  --color-primary-300: var(--eden-gold-300);
-  --color-primary-400: var(--eden-gold-400);
-  --color-primary-500: var(--eden-gold-500);
-  --color-primary-600: var(--eden-gold-600);
-  --color-primary-700: var(--eden-gold-700);
-  --color-primary-800: var(--eden-gold-800);
-  --color-primary-900: var(--eden-gold-900);
-  --color-primary-950: var(--eden-gold-950);
+  /* Map primary (configurable via eden_brand_style_tag, defaults to gold) */
+  --color-primary-50: var(--eden-primary-50);
+  --color-primary-100: var(--eden-primary-100);
+  --color-primary-200: var(--eden-primary-200);
+  --color-primary-300: var(--eden-primary-300);
+  --color-primary-400: var(--eden-primary-400);
+  --color-primary-500: var(--eden-primary-500);
+  --color-primary-600: var(--eden-primary-600);
+  --color-primary-700: var(--eden-primary-700);
+  --color-primary-800: var(--eden-primary-800);
+  --color-primary-900: var(--eden-primary-900);
+  --color-primary-950: var(--eden-primary-950);
 
   /* Neutral colors (Zinc scale) */
   --color-neutral-50: var(--eden-neutral-50);
@@ -73,6 +73,6 @@
   }
 
   ::selection {
-    background-color: rgba(212, 168, 83, 0.2);
+    background-color: rgba(var(--eden-primary-rgb-500), 0.2);
   }
 }

@@ -27,7 +27,7 @@
   end
 
   classes = [
-    "flex flex-wrap items-center gap-3 border-b border-gray-200 dark:border-gray-700 py-3 px-2 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors",
+    "flex flex-wrap items-center gap-3 border-b border-zinc-200 dark:border-zinc-700 py-3 px-2 hover:bg-zinc-50 dark:hover:bg-zinc-700/50 transition-colors",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 %>
@@ -35,18 +35,18 @@
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <%# ID %>
   <% if id %>
-    <span class="text-xs font-mono text-gray-400 dark:text-gray-500 w-16 flex-shrink-0">#<%= id %></span>
+    <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500 w-16 flex-shrink-0">#<%= id %></span>
   <% end %>
 
   <%# Subject + Requester %>
   <div class="flex-1 min-w-0">
     <% if href %>
-      <a href="<%= href %>" class="text-sm font-medium text-gray-900 dark:text-white hover:underline truncate block"><%= subject %></a>
+      <a href="<%= href %>" class="text-sm font-medium text-zinc-900 dark:text-white hover:underline truncate block"><%= subject %></a>
     <% else %>
-      <p class="text-sm font-medium text-gray-900 dark:text-white truncate"><%= subject %></p>
+      <p class="text-sm font-medium text-zinc-900 dark:text-white truncate"><%= subject %></p>
     <% end %>
     <% if requester %>
-      <p class="text-xs text-gray-500 dark:text-gray-400 truncate"><%= requester %></p>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400 truncate"><%= requester %></p>
     <% end %>
   </div>
 
@@ -64,13 +64,13 @@
   <% if assignee %>
     <div class="flex items-center gap-1.5 flex-shrink-0">
       <%= eden_avatar(initials: assignee[0..1].upcase, size: :xs) %>
-      <span class="text-xs text-gray-500 dark:text-gray-400"><%= assignee %></span>
+      <span class="text-xs text-zinc-500 dark:text-zinc-400"><%= assignee %></span>
     </div>
   <% end %>
 
   <%# Date %>
   <% if created_at %>
-    <span class="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0"><%= created_at %></span>
+    <span class="text-xs text-zinc-500 dark:text-zinc-400 flex-shrink-0"><%= created_at %></span>
   <% end %>
 
   <%= content %>

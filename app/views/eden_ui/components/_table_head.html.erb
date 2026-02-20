@@ -3,7 +3,7 @@
   html_options ||= {}
   content ||= nil
 
-  classes = ["text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400", html_options.delete(:class)].compact_blank.join(" ")
+  classes = ["text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400", html_options.delete(:class)].compact_blank.join(" ")
 %>
 
 <thead class="<%= classes %>" <%= tag.attributes(html_options) %>>

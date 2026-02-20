@@ -21,20 +21,20 @@
     <% items.each do |item| %>
       <% if tooltip %>
         <div class="flex items-center">
-          <span class="me-2 px-3 py-1 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm dark:bg-gray-700 whitespace-nowrap"><%= item[:label] %></span>
-          <button type="button" class="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 shadow-sm dark:text-gray-400 dark:hover:text-white dark:bg-gray-700 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400" <% if item[:href] %>onclick="window.location='<%= item[:href] %>'"<% end %>>
+          <span class="me-2 px-3 py-1 text-sm font-medium text-white bg-zinc-900 rounded-lg shadow-sm dark:bg-zinc-700 whitespace-nowrap"><%= item[:label] %></span>
+          <button type="button" class="flex justify-center items-center w-[52px] h-[52px] text-zinc-500 hover:text-zinc-900 bg-white rounded-full border border-zinc-200 shadow-sm dark:text-zinc-400 dark:hover:text-white dark:bg-zinc-700 dark:border-zinc-600 hover:bg-zinc-50 dark:hover:bg-zinc-600 focus:ring-4 focus:ring-zinc-300 focus:outline-none dark:focus:ring-zinc-400" <% if item[:href] %>onclick="window.location='<%= item[:href] %>'"<% end %>>
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><%= item[:icon_svg]&.html_safe %></svg>
           </button>
         </div>
       <% else %>
-        <button type="button" class="flex justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 shadow-sm dark:text-gray-400 dark:hover:text-white dark:bg-gray-700 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400" <% if item[:href] %>onclick="window.location='<%= item[:href] %>'"<% end %>>
+        <button type="button" class="flex justify-center items-center w-[52px] h-[52px] text-zinc-500 hover:text-zinc-900 bg-white rounded-full border border-zinc-200 shadow-sm dark:text-zinc-400 dark:hover:text-white dark:bg-zinc-700 dark:border-zinc-600 hover:bg-zinc-50 dark:hover:bg-zinc-600 focus:ring-4 focus:ring-zinc-300 focus:outline-none dark:focus:ring-zinc-400" <% if item[:href] %>onclick="window.location='<%= item[:href] %>'"<% end %>>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><%= item[:icon_svg]&.html_safe %></svg>
         </button>
       <% end %>
     <% end %>
   </div>
 
-  <button type="button" data-action="eden-speed-dial#toggle" class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+  <button type="button" data-action="eden-speed-dial#toggle" class="flex items-center justify-center text-white bg-primary-700 rounded-full w-14 h-14 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 focus:outline-none dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
     <svg class="w-5 h-5 transition-transform" data-eden-speed-dial-target="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
   </button>
 </div>

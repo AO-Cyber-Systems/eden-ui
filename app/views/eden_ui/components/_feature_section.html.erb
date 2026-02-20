@@ -16,7 +16,7 @@
   end
 
   color_map = {
-    primary: { bg: "bg-blue-100 dark:bg-blue-900", text: "text-blue-600 dark:text-blue-300" },
+    primary: { bg: "bg-primary-100 dark:bg-primary-900", text: "text-primary-600 dark:text-primary-300" },
     green:   { bg: "bg-green-100 dark:bg-green-900", text: "text-green-600 dark:text-green-300" },
     purple:  { bg: "bg-purple-100 dark:bg-purple-900", text: "text-purple-600 dark:text-purple-300" },
     orange:  { bg: "bg-orange-100 dark:bg-orange-900", text: "text-orange-600 dark:text-orange-300" },
@@ -24,7 +24,7 @@
     teal:    { bg: "bg-teal-100 dark:bg-teal-900", text: "text-teal-600 dark:text-teal-300" }
   }
 
-  classes = ["bg-white dark:bg-gray-900", html_options.delete(:class)].compact_blank.join(" ")
+  classes = ["bg-white dark:bg-zinc-900", html_options.delete(:class)].compact_blank.join(" ")
 %>
 
 <section class="<%= classes %>" <%= tag.attributes(html_options) %>>
@@ -32,10 +32,10 @@
     <% if title || subtitle %>
       <div class="max-w-screen-md mx-auto mb-8 text-center lg:mb-16">
         <% if title %>
-          <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white md:text-4xl"><%= title %></h2>
+          <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white md:text-4xl"><%= title %></h2>
         <% end %>
         <% if subtitle %>
-          <p class="text-gray-500 dark:text-gray-400 sm:text-xl"><%= subtitle %></p>
+          <p class="text-zinc-500 dark:text-zinc-400 sm:text-xl"><%= subtitle %></p>
         <% end %>
       </div>
     <% end %>
@@ -50,9 +50,9 @@
                 <%= eden_icon(feature[:icon], size: :md, class: color[:text]) %>
               </div>
             <% end %>
-            <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white"><%= feature[:title] %></h3>
+            <h3 class="mb-2 text-xl font-bold text-zinc-900 dark:text-white"><%= feature[:title] %></h3>
             <% if feature[:description] %>
-              <p class="text-gray-500 dark:text-gray-400"><%= feature[:description] %></p>
+              <p class="text-zinc-500 dark:text-zinc-400"><%= feature[:description] %></p>
             <% end %>
           </div>
         <% end %>
@@ -73,9 +73,9 @@
                   <%= eden_icon(feature[:icon], size: :md, class: color[:text]) %>
                 </div>
               <% end %>
-              <h3 class="mb-2 text-2xl font-bold text-gray-900 dark:text-white"><%= feature[:title] %></h3>
+              <h3 class="mb-2 text-2xl font-bold text-zinc-900 dark:text-white"><%= feature[:title] %></h3>
               <% if feature[:description] %>
-                <p class="text-gray-500 dark:text-gray-400"><%= feature[:description] %></p>
+                <p class="text-zinc-500 dark:text-zinc-400"><%= feature[:description] %></p>
               <% end %>
             </div>
           </div>

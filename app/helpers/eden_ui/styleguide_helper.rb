@@ -32,7 +32,7 @@ module EdenUi
       end
 
       # Method names (eden_*) — first so they're protected from later passes
-      escaped = escaped.gsub(/\b(eden_\w+)/) { wrap.call($1, "text-blue-400") }
+      escaped = escaped.gsub(/\b(eden_\w+)/) { wrap.call($1, "text-primary-400") }
 
       # Keywords
       escaped = escaped.gsub(/\b(do|end|def|class|module|if|else|elsif|unless|case|when|while|until|for|begin|rescue|ensure|raise|return|yield|block_given\?|nil|true|false|self)\b/) { wrap.call($1, "text-purple-400") }

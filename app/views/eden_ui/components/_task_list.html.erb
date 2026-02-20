@@ -5,7 +5,7 @@
   content ||= nil
 
   classes = [
-    "bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700",
+    "bg-white border border-zinc-200 rounded-lg shadow-sm dark:bg-zinc-800 dark:border-zinc-700",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 
@@ -17,8 +17,8 @@
 
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <% if title %>
-    <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-      <h3 class="text-lg font-semibold text-gray-900 dark:text-white"><%= title %></h3>
+    <div class="px-4 py-3 border-b border-zinc-200 dark:border-zinc-700">
+      <h3 class="text-lg font-semibold text-zinc-900 dark:text-white"><%= title %></h3>
     </div>
   <% end %>
 
@@ -35,7 +35,7 @@
             else "Medium priority"
             end
           %>
-          <h4 class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mt-3 first:mt-0 mb-2"><%= priority_label %></h4>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mt-3 first:mt-0 mb-2"><%= priority_label %></h4>
           <% group_tasks.each do |task| %>
             <%= eden_task_item(
               title: task[:title],

@@ -7,11 +7,11 @@
   content ||= nil
 
   bg_classes = if gradient
-    "bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+    "bg-gradient-to-r from-primary-500 to-purple-600 text-white"
   elsif dark_bg
-    "bg-gray-900 text-white"
+    "bg-zinc-900 text-white"
   else
-    "bg-white dark:bg-gray-900"
+    "bg-white dark:bg-zinc-900"
   end
 
   classes = [bg_classes, html_options.delete(:class)].compact_blank.join(" ")
@@ -20,10 +20,10 @@
 <section class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
     <% if title %>
-      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl <%= gradient || dark_bg ? "text-white" : "text-gray-900 dark:text-white" %>"><%= title %></h1>
+      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl <%= gradient || dark_bg ? "text-white" : "text-zinc-900 dark:text-white" %>"><%= title %></h1>
     <% end %>
     <% if subtitle %>
-      <p class="mb-8 text-lg font-normal lg:text-xl sm:px-16 lg:px-48 <%= gradient || dark_bg ? "text-gray-200" : "text-gray-500 dark:text-gray-400" %>"><%= subtitle %></p>
+      <p class="mb-8 text-lg font-normal lg:text-xl sm:px-16 lg:px-48 <%= gradient || dark_bg ? "text-zinc-200" : "text-zinc-500 dark:text-zinc-400" %>"><%= subtitle %></p>
     <% end %>
     <%= content %>
   </div>

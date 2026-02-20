@@ -14,14 +14,14 @@
   when :success then "bg-green-600"
   when :warning then "bg-yellow-500"
   when :danger  then "bg-red-600"
-  when :dark    then "bg-gray-800"
-  when :indigo  then "bg-indigo-600"
+  when :dark    then "bg-zinc-800"
+  when :indigo  then "bg-primary-600"
   when :purple  then "bg-purple-600"
-  else "bg-blue-600"
+  else "bg-primary-600"
   end
 
   classes = [
-    "bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden",
+    "bg-white dark:bg-zinc-800 rounded-lg shadow overflow-hidden",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 %>
@@ -45,20 +45,20 @@
     <%# Name and details %>
     <div class="mb-4">
       <% if name %>
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white"><%= name %></h2>
+        <h2 class="text-2xl font-bold text-zinc-900 dark:text-white"><%= name %></h2>
       <% end %>
       <% if role %>
-        <p class="text-sm text-gray-500 dark:text-gray-400"><%= role %></p>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400"><%= role %></p>
       <% end %>
       <div class="mt-2 flex flex-wrap gap-4">
         <% if email %>
-          <span class="inline-flex items-center text-sm text-gray-500 dark:text-gray-400">
+          <span class="inline-flex items-center text-sm text-zinc-500 dark:text-zinc-400">
             <svg class="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24"><path d="M2 5.6V18c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V5.6l-.9.7-7.9 6a2 2 0 0 1-2.4 0l-8-6-.8-.7Z"/><path d="M20.7 4.1A2 2 0 0 0 20 4H4a2 2 0 0 0-.6.1l.7.6 7.9 6 7.9-6 .8-.6Z"/></svg>
             <%= email %>
           </span>
         <% end %>
         <% if location %>
-          <span class="inline-flex items-center text-sm text-gray-500 dark:text-gray-400">
+          <span class="inline-flex items-center text-sm text-zinc-500 dark:text-zinc-400">
             <svg class="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2a8 8 0 0 0-6 13.3l5.3 5.4a1 1 0 0 0 1.4 0l5.3-5.4A8 8 0 0 0 12 2Zm0 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" clip-rule="evenodd"/></svg>
             <%= location %>
           </span>
@@ -68,14 +68,14 @@
 
     <%# Stats row %>
     <% if stats.any? %>
-      <div class="flex items-center gap-6 border-t border-gray-200 dark:border-gray-700 pt-4 mb-4">
+      <div class="flex items-center gap-6 border-t border-zinc-200 dark:border-zinc-700 pt-4 mb-4">
         <% stats.each_with_index do |stat, i| %>
           <% if i > 0 %>
-            <div class="h-8 w-px bg-gray-200 dark:bg-gray-700"></div>
+            <div class="h-8 w-px bg-zinc-200 dark:bg-zinc-700"></div>
           <% end %>
           <div class="text-center">
-            <p class="text-xl font-bold text-gray-900 dark:text-white"><%= stat[:value] %></p>
-            <p class="text-sm text-gray-500 dark:text-gray-400"><%= stat[:label] %></p>
+            <p class="text-xl font-bold text-zinc-900 dark:text-white"><%= stat[:value] %></p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400"><%= stat[:label] %></p>
           </div>
         <% end %>
       </div>

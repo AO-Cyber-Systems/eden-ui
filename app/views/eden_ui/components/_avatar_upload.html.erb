@@ -19,15 +19,15 @@
   </div>
   <div class="space-y-2">
     <div class="flex items-center gap-3">
-      <label for="<%= id %>" class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <label for="<%= id %>" class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-primary-700 rounded-lg cursor-pointer hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
         <svg class="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 3c.3 0 .6.1.8.4l4 5a1 1 0 1 1-1.6 1.2L13 7v7a1 1 0 1 1-2 0V6.9L8.8 9.6a1 1 0 1 1-1.6-1.2l4-5c.2-.3.5-.4.8-.4ZM9 14v-1H5a2 2 0 0 0-2 2v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4v1a3 3 0 1 1-6 0Z" clip-rule="evenodd"/></svg>
         Upload
       </label>
-      <button type="button" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" data-action="avatar-upload#remove">
+      <button type="button" class="text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" data-action="avatar-upload#remove">
         Remove
       </button>
     </div>
-    <p class="text-xs text-gray-500 dark:text-gray-400">JPG, PNG or GIF. Max 2MB.</p>
+    <p class="text-xs text-zinc-500 dark:text-zinc-400">JPG, PNG or GIF. Max 2MB.</p>
     <input type="file" id="<%= id %>" name="<%= name %>" accept="<%= accept %>" class="hidden" data-avatar-upload-target="input" data-action="change->avatar-upload#preview">
   </div>
 </div>

@@ -38,8 +38,8 @@
 }
 
 @keyframes eden-pulse-glow {
-  0%, 100% { box-shadow: 0 0 10px rgba(212, 168, 83, 0.1); }
-  50% { box-shadow: 0 0 20px rgba(212, 168, 83, 0.25); }
+  0%, 100% { box-shadow: 0 0 10px rgba(var(--eden-primary-rgb-500), 0.1); }
+  50% { box-shadow: 0 0 20px rgba(var(--eden-primary-rgb-500), 0.25); }
 }
 
 @keyframes eden-spin {

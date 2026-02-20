@@ -9,23 +9,23 @@
 
   variant_classes = case variant.to_sym
   when :success
-    border ? "text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800" : "text-green-800 bg-green-50 dark:bg-gray-800 dark:text-green-400"
+    border ? "text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-zinc-800 dark:border-green-800" : "text-green-800 bg-green-50 dark:bg-zinc-800 dark:text-green-400"
   when :warning
-    border ? "text-yellow-800 border-t-4 border-yellow-300 bg-yellow-50 dark:text-yellow-300 dark:bg-gray-800 dark:border-yellow-800" : "text-yellow-800 bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
+    border ? "text-yellow-800 border-t-4 border-yellow-300 bg-yellow-50 dark:text-yellow-300 dark:bg-zinc-800 dark:border-yellow-800" : "text-yellow-800 bg-yellow-50 dark:bg-zinc-800 dark:text-yellow-300"
   when :danger
-    border ? "text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" : "text-red-800 bg-red-50 dark:bg-gray-800 dark:text-red-400"
+    border ? "text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-zinc-800 dark:border-red-800" : "text-red-800 bg-red-50 dark:bg-zinc-800 dark:text-red-400"
   when :neutral
-    border ? "text-gray-800 border-t-4 border-gray-300 bg-gray-50 dark:text-gray-300 dark:bg-gray-800 dark:border-gray-600" : "text-gray-800 bg-gray-50 dark:bg-gray-800 dark:text-gray-300"
+    border ? "text-zinc-800 border-t-4 border-zinc-300 bg-zinc-50 dark:text-zinc-300 dark:bg-zinc-800 dark:border-zinc-600" : "text-zinc-800 bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-300"
   else
-    border ? "text-blue-800 border-t-4 border-blue-300 bg-blue-50 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800" : "text-blue-800 bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+    border ? "text-primary-800 border-t-4 border-primary-300 bg-primary-50 dark:text-primary-400 dark:bg-zinc-800 dark:border-primary-800" : "text-primary-800 bg-primary-50 dark:bg-zinc-800 dark:text-primary-400"
   end
 
   icon_color = case variant.to_sym
   when :success then "text-green-800 dark:text-green-400"
   when :warning then "text-yellow-800 dark:text-yellow-300"
   when :danger then "text-red-800 dark:text-red-400"
-  when :neutral then "text-gray-800 dark:text-gray-300"
-  else "text-blue-800 dark:text-blue-400"
+  when :neutral then "text-zinc-800 dark:text-zinc-300"
+  else "text-primary-800 dark:text-primary-400"
   end
 
   rounded_class = rounded ? "rounded-lg" : ""

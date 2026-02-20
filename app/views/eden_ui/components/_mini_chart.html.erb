@@ -1,0 +1,19 @@
+<%# locals: (id:, data:, color: nil, height: 40, width: 120, **options) -%>
+<%
+  config = {
+    labels: (1..data.length).to_a,
+    datasets: [{ name: "", data: data }],
+    sparkline: true,
+    options: options.except(:class)
+  }
+  chart_color = color || "#4F46E5"
+%>
+<div id="<%= id %>"
+     class="inline-block <%= options[:class] %>"
+     style="width: <%= width %>px;"
+     data-controller="eden-ui--chart"
+     data-eden-ui--chart-type-value="area"
+     data-eden-ui--chart-config-value="<%= config.to_json %>"
+     data-eden-ui--chart-height-value="<%= height %>"
+     data-eden-ui--chart-colors-value="<%= [chart_color].to_json %>">
+</div>

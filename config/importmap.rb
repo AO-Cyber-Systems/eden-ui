@@ -19,6 +19,8 @@ pin "eden-ui/controllers/tooltip_controller", to: "eden_ui/controllers/tooltip_c
 pin "eden-ui/controllers/tag_input_controller", to: "eden_ui/controllers/tag_input_controller.js"
 pin "eden-ui/controllers/datepicker_controller", to: "eden_ui/controllers/datepicker_controller.js"
 
+pin "eden-ui/controllers/chart_controller", to: "eden_ui/controllers/chart_controller.js"
+
 # Styleguide controllers
 pin "eden-ui/controllers/styleguide_code_controller", to: "eden_ui/controllers/styleguide_code_controller.js"
 pin "eden-ui/controllers/styleguide_search_controller", to: "eden_ui/controllers/styleguide_search_controller.js"

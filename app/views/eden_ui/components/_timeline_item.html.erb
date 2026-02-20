@@ -10,22 +10,22 @@
 %>
 
 <li class="mb-10 ms-6" <%= tag.attributes(html_options) %>>
-  <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+  <span class="absolute flex items-center justify-center w-6 h-6 bg-primary-100 rounded-full -start-3 ring-8 ring-white dark:ring-zinc-900 dark:bg-primary-900">
     <% if icon %>
-      <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20"><%= icon.html_safe if icon.is_a?(String) && icon.include?("<") %></svg>
+      <svg class="w-2.5 h-2.5 text-primary-800 dark:text-primary-300" fill="currentColor" viewBox="0 0 20 20"><%= icon.html_safe if icon.is_a?(String) && icon.include?("<") %></svg>
     <% else %>
-      <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v1H7V3a1 1 0 0 0-1-1Zm0 5a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H6Z" clip-rule="evenodd"/></svg>
+      <svg class="w-2.5 h-2.5 text-primary-800 dark:text-primary-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v1H7V3a1 1 0 0 0-1-1Zm0 5a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H6Z" clip-rule="evenodd"/></svg>
     <% end %>
   </span>
-  <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"><%= title %></h3>
+  <h3 class="flex items-center mb-1 text-lg font-semibold text-zinc-900 dark:text-white"><%= title %></h3>
   <% if time %>
-    <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"><%= time %></time>
+    <time class="block mb-2 text-sm font-normal leading-none text-zinc-400 dark:text-zinc-500"><%= time %></time>
   <% end %>
   <% if body %>
-    <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"><%= body %></p>
+    <p class="mb-4 text-base font-normal text-zinc-500 dark:text-zinc-400"><%= body %></p>
   <% end %>
   <%= content %>
   <% if href && link_text %>
-    <a href="<%= href %>" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><%= link_text %></a>
+    <a href="<%= href %>" class="inline-flex items-center px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-lg hover:bg-zinc-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-zinc-100 dark:focus:ring-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-600 dark:hover:text-white dark:hover:bg-zinc-700"><%= link_text %></a>
   <% end %>
 </li>

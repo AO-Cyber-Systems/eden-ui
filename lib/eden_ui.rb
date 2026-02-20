@@ -1,4 +1,5 @@
 require "eden_ui/version"
+require "eden_ui/brand_presets"
 require "eden_ui/configuration"
 require "eden_ui/form_builder"
 require "eden_ui/styleguide/registry"

@@ -13,9 +13,9 @@
 
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <% if term %>
-    <dt class="text-sm font-medium text-gray-500 dark:text-gray-400"><%= term %></dt>
+    <dt class="text-sm font-medium text-zinc-500 dark:text-zinc-400"><%= term %></dt>
   <% end %>
-  <dd class="<%= vertical ? "mt-1" : "mt-1 sm:mt-0 sm:col-span-2" %> text-sm text-gray-900 dark:text-white">
+  <dd class="<%= vertical ? "mt-1" : "mt-1 sm:mt-0 sm:col-span-2" %> text-sm text-zinc-900 dark:text-white">
     <%= content || detail %>
   </dd>
 </div>

@@ -19,11 +19,11 @@
   end
 
   rounded_class = rounded ? "rounded-full" : "rounded"
-  border_class = bordered ? "ring-2 ring-gray-300 dark:ring-gray-500" : ""
+  border_class = bordered ? "ring-2 ring-zinc-300 dark:ring-zinc-500" : ""
 
   status_color = case status&.to_sym
   when :online then "bg-green-400"
-  when :offline then "bg-gray-400"
+  when :offline then "bg-zinc-400"
   when :busy then "bg-red-400"
   when :away then "bg-yellow-400"
   else nil
@@ -43,15 +43,15 @@
   <% if src %>
     <img class="<%= classes %>" src="<%= src %>" alt="<%= alt %>">
   <% elsif initials %>
-    <div class="<%= classes %> overflow-hidden bg-gray-100 dark:bg-gray-600 flex items-center justify-center">
-      <span class="font-medium text-gray-600 dark:text-gray-300"><%= initials %></span>
+    <div class="<%= classes %> overflow-hidden bg-zinc-100 dark:bg-zinc-600 flex items-center justify-center">
+      <span class="font-medium text-zinc-600 dark:text-zinc-300"><%= initials %></span>
     </div>
   <% else %>
-    <div class="<%= classes %> overflow-hidden bg-gray-100 dark:bg-gray-600 flex items-center justify-center">
-      <svg class="w-full h-full text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7 9a7 7 0 1 1 14 0H3Z" clip-rule="evenodd"/></svg>
+    <div class="<%= classes %> overflow-hidden bg-zinc-100 dark:bg-zinc-600 flex items-center justify-center">
+      <svg class="w-full h-full text-zinc-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7 9a7 7 0 1 1 14 0H3Z" clip-rule="evenodd"/></svg>
     </div>
   <% end %>
   <% if status_color %>
-    <span class="<%= status_pos %> absolute w-3.5 h-3.5 <%= status_color %> border-2 border-white dark:border-gray-800 rounded-full"></span>
+    <span class="<%= status_pos %> absolute w-3.5 h-3.5 <%= status_color %> border-2 border-white dark:border-zinc-800 rounded-full"></span>
   <% end %>
 </div>

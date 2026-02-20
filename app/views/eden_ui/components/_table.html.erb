@@ -5,9 +5,9 @@
   html_options ||= {}
   content ||= nil
 
-  table_classes = "w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
-  table_classes += " [&>tbody>tr:nth-child(odd)]:bg-white [&>tbody>tr:nth-child(even)]:bg-gray-50 dark:[&>tbody>tr:nth-child(odd)]:bg-gray-900 dark:[&>tbody>tr:nth-child(even)]:bg-gray-800" if striped
-  table_classes += " [&>tbody>tr]:hover:bg-gray-50 dark:[&>tbody>tr]:hover:bg-gray-600" if hoverable
+  table_classes = "w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400"
+  table_classes += " [&>tbody>tr:nth-child(odd)]:bg-white [&>tbody>tr:nth-child(even)]:bg-zinc-50 dark:[&>tbody>tr:nth-child(odd)]:bg-zinc-900 dark:[&>tbody>tr:nth-child(even)]:bg-zinc-800" if striped
+  table_classes += " [&>tbody>tr]:hover:bg-zinc-50 dark:[&>tbody>tr]:hover:bg-zinc-600" if hoverable
 
   wrapper_classes = ["relative overflow-x-auto", shadow ? "shadow-md sm:rounded-lg" : "sm:rounded-lg", html_options.delete(:class)].compact_blank.join(" ")
 %>

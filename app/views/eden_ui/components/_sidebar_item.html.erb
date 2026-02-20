@@ -7,18 +7,18 @@
   html_options ||= {}
   content ||= nil
 
-  link_classes = "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-  link_classes += " bg-gray-100 dark:bg-gray-700" if active
+  link_classes = "flex items-center p-2 text-zinc-900 rounded-lg dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700 group"
+  link_classes += " bg-zinc-100 dark:bg-zinc-700" if active
 %>
 
 <li>
   <a href="<%= href %>" class="<%= [link_classes, html_options.delete(:class)].compact_blank.join(" ") %>" <%= tag.attributes(html_options) %>>
     <% if icon %>
-      <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white<%= " text-gray-900 dark:text-white" if active %>" fill="currentColor" viewBox="0 0 20 20"><%= icon.html_safe if icon.is_a?(String) && icon.include?("<") %></svg>
+      <svg class="w-5 h-5 text-zinc-500 transition duration-75 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white<%= " text-zinc-900 dark:text-white" if active %>" fill="currentColor" viewBox="0 0 20 20"><%= icon.html_safe if icon.is_a?(String) && icon.include?("<") %></svg>
     <% end %>
     <span class="ms-3 flex-1 whitespace-nowrap"><%= label || content %></span>
     <% if badge %>
-      <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"><%= badge %></span>
+      <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-zinc-800 bg-zinc-100 rounded-full dark:bg-zinc-700 dark:text-zinc-300"><%= badge %></span>
     <% end %>
   </a>
 </li>

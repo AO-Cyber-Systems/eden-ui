@@ -9,14 +9,14 @@
 
   bg_class = case variant.to_sym
   when :dark
-    "bg-gray-900"
+    "bg-zinc-900"
   when :bordered
-    "bg-white border-t border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+    "bg-white border-t border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700"
   else
-    "bg-white dark:bg-gray-900"
+    "bg-white dark:bg-zinc-900"
   end
 
-  text_class = variant.to_sym == :dark ? "text-gray-400" : "text-gray-500 dark:text-gray-400"
+  text_class = variant.to_sym == :dark ? "text-zinc-400" : "text-zinc-500 dark:text-zinc-400"
   classes = [bg_class, html_options.delete(:class)].compact_blank.join(" ")
 %>
 
@@ -38,7 +38,7 @@
     <%= content %>
 
     <% if copyright %>
-      <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+      <hr class="my-6 border-zinc-200 sm:mx-auto dark:border-zinc-700 lg:my-8">
       <span class="block text-sm <%= text_class %> sm:text-center"><%= copyright %></span>
     <% end %>
   </div>

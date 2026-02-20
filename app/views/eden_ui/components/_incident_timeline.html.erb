@@ -4,7 +4,7 @@
   content ||= nil
 
   severity_config = {
-    info:     { color: "bg-blue-500", ring: "ring-blue-100 dark:ring-blue-900", badge: :info },
+    info:     { color: "bg-primary-500", ring: "ring-primary-100 dark:ring-primary-900", badge: :info },
     warning:  { color: "bg-yellow-400", ring: "ring-yellow-100 dark:ring-yellow-900", badge: :warning },
     critical: { color: "bg-red-500", ring: "ring-red-100 dark:ring-red-900", badge: :danger },
     resolved: { color: "bg-green-500", ring: "ring-green-100 dark:ring-green-900", badge: :success }
@@ -21,20 +21,20 @@
   grouped = incidents.group_by { |i| i[:date] }
 
   classes = [
-    "bg-white dark:bg-gray-800 rounded-lg shadow-md p-5",
+    "bg-white dark:bg-zinc-800 rounded-lg shadow-md p-5",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 %>
 
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <% if grouped.empty? %>
-    <p class="text-sm text-gray-500 dark:text-gray-400 text-center py-4">No incidents reported.</p>
+    <p class="text-sm text-zinc-500 dark:text-zinc-400 text-center py-4">No incidents reported.</p>
   <% else %>
     <% grouped.each do |date, items| %>
       <% if date %>
-        <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-4 mt-4 first:mt-0"><%= date %></h4>
+        <h4 class="text-sm font-semibold text-zinc-900 dark:text-white mb-4 mt-4 first:mt-0"><%= date %></h4>
       <% end %>
-      <ol class="relative border-s border-gray-200 dark:border-gray-700 ms-3 mb-4 last:mb-0">
+      <ol class="relative border-s border-zinc-200 dark:border-zinc-700 ms-3 mb-4 last:mb-0">
         <% items.each do |incident| %>
           <%
             sev = (incident[:severity] || :info).to_sym
@@ -43,13 +43,13 @@
             st_var = status_variant[st] || :neutral
           %>
           <li class="mb-6 ms-6 last:mb-0">
-            <span class="absolute flex items-center justify-center w-4 h-4 rounded-full -start-2 ring-4 ring-white dark:ring-gray-800 <%= cfg[:color] %>"></span>
+            <span class="absolute flex items-center justify-center w-4 h-4 rounded-full -start-2 ring-4 ring-white dark:ring-zinc-800 <%= cfg[:color] %>"></span>
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-              <h5 class="text-sm font-medium text-gray-900 dark:text-white"><%= incident[:title] %></h5>
+              <h5 class="text-sm font-medium text-zinc-900 dark:text-white"><%= incident[:title] %></h5>
               <%= eden_badge(variant: st_var, size: :xs) { st.to_s.titleize } %>
             </div>
             <% if incident[:description] %>
-              <p class="text-sm text-gray-500 dark:text-gray-400 mt-1"><%= incident[:description] %></p>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1"><%= incident[:description] %></p>
             <% end %>
           </li>
         <% end %>

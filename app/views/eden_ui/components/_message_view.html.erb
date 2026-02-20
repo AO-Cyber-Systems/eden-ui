@@ -10,7 +10,7 @@
   content ||= nil
 
   classes = [
-    "bg-white dark:bg-gray-800",
+    "bg-white dark:bg-zinc-800",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 %>
@@ -18,16 +18,16 @@
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <%# Subject line %>
   <% if subject %>
-    <div class="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 px-4 py-3 lg:px-8">
-      <h2 class="text-xl font-semibold text-gray-900 dark:text-white"><%= subject %></h2>
+    <div class="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-700 px-4 py-3 lg:px-8">
+      <h2 class="text-xl font-semibold text-zinc-900 dark:text-white"><%= subject %></h2>
       <div class="flex items-center space-x-1">
         <%# Print %>
-        <button type="button" class="inline-flex justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" title="Print">
+        <button type="button" class="inline-flex justify-center rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-600 dark:hover:text-white" title="Print">
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8 3a2 2 0 0 0-2 2v3h12V5a2 2 0 0 0-2-2H8Zm-3 7a2 2 0 0 0-2 2v5c0 1.1.9 2 2 2h1v-4c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v4h1a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5Zm4 11a1 1 0 0 1-1-1v-4h8v4c0 .6-.4 1-1 1H9Z" clip-rule="evenodd"/></svg>
           <span class="sr-only">Print</span>
         </button>
         <%# More options %>
-        <button type="button" class="inline-flex justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" title="More options">
+        <button type="button" class="inline-flex justify-center rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-600 dark:hover:text-white" title="More options">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="4" d="M6 12h0m6 0h0m6 0h0"/></svg>
           <span class="sr-only">More</span>
         </button>
@@ -36,39 +36,39 @@
   <% end %>
 
   <%# Sender header %>
-  <div class="flex items-center justify-between px-4 py-4 lg:px-8 border-b border-gray-200 dark:border-gray-700">
+  <div class="flex items-center justify-between px-4 py-4 lg:px-8 border-b border-zinc-200 dark:border-zinc-700">
     <div class="flex items-center gap-4">
       <%= eden_avatar(src: avatar_src, initials: avatar_initials, size: :md, rounded: true, alt: sender || "Sender") %>
       <div>
         <div class="flex items-center gap-2">
           <% if sender %>
-            <span class="font-semibold text-gray-900 dark:text-white"><%= sender %></span>
+            <span class="font-semibold text-zinc-900 dark:text-white"><%= sender %></span>
           <% end %>
           <% if sender_email %>
-            <span class="text-sm text-gray-500 dark:text-gray-400">&lt;<%= sender_email %>&gt;</span>
+            <span class="text-sm text-zinc-500 dark:text-zinc-400">&lt;<%= sender_email %>&gt;</span>
           <% end %>
         </div>
         <% if recipient %>
-          <p class="text-sm text-gray-500 dark:text-gray-400">to <%= recipient %></p>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">to <%= recipient %></p>
         <% end %>
       </div>
     </div>
     <div class="flex items-center gap-2">
       <% if time %>
-        <span class="hidden sm:inline text-sm text-gray-500 dark:text-gray-400"><%= time %></span>
+        <span class="hidden sm:inline text-sm text-zinc-500 dark:text-zinc-400"><%= time %></span>
       <% end %>
       <%# Reply %>
-      <button type="button" class="inline-flex justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" title="Reply">
+      <button type="button" class="inline-flex justify-center rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-600 dark:hover:text-white" title="Reply">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 0 1 8 8v2M3 10l6 6m-6-6 6-6"/></svg>
         <span class="sr-only">Reply</span>
       </button>
       <%# Forward %>
-      <button type="button" class="hidden sm:inline-flex justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" title="Forward">
+      <button type="button" class="hidden sm:inline-flex justify-center rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-600 dark:hover:text-white" title="Forward">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 10H11a8 8 0 0 0-8 8v2m18-10-6 6m6-6-6-6"/></svg>
         <span class="sr-only">Forward</span>
       </button>
       <%# Delete %>
-      <button type="button" class="inline-flex justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" title="Delete">
+      <button type="button" class="inline-flex justify-center rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-600 dark:hover:text-white" title="Delete">
         <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.6 2.6A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4c0-.5.2-1 .6-1.4ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/></svg>
         <span class="sr-only">Delete</span>
       </button>
@@ -77,13 +77,13 @@
 
   <%# Message body %>
   <div class="px-4 py-6 lg:px-8">
-    <div class="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+    <div class="prose dark:prose-invert max-w-none text-zinc-700 dark:text-zinc-300">
       <%= content %>
     </div>
   </div>
 
   <%# Footer actions %>
-  <div class="flex items-center gap-3 px-4 py-4 lg:px-8 border-t border-gray-200 dark:border-gray-700">
+  <div class="flex items-center gap-3 px-4 py-4 lg:px-8 border-t border-zinc-200 dark:border-zinc-700">
     <%= eden_button(variant: :primary, size: :sm) do %>
       <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 0 1 8 8v2M3 10l6 6m-6-6 6-6"/></svg>
       Reply

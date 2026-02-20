@@ -21,9 +21,9 @@
   when :success then "bg-green-600 dark:bg-green-500"
   when :danger then "bg-red-600 dark:bg-red-500"
   when :warning then "bg-yellow-400 dark:bg-yellow-300"
-  when :indigo then "bg-indigo-600 dark:bg-indigo-500"
+  when :indigo then "bg-primary-600 dark:bg-primary-500"
   when :purple then "bg-purple-600 dark:bg-purple-500"
-  else "bg-blue-600 dark:bg-blue-500"
+  else "bg-primary-600 dark:bg-primary-500"
   end
 
   show_label = label && (size.to_sym == :lg || size.to_sym == :xl)
@@ -33,11 +33,11 @@
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <% if label_text %>
     <div class="flex justify-between mb-1">
-      <span class="text-base font-medium text-gray-700 dark:text-white"><%= label_text %></span>
-      <span class="text-sm font-medium text-gray-700 dark:text-white"><%= percentage %>%</span>
+      <span class="text-base font-medium text-zinc-700 dark:text-white"><%= label_text %></span>
+      <span class="text-sm font-medium text-zinc-700 dark:text-white"><%= percentage %>%</span>
     </div>
   <% end %>
-  <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 <%= height %>">
+  <div class="w-full bg-zinc-200 rounded-full dark:bg-zinc-700 <%= height %>">
     <div class="<%= color %> <%= height %> rounded-full<%= " flex items-center justify-center" if show_label %>" style="width: <%= percentage %>%">
       <% if show_label %>
         <span class="text-xs font-medium text-white"><%= percentage %>%</span>

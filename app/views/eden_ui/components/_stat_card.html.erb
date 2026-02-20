@@ -9,7 +9,7 @@
   content ||= nil
 
   border_class = case variant.to_sym
-  when :primary then "border-l-4 border-l-blue-500"
+  when :primary then "border-l-4 border-l-primary-500"
   when :success then "border-l-4 border-l-green-500"
   when :warning then "border-l-4 border-l-yellow-500"
   when :danger  then "border-l-4 border-l-red-500"
@@ -19,11 +19,11 @@
   trend_color = case trend.to_s
   when "up"   then "text-green-500 dark:text-green-400"
   when "down" then "text-red-500 dark:text-red-400"
-  else "text-gray-500 dark:text-gray-400"
+  else "text-zinc-500 dark:text-zinc-400"
   end
 
   classes = [
-    "bg-white dark:bg-gray-800 rounded-lg shadow p-5",
+    "bg-white dark:bg-zinc-800 rounded-lg shadow p-5",
     border_class,
     html_options.delete(:class)
   ].compact_blank.join(" ")
@@ -33,14 +33,14 @@
   <div class="flex items-center justify-between">
     <div>
       <% if label %>
-        <p class="text-sm font-medium text-gray-500 dark:text-gray-400"><%= label %></p>
+        <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400"><%= label %></p>
       <% end %>
       <% if value %>
-        <p class="mt-1 text-2xl font-bold text-gray-900 dark:text-white"><%= value %></p>
+        <p class="mt-1 text-2xl font-bold text-zinc-900 dark:text-white"><%= value %></p>
       <% end %>
     </div>
     <% if icon %>
-      <div class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900">
+      <div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900">
         <%= eden_icon(icon, size: :md) %>
       </div>
     <% end %>

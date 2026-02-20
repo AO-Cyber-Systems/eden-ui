@@ -8,11 +8,11 @@
   content ||= nil
 
   classes = [
-    "w-full rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700",
+    "w-full rounded-lg border border-zinc-200 bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-700",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 
-  btn_class = "cursor-pointer rounded p-1.5 text-gray-500 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+  btn_class = "cursor-pointer rounded p-1.5 text-zinc-500 hover:bg-zinc-200 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-600 dark:hover:text-white"
 
   toolbar_icons = {
     bold: '<svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5h4.5a3.5 3.5 0 1 1 0 7H8m0-7v7m0-7H6m2 7h6.5a3.5 3.5 0 1 1 0 7H8m0-7v7m0 0H6"/></svg>',
@@ -29,7 +29,7 @@
 
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <%# Toolbar %>
-  <div class="border-b border-gray-200 bg-gray-50 px-3 py-2 dark:border-gray-600 dark:bg-gray-700 rounded-t-lg">
+  <div class="border-b border-zinc-200 bg-zinc-50 px-3 py-2 dark:border-zinc-600 dark:bg-zinc-700 rounded-t-lg">
     <div class="flex flex-wrap items-center gap-1">
       <% toolbar.each do |tool| %>
         <% icon_html = toolbar_icons[tool.to_sym] %>
@@ -45,7 +45,7 @@
   </div>
 
   <%# Editor area %>
-  <div class="rounded-b-lg bg-white px-4 py-2 dark:bg-gray-800">
-    <textarea id="<%= id %>" name="<%= name %>" rows="8" class="block w-full min-h-[200px] border-0 bg-white px-0 text-sm text-gray-800 focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400" placeholder="<%= placeholder %>"><%= value %></textarea>
+  <div class="rounded-b-lg bg-white px-4 py-2 dark:bg-zinc-800">
+    <textarea id="<%= id %>" name="<%= name %>" rows="8" class="block w-full min-h-[200px] border-0 bg-white px-0 text-sm text-zinc-800 focus:ring-0 dark:bg-zinc-800 dark:text-white dark:placeholder-zinc-400" placeholder="<%= placeholder %>"><%= value %></textarea>
   </div>
 </div>

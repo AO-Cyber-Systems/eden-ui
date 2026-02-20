@@ -17,6 +17,20 @@
   --eden-gold-900: #6c5029;
   --eden-gold-950: #3d2a14;
 
+  /* === Primary Brand Colors (defaults to gold, overridden by eden_brand_style_tag) === */
+  --eden-primary-50: var(--eden-gold-50);
+  --eden-primary-100: var(--eden-gold-100);
+  --eden-primary-200: var(--eden-gold-200);
+  --eden-primary-300: var(--eden-gold-300);
+  --eden-primary-400: var(--eden-gold-400);
+  --eden-primary-500: var(--eden-gold-500);
+  --eden-primary-600: var(--eden-gold-600);
+  --eden-primary-700: var(--eden-gold-700);
+  --eden-primary-800: var(--eden-gold-800);
+  --eden-primary-900: var(--eden-gold-900);
+  --eden-primary-950: var(--eden-gold-950);
+  --eden-primary-rgb-500: 212, 168, 83;
+
   /* === Neutral Colors (Zinc) === */
   --eden-neutral-50: #fafafa;
   --eden-neutral-100: #f4f4f5;
@@ -79,8 +93,8 @@
   --eden-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
   --eden-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   --eden-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-  --eden-shadow-glow: 0 0 20px rgba(212, 168, 83, 0.1);
-  --eden-shadow-glow-strong: 0 0 30px rgba(212, 168, 83, 0.25);
+  --eden-shadow-glow: 0 0 20px rgba(var(--eden-primary-rgb-500), 0.1);
+  --eden-shadow-glow-strong: 0 0 30px rgba(var(--eden-primary-rgb-500), 0.25);
 
   /* === Transitions === */
   --eden-ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
@@ -103,5 +117,5 @@ html.dark {
   --eden-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
   --eden-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
   --eden-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.3);
-  --eden-shadow-glow: 0 0 20px rgba(212, 168, 83, 0.15);
+  --eden-shadow-glow: 0 0 20px rgba(var(--eden-primary-rgb-500), 0.15);
 }

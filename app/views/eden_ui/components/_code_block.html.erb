@@ -9,23 +9,23 @@
   lines = code.lines
 
   classes = [
-    "relative bg-gray-900 rounded-lg overflow-hidden",
+    "relative bg-zinc-900 rounded-lg overflow-hidden",
     html_options.delete(:class)
   ].compact_blank.join(" ")
 %>
 
 <div class="<%= classes %>" <%= tag.attributes(html_options) %>>
   <% if language || copyable %>
-    <div class="flex items-center justify-between px-4 py-2 border-b border-gray-700">
+    <div class="flex items-center justify-between px-4 py-2 border-b border-zinc-700">
       <% if language %>
-        <span class="text-xs font-medium text-gray-400"><%= language %></span>
+        <span class="text-xs font-medium text-zinc-400"><%= language %></span>
       <% else %>
         <span></span>
       <% end %>
       <% if copyable %>
         <div data-controller="eden-clipboard">
           <textarea data-eden-clipboard-target="source" class="sr-only" tabindex="-1"><%= code %></textarea>
-          <button type="button" data-action="eden-clipboard#copy" data-eden-clipboard-target="button" class="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-white transition-colors">
+          <button type="button" data-action="eden-clipboard#copy" data-eden-clipboard-target="button" class="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-white transition-colors">
             <span data-eden-clipboard-target="label">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
             </span>
@@ -41,14 +41,14 @@
         <tbody>
           <% lines.each_with_index do |line, i| %>
             <tr>
-              <td class="pr-4 text-right text-xs text-gray-600 select-none align-top w-8 font-mono"><%= i + 1 %></td>
-              <td><pre class="text-sm text-gray-100 font-mono whitespace-pre"><%= ERB::Util.html_escape(line.chomp) %></pre></td>
+              <td class="pr-4 text-right text-xs text-zinc-600 select-none align-top w-8 font-mono"><%= i + 1 %></td>
+              <td><pre class="text-sm text-zinc-100 font-mono whitespace-pre"><%= ERB::Util.html_escape(line.chomp) %></pre></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     <% else %>
-      <pre class="text-sm text-gray-100 font-mono whitespace-pre"><code><%= escaped_code %></code></pre>
+      <pre class="text-sm text-zinc-100 font-mono whitespace-pre"><code><%= escaped_code %></code></pre>
     <% end %>
   </div>
 </div>

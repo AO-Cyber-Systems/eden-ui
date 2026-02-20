@@ -8,6 +8,7 @@ module EdenUi
         include EdenUi::LayoutHelper
         include EdenUi::IconHelper
         include EdenUi::FormHelper
+        include EdenUi::BrandHelper
         include EdenUi::LegacyHelper
         include EdenUi::StyleguideHelper
       end

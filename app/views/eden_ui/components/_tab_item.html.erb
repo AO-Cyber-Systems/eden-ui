@@ -12,22 +12,22 @@
   tab_classes = case variant.to_sym
   when :pill
     if active
-      "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
+      "inline-block px-4 py-3 text-white bg-primary-600 rounded-lg active"
     elsif disabled
-      "inline-block px-4 py-3 text-gray-400 cursor-not-allowed dark:text-gray-500 rounded-lg"
+      "inline-block px-4 py-3 text-zinc-400 cursor-not-allowed dark:text-zinc-500 rounded-lg"
     else
-      "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+      "inline-block px-4 py-3 rounded-lg hover:text-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:hover:text-white"
     end
   when :full_width
-    active_fw = active ? "text-gray-900 bg-gray-100 dark:bg-gray-700 dark:text-white" : "bg-white hover:text-gray-700 hover:bg-gray-50 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-    "inline-block w-full p-4 #{active_fw} focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800"
+    active_fw = active ? "text-zinc-900 bg-zinc-100 dark:bg-zinc-700 dark:text-white" : "bg-white hover:text-zinc-700 hover:bg-zinc-50 dark:hover:text-white dark:bg-zinc-800 dark:hover:bg-zinc-700"
+    "inline-block w-full p-4 #{active_fw} focus:ring-4 focus:ring-primary-300 focus:outline-none dark:focus:ring-primary-800"
   else
     if active
-      "inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500"
+      "inline-block p-4 text-primary-600 border-b-2 border-primary-600 rounded-t-lg active dark:text-primary-500 dark:border-primary-500"
     elsif disabled
-      "inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500"
+      "inline-block p-4 text-zinc-400 rounded-t-lg cursor-not-allowed dark:text-zinc-500"
     else
-      "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+      "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-zinc-600 hover:border-zinc-300 dark:hover:text-zinc-300"
     end
   end
 %>

@@ -9,10 +9,10 @@
   content ||= nil
 
   fixed_classes = fixed ? "fixed w-full z-20 top-0 start-0" : ""
-  border_classes = bordered ? "border-b border-gray-200 dark:border-gray-700" : ""
+  border_classes = bordered ? "border-b border-zinc-200 dark:border-zinc-700" : ""
   rounded_classes = rounded ? "rounded-lg" : ""
 
-  classes = ["bg-white dark:bg-gray-900", fixed_classes, border_classes, rounded_classes, html_options.delete(:class)].compact_blank.join(" ")
+  classes = ["bg-white dark:bg-zinc-900", fixed_classes, border_classes, rounded_classes, html_options.delete(:class)].compact_blank.join(" ")
 %>
 
 <nav class="<%= classes %>" <%= tag.attributes(html_options) %>>
@@ -26,7 +26,7 @@
       <% end %>
     </a>
 
-    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-zinc-500 rounded-lg md:hidden hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:focus:ring-zinc-600" aria-controls="navbar-default" aria-expanded="false">
       <span class="sr-only">Open main menu</span>
       <svg class="w-5 h-5" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
     </button>

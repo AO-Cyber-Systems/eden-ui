@@ -8,9 +8,9 @@
 
   variant_classes = case variant.to_sym
   when :light
-    "text-gray-900 bg-white border border-gray-200 shadow-sm"
+    "text-zinc-900 bg-white border border-zinc-200 shadow-sm"
   else
-    "text-white bg-gray-900 dark:bg-gray-700"
+    "text-white bg-zinc-900 dark:bg-zinc-700"
   end
 
   classes = ["absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip", variant_classes, html_options.delete(:class)].compact_blank.join(" ")

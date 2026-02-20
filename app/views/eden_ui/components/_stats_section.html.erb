@@ -10,23 +10,23 @@
 
   bg_classes = case variant
   when :colored
-    "bg-blue-600 dark:bg-blue-700"
+    "bg-primary-600 dark:bg-primary-700"
   else
-    "bg-white dark:bg-gray-900"
+    "bg-white dark:bg-zinc-900"
   end
 
   text_color = case variant
   when :colored
     "text-white"
   else
-    "text-gray-900 dark:text-white"
+    "text-zinc-900 dark:text-white"
   end
 
   sub_color = case variant
   when :colored
-    "text-blue-200"
+    "text-primary-200"
   else
-    "text-gray-500 dark:text-gray-400"
+    "text-zinc-500 dark:text-zinc-400"
   end
 
   stat_count = [stats.size, 6].min
@@ -57,11 +57,11 @@
     <% if variant == :cards %>
       <div class="grid gap-8 <%= col_class %>">
         <% stats.each do |stat| %>
-          <div class="p-6 bg-white rounded-lg shadow border border-gray-200 dark:bg-gray-800 dark:border-gray-700 text-center">
-            <p class="text-4xl font-extrabold text-gray-900 dark:text-white"><%= stat[:value] %></p>
-            <p class="mt-2 text-gray-500 dark:text-gray-400"><%= stat[:label] %></p>
+          <div class="p-6 bg-white rounded-lg shadow border border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700 text-center">
+            <p class="text-4xl font-extrabold text-zinc-900 dark:text-white"><%= stat[:value] %></p>
+            <p class="mt-2 text-zinc-500 dark:text-zinc-400"><%= stat[:label] %></p>
             <% if stat[:description] %>
-              <p class="mt-1 text-sm text-gray-400 dark:text-gray-500"><%= stat[:description] %></p>
+              <p class="mt-1 text-sm text-zinc-400 dark:text-zinc-500"><%= stat[:description] %></p>
             <% end %>
           </div>
         <% end %>
@@ -70,11 +70,11 @@
       <%# :default and :colored share the same inline layout %>
       <div class="grid gap-8 <%= col_class %> text-center">
         <% stats.each_with_index do |stat, i| %>
-          <div class="<%= variant == :default && i > 0 ? 'md:border-l md:border-gray-200 md:dark:border-gray-700' : '' %>">
+          <div class="<%= variant == :default && i > 0 ? 'md:border-l md:border-zinc-200 md:dark:border-zinc-700' : '' %>">
             <p class="text-4xl font-extrabold <%= text_color %>"><%= stat[:value] %></p>
             <p class="mt-2 <%= sub_color %>"><%= stat[:label] %></p>
             <% if stat[:description] %>
-              <p class="mt-1 text-sm <%= variant == :colored ? 'text-blue-100' : 'text-gray-400 dark:text-gray-500' %>"><%= stat[:description] %></p>
+              <p class="mt-1 text-sm <%= variant == :colored ? 'text-primary-100' : 'text-zinc-400 dark:text-zinc-500' %>"><%= stat[:description] %></p>
             <% end %>
           </div>
         <% end %>
