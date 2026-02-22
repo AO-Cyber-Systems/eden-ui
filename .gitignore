@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Ruby
+*.gem
+.bundle/
+Gemfile.lock
+pkg/
+tmp/
+
+# Screenshots / artifacts
+*.png
+*.jpg
+*.jpeg
+.playwright-mcp/
+
