@@ -60,12 +60,20 @@ export default class extends Controller {
   }
 
   /**
+   * The sidebar element — uses the sidebar target if present,
+   * otherwise falls back to the controller element itself.
+   */
+  get sidebarEl() {
+    return this.hasSidebarTarget ? this.sidebarTarget : this.element
+  }
+
+  /**
    * Apply the current collapsed/expanded state to the DOM.
    */
   applyState() {
     if (this.collapsedValue) {
-      this.sidebarTarget.classList.add("sidebar-collapsed")
-      this.sidebarTarget.classList.remove("sidebar-expanded")
+      this.sidebarEl.classList.add("sidebar-collapsed")
+      this.sidebarEl.classList.remove("sidebar-expanded")
 
       if (this.hasOverlayTarget) {
         this.overlayTarget.classList.add("hidden")
@@ -75,8 +83,8 @@ export default class extends Controller {
         this.toggleIconTarget.classList.remove("rotate-180")
       }
     } else {
-      this.sidebarTarget.classList.remove("sidebar-collapsed")
-      this.sidebarTarget.classList.add("sidebar-expanded")
+      this.sidebarEl.classList.remove("sidebar-collapsed")
+      this.sidebarEl.classList.add("sidebar-expanded")
 
       if (this.hasOverlayTarget) {
         this.overlayTarget.classList.remove("hidden")
