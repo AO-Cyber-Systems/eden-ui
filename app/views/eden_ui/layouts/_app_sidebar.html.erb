@@ -1,7 +1,12 @@
-<%# locals: (sidebar_items: [], sidebar_bottom_items: [], collapsed: false) %>
+<%# locals: (sidebar_items: [], sidebar_bottom_items: [], sidebar_header: nil, collapsed: false) %>
 
 <aside id="eden-sidebar" data-controller="eden-sidebar" data-eden-sidebar-collapsed-value="<%= collapsed %>" class="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full border-r border-gray-200 bg-white pt-20 transition-transform dark:border-gray-700 dark:bg-gray-800 sm:translate-x-0" aria-label="Sidebar">
   <div class="flex h-full flex-col overflow-y-auto px-3 pb-4">
+    <% if sidebar_header.present? %>
+      <div class="mb-2 pt-2">
+        <%= sidebar_header %>
+      </div>
+    <% end %>
     <ul class="flex-1 space-y-2 font-medium">
       <% sidebar_items.each do |item| %>
         <% if item[:group].present? %>

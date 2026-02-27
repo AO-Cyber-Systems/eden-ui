@@ -1,8 +1,8 @@
 module EdenUi
   module LayoutHelper
-    def eden_app_layout(app_name: EdenUi.configuration.app_name, logo_path: EdenUi.configuration.logo_path, sidebar_items: [], sidebar_bottom_items: [], user: nil, footer_links: [], **html_options, &block)
+    def eden_app_layout(app_name: EdenUi.configuration.app_name, logo_path: EdenUi.configuration.logo_path, sidebar_items: [], sidebar_bottom_items: [], sidebar_header: nil, user: nil, footer_links: [], **html_options, &block)
       render partial: "eden_ui/layouts/app", locals: {
-        app_name:, logo_path:, sidebar_items:, sidebar_bottom_items:, user:, footer_links:,
+        app_name:, logo_path:, sidebar_items:, sidebar_bottom_items:, sidebar_header:, user:, footer_links:,
         content: block ? capture(&block) : nil
       }
     end

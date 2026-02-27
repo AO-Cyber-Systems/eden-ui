@@ -1,10 +1,10 @@
-<%# locals: (app_name: EdenUi.configuration.app_name, logo_path: EdenUi.configuration.logo_path, sidebar_items: [], sidebar_bottom_items: [], user: nil, breadcrumbs: [], show_footer: EdenUi.configuration.footer, footer_links: [], content: nil) %>
+<%# locals: (app_name: EdenUi.configuration.app_name, logo_path: EdenUi.configuration.logo_path, sidebar_items: [], sidebar_bottom_items: [], sidebar_header: nil, user: nil, breadcrumbs: [], show_footer: EdenUi.configuration.footer, footer_links: [], content: nil) %>
 
 <div class="h-screen flex flex-col overflow-hidden bg-gray-50 dark:bg-gray-900">
   <%= render partial: "eden_ui/layouts/app_navbar", locals: { app_name: app_name, logo_path: logo_path, user: user } %>
 
   <div class="flex flex-1 pt-16 overflow-hidden">
-    <%= render partial: "eden_ui/layouts/app_sidebar", locals: { sidebar_items: sidebar_items, sidebar_bottom_items: sidebar_bottom_items, collapsed: false } %>
+    <%= render partial: "eden_ui/layouts/app_sidebar", locals: { sidebar_items: sidebar_items, sidebar_bottom_items: sidebar_bottom_items, sidebar_header: sidebar_header, collapsed: false } %>
 
     <div class="flex flex-1 flex-col md:ml-64 overflow-hidden">
       <main class="flex-1 overflow-auto p-4">
