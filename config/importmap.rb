@@ -2,6 +2,7 @@
 # These are automatically pinned when the host app uses importmap-rails.
 
 pin "eden-ui/controllers/accordion_controller", to: "eden_ui/controllers/accordion_controller.js"
+pin "eden-ui/controllers/banner_controller", to: "eden_ui/controllers/banner_controller.js"
 pin "eden-ui/controllers/carousel_controller", to: "eden_ui/controllers/carousel_controller.js"
 pin "eden-ui/controllers/clipboard_controller", to: "eden_ui/controllers/clipboard_controller.js"
 pin "eden-ui/controllers/dark_mode_controller", to: "eden_ui/controllers/dark_mode_controller.js"
