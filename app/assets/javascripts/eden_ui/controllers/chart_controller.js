@@ -47,27 +47,10 @@ export default class extends Controller {
 
   async loadAndRender() {
     if (typeof ApexCharts === "undefined") {
-      // Wait for ApexCharts to load
-      await this.waitForApexCharts()
+      const module = await import("https://cdn.jsdelivr.net/npm/apexcharts@3.49.0/dist/apexcharts.esm.js")
+      window.ApexCharts = module.default
     }
     this.renderChart()
-  }
-
-  waitForApexCharts() {
-    return new Promise((resolve) => {
-      if (typeof ApexCharts !== "undefined") {
-        resolve()
-        return
-      }
-      const check = setInterval(() => {
-        if (typeof ApexCharts !== "undefined") {
-          clearInterval(check)
-          resolve()
-        }
-      }, 50)
-      // Timeout after 10s
-      setTimeout(() => { clearInterval(check); resolve() }, 10000)
-    })
   }
 
   renderChart() {

@@ -28,9 +28,25 @@ module EdenUi
       eden_field(method, :text_area, **options)
     end
 
+    def eden_date_field(method, **options)
+      eden_field(method, :date_field, **options)
+    end
+
+    def eden_datetime_field(method, **options)
+      eden_field(method, :datetime_local_field, **options)
+    end
+
+    def eden_color_field(method, **options)
+      eden_field(method, :color_field, **options)
+    end
+
+    def eden_range_field(method, **options)
+      eden_field(method, :range_field, **options)
+    end
+
     def eden_select(method, choices = nil, select_options = {}, **html_options, &block)
       label_text = html_options.delete(:label) || method.to_s.humanize
-      hint = html_options.delete(:hint)
+      hint = html_options.delete(:hint) || html_options.delete(:help_text)
       wrapper_class = html_options.delete(:wrapper_class) || "mb-4"
 
       html_options[:class] = eden_select_classes(html_options[:class])
@@ -79,7 +95,7 @@ module EdenUi
 
     def eden_file_field(method, **options)
       label_text = options.delete(:label) || method.to_s.humanize
-      hint = options.delete(:hint)
+      hint = options.delete(:hint) || options.delete(:help_text)
       wrapper_class = options.delete(:wrapper_class) || "mb-4"
 
       options[:class] = @template.token_list(
@@ -109,7 +125,7 @@ module EdenUi
 
     def eden_field(method, field_type, **options)
       label_text = options.delete(:label) || method.to_s.humanize
-      hint = options.delete(:hint)
+      hint = options.delete(:hint) || options.delete(:help_text)
       icon = options.delete(:icon)
       wrapper_class = options.delete(:wrapper_class) || "mb-4"
       size = options.delete(:size) || :md

@@ -33,5 +33,10 @@
 %>
 
 <li role="presentation">
-  <button class="<%= [tab_classes, html_options.delete(:class)].compact_blank.join(" ") %>" role="tab" type="button" aria-selected="<%= active %>" <% if target %>data-eden-tab-target="tab" data-action="eden-tab#select"<% end %> <%= "disabled" if disabled %> <%= tag.attributes(html_options) %>><%= display_text %></button>
+  <% combined_classes = [tab_classes, html_options.delete(:class)].compact_blank.join(" ") %>
+  <% if href.present? && href != "#" %>
+    <a href="<%= href %>" class="<%= combined_classes %>" role="tab" aria-selected="<%= active %>" <%= tag.attributes(html_options) %>><%= display_text %></a>
+  <% else %>
+    <button class="<%= combined_classes %>" role="tab" type="button" aria-selected="<%= active %>" <% if target %>data-eden-tab-target="tab" data-action="eden-tab#select"<% end %> <%= "disabled" if disabled %> <%= tag.attributes(html_options) %>><%= display_text %></button>
+  <% end %>
 </li>
