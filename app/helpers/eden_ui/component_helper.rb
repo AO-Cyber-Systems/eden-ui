@@ -295,6 +295,12 @@ module EdenUi
       }
     end
 
+    def eden_color_picker(label: nil, name: nil, value: "#000000", id: nil, hint: nil, disabled: false, swatches: nil, **html_options)
+      render partial: "eden_ui/components/color_picker", locals: {
+        label:, name:, value:, id:, hint:, disabled:, swatches:, html_options:
+      }
+    end
+
     def eden_floating_label(type: :text, label:, placeholder: " ", variant: :default, size: :md, disabled: false, id: nil, name: nil, **html_options)
       render partial: "eden_ui/components/floating_label", locals: {
         type:, label:, placeholder:, variant:, size:, disabled:, id:, name:, html_options:

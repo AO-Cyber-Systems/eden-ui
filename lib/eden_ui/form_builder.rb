@@ -40,6 +40,29 @@ module EdenUi
       eden_field(method, :color_field, **options)
     end
 
+    def eden_color_picker(method, **options)
+      label_text = options.delete(:label) || method.to_s.humanize
+      hint = options.delete(:hint) || options.delete(:help_text)
+      wrapper_class = options.delete(:wrapper_class) || "mb-4"
+      swatches = options.delete(:swatches)
+
+      value = @object&.respond_to?(method) ? @object.send(method) : nil
+      value ||= options.delete(:value) || "#000000"
+
+      @template.content_tag(:div, class: wrapper_class) do
+        @template.render(partial: "eden_ui/components/color_picker", locals: {
+          label: label_text,
+          name: "#{@object_name}[#{method}]",
+          value: value,
+          id: eden_field_id(method),
+          hint: hint,
+          disabled: options[:disabled] || false,
+          swatches: swatches,
+          html_options: options
+        })
+      end
+    end
+
     def eden_range_field(method, **options)
       eden_field(method, :range_field, **options)
     end

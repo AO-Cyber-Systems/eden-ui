@@ -1,0 +1,67 @@
+<%
+  # Color picker with swatch + hex text input, synced via Stimulus
+  # Locals: label, name, value, id, hint, disabled, swatches, html_options
+  label ||= nil
+  name ||= nil
+  value ||= "#000000"
+  id ||= nil
+  hint ||= nil
+  disabled ||= false
+  swatches ||= nil
+  html_options ||= {}
+
+  input_id = id || name&.parameterize(separator: "_")
+  classes = html_options.delete(:class) || ""
+%>
+
+<div class="<%= classes %>" data-controller="color-picker">
+  <% if label %>
+    <label<%= " for=\"#{input_id}\"" if input_id %> class="block mb-2 text-sm font-medium text-zinc-900 dark:text-white"><%= label %></label>
+  <% end %>
+
+  <div class="flex items-center gap-2">
+    <input
+      type="color"
+      value="<%= value %>"
+      <% if disabled %>disabled<% end %>
+      class="h-10 w-12 rounded-lg border border-zinc-300 cursor-pointer p-0.5 bg-zinc-50 dark:bg-zinc-700 dark:border-zinc-600 disabled:opacity-50 disabled:cursor-not-allowed"
+      data-color-picker-target="swatch"
+      data-action="input->color-picker#syncFromSwatch"
+      aria-label="Color swatch"
+    >
+    <input
+      type="text"
+      name="<%= name %>"
+      id="<%= input_id %>"
+      value="<%= value %>"
+      <% if disabled %>disabled<% end %>
+      placeholder="#000000"
+      pattern="^#[0-9a-fA-F]{6}$"
+      maxlength="7"
+      class="block w-full p-2.5 text-sm border rounded-lg bg-zinc-50 border-zinc-300 text-zinc-900 focus:ring-primary-500 focus:border-primary-500 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 disabled:opacity-50 disabled:cursor-not-allowed font-mono"
+      data-color-picker-target="text"
+      data-action="input->color-picker#syncFromText"
+      <%= tag.attributes(html_options.except(:class)) %>
+    >
+  </div>
+
+  <% if swatches&.any? %>
+    <div class="flex gap-1.5 mt-2" data-color-picker-target="swatches">
+      <% swatches.each do |swatch_color| %>
+        <button
+          type="button"
+          class="w-6 h-6 rounded-full border-2 border-transparent hover:border-zinc-400 dark:hover:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1 transition-colors"
+          style="background-color: <%= swatch_color %>"
+          data-action="click->color-picker#selectSwatch"
+          data-color="<%= swatch_color %>"
+          title="<%= swatch_color %>"
+          <% if disabled %>disabled<% end %>
+        ></button>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if hint %>
+    <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400"><%= hint %></p>
+  <% end %>
+</div>
